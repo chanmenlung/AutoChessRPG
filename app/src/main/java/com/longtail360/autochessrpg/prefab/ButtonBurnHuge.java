@@ -29,7 +29,7 @@ public class ButtonBurnHuge extends FrameLayout {
         TypedArray a = context.getTheme().obtainStyledAttributes(attrs, R.styleable.ButtonBurnHuge, 0, 0);
 
         try {
-            title = a.getString(R.styleable.BurnButtonHuge_btHugeText);
+            title = a.getString(R.styleable.ButtonBurnHuge_btBurnHugeText);
         } finally {
             a.recycle();
         }

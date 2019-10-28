@@ -43,7 +43,7 @@
             android:layout_height="match_parent"
             android:gravity="center"
             android:textSize="@dimen/ui_topInfoBar_textSize"
-            android:text="@string/ui_topInfoBar_level" />
+            android:text="@string/ui_home_level" />
 
         <TextView
             android:id="@+id/levelValue"
@@ -62,7 +62,7 @@
             android:gravity="center"
             android:textSize="@dimen/ui_topInfoBar_textSize"
             android:layout_centerInParent="true"
-            android:text="@string/ui_topInfoBar_exp" />
+            android:text="@string/ui_home_exp" />
 
         <TextView
             android:id="@+id/expValue"
@@ -82,7 +82,7 @@
             android:gravity="center"
             android:textSize="@dimen/ui_topInfoBar_textSize"
             android:layout_centerInParent="true"
-            android:text="@string/ui_topInfoBar_population" />
+            android:text="@string/ui_home_population" />
 
         <TextView
             android:id="@+id/populationValue"
@@ -100,7 +100,7 @@
             android:layout_height="match_parent"
             android:gravity="center"
             android:textSize="@dimen/ui_topInfoBar_textSize"
-            android:text="@string/ui_topInfoBar_hp" />
+            android:text="@string/ui_home_hp" />
 
         <TextView
             android:id="@+id/hpValue"
@@ -367,7 +367,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:text="@string/ui_topInfoBar_upgrade"/>
+                    android:text="@string/ui_home_upgrade"/>
             </LinearLayout>
         </FrameLayout>
         <TextView

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:background="@drawable/ui_background"
+    android:id="@+id/thisLayout"
+    android:layout_height="match_parent">
+
+    <FrameLayout  android:layout_width="match_parent"
+        android:layout_height="35dp">
+        <View
+            android:translationY="7dp"
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:background="@drawable/ui_line" />
+        <View
+            android:translationY="27dp"
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:background="@drawable/ui_line" />
+
+        <FrameLayout
+            android:id="@+id/innerBackBt"
+            android:layout_width="60dp"
+            android:layout_height="30dp"
+            android:translationY="3dp"
+            android:background="@drawable/xml_button_small_yellow">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:text="&lt; &lt;" />
+        </FrameLayout>
+
+    </FrameLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:translationY="100dp"
+        android:layout_gravity="top"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:gravity="left"
+            android:layout_gravity="center"
+            android:textSize="15sp"
+            android:text="@string/ui_about_content" />
+        <TextView
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:layout_gravity="center"
+            android:textSize="15sp"
+            android:text="@string/ui_about_aboutuseResourceAsBelow" />
+        <TextView
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:layout_gravity="center"
+            android:textSize="15sp"
+            android:text="1. https://fayforest.sakura.ne.jp/index.html" />
+        <TextView
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:layout_gravity="center"
+            android:textSize="15sp"
+            android:text="2. http://dgbaumgart.com/" />
+        <TextView
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:layout_gravity="center"
+            android:textSize="15sp"
+            android:text="3. http://www.evilsystem.eu/" />
+        <TextView
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:layout_gravity="center"
+            android:textSize="15sp"
+            android:text="4. http://www.akashics.moe//" />
+        <TextView
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:layout_gravity="center"
+            android:textSize="15sp"
+            android:text="5. http://www.layerlab.io/work" />
+        <TextView
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:layout_gravity="center"
+            android:textSize="15sp"
+            android:text="6. https://www.wizcorp.jp/#home" />
+    </LinearLayout>
+</FrameLayout>

@@ -30,24 +30,14 @@ import java.util.List;
 
 public class MainActivity extends BaseActivity {
     private boolean isResetDB = false;
+    private TextView comName;
     private View comNameLayout;
-    private View comName;
-    private View continueGameBt;
-    private View startNewGameBt;
-    private View illustrationBt;
-    private View itemBt;
-    private View otherBt;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        comName= findViewById(R.id.com_name);
-        comNameLayout = findViewById(R.id.com_name_layout);
-        continueGameBt = findViewById(R.id.continueGameBt);
-        startNewGameBt = findViewById(R.id.startNewGameBt);
-        illustrationBt = findViewById(R.id.illustrationBt);
-        itemBt = findViewById(R.id.itemBt);
-        otherBt = findViewById(R.id.otherBt);
+        comName = findViewById(R.id.com_name);
+        comNameLayout = findViewById(R.id.comNameLayout);
         Animation alphaAnimation = new AlphaAnimation(1.0f, 0.1f);
         alphaAnimation.setDuration(2000);
         comName.startAnimation(alphaAnimation);
@@ -63,42 +53,19 @@ public class MainActivity extends BaseActivity {
                 comNameLayout.setVisibility(View.INVISIBLE);
             }
         });
-
-        continueGameBt.setOnClickListener(new View.OnClickListener() {
+        View leaveGame = findViewById(R.id.leaveGame);
+        leaveGame.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startOtherActivity(HomeActivity.class);
+                finish();
+                System.exit(1);
             }
         });
-        startNewGameBt.setOnClickListener(new View.OnClickListener() {
+        View aboutBt = findViewById(R.id.aboutBt);
+        aboutBt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                popupBox.reset(2);
-                popupBox.title.setText(getString(R.string.ui_mainPage_isConfirmRestartGame));
-                popupBox.rightConfirm.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        startOtherActivity(HomeActivity.class);
-                    }
-                });
-            }
-        });
-        illustrationBt.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
-        itemBt.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
-        otherBt.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
+                startOtherActivity(AboutActivity.class);
             }
         });
     }

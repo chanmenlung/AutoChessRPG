@@ -23,17 +23,17 @@ public class ButtonBurnMiddle extends FrameLayout {
         TypedArray a = context.getTheme().obtainStyledAttributes(attrs, R.styleable.ButtonBurnMiddle, 0, 0);
 
         try {
-            title = a.getString(R.styleable.BurnButtonMiddle_btMiddleText);
-            color = a.getString(R.styleable.BurnButtonMiddle_btMiddleColor);
+            title = a.getString(R.styleable.ButtonBurnMiddle_btBurnMiddleText);
+            color = a.getString(R.styleable.ButtonBurnMiddle_btBurnMiddleColor);
         } finally {
             a.recycle();
         }
         if("green".equals(color)){
-            LayoutInflater.from(context).inflate(R.layout.button_middle_green, this, true);
+            LayoutInflater.from(context).inflate(R.layout.button_burn_middle_green, this, true);
         }else if("orange".equals(color)){
-            LayoutInflater.from(context).inflate(R.layout.middle_button_orange, this, true);
+            LayoutInflater.from(context).inflate(R.layout.button_burn_middle_orange, this, true);
         }else {
-            LayoutInflater.from(context).inflate(R.layout.middle_button_gray, this, true);
+            LayoutInflater.from(context).inflate(R.layout.button_burn_middle_gray, this, true);
         }
 
         // Throw an exception if required attributes are not set
@@ -57,7 +57,7 @@ public class ButtonBurnMiddle extends FrameLayout {
                 else if (event.getAction() == MotionEvent.ACTION_UP) {
                     overlay.setVisibility(INVISIBLE);
                 }
-                return MiddleButton.super.onTouchEvent(event);
+                return ButtonBurnMiddle.super.onTouchEvent(event);
             }
         });
     }

@@ -7,7 +7,7 @@
 
     <declare-styleable name="ButtonBurnMiddle">
         <attr name="btBurnMiddleText" format="string" />
-        <attr name="burnBtMiddleColor" format="string" />
+        <attr name="btBurnMiddleColor" format="string" />
     </declare-styleable>
 
     <declare-styleable name="ButtonBurnHuge">
