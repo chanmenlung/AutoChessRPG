@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="HelloView">
+        <attr name="titleText" format="string" />
+    </declare-styleable>
+
+
+    <declare-styleable name="ButtonBurnMiddle">
+        <attr name="btBurnMiddleText" format="string" />
+        <attr name="burnBtMiddleColor" format="string" />
+    </declare-styleable>
+
+    <declare-styleable name="ButtonBurnHuge">
+        <attr name="btBurnHugeText" format="string" />
+    </declare-styleable>
+
+    <declare-styleable name="ButtonSmall">
+        <attr name="btSmallText" format="string" />
+    </declare-styleable>
+
+    <declare-styleable name="ButtonTab">
+        <attr name="btTabText" format="string" />
+    </declare-styleable>
+
+    <declare-styleable name="ButtonMenuPanel">
+        <attr name="btMenuPanelTitle" format="string" />
+        <attr name="btMenuPanelIcon" format="integer" />
+    </declare-styleable>
+
+</resources>

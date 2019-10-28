@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">AutoChessRPG</string>
+    <string name="game_name">RPG幻想日誌</string>
+    <string name="ui_mainPage_continueGame">繼續遊戲</string>
+    <string name="ui_mainPage_startNewGame">開始新遊戲</string>
+    <string name="ui_mainPage_illustration">圖鑒</string>
+    <string name="ui_mainPage_item">物品</string>
+    <string name="ui_mainPage_other">其他</string>
+    <string name="ui_mainPage_leave">離開</string>
+    <string name="ui_mainPage_isConfirmRestartGame">是否開始新遊戲?</string>
+    <string name="ui_home_level">等級:</string>
+    <string name="ui_home_exp">經驗:</string>
+    <string name="ui_home_population">人口:</string>
+    <string name="ui_home_coin">金幣:</string>
+    <string name="ui_home_upgrade">升級($50)</string>
+    <string name="ui_home_hp">生命值:</string>
+    <string name="ui_home_log">日誌</string>
+    <string name="ui_home_cardForBuying">可購買的角色:</string>
+    <string name="ui_home_refreshForBuying">刷新($20)</string>
+    <string name="ui_home_team">隊伍:</string>
+    <string name="ui_home_tactics">戰術</string>
+    <string name="ui_home_item">物品</string>
+    <string name="ui_home_holdCard">持有的角色:</string>
+    <string name="ui_home_startAdv">開始探索</string>
+    <string name="ui_home_help">說明</string>
+    <string name="ui_popup_cancel">取消</string>
+    <string name="ui_popup_confirm">確定</string>
+</resources>

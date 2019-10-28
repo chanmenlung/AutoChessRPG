@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/ui_background">
+        <FrameLayout
+            android:translationX="-50dp"
+            android:translationY="5dp"
+            android:layout_width="220dp"
+            android:layout_height="60dp"
+            android:background="@drawable/item_red_half_header"
+            >
+            <TextView
+                android:id="@+id/gameName"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:textSize="18sp"
+                android:textColor="@android:color/white"
+                android:text="@string/game_name" />
+        </FrameLayout>
+
+        <LinearLayout
+            android:translationY="80dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <com.longtail360.autochessrpg.prefab.MenuPanel
+                android:id="@+id/continueGameBt"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                app:btMenuPanelTitle="@string/ui_mainPage_continueGame"
+                app:btMenuPanelIcon="@drawable/ui_icon_feather"/>
+
+            <com.longtail360.autochessrpg.prefab.MenuPanel
+                android:id="@+id/startNewGameBt"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                app:btMenuPanelTitle="@string/ui_mainPage_startNewGame"
+                app:btMenuPanelIcon="@drawable/ui_icon_chess"/>
+
+            <com.longtail360.autochessrpg.prefab.MenuPanel
+                android:id="@+id/illustrationBt"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                app:btMenuPanelTitle="@string/ui_mainPage_illustration"
+                app:btMenuPanelIcon="@drawable/ui_icon_man"/>
+
+            <com.longtail360.autochessrpg.prefab.MenuPanel
+                android:id="@+id/itemBt"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                app:btMenuPanelTitle="@string/ui_mainPage_item"
+                app:btMenuPanelIcon="@drawable/ui_icon_potion"/>
+
+            <com.longtail360.autochessrpg.prefab.MenuPanel
+                android:id="@+id/otherBt"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                app:btMenuPanelTitle="@string/ui_mainPage_other"
+                app:btMenuPanelIcon="@drawable/ui_icon_2leaf"/>
+        </LinearLayout>
+
+    </FrameLayout>
+    <FrameLayout
+        android:id="@+id/com_name_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="invisible"
+        android:background="@android:color/black">
+        <TextView
+            android:id="@+id/com_name"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:translationY="-20dp"
+            android:textSize="40sp"
+            android:textColor="@android:color/white"
+            android:text="Long Tail 360" />
+    </FrameLayout>
+
+
+
+</FrameLayout>

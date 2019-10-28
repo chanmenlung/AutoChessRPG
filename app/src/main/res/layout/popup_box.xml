@@ -1,0 +1,98 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="match_parent"
+    android:clickable="true"
+    android:id="@+id/popupBox"
+    >
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_gravity="center"
+        android:background="@drawable/ui_window_dark"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:translationY="20dp"
+            android:orientation="vertical"
+            >
+            <GridLayout
+                android:translationY="2dp"
+                android:id="@+id/popupBoxImageGrid"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:visibility="gone"
+                android:columnCount="2">
+            </GridLayout>
+
+            <TextView
+                android:id="@+id/popupTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:textSize="18sp"
+                android:textColor="@android:color/white"
+                android:layout_marginTop="10dp"
+                android:text="This is titleaa" />
+            <View
+                android:layout_width="300dp"
+                android:layout_height="10dp"
+                android:layout_margin="2dp"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/ui_line" />
+
+            <TextView
+                android:id="@+id/popupContent"
+                android:layout_width="300dp"
+                android:layout_height="45dp"
+                android:layout_margin="10dp"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:textColor="@android:color/white"
+                android:textSize="15sp"
+                android:text="This is content This is content This is content This is content" />
+
+        </LinearLayout>
+
+        <FrameLayout
+            android:layout_width="280dp"
+            android:layout_height="400dp"
+            android:translationY="50dp"
+            android:layout_gravity="center_horizontal"
+            >
+            <Button
+                android:id="@+id/cancelButton"
+                android:layout_width="120dp"
+                android:layout_height="40dp"
+                android:layout_gravity="left|center_vertical"
+                android:background="@drawable/xml_button_burn_middle_gray"
+                android:textColor="@android:color/white"
+                android:text="@string/ui_popup_cancel"/>
+
+            <Button
+                android:id="@+id/rightConfirmButton"
+                android:layout_width="120dp"
+                android:layout_height="40dp"
+                android:layout_gravity="right|center_vertical"
+                android:background="@drawable/xml_button_burn_middle_orange"
+                android:textColor="@android:color/white"
+                android:text="@string/ui_popup_confirm"/>
+
+            <Button
+                android:id="@+id/centerConfirmButton"
+                android:layout_width="120dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:textColor="@android:color/white"
+                android:background="@drawable/xml_button_burn_middle_orange"
+                android:text="@string/ui_popup_confirm"/>
+
+
+
+        </FrameLayout>
+
+        </FrameLayout>
+</FrameLayout>

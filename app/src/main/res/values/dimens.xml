@@ -1,0 +1,4 @@
+<resources>
+    <dimen name="ui_home_battle_grid_item_size">42dp</dimen>
+    <dimen name="ui_topInfoBar_textSize">13sp</dimen>
+</resources>
