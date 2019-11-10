@@ -25,7 +25,7 @@ public class MonsterDAO {
                     HP + " INTEGER"+
                     ATTACK + " INTEGER"+
                     DEFENSE + " INTEGER"
-            ;
+                    + ")";
     private SQLiteDatabase db;
     public MonsterDAO(Context context) {
         db = GameDBHelper.getDatabase(context);

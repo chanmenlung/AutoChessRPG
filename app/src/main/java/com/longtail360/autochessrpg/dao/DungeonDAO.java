@@ -25,6 +25,7 @@ public class DungeonDAO {
                     MONSTER_IDS + " TEXT," +
                     NUM_FLOOR + " INTEGER," +
                     NUM_BLOCK_PER_FLOOR + " INTEGER"
+                    + ")";
             ;
     private SQLiteDatabase db;
     public DungeonDAO(Context context) {

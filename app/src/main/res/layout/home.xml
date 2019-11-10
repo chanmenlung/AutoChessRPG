@@ -134,19 +134,26 @@
                 android:background="@drawable/ui_line" />
 
             <FrameLayout
-                android:id="@+id/innerBackBt"
+                android:id="@+id/allCardBt"
                 android:layout_width="60dp"
                 android:layout_height="30dp"
                 android:translationY="3dp"
                 android:background="@drawable/xml_button_small_yellow">
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="22dp"
+                    android:layout_gravity="left|center_vertical"
+                    android:src="@drawable/item_yellow_feather"/>
+
                 <TextView
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
+                    android:layout_gravity="right|center_vertical"
+                    android:layout_marginRight="10dp"
                     android:gravity="center"
                     android:textSize="14sp"
-                    android:textStyle="bold"
-                    android:text="&lt; &lt;" />
+                    android:text="@string/ui_mainPage_illustration" />
+
             </FrameLayout>
 
             <ImageView
@@ -346,7 +353,7 @@
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:layout_gravity="center"
-                    android:src="@drawable/item_write_to_book"/>
+                    android:src="@drawable/item_stone"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -763,4 +770,12 @@
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
+
+
+    <FrameLayout
+        android:id="@+id/fragmentContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </FrameLayout>
 </FrameLayout>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="70dp"
+    android:background="@drawable/ui_panel_list_item_desc">
+
+    <ImageView
+        android:id="@+id/crystalIcon"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:padding="15dp"
+        android:layout_gravity="center"
+        android:src="@drawable/item_crystal"
+        android:layout_margin="2dp"
+        />
+    <LinearLayout
+        android:layout_width="200dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize="15sp"
+            android:gravity="center_vertical"
+            android:text="this is title this is title this is title this is title this is title this is title"/>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/buyBt"
+        android:layout_width="40dp"
+        android:layout_height="30dp"
+        android:layout_marginLeft="20dp"
+        android:layout_gravity="center"
+        android:text="@string/buyCrystal_buy"
+        android:textSize="12sp"
+        android:textColor="@android:color/white"
+        android:background="@drawable/xml_button_small_black"
+        />
+
+</LinearLayout>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <View
+        android:translationY="7dp"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="@drawable/ui_line" />
+    <View
+        android:translationY="27dp"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="@drawable/ui_line" />
+
+    <FrameLayout
+        android:id="@+id/innerBackBt"
+        android:layout_width="60dp"
+        android:layout_height="30dp"
+        android:translationY="3dp"
+        android:background="@drawable/xml_button_middle_yellow">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:text="&lt; &lt;" />
+    </FrameLayout>
+
+
+    <ImageView
+        android:id="@+id/headBackBtImage"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:layout_marginLeft="80dp"
+        android:translationY="10dp"
+        android:visibility="invisible"
+        android:src="@drawable/item_crystal"/>
+
+    <TextView
+        android:id="@+id/titleText"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:text="test"
+        android:layout_marginLeft="100dp"
+        android:translationY="10dp"
+        android:textSize="12sp"
+        />
+
+</FrameLayout>

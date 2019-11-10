@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="100dp"
+    android:background="@drawable/ui_panel_list_item_desc">
+
+    <LinearLayout
+        android:layout_width="75dp"
+        android:layout_height="85dp"
+        android:translationX="5dp"
+        android:orientation="vertical">
+        <FrameLayout
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:background="@drawable/ui_card_head_frame">
+            <ImageView
+                android:id="@+id/cardIcon"
+                android:translationX="-1dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:src="@drawable/c1_head"
+                android:layout_margin="1.5dp"
+                />
+        </FrameLayout>
+
+    <TextView
+        android:id="@+id/nameValue"
+        android:layout_width="65dp"
+        android:layout_height="15dp"
+        android:gravity="center"
+        android:textSize="10sp"
+        android:text="test"/>
+
+    </LinearLayout>
+    <!-- info start -->
+    <LinearLayout
+        android:layout_centerInParent="true"
+        android:layout_width="225dp"
+        android:orientation="vertical"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/ui_card_desc_item_text_size"
+                android:text="@string/card_race"/>
+            <TextView
+                android:id="@+id/raceValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/ui_card_desc_item_text_size"
+                android:text="testing"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:textSize="@dimen/ui_card_desc_item_text_size"
+                android:text="@string/card_clazz"/>
+            <TextView
+                android:id="@+id/clazzValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/ui_card_desc_item_text_size"
+                android:text="testing"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/ui_card_desc_item_text_size"
+                android:text="@string/ui_home_hp"/>
+            <TextView
+                android:id="@+id/hpValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/ui_card_desc_item_text_size"
+                android:text="999"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:textSize="@dimen/ui_card_desc_item_text_size"
+                android:text="@string/card_clazz"/>
+            <TextView
+                android:id="@+id/attackValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/ui_card_desc_item_text_size"
+                android:text="99"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:textSize="@dimen/ui_card_desc_item_text_size"
+                android:text="@string/card_defense"/>
+            <TextView
+                android:id="@+id/defenseValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/ui_card_desc_item_text_size"
+                android:text="9"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="5dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/ui_card_desc_item_text_size"
+                android:text="@string/card_skill"/>
+            <TextView
+                android:id="@+id/skillValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/ui_card_desc_item_text_size"
+                android:text="skillA skillA skillA skillA skillA skillA skillA skillA skillA skillA skillA skillA"/>
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+    <Button
+        android:id="@+id/detailBt"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center"
+        android:background="@drawable/item_write_to_book"
+        />
+</LinearLayout>

@@ -22,7 +22,8 @@ public class CardInHandDAO {
                     KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                     ADVENTURE_ID + " INTEGER," +
                     CARD_ID + " INTEGER," +
-                    LOCATION + " INTEGER";
+                    LOCATION + " INTEGER"
+                    + ")";
     private SQLiteDatabase db;
     public CardInHandDAO(Context context) {
         db = GameDBHelper.getDatabase(context);

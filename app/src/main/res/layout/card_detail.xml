@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="match_parent"
+    android:background="@drawable/ui_background"
+    android:clickable="true"
+    android:id="@+id/cardDetailLayout"
+    >
+
+
+    <com.longtail360.autochessrpg.prefab.HeadBackButton
+        android:id="@+id/backBt"
+        android:layout_height="35dp"
+        android:layout_width="match_parent"
+        app:btHeadBackText=""/>
+
+
+    <!-- card name start -->
+    <FrameLayout
+        android:layout_width="120dp"
+        android:layout_height="30dp"
+        android:translationX="100dp"
+        android:orientation="horizontal">
+        <EditText
+            android:id="@+id/cardNameEdit"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/transparent"
+            android:text="拉普拉斯"
+            android:textSize="12sp"/>
+    </FrameLayout>
+    <!-- card name end -->
+
+    <!-- edit strategy start -->
+    <FrameLayout
+        android:id="@+id/saveBt"
+        android:layout_width="60dp"
+        android:layout_height="30dp"
+        android:layout_gravity="right"
+        android:layout_marginRight="10dp"
+        android:translationY="3dp"
+        android:background="@drawable/xml_button_small_black">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textSize="14sp"
+            android:textColor="@android:color/white"
+            android:text="@string/cardDetail_save" />
+    </FrameLayout>
+    <!-- edit stategy end -->
+
+
+    <!-- big image start -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="450dp"
+        android:translationY="50dp"
+        >
+        <ImageView
+            android:id="@+id/bigImage"
+            android:layout_width="match_parent"
+            android:layout_height="450dp"
+            android:layout_centerInParent="true"
+            android:src="@drawable/c1"
+            />
+    </RelativeLayout>
+    <!-- big image end -->
+
+    <LinearLayout
+        android:id="@+id/importFileContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:translationY="538dp"
+        android:orientation="horizontal">
+
+        <FrameLayout
+            android:translationX="20dp"
+            android:translationY="10dp"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:background="@drawable/ui_card_head_frame"
+            android:layout_centerInParent="true">
+            <ImageView
+                android:id="@+id/headImage"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:translationX="1.5dp"
+                android:translationY="3dp"
+                android:layout_centerInParent="true"
+                android:src="@drawable/c1_head"
+                />
+        </FrameLayout>
+
+        <Button
+            android:id="@+id/randomImageBt"
+            android:layout_width="60dp"
+            android:layout_height="30dp"
+            android:text="@string/cardDetail_random"
+            android:textSize="10sp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:translationX="30dp"
+            android:translationY="30dp"
+            android:background="@drawable/ui_button_transparent"
+            android:backgroundTint="@android:color/black"
+            />
+
+        <Button
+            android:id="@+id/importBigImageBt"
+            android:layout_width="60dp"
+            android:layout_height="30dp"
+            android:text="@string/cardDetail_importPicture"
+            android:textSize="10sp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:translationX="30dp"
+            android:translationY="30dp"
+            android:background="@drawable/ui_button_transparent"
+            android:backgroundTint="@android:color/black"
+            />
+        <Button
+            android:id="@+id/cropCardHeadBt"
+            android:layout_width="60dp"
+            android:layout_height="30dp"
+            android:text="@string/cardDetail_headImage"
+            android:textSize="10sp"
+            android:translationX="30dp"
+            android:translationY="30dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/ui_button_transparent"
+            android:backgroundTint="@android:color/black"
+            />
+    </LinearLayout>
+
+
+</FrameLayout>

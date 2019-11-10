@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/ui_background"
+    android:clickable="true"
+    android:id="@+id/cardDetailLayout"
+    >
+    <FrameLayout  android:layout_width="match_parent"
+        android:layout_height="35dp">
+        <View
+            android:translationY="7dp"
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:background="@drawable/ui_line" />
+        <View
+            android:translationY="27dp"
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:background="@drawable/ui_line" />
+
+        <FrameLayout
+            android:id="@+id/allCardBackBt"
+            android:layout_width="60dp"
+            android:layout_height="30dp"
+            android:translationY="3dp"
+            android:background="@drawable/xml_button_small_yellow">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textSize="14sp"
+                android:text="&lt; &lt;" />
+
+        </FrameLayout>
+
+    </FrameLayout>
+
+
+    <!--<FrameLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="35dp"-->
+        <!--android:layout_marginBottom="5dp"-->
+        <!--android:layout_gravity="bottom">-->
+        <!--<FrameLayout-->
+            <!--android:layout_width="200dp"-->
+            <!--android:layout_height="35dp"-->
+            <!--android:layout_marginLeft="-100dp"-->
+            <!--android:background="@drawable/item_bar_horizontal">-->
+            <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_gravity="center"-->
+                <!--android:textColor="@android:color/white"-->
+                <!--android:layout_marginLeft="30dp"-->
+                <!--android:text="@string/ui_mainPage_illustration"/>-->
+        <!--</FrameLayout>-->
+
+        <!--<FrameLayout-->
+            <!--android:layout_width="200dp"-->
+            <!--android:layout_height="35dp"-->
+            <!--android:layout_gravity="right"-->
+            <!--android:layout_marginRight="-100dp"-->
+            <!--android:background="@drawable/item_bar_horizontal">-->
+            <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_gravity="center"-->
+                <!--android:layout_marginRight="30dp"-->
+                <!--android:textColor="@android:color/white"-->
+                <!--android:text="@string/ui_mainPage_illustration"/>-->
+        <!--</FrameLayout>-->
+    <!--</FrameLayout>-->
+
+</FrameLayout>

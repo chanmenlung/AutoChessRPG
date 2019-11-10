@@ -24,7 +24,8 @@ public class CardInBattleDAO {
                     ADVENTURE_ID + " INTEGER" +
                     CARD_ID + " INTEGER" +
                     LOCATION_X + " INTEGER" +
-                    LOCATION_Y + " INTEGER";
+                    LOCATION_Y + " INTEGER"
+                    + ")";
     private SQLiteDatabase db;
     public CardInBattleDAO(Context context) {
         db = GameDBHelper.getDatabase(context);

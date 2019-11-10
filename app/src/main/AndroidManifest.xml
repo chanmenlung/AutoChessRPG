@@ -2,6 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.longtail360.autochessrpg">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="com.android.vending.BILLING" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -17,6 +21,8 @@
         </activity>
         <activity android:name=".activity.HomeActivity" android:screenOrientation="portrait"></activity>
         <activity android:name=".activity.AboutActivity" android:screenOrientation="portrait"></activity>
+        <activity android:name=".activity.AllCardActivity" android:screenOrientation="portrait"></activity>
+        <activity android:name=".activity.BuyCrystalActivity" android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>

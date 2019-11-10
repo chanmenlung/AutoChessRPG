@@ -4,4 +4,6 @@ public class ItemGot {
     public long id;
     public long adventureId;
     public long itemId;
+
+    public Item item;
 }

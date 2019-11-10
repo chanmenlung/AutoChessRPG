@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import com.longtail360.autochessrpg.entity.CardForBuying;
 import com.longtail360.autochessrpg.entity.ItemGot;
 
 import java.util.ArrayList;
@@ -20,7 +21,8 @@ public class ItemGotDAO {
             "CREATE TABLE " + TABLE_NAME + " (" +
                     KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                     ADVENTURE_ID + " INTEGER NOT NULL," +
-                    ITEM_ID + " INTEGER";
+                    ITEM_ID + " INTEGER"
+                    + ")";
     private SQLiteDatabase db;
     public ItemGotDAO(Context context) {
         db = GameDBHelper.getDatabase(context);
@@ -65,6 +67,21 @@ public class ItemGotDAO {
         cursor.close();
         return result;
     }
+
+    public List<ItemGot> listByAdventureId(long advId) {
+        List<ItemGot> result = new ArrayList<>();
+        String where = ADVENTURE_ID + "=" + advId;
+        Cursor cursor = db.query(
+                TABLE_NAME, null, where, null, null, null, null, null);
+
+        while (cursor.moveToNext()) {
+            result.add(getRecord(cursor));
+        }
+
+        cursor.close();
+        return result;
+    }
+
     public ItemGot get(long id) {
         ItemGot item = null;
         String where = KEY_ID + "=" + id;

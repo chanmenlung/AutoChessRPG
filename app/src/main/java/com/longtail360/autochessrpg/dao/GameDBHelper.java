@@ -4,6 +4,7 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import com.longtail360.autochessrpg.entity.Adventure;
 import com.longtail360.autochessrpg.entity.CardForBuying;
 
 /**
@@ -14,7 +15,8 @@ public class GameDBHelper extends SQLiteOpenHelper {
     // 資料庫名稱
     public static final String DATABASE_NAME = "longtail_autorpg.db";
     // 資料庫版本，資料結構改變的時候要更改這個數字，通常是加一
-    public static final int VERSION = 11;
+    public static final int VERSION = 5;
+    public static boolean isResetDB = false;
     // 資料庫物件，固定的欄位變數
     private static SQLiteDatabase database;
 
@@ -36,6 +38,7 @@ public class GameDBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
+        db.execSQL(AdventureDAO.CREATE_TABLE);
         db.execSQL(CardDAO.CREATE_TABLE);
         db.execSQL(CardForBuyingDAO.CREATE_TABLE);
         db.execSQL(CardInBattleDAO.CREATE_TABLE);
@@ -43,10 +46,12 @@ public class GameDBHelper extends SQLiteOpenHelper {
         db.execSQL(DungeonDAO.CREATE_TABLE);
         db.execSQL(ItemDAO.CREATE_TABLE);
         db.execSQL(ItemGotDAO.CREATE_TABLE);
+        db.execSQL(MonsterDAO.CREATE_TABLE);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        db.execSQL("DROP TABLE IF EXISTS " + AdventureDAO.TABLE_NAME);
         db.execSQL("DROP TABLE IF EXISTS " + CardDAO.TABLE_NAME);
         db.execSQL("DROP TABLE IF EXISTS " + CardForBuyingDAO.TABLE_NAME);
         db.execSQL("DROP TABLE IF EXISTS " + CardInBattleDAO.TABLE_NAME);
@@ -54,6 +59,7 @@ public class GameDBHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + DungeonDAO.TABLE_NAME);
         db.execSQL("DROP TABLE IF EXISTS " + ItemDAO.TABLE_NAME);
         db.execSQL("DROP TABLE IF EXISTS " + ItemGotDAO.TABLE_NAME);
+        db.execSQL("DROP TABLE IF EXISTS " + MonsterDAO.TABLE_NAME);
         onCreate(db);
     }
 }

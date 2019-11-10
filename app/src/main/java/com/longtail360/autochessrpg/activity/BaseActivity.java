@@ -19,9 +19,6 @@ import com.longtail360.autochessrpg.utils.Logger;
 
 public class BaseActivity extends AppCompatActivity {
     private static String tag = "BaseActivity";
-    public static String COM_FOLDER = "/longtail360";
-    public static String GAME_FOLDER = "/longtail360/AutoChessRPG/";
-    public static String PLAYER_FILE_NAME = "player.txt";
 //public static String PLAYER_FILE_NAME; test git
     public static JSONObject configJson;
     public static Player player;

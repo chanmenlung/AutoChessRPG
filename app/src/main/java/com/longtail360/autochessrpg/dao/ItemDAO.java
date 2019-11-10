@@ -21,6 +21,7 @@ public class ItemDAO {
                     KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                     NAME + " INTEGER NOT NULL," +
                     ITEM_CODE + " INTEGER"
+                    + ")";
             ;
     private SQLiteDatabase db;
     public ItemDAO(Context context) {

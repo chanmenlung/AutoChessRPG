@@ -27,4 +27,7 @@
         <attr name="btMenuPanelIcon" format="integer" />
     </declare-styleable>
 
+    <declare-styleable name="HeadBackButton">
+        <attr name="btHeadBackText" format="string" />
+    </declare-styleable>
 </resources>

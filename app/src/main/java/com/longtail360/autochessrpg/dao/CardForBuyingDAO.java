@@ -20,7 +20,8 @@ public class CardForBuyingDAO {
             "CREATE TABLE " + TABLE_NAME + " (" +
                     KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                     ADVENTURE_ID + " INTEGER," +
-                    CARD_ID + " INTEGER";
+                    CARD_ID + " INTEGER"
+                    + ")";
     private SQLiteDatabase db;
     public CardForBuyingDAO(Context context) {
         db = GameDBHelper.getDatabase(context);
