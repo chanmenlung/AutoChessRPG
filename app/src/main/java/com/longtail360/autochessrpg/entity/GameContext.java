@@ -14,6 +14,7 @@ import com.longtail360.autochessrpg.dao.DungeonDAO;
 import com.longtail360.autochessrpg.dao.ItemDAO;
 import com.longtail360.autochessrpg.dao.ItemGotDAO;
 import com.longtail360.autochessrpg.dao.MonsterDAO;
+import com.longtail360.autochessrpg.dao.SkillDAO;
 import com.longtail360.autochessrpg.utils.Logger;
 
 import org.json.JSONException;
@@ -31,6 +32,7 @@ public class GameContext {
     public static String PLAYER_FILE_NAME = "player.txt";
     public AdventureDAO advDAO;
     public CardDAO cardDAO;
+    public SkillDAO skillDAO;
     public CardInBattleDAO cardInBattleDAO;
     public CardInHandDAO cardInHandDAO;
     public CardForBuyingDAO cardForBuyingDAO;
@@ -57,7 +59,7 @@ public class GameContext {
         readPlayerData(context);
     }
 
-    public Player getPlayer(BaseActivity context){
+    public Player getPlayer(Context context){
         if(player == null){
             readPlayerData(context);
             savePlayerData(context);

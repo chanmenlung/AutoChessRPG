@@ -9,12 +9,14 @@ import android.os.Environment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 
 import com.longtail360.autochessrpg.R;
 import com.longtail360.autochessrpg.activity.AllCardActivity;
 import com.longtail360.autochessrpg.activity.BaseActivity;
+import com.longtail360.autochessrpg.activity.BuyCrystalActivity;
 import com.longtail360.autochessrpg.activity.ExternalResActivity;
 import com.longtail360.autochessrpg.entity.Card;
 import com.longtail360.autochessrpg.entity.GameContext;
@@ -47,20 +49,21 @@ public class CardDetail extends FrameLayout {
     private String tempImagePath;
     private String tempHeadPath;
     private View saveBt;
+    private EditText editText;
     private PopupBox box;
     public CardDetail(Context context) {
         super(context);
     }
 
-    public CardDetail(ExternalResActivity activity,Card card) {
+    public CardDetail(ExternalResActivity activity,Long cardId) {
         super(activity);
-        this.card = card;
         this.activity = activity;
         LayoutInflater inflater = (LayoutInflater)
                 activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         inflater.inflate(R.layout.card_detail, this);
 
         cardDetailLayout = findViewById(R.id.cardDetailLayout);
+        editText = findViewById(R.id.cardNameEdit);
         backBt =findViewById(R.id.backBt);
         bigImage = findViewById(R.id.bigImage);
         headImage = findViewById(R.id.headImage);
@@ -69,16 +72,18 @@ public class CardDetail extends FrameLayout {
         cropCardHeadBt = findViewById(R.id.cropCardHeadBt);
         saveBt = findViewById(R.id.saveBt);
         random = new Random();
-        tempImagePath = card.customImage;
-        tempHeadPath = card.customHead;
         box = new PopupBox(activity, 2);
         cardDetailLayout.addView(box);
         setListener();
-        loadCardImageAndHeadImage();
+
+        loadCard(cardId);
     }
 
-    public void loadCard(Card card) {
-        this.card = card;
+    public void loadCard(Long cardId) {
+        this.card = GameContext.gameContext.cardDAO.get(cardId);
+        tempImagePath = card.customImage;
+        tempHeadPath = card.customHead;
+        editText.setText(card.name);
         loadCardImageAndHeadImage();
     }
 
@@ -86,9 +91,9 @@ public class CardDetail extends FrameLayout {
         backBt.backBt.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-//                if(cardDescItem != null){
-//                    cardDescItem.reload(card);
-//                }
+                if(cardDescItem != null){
+                    cardDescItem.loadHeadImage(activity,card);
+                }
 //                BaseActivity.savePlayerData(activity);
                 showDetail(false, true);
             }
@@ -100,19 +105,25 @@ public class CardDetail extends FrameLayout {
                 if(card.locked == 1){
                     box.reset(2);
                     box.title.setText(activity.getString(R.string.cardDetail_cardHadLocked));
-                    box.content.setText(activity.getString(R.string.cardDetail_isUnlockCard).replace("{crystal}", Setting.CRYSTAL_FOR_UNLOCK_CARD +""));
+                    box.content.setText(activity.getString(R.string.cardDetail_isUnlockCard)
+                            .replace("{crystal}",  Setting.CRYSTAL_FOR_UNLOCK_CARD+"")
+                            .replace("{currentCrystal}",  GameContext.gameContext.getPlayer(activity).crystal+"")
+                    );
                     box.show();
                     box.rightConfirm.setOnClickListener(new OnClickListener() {
                         @Override
                         public void onClick(View view) {
                             if(GameContext.gameContext.getPlayer(activity).crystal > Setting.CRYSTAL_FOR_UNLOCK_CARD ){
                                 card.locked = 0;
+                                card.name = editText.getText().toString();
+                                card.customImage = tempImagePath;
+                                card.customHead = tempHeadPath;
                                 GameContext.gameContext.cardDAO.update(card);
                                 GameContext.gameContext.getPlayer(activity).crystal = GameContext.gameContext.getPlayer(activity).crystal - Setting.CRYSTAL_FOR_UNLOCK_CARD;
                                 GameContext.gameContext.getPlayer(activity).unlockCards.add(card.code);
                                 GameContext.gameContext.savePlayerData(activity);
                                 box.hide();
-                                Logger.toast(activity.getString(R.string.cardDetail_cardHadUnLock), activity);
+                                Logger.toast(activity.getString(R.string.cardDetail_saved), activity);
                             }else {
                                 box.reset(2);
                                 box.title.setText(activity.getString(R.string.cardDetail_notEnoughCrystal));
@@ -121,7 +132,7 @@ public class CardDetail extends FrameLayout {
                                 box.rightConfirm.setOnClickListener(new OnClickListener() {
                                     @Override
                                     public void onClick(View view) {
-                                        activity.startOtherActivity(AllCardActivity.class);
+                                        activity.startOtherActivity(BuyCrystalActivity.class);
                                     }
                                 });
                             }
@@ -140,10 +151,14 @@ public class CardDetail extends FrameLayout {
             public void onClick(View view) {
                 int n = random.nextInt(7)+1;
                 Logger.log(tag, "n:"+n);
-                tempImagePath = "c"+n;
-                tempHeadPath = tempImagePath+"_head";
-                int resourceId = ImageUtils.convertImageStringToInt(activity, tempImagePath);
-                int headResourceId = ImageUtils.convertImageStringToInt(activity,tempHeadPath);
+                card.image = "c"+n;
+                card.head = card.image+"_head";
+                card.customImage = null;
+                card.customHead = null;
+                tempImagePath = null;
+                tempHeadPath = null;
+                int resourceId = ImageUtils.convertImageStringToInt(activity, card.image);
+                int headResourceId = ImageUtils.convertImageStringToInt(activity,card.head);
                 bigImage.setImageResource(resourceId);
                 headImage.setImageResource(headResourceId);
             }
@@ -160,13 +175,18 @@ public class CardDetail extends FrameLayout {
         cropCardHeadBt.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(card.customImage == null) {
+                if(card.customImage == null && tempImagePath == null) {
                     box.title.setText(activity.getResources().getString(R.string.cardDetail_cannotFindImportImage));
                     box.content.setText(activity.getResources().getString(R.string.cardDetail_pleaseImportImage));
                     box.centerConfirmHideBox();
                     box.show();
                 }else {
-                    File file = new File(card.customImage);
+                    File file;
+                    if(tempImagePath != null){
+                        file = new File(tempImagePath);
+                    }else{
+                        file = new File(card.customImage);
+                    }
                     if(!file.exists()) {
                         box.title.setText(activity.getResources().getString(R.string.cardDetail_cannotFindImportImage));
                         box.content.setText(activity.getResources().getString(R.string.cardDetail_pleaseImportImage));
@@ -183,7 +203,7 @@ public class CardDetail extends FrameLayout {
         Logger.log(tag,"callBackFromImportFile");
         String imagePath = copyFile(data.getData(), card.code+"");
         bigImage.setImageURI(data.getData());
-        this.card.customImage = imagePath;
+        tempImagePath = imagePath;
 //        BaseActivity.savePlayerData(activity);
 
     }
@@ -268,7 +288,7 @@ public class CardDetail extends FrameLayout {
 //        Uri uri = Uri.fromFile(file);
         Bitmap bmp = BitmapFactory.decodeFile(path);
         headImage.setImageBitmap(bmp);
-        this.card.head = path;
+        tempHeadPath = path;
 //        BaseActivity.savePlayerData(activity);
 
     }

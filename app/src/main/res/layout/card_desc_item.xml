@@ -36,7 +36,7 @@
     <!-- info start -->
     <LinearLayout
         android:layout_centerInParent="true"
-        android:layout_width="225dp"
+        android:layout_width="230dp"
         android:orientation="vertical"
         android:layout_height="match_parent">
         <LinearLayout
@@ -134,12 +134,27 @@
         </LinearLayout>
     </LinearLayout>
 
-
-    <Button
-        android:id="@+id/detailBt"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_gravity="center"
-        android:background="@drawable/item_write_to_book"
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_gravity="center">
+        <Button
+            android:id="@+id/detailBt"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:background="@drawable/item_write_to_book"
+            />
+    <ImageView
+        android:id="@+id/lockIcon"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/item_lock"
+        android:translationY="5dp"
+        android:translationX="5dp"
+        android:layout_margin="1.5dp"
         />
+
+    </LinearLayout>
 </LinearLayout>

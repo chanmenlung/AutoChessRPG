@@ -39,41 +39,32 @@
         android:layout_height="35dp"
         android:layout_marginBottom="5dp"
         android:layout_gravity="bottom">
-        <FrameLayout
+        <Spinner
+            android:id="@+id/raceSpinner"
             android:layout_width="200dp"
             android:layout_height="35dp"
             android:layout_marginLeft="-100dp"
+            android:spinnerMode="dialog"
             android:background="@drawable/item_bar_horizontal">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:textColor="@android:color/white"
-                android:layout_marginLeft="30dp"
-                android:text="@string/ui_mainPage_illustration"/>
-        </FrameLayout>
+        </Spinner>
 
-        <FrameLayout
+        <Spinner
+            android:id="@+id/clazzSpinner"
             android:layout_width="200dp"
             android:layout_height="35dp"
             android:layout_gravity="right"
+            android:spinnerMode="dialog"
             android:layout_marginRight="-100dp"
             android:background="@drawable/item_bar_horizontal">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginRight="30dp"
-                android:textColor="@android:color/white"
-                android:text="@string/ui_mainPage_illustration"/>
-        </FrameLayout>
+        </Spinner>
     </FrameLayout>
 
     <ScrollView
         android:layout_centerInParent="true"
         android:layout_width="match_parent"
-        android:translationY="100dp"
-        android:layout_height="470dp">
+        android:translationY="35dp"
+        android:layout_marginBottom="72dp"
+        android:layout_height="match_parent">
         <LinearLayout
             android:id="@+id/cardListLayout"
             android:layout_width="match_parent"

@@ -49,14 +49,13 @@ public class BuyCrystalActivity  extends BaseActivity implements BuyCrystalDescI
         setContentView(R.layout.buy_crystal);
         thisLayout = findViewById(R.id.thisLayout);
 
-
         crystalContainer = findViewById(R.id.crystalContainer);
 
         backBt = findViewById(R.id.backBt);
         backBt.backBt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startOtherActivity(AllCardActivity.class);
+               onBackPressed();
             }
         });
 

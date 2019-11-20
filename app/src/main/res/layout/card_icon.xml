@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/cardIconLayout"
+    android:orientation="vertical" android:layout_width="@dimen/ui_card_icon_size"
+    android:layout_height="@dimen/ui_card_icon_size"
+    android:layout_margin="1dp"
+    android:layout_gravity="center"
+    android:background="@drawable/ui_card_head_frame"
+    >
+    <ImageView
+        android:id="@+id/headImage"
+        android:layout_margin="1.5dp"
+        android:translationX="-1dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:src="@drawable/c1_head"/>
+</FrameLayout>

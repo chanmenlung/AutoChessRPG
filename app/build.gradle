@@ -1,6 +1,14 @@
 apply plugin: 'com.android.application'
 
 android {
+    signingConfigs {
+        signConfig {
+            storeFile file('C:\\Users\\chanm\\Dropbox\\AndroidProject\\AutoRPG\\app\\keystore\\autorpg.jks')
+            storePassword 'IloveRPG00'
+            keyAlias = 'key0'
+            keyPassword 'IloveRPG00'
+        }
+    }
     compileSdkVersion 29
     buildToolsVersion "29.0.1"
     defaultConfig {

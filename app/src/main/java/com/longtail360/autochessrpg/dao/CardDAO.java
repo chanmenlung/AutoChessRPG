@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.longtail360.autochessrpg.entity.Card;
+import com.longtail360.autochessrpg.entity.skill.BaseSkill;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +18,7 @@ public class CardDAO {
     public static final String LOCKED = "locked";
     public static final String RACE = "race";
     public static final String CLAZZ = "clazz";
-    public static final String SKILL_CODE = "skill_code";
+    public static final String SKILL_CODE = "skill_code"; //skill_key
     public static final String NAME = "name";
     public static final String CUSTOM_NAME = "custom_name";
     public static final String HEAD = "head";
@@ -30,6 +31,8 @@ public class CardDAO {
     public static final String HP = "hp";
     public static final String ATTACK = "attack";
     public static final String DEFENSE = "defense";
+    public static final String PRICE = "price";
+    public static final String RARITY = "rarity";
 
     public static final String CREATE_TABLE =
             "CREATE TABLE " + TABLE_NAME + " (" +
@@ -50,7 +53,9 @@ public class CardDAO {
                     NUM_CHESS_FOR_UPGRD + " INTEGER," +
                     HP + " INTEGER," +
                     ATTACK + " INTEGER," +
-                    DEFENSE + " INTEGER"
+                    DEFENSE + " INTEGER,"+
+                    PRICE + " INTEGER," +
+                    RARITY + " INTEGER"
                     + ")";
     private SQLiteDatabase db;
     public CardDAO(Context context) {
@@ -79,7 +84,8 @@ public class CardDAO {
         cv.put(HP, item.hp);
         cv.put(ATTACK, item.attack);
         cv.put(DEFENSE, item.defense);
-
+        cv.put(PRICE, item.price);
+        cv.put(RARITY, item.rarity);
         long id = db.insert(TABLE_NAME, null, cv);
         item.id = id;
         return item;
@@ -103,7 +109,8 @@ public class CardDAO {
         cv.put(HP, item.hp);
         cv.put(ATTACK, item.attack);
         cv.put(DEFENSE, item.defense);
-
+        cv.put(PRICE, item.price);
+        cv.put(RARITY, item.rarity);
         String where = KEY_ID + "=" + item.id;
         return db.update(TABLE_NAME, cv, where, null) > 0;
     }
@@ -118,6 +125,20 @@ public class CardDAO {
         List<Card> result = new ArrayList<>();
         Cursor cursor = db.query(
                 TABLE_NAME, null, null, null, null, null, null, null);
+
+        while (cursor.moveToNext()) {
+            result.add(getRecord(cursor));
+        }
+
+        cursor.close();
+        return result;
+    }
+
+    public List<Card> getAllByRare(int rare) {
+        List<Card> result = new ArrayList<>();
+        String where = RARITY + "=" + rare;
+        Cursor cursor = db.query(
+                TABLE_NAME, null, where, null, null, null, null, null);
 
         while (cursor.moveToNext()) {
             result.add(getRecord(cursor));
@@ -159,6 +180,8 @@ public class CardDAO {
         result.hp= cursor.getInt(15);
         result.attack= cursor.getInt(16);
         result.defense= cursor.getInt(17);
+        result.price = cursor.getInt(18);
+        result.price = cursor.getInt(19);
         return result;
     }
 
@@ -173,17 +196,6 @@ public class CardDAO {
         return result;
     }
 
-    public void init() {
-        Card chess;
-        chess = new Card("c1",1, "race", "job", "skillCode", "name", null,
-                "c1_head", null, "c1", "customImage", "customSkillName","customSkillBattleDesc",
-                1, 700, 10,5);
-        insert(chess);
 
-        chess = new Card("c2",1, "race", "job", "skillCode", "name", null,
-                "c2_head", null, "c2", "customImage", "customSkillName","customSkillBattleDesc",
-                1, 700, 10,5);
-        insert(chess);
 
-    }
 }

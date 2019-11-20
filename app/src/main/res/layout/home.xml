@@ -14,7 +14,7 @@
         android:background="@drawable/ui_line_horizontal" />
 
     <View
-        android:translationY="55dp"
+        android:translationY="50dp"
         android:layout_width="match_parent"
         android:layout_height="4dp"
         android:background="@drawable/ui_line_horizontal" />
@@ -22,13 +22,13 @@
     <View
         android:translationX="10dp"
         android:layout_width="4dp"
-        android:layout_height="55dp"
+        android:layout_height="50dp"
         android:layout_gravity="left"
         android:background="@drawable/ui_line_vertical" />
     <View
         android:translationX="-10dp"
         android:layout_width="4dp"
-        android:layout_height="55dp"
+        android:layout_height="50dp"
         android:layout_gravity="right"
         android:background="@drawable/ui_line_vertical" />
 
@@ -113,15 +113,17 @@
 
     </LinearLayout>
     <!-- top info bar end -->
+    
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:translationY="60dp"
+        android:layout_marginTop="55dp"
         android:orientation="vertical">
 
-<!-- back button start -->
+        <!-- back button start -->
         <FrameLayout  android:layout_width="match_parent"
-            android:layout_height="35dp">
+            android:layout_height="0dp"
+            android:layout_weight="8">
             <View
                 android:translationY="7dp"
                 android:layout_width="match_parent"
@@ -160,7 +162,7 @@
                 android:layout_width="15dp"
                 android:layout_height="15dp"
                 android:layout_marginLeft="80dp"
-                android:layout_gravity="center_vertical"
+                android:translationY="10dp"
                 android:src="@drawable/item_coin"/>
 
             <TextView
@@ -169,7 +171,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="16sp"
                 android:layout_marginLeft="110dp"
-                android:layout_gravity="center_vertical"
+                android:translationY="10dp"
                 android:text="999"/>
 
 
@@ -177,7 +179,8 @@
                 android:layout_width="15dp"
                 android:layout_height="15dp"
                 android:layout_marginRight="60dp"
-                android:layout_gravity="right|center_vertical"
+                android:layout_gravity="right"
+                android:translationY="10dp"
                 android:src="@drawable/item_lithograph_no_light"/>
             <TextView
                 android:id="@+id/helpBt"
@@ -185,483 +188,442 @@
                 android:layout_height="wrap_content"
                 android:textSize="16sp"
                 android:layout_marginRight="20dp"
-                android:layout_gravity="right|center_vertical"
+                android:layout_gravity="right"
+                android:translationY="10dp"
                 android:text="@string/ui_home_help"/>
         </FrameLayout>
-<!-- back button end -->
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_marginTop="5dp"
-        android:background="@drawable/ui_panel"
-        android:orientation="horizontal">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="15dp">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="16sp"
-                android:layout_gravity="center_vertical"
-                android:text="現在地:"/>
-            <TextView
-                android:id="@+id/currentPlaceValue"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="16sp"
-                android:layout_gravity="center_vertical"
-                android:text="起始之村"/>
-            <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginLeft="5dp"
-                android:src="@drawable/item_lithograph"/>
-        </LinearLayout>
-        <LinearLayout
-            android:id="@+id/log_button"
-            android:layout_width="120dp"
-            android:layout_height="match_parent"
-            android:layout_gravity="right"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_width="60dp"
-                android:layout_height="match_parent"
+        <!-- back button end -->
+
+            <!-- current palce start -->
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="10"
+                android:gravity="center_vertical"
+                android:background="@drawable/ui_panel"
+                android:orientation="horizontal">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="15dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="16sp"
+                        android:layout_gravity="center_vertical"
+                        android:text="現在地:"/>
+                    <TextView
+                        android:id="@+id/currentPlaceValue"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="16sp"
+                        android:layout_gravity="center_vertical"
+                        android:text="起始之村"/>
+                    <ImageView
+                        android:id="@+id/placeInfo"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="5dp"
+                        android:src="@drawable/item_lithograph"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/logBt"
+                    android:layout_width="120dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="right"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:textSize="16sp"
+                        android:layout_centerInParent="true"
+                        android:text="@string/ui_home_log" />
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/item_book"/>
+                </LinearLayout>
+            </FrameLayout>
+            <!-- current place end -->
+
+            <!-- buy card start -->
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
                 android:gravity="center"
-                android:textSize="16sp"
-                android:layout_centerInParent="true"
-                android:text="@string/ui_home_log" />
-            <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_gravity="center"
-                android:src="@drawable/item_book"/>
-        </LinearLayout>
-    </FrameLayout>
+                android:layout_weight="18">
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"
+                        android:text="@string/ui_home_cardForBuying"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right|center_vertical"
+                        android:layout_marginRight="60dp"
+                        android:textSize="9sp"
+                        android:text="普通(20%),精良(50%),史詩(20%), 傳說(20%)"/>
 
-    <!--<View-->
-        <!--android:translationY="5dp"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="3dp"-->
-        <!--android:background="@drawable/ui_line" />-->
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:text="@string/ui_home_cardForBuying"/>
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <GridLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:columnCount="6">
-                <FrameLayout
-                    android:layout_width="@dimen/ui_home_battle_grid_item_size"
-                    android:layout_height="@dimen/ui_home_battle_grid_item_size"
-                    android:layout_margin="1dp"
-                    android:background="@drawable/xml_rectangle"
-                    >
                 </FrameLayout>
-                <FrameLayout
-                    android:layout_width="@dimen/ui_home_battle_grid_item_size"
-                    android:layout_height="@dimen/ui_home_battle_grid_item_size"
-                    android:layout_margin="1dp"
-                    android:background="@drawable/xml_rectangle"
-                    >
-                </FrameLayout>
-                <FrameLayout
-                    android:layout_width="@dimen/ui_home_battle_grid_item_size"
-                    android:layout_height="@dimen/ui_home_battle_grid_item_size"
-                    android:layout_margin="1dp"
-                    android:background="@drawable/xml_rectangle"
-                    >
-                </FrameLayout>
-                <FrameLayout
-                    android:layout_width="@dimen/ui_home_battle_grid_item_size"
-                    android:layout_height="@dimen/ui_home_battle_grid_item_size"
-                    android:layout_margin="1dp"
-                    android:background="@drawable/xml_rectangle"
-                    >
-                </FrameLayout>
-                <FrameLayout
-                    android:layout_width="@dimen/ui_home_battle_grid_item_size"
-                    android:layout_height="@dimen/ui_home_battle_grid_item_size"
-                    android:layout_margin="1dp"
-                    android:background="@drawable/xml_rectangle"
-                    >
-                </FrameLayout>
-                <FrameLayout
-                    android:layout_width="@dimen/ui_home_battle_grid_item_size"
-                    android:layout_height="@dimen/ui_home_battle_grid_item_size"
-                    android:layout_margin="1dp"
-                    android:background="@drawable/xml_rectangle"
-                    >
-                </FrameLayout>
-            </GridLayout>
-            <ImageView
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:layout_marginLeft="5dp"
-                android:layout_gravity="center"
-                android:src="@drawable/ui_icon_rotate"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:layout_gravity="center_vertical"
-                android:text="@string/ui_home_refreshForBuying"/>
-        </LinearLayout>
-
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginLeft="15dp"
-                android:layout_gravity="left">
-                <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:src="@drawable/item_my_box"/>
-                <TextView
-                    android:id="@+id/upgradeBt"
+                <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="30dp"
-                    android:gravity="center"
-                    android:textSize="12sp"
-                    android:layout_gravity="center_vertical"
-                    android:text="@string/ui_home_item" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_gravity="center">
-                <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
                     android:layout_gravity="center"
-                    android:src="@drawable/item_stone"/>
-                <TextView
+                    android:layout_marginTop="8dp">
+                    <ImageView
+                        android:id="@+id/iconUnlock"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_margin="5dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ui_icon_unlock"/>
+                    <ImageView
+                        android:id="@+id/iconLock"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_margin="5dp"
+                        android:visibility="gone"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ui_icon_lock"/>
+                    <GridLayout
+                        android:id="@+id/cardForBuying"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:columnCount="6">
+                        <FrameLayout
+                            android:id="@+id/buyCard1"
+                            android:layout_width="@dimen/ui_home_battle_grid_item_size"
+                            android:layout_height="@dimen/ui_home_battle_grid_item_size"
+                            android:layout_margin="1dp"
+                            android:background="@drawable/xml_rectangle"
+                            >
+                        </FrameLayout>
+                        <FrameLayout
+                            android:id="@+id/buyCard2"
+                            android:layout_width="@dimen/ui_home_battle_grid_item_size"
+                            android:layout_height="@dimen/ui_home_battle_grid_item_size"
+                            android:layout_margin="1dp"
+                            android:background="@drawable/xml_rectangle"
+                            >
+                        </FrameLayout>
+                        <FrameLayout
+                            android:id="@+id/buyCard3"
+                            android:layout_width="@dimen/ui_home_battle_grid_item_size"
+                            android:layout_height="@dimen/ui_home_battle_grid_item_size"
+                            android:layout_margin="1dp"
+                            android:background="@drawable/xml_rectangle"
+                            >
+                        </FrameLayout>
+                        <FrameLayout
+                            android:id="@+id/buyCard4"
+                            android:layout_width="@dimen/ui_home_battle_grid_item_size"
+                            android:layout_height="@dimen/ui_home_battle_grid_item_size"
+                            android:layout_margin="1dp"
+                            android:background="@drawable/xml_rectangle"
+                            >
+                        </FrameLayout>
+                        <FrameLayout
+                            android:id="@+id/buyCard5"
+                            android:layout_width="@dimen/ui_home_battle_grid_item_size"
+                            android:layout_height="@dimen/ui_home_battle_grid_item_size"
+                            android:layout_margin="1dp"
+                            android:background="@drawable/xml_rectangle"
+                            >
+                        </FrameLayout>
+                        <FrameLayout
+                            android:id="@+id/buyCard6"
+                            android:layout_width="@dimen/ui_home_battle_grid_item_size"
+                            android:layout_height="@dimen/ui_home_battle_grid_item_size"
+                            android:layout_margin="1dp"
+                            android:background="@drawable/xml_rectangle"
+                            >
+                        </FrameLayout>
+                        <TextView android:layout_width="@dimen/ui_home_battle_grid_item_size"
+                            android:layout_height="wrap_content"
+                            android:textSize="10sp"
+                            android:gravity="center"
+                            android:text="$20"/>
+                        <TextView android:layout_width="@dimen/ui_home_battle_grid_item_size"
+                            android:layout_height="wrap_content"
+                            android:textSize="10sp"
+                            android:gravity="center"
+                            android:text="$20"/>
+                        <TextView android:layout_width="@dimen/ui_home_battle_grid_item_size"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:textSize="10sp"
+                            android:text="$20"/>
+                        <TextView android:layout_width="@dimen/ui_home_battle_grid_item_size"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:textSize="10sp"
+                            android:text="$20"/>
+                        <TextView android:layout_width="@dimen/ui_home_battle_grid_item_size"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:textSize="10sp"
+                            android:text="$20"/>
+                        <TextView android:layout_width="@dimen/ui_home_battle_grid_item_size"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:textSize="10sp"
+                            android:text="$20"/>
+                    </GridLayout>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_vertical"
+                        android:orientation="vertical">
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ui_icon_rotate"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:textSize="12sp"
+                            android:gravity="center"
+                            android:layout_gravity="center_vertical"
+                            android:text="@string/ui_home_refreshForBuying"/>
+
+                    </LinearLayout>
+                </LinearLayout>
+            </FrameLayout>
+            <!-- buy card end -->
+
+            <!-- tactics start  -->
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:gravity="center_vertical"
+                android:layout_weight="8">
+
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:text="@string/ui_home_tactics"/>
-            </LinearLayout>
+                    android:orientation="horizontal"
+                    android:layout_marginLeft="15dp"
+                    android:layout_gravity="left|center_vertical">
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/item_my_box"/>
+                    <TextView
+                        android:id="@+id/upgradeBt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:gravity="center"
+                        android:textSize="12sp"
+                        android:layout_gravity="center_vertical"
+                        android:text="@string/ui_home_item" />
+                </LinearLayout>
 
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_gravity="center">
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/item_stone"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:text="@string/ui_home_tactics"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="15dp"
+                    android:layout_gravity="right|center_vertical">
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:src="@drawable/ui_icon_slash_arrow_color"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:text="@string/ui_home_upgrade"/>
+                </LinearLayout>
+            </FrameLayout>
+            <!-- tactics end -->
+
+
+            <!-- team start -->
             <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="15dp"
-                android:layout_gravity="right|center_vertical">
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:src="@drawable/ui_icon_slash_arrow_color"/>
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="45"
+                android:orientation="vertical"
+                android:gravity="center_vertical">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:text="@string/ui_home_upgrade"/>
-            </LinearLayout>
-        </FrameLayout>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:text="@string/ui_home_team"/>
-        <GridLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:columnCount="8"
-            >
-            <FrameLayout
-                android:layout_width="@dimen/ui_home_battle_grid_item_size"
-                android:layout_height="@dimen/ui_home_battle_grid_item_size"
-                android:layout_margin="1dp"
-                android:background="@drawable/xml_rectangle"
-                >
-            </FrameLayout>
-            <FrameLayout
-                android:layout_width="@dimen/ui_home_battle_grid_item_size"
-                android:layout_height="@dimen/ui_home_battle_grid_item_size"
-                android:layout_margin="1dp"
-                android:background="@drawable/xml_rectangle"
-                >
-            </FrameLayout>
-            <FrameLayout
-                android:layout_width="@dimen/ui_home_battle_grid_item_size"
-                android:layout_height="@dimen/ui_home_battle_grid_item_size"
-                android:layout_margin="1dp"
-                android:background="@drawable/xml_rectangle"
-                >
-            </FrameLayout>
-            <FrameLayout
-                android:layout_width="@dimen/ui_home_battle_grid_item_size"
-                android:layout_height="@dimen/ui_home_battle_grid_item_size"
-                android:layout_margin="1dp"
-                android:background="@drawable/xml_rectangle"
-                >
-            </FrameLayout>
-            <FrameLayout
-                android:layout_width="@dimen/ui_home_battle_grid_item_size"
-                android:layout_height="@dimen/ui_home_battle_grid_item_size"
-                android:layout_margin="1dp"
-                android:background="@drawable/xml_rectangle"
-                >
-            </FrameLayout>
-            <FrameLayout
-                android:layout_width="@dimen/ui_home_battle_grid_item_size"
-                android:layout_height="@dimen/ui_home_battle_grid_item_size"
-                android:layout_margin="1dp"
-                android:background="@drawable/xml_rectangle"
-                >
-            </FrameLayout>
-            <FrameLayout
-                android:layout_width="@dimen/ui_home_battle_grid_item_size"
-                android:layout_height="@dimen/ui_home_battle_grid_item_size"
-                android:layout_margin="1dp"
-                android:background="@drawable/xml_rectangle"
-                >
-            </FrameLayout>
-            <FrameLayout
-                android:layout_width="@dimen/ui_home_battle_grid_item_size"
-                android:layout_height="@dimen/ui_home_battle_grid_item_size"
-                android:layout_margin="1dp"
-                android:background="@drawable/xml_rectangle"
-                >
-            </FrameLayout>
-            <FrameLayout
-                android:layout_width="@dimen/ui_home_battle_grid_item_size"
-                android:layout_height="@dimen/ui_home_battle_grid_item_size"
-                android:layout_margin="1dp"
-                android:background="@drawable/xml_rectangle"
-                >
-            </FrameLayout>
-            <FrameLayout
-                android:layout_width="@dimen/ui_home_battle_grid_item_size"
-                android:layout_height="@dimen/ui_home_battle_grid_item_size"
-                android:layout_margin="1dp"
-                android:background="@drawable/xml_rectangle"
-                >
-            </FrameLayout>
-            <FrameLayout
-                android:layout_width="@dimen/ui_home_battle_grid_item_size"
-                android:layout_height="@dimen/ui_home_battle_grid_item_size"
-                android:layout_margin="1dp"
-                android:background="@drawable/xml_rectangle"
-                >
-            </FrameLayout>
-            <FrameLayout
-                android:layout_width="@dimen/ui_home_battle_grid_item_size"
-                android:layout_height="@dimen/ui_home_battle_grid_item_size"
-                android:layout_margin="1dp"
-                android:background="@drawable/xml_rectangle"
-                >
-            </FrameLayout>
-            <FrameLayout
-                android:layout_width="@dimen/ui_home_battle_grid_item_size"
-                android:layout_height="@dimen/ui_home_battle_grid_item_size"
-                android:layout_margin="1dp"
-                android:background="@drawable/xml_rectangle"
-                >
-            </FrameLayout>
-            <FrameLayout
-                android:layout_width="@dimen/ui_home_battle_grid_item_size"
-                android:layout_height="@dimen/ui_home_battle_grid_item_size"
-                android:layout_margin="1dp"
-                android:background="@drawable/xml_rectangle"
-                >
-            </FrameLayout>
-            <FrameLayout
-                android:layout_width="@dimen/ui_home_battle_grid_item_size"
-                android:layout_height="@dimen/ui_home_battle_grid_item_size"
-                android:layout_margin="1dp"
-                android:background="@drawable/xml_rectangle"
-                >
-            </FrameLayout>
-            <FrameLayout
-                android:layout_width="@dimen/ui_home_battle_grid_item_size"
-                android:layout_height="@dimen/ui_home_battle_grid_item_size"
-                android:layout_margin="1dp"
-                android:background="@drawable/xml_rectangle"
-                >
-            </FrameLayout>
-            <FrameLayout
-                android:layout_width="@dimen/ui_home_battle_grid_item_size"
-                android:layout_height="@dimen/ui_home_battle_grid_item_size"
-                android:layout_margin="1dp"
-                android:background="@drawable/xml_rectangle"
-                >
-            </FrameLayout>
-            <FrameLayout
-                android:layout_width="@dimen/ui_home_battle_grid_item_size"
-                android:layout_height="@dimen/ui_home_battle_grid_item_size"
-                android:layout_margin="1dp"
-                android:background="@drawable/xml_rectangle"
-                >
-            </FrameLayout>
-            <FrameLayout
-                android:layout_width="@dimen/ui_home_battle_grid_item_size"
-                android:layout_height="@dimen/ui_home_battle_grid_item_size"
-                android:layout_margin="1dp"
-                android:background="@drawable/xml_rectangle"
-                >
-            </FrameLayout>
-            <FrameLayout
-                android:layout_width="@dimen/ui_home_battle_grid_item_size"
-                android:layout_height="@dimen/ui_home_battle_grid_item_size"
-                android:layout_margin="1dp"
-                android:background="@drawable/xml_rectangle"
-                >
-            </FrameLayout>
-            <FrameLayout
-                android:layout_width="@dimen/ui_home_battle_grid_item_size"
-                android:layout_height="@dimen/ui_home_battle_grid_item_size"
-                android:layout_margin="1dp"
-                android:background="@drawable/xml_rectangle"
-                >
-            </FrameLayout>
-            <FrameLayout
-                android:layout_width="@dimen/ui_home_battle_grid_item_size"
-                android:layout_height="@dimen/ui_home_battle_grid_item_size"
-                android:layout_margin="1dp"
-                android:background="@drawable/xml_rectangle"
-                >
-            </FrameLayout>
-            <FrameLayout
-                android:layout_width="@dimen/ui_home_battle_grid_item_size"
-                android:layout_height="@dimen/ui_home_battle_grid_item_size"
-                android:layout_margin="1dp"
-                android:background="@drawable/xml_rectangle"
-                >
-            </FrameLayout>
-            <FrameLayout
-                android:layout_width="@dimen/ui_home_battle_grid_item_size"
-                android:layout_height="@dimen/ui_home_battle_grid_item_size"
-                android:layout_margin="1dp"
-                android:background="@drawable/xml_rectangle"
-                >
-            </FrameLayout>
-            <FrameLayout
-                android:layout_width="@dimen/ui_home_battle_grid_item_size"
-                android:layout_height="@dimen/ui_home_battle_grid_item_size"
-                android:layout_margin="1dp"
-                android:background="@drawable/xml_rectangle"
-                >
-            </FrameLayout>
-            <FrameLayout
-                android:layout_width="@dimen/ui_home_battle_grid_item_size"
-                android:layout_height="@dimen/ui_home_battle_grid_item_size"
-                android:layout_margin="1dp"
-                android:background="@drawable/xml_rectangle"
-                >
-            </FrameLayout>
-            <FrameLayout
-                android:layout_width="@dimen/ui_home_battle_grid_item_size"
-                android:layout_height="@dimen/ui_home_battle_grid_item_size"
-                android:layout_margin="1dp"
-                android:background="@drawable/xml_rectangle"
-                >
-            </FrameLayout>
-            <FrameLayout
-                android:layout_width="@dimen/ui_home_battle_grid_item_size"
-                android:layout_height="@dimen/ui_home_battle_grid_item_size"
-                android:layout_margin="1dp"
-                android:background="@drawable/xml_rectangle"
-                >
-            </FrameLayout>
-            <FrameLayout
-                android:layout_width="@dimen/ui_home_battle_grid_item_size"
-                android:layout_height="@dimen/ui_home_battle_grid_item_size"
-                android:layout_margin="1dp"
-                android:background="@drawable/xml_rectangle"
-                >
-            </FrameLayout>
-            <FrameLayout
-                android:layout_width="@dimen/ui_home_battle_grid_item_size"
-                android:layout_height="@dimen/ui_home_battle_grid_item_size"
-                android:layout_margin="1dp"
-                android:background="@drawable/xml_rectangle"
-                >
-            </FrameLayout>
-            <FrameLayout
-                android:layout_width="@dimen/ui_home_battle_grid_item_size"
-                android:layout_height="@dimen/ui_home_battle_grid_item_size"
-                android:layout_margin="1dp"
-                android:background="@drawable/xml_rectangle"
-                >
-            </FrameLayout>
-            <FrameLayout
-                android:layout_width="@dimen/ui_home_battle_grid_item_size"
-                android:layout_height="@dimen/ui_home_battle_grid_item_size"
-                android:layout_margin="1dp"
-                android:background="@drawable/xml_rectangle"
-                >
-            </FrameLayout>
-        </GridLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:orientation="horizontal"
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="5dp">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginTop="5dp"
-                android:layout_gravity="center_vertical"
-                android:text="戰士:2/5  法師:2/4  盜賊:2/6"/>
-            <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginLeft="10dp"
-                android:src="@drawable/item_magnifyingglass"/>
-        </LinearLayout>
-        <View
-        android:layout_marginTop="5dp"
-        android:layout_width="match_parent"
-        android:layout_height="3dp"
-        android:background="@drawable/ui_small_line" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:orientation="horizontal">
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-
-                    android:layout_marginTop="5dp"
                     android:layout_marginLeft="10dp"
-                    android:layout_gravity="left"
-                    android:text="@string/ui_home_holdCard"/>
+                    android:text="@string/ui_home_team"/>
                 <GridLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="left"
-                    android:layout_marginTop="5dp"
-                    android:columnCount="6">
+                    android:layout_gravity="center_horizontal"
+                    android:columnCount="8"
+                    >
+                    <FrameLayout
+                        android:layout_width="@dimen/ui_home_battle_grid_item_size"
+                        android:layout_height="@dimen/ui_home_battle_grid_item_size"
+                        android:layout_margin="1dp"
+                        android:background="@drawable/xml_rectangle"
+                        >
+                    </FrameLayout>
+                    <FrameLayout
+                        android:layout_width="@dimen/ui_home_battle_grid_item_size"
+                        android:layout_height="@dimen/ui_home_battle_grid_item_size"
+                        android:layout_margin="1dp"
+                        android:background="@drawable/xml_rectangle"
+                        >
+                    </FrameLayout>
+                    <FrameLayout
+                        android:layout_width="@dimen/ui_home_battle_grid_item_size"
+                        android:layout_height="@dimen/ui_home_battle_grid_item_size"
+                        android:layout_margin="1dp"
+                        android:background="@drawable/xml_rectangle"
+                        >
+                    </FrameLayout>
+                    <FrameLayout
+                        android:layout_width="@dimen/ui_home_battle_grid_item_size"
+                        android:layout_height="@dimen/ui_home_battle_grid_item_size"
+                        android:layout_margin="1dp"
+                        android:background="@drawable/xml_rectangle"
+                        >
+                    </FrameLayout>
+                    <FrameLayout
+                        android:layout_width="@dimen/ui_home_battle_grid_item_size"
+                        android:layout_height="@dimen/ui_home_battle_grid_item_size"
+                        android:layout_margin="1dp"
+                        android:background="@drawable/xml_rectangle"
+                        >
+                    </FrameLayout>
+                    <FrameLayout
+                        android:layout_width="@dimen/ui_home_battle_grid_item_size"
+                        android:layout_height="@dimen/ui_home_battle_grid_item_size"
+                        android:layout_margin="1dp"
+                        android:background="@drawable/xml_rectangle"
+                        >
+                    </FrameLayout>
+                    <FrameLayout
+                        android:layout_width="@dimen/ui_home_battle_grid_item_size"
+                        android:layout_height="@dimen/ui_home_battle_grid_item_size"
+                        android:layout_margin="1dp"
+                        android:background="@drawable/xml_rectangle"
+                        >
+                    </FrameLayout>
+                    <FrameLayout
+                        android:layout_width="@dimen/ui_home_battle_grid_item_size"
+                        android:layout_height="@dimen/ui_home_battle_grid_item_size"
+                        android:layout_margin="1dp"
+                        android:background="@drawable/xml_rectangle"
+                        >
+                    </FrameLayout>
+                    <FrameLayout
+                        android:layout_width="@dimen/ui_home_battle_grid_item_size"
+                        android:layout_height="@dimen/ui_home_battle_grid_item_size"
+                        android:layout_margin="1dp"
+                        android:background="@drawable/xml_rectangle"
+                        >
+                    </FrameLayout>
+                    <FrameLayout
+                        android:layout_width="@dimen/ui_home_battle_grid_item_size"
+                        android:layout_height="@dimen/ui_home_battle_grid_item_size"
+                        android:layout_margin="1dp"
+                        android:background="@drawable/xml_rectangle"
+                        >
+                    </FrameLayout>
+                    <FrameLayout
+                        android:layout_width="@dimen/ui_home_battle_grid_item_size"
+                        android:layout_height="@dimen/ui_home_battle_grid_item_size"
+                        android:layout_margin="1dp"
+                        android:background="@drawable/xml_rectangle"
+                        >
+                    </FrameLayout>
+                    <FrameLayout
+                        android:layout_width="@dimen/ui_home_battle_grid_item_size"
+                        android:layout_height="@dimen/ui_home_battle_grid_item_size"
+                        android:layout_margin="1dp"
+                        android:background="@drawable/xml_rectangle"
+                        >
+                    </FrameLayout>
+                    <FrameLayout
+                        android:layout_width="@dimen/ui_home_battle_grid_item_size"
+                        android:layout_height="@dimen/ui_home_battle_grid_item_size"
+                        android:layout_margin="1dp"
+                        android:background="@drawable/xml_rectangle"
+                        >
+                    </FrameLayout>
+                    <FrameLayout
+                        android:layout_width="@dimen/ui_home_battle_grid_item_size"
+                        android:layout_height="@dimen/ui_home_battle_grid_item_size"
+                        android:layout_margin="1dp"
+                        android:background="@drawable/xml_rectangle"
+                        >
+                    </FrameLayout>
+                    <FrameLayout
+                        android:layout_width="@dimen/ui_home_battle_grid_item_size"
+                        android:layout_height="@dimen/ui_home_battle_grid_item_size"
+                        android:layout_margin="1dp"
+                        android:background="@drawable/xml_rectangle"
+                        >
+                    </FrameLayout>
+                    <FrameLayout
+                        android:layout_width="@dimen/ui_home_battle_grid_item_size"
+                        android:layout_height="@dimen/ui_home_battle_grid_item_size"
+                        android:layout_margin="1dp"
+                        android:background="@drawable/xml_rectangle"
+                        >
+                    </FrameLayout>
+                    <FrameLayout
+                        android:layout_width="@dimen/ui_home_battle_grid_item_size"
+                        android:layout_height="@dimen/ui_home_battle_grid_item_size"
+                        android:layout_margin="1dp"
+                        android:background="@drawable/xml_rectangle"
+                        >
+                    </FrameLayout>
+                    <FrameLayout
+                        android:layout_width="@dimen/ui_home_battle_grid_item_size"
+                        android:layout_height="@dimen/ui_home_battle_grid_item_size"
+                        android:layout_margin="1dp"
+                        android:background="@drawable/xml_rectangle"
+                        >
+                    </FrameLayout>
+                    <FrameLayout
+                        android:layout_width="@dimen/ui_home_battle_grid_item_size"
+                        android:layout_height="@dimen/ui_home_battle_grid_item_size"
+                        android:layout_margin="1dp"
+                        android:background="@drawable/xml_rectangle"
+                        >
+                    </FrameLayout>
+                    <FrameLayout
+                        android:layout_width="@dimen/ui_home_battle_grid_item_size"
+                        android:layout_height="@dimen/ui_home_battle_grid_item_size"
+                        android:layout_margin="1dp"
+                        android:background="@drawable/xml_rectangle"
+                        >
+                    </FrameLayout>
                     <FrameLayout
                         android:layout_width="@dimen/ui_home_battle_grid_item_size"
                         android:layout_height="@dimen/ui_home_battle_grid_item_size"
@@ -747,35 +709,315 @@
                         >
                     </FrameLayout>
                 </GridLayout>
-
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="25dp"
+                    android:orientation="horizontal"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="5dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="5dp"
+                        android:layout_gravity="center_vertical"
+                        android:text="戰士:2/5  法師:2/4  盜賊:2/6"/>
+                    <ImageView
+                        android:layout_width="25dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="10dp"
+                        android:src="@drawable/item_magnifyingglass"/>
+                </LinearLayout>
             </LinearLayout>
+            <!-- team end -->
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.7"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/ui_small_line" />
+
+            <!-- holding card start -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="25"
+                android:layout_marginLeft="5dp"
+                android:layout_marginBottom="2dp"
+                android:orientation="horizontal">
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_gravity="left"
+                        android:text="@string/ui_home_holdCard"/>
+                    <GridLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left"
+                        android:layout_marginTop="5dp"
+                        android:columnCount="6">
+                        <FrameLayout
+                            android:id="@+id/mycard1"
+                            android:layout_width="@dimen/ui_home_battle_grid_item_size"
+                            android:layout_height="@dimen/ui_home_battle_grid_item_size"
+                            android:layout_margin="1dp"
+                            android:background="@drawable/xml_rectangle"
+                            >
+                        </FrameLayout>
+                        <FrameLayout
+                            android:id="@+id/mycard2"
+                            android:layout_width="@dimen/ui_home_battle_grid_item_size"
+                            android:layout_height="@dimen/ui_home_battle_grid_item_size"
+                            android:layout_margin="1dp"
+                            android:background="@drawable/xml_rectangle"
+                            >
+                        </FrameLayout>
+                        <FrameLayout
+                            android:id="@+id/mycard3"
+                            android:layout_width="@dimen/ui_home_battle_grid_item_size"
+                            android:layout_height="@dimen/ui_home_battle_grid_item_size"
+                            android:layout_margin="1dp"
+                            android:background="@drawable/xml_rectangle"
+                            >
+                        </FrameLayout>
+                        <FrameLayout
+                            android:id="@+id/mycard4"
+                            android:layout_width="@dimen/ui_home_battle_grid_item_size"
+                            android:layout_height="@dimen/ui_home_battle_grid_item_size"
+                            android:layout_margin="1dp"
+                            android:background="@drawable/xml_rectangle"
+                            >
+                        </FrameLayout>
+                        <FrameLayout
+                            android:id="@+id/mycard5"
+                            android:layout_width="@dimen/ui_home_battle_grid_item_size"
+                            android:layout_height="@dimen/ui_home_battle_grid_item_size"
+                            android:layout_margin="1dp"
+                            android:background="@drawable/xml_rectangle"
+                            >
+                        </FrameLayout>
+                        <FrameLayout
+                            android:id="@+id/mycard6"
+                            android:layout_width="@dimen/ui_home_battle_grid_item_size"
+                            android:layout_height="@dimen/ui_home_battle_grid_item_size"
+                            android:layout_margin="1dp"
+                            android:background="@drawable/xml_rectangle"
+                            >
+                        </FrameLayout>
+                        <FrameLayout
+                            android:id="@+id/mycard7"
+                            android:layout_width="@dimen/ui_home_battle_grid_item_size"
+                            android:layout_height="@dimen/ui_home_battle_grid_item_size"
+                            android:layout_margin="1dp"
+                            android:background="@drawable/xml_rectangle"
+                            >
+                        </FrameLayout>
+                        <FrameLayout
+                            android:id="@+id/mycard8"
+                            android:layout_width="@dimen/ui_home_battle_grid_item_size"
+                            android:layout_height="@dimen/ui_home_battle_grid_item_size"
+                            android:layout_margin="1dp"
+                            android:background="@drawable/xml_rectangle"
+                            >
+                        </FrameLayout>
+                        <FrameLayout
+                            android:id="@+id/mycard9"
+                            android:layout_width="@dimen/ui_home_battle_grid_item_size"
+                            android:layout_height="@dimen/ui_home_battle_grid_item_size"
+                            android:layout_margin="1dp"
+                            android:background="@drawable/xml_rectangle"
+                            >
+                        </FrameLayout>
+                        <FrameLayout
+                            android:id="@+id/mycard10"
+                            android:layout_width="@dimen/ui_home_battle_grid_item_size"
+                            android:layout_height="@dimen/ui_home_battle_grid_item_size"
+                            android:layout_margin="1dp"
+                            android:background="@drawable/xml_rectangle"
+                            >
+                        </FrameLayout>
+                        <FrameLayout
+                            android:id="@+id/mycard11"
+                            android:layout_width="@dimen/ui_home_battle_grid_item_size"
+                            android:layout_height="@dimen/ui_home_battle_grid_item_size"
+                            android:layout_margin="1dp"
+                            android:background="@drawable/xml_rectangle"
+                            >
+                        </FrameLayout>
+                        <FrameLayout
+                            android:id="@+id/mycard12"
+                            android:layout_width="@dimen/ui_home_battle_grid_item_size"
+                            android:layout_height="@dimen/ui_home_battle_grid_item_size"
+                            android:layout_margin="1dp"
+                            android:background="@drawable/xml_rectangle"
+                            >
+                        </FrameLayout>
+                    </GridLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_gravity="right|center_vertical"
+                    android:orientation="vertical">
+                    <ImageView
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/item_map"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="5dp"
+                        android:layout_gravity="center_vertical"
+                        android:text="@string/ui_home_startAdv"/>
+                </LinearLayout>
+            </LinearLayout>
+            <!-- holding card end -->
+
+    </LinearLayout>
+
+
+    <!-- card info start -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:orientation="vertical"
+        android:background="@drawable/ui_window_dark">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="100dp"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_marginLeft="10dp"
+                android:layout_gravity="center_vertical"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/c1_head"/>
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_gravity="right|center_vertical"
+                android:layout_gravity="center_vertical"
                 android:orientation="vertical">
-                <ImageView
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:layout_gravity="center"
-                    android:src="@drawable/item_map"/>
+
                 <TextView
+                    android:layout_marginLeft="30dp"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_marginTop="5dp"
-                    android:layout_gravity="center_vertical"
-                    android:text="@string/ui_home_startAdv"/>
+                    android:textSize="10sp"
+                    android:textColor="@android:color/white"
+                    android:text="等級:2"/>
+
+                <TextView
+                    android:layout_marginLeft="30dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:textSize="10sp"
+                    android:textColor="@android:color/white"
+                    android:text="生命值:999  攻擊力:99  防禦力:2"/>
+                <TextView
+                    android:layout_marginLeft="30dp"
+                    android:layout_width="300dp"
+                    android:layout_height="match_parent"
+                    android:textColor="@android:color/white"
+                    android:textSize="10sp"
+                    android:text="技能: 引發爆炸, 對所有敵人造成{hurt}點火焰傷害。目檟有20%機會造成燃燒狀態"/>
+                <TextView
+                    android:layout_marginLeft="30dp"
+                    android:layout_width="300dp"
+                    android:layout_height="match_parent"
+                    android:textColor="@android:color/white"
+                    android:textSize="10sp"
+                    android:text="出售可獲得: $99"/>
             </LinearLayout>
         </LinearLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.longtail360.autochessrpg.prefab.ButtonBurnMiddle
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="20dp"
+                    app:btBurnMiddleText="@string/ui_popup_cancel"
+                    app:btBurnMiddleColor="green"/>
+                <com.longtail360.autochessrpg.prefab.ButtonBurnMiddle
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_gravity="right"
+                    app:btBurnMiddleText="@string/ui_popup_cancel"
+                    app:btBurnMiddleColor="orange"/>
+
+            </FrameLayout>
     </LinearLayout>
+    <!-- card info end -->
+    <!-- progress bar start -->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="true"
+        android:visibility="invisible"
+        android:id="@+id/startingPopupBox">
+        <LinearLayout
+            android:layout_width="250dp"
+            android:layout_height="300dp"
+            android:layout_gravity="center"
+            android:orientation="vertical"
+            android:background="@drawable/ui_window_dark"
+            >
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:gravity="center_horizontal"
+                android:textSize="18sp"
+                android:textColor="@android:color/white"
+                android:layout_marginTop="10dp"
+                android:text="@string/ui_home_advReady" />
+            <View
+                android:layout_width="200dp"
+                android:layout_height="5dp"
+                android:layout_margin="2dp"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/ui_line" />
 
+            <TextView
+                android:layout_width="300dp"
+                android:layout_height="45dp"
+                android:layout_margin="10dp"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:textColor="@android:color/white"
+                android:textSize="15sp"
+                android:text="@string/ui_home_pleaseWait" />
+            <ProgressBar
+                android:id="@+id/progressBar"
+                style="@android:style/Widget.ProgressBar.Horizontal"
+                android:padding="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:progress="0"/>
+        </LinearLayout>
+    </FrameLayout>
+    <!-- progress bar end -->
+
+    <!-- fragment container start -->
     <FrameLayout
         android:id="@+id/fragmentContainer"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
     </FrameLayout>
+    <!-- fragment container end -->
 </FrameLayout>

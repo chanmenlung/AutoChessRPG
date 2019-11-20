@@ -26,27 +26,33 @@ import com.longtail360.autochessrpg.dao.GameDBHelper;
 import com.longtail360.autochessrpg.dao.ItemDAO;
 import com.longtail360.autochessrpg.dao.ItemGotDAO;
 import com.longtail360.autochessrpg.dao.MonsterDAO;
+import com.longtail360.autochessrpg.dao.SkillDAO;
 import com.longtail360.autochessrpg.entity.Adventure;
 import com.longtail360.autochessrpg.entity.Card;
 import com.longtail360.autochessrpg.entity.CardForBuying;
 import com.longtail360.autochessrpg.entity.CardInBattle;
 import com.longtail360.autochessrpg.entity.CardInHand;
+import com.longtail360.autochessrpg.entity.Dungeon;
 import com.longtail360.autochessrpg.entity.GameContext;
 import com.longtail360.autochessrpg.entity.Item;
 import com.longtail360.autochessrpg.entity.ItemGot;
 import com.longtail360.autochessrpg.entity.Player;
 import com.longtail360.autochessrpg.entity.Setting;
+import com.longtail360.autochessrpg.entity.skill.BaseSkill;
 import com.longtail360.autochessrpg.prefab.CardDetail;
 import com.longtail360.autochessrpg.utils.Logger;
 
 import org.json.JSONException;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 
 public class MainActivity extends ExternalResActivity {
     private String tag = "MainActivity";
-    private boolean resetPlayer = true;
+    private boolean resetPlayer = false;
     private TextView comName;
     private View comNameLayout;
     private View backgroundLayout;
@@ -165,6 +171,7 @@ public class MainActivity extends ExternalResActivity {
         GameContext.gameContext = new GameContext(this);
         GameContext.gameContext.advDAO = new AdventureDAO(this);
         GameContext.gameContext.cardDAO = new CardDAO(this);
+        GameContext.gameContext.skillDAO = new SkillDAO(this);
         GameContext.gameContext.cardInBattleDAO = new CardInBattleDAO(this);
         GameContext.gameContext.cardInHandDAO = new CardInHandDAO(this);
         GameContext.gameContext.cardForBuyingDAO = new CardForBuyingDAO(this);
@@ -176,11 +183,13 @@ public class MainActivity extends ExternalResActivity {
         if(GameDBHelper.isResetDB) {
             resetDB();
         }
-
+        Dungeon firestDungeon =  GameContext.gameContext.dungeonDAO.getAll().get(0);
+        Logger.log(tag, firestDungeon.name+"");
         List<Adventure> advs =  GameContext.gameContext.advDAO.getAll();
         if(advs == null || advs.size() == 0) {
-            GameContext.gameContext.adventure = new Adventure(200, 0, 0, 1,0,100);
+            GameContext.gameContext.adventure = new Adventure(200, firestDungeon.id, 0, 1,0,100);
             GameContext.gameContext.advDAO.insert(GameContext.gameContext.adventure);
+            insertCardForBuying(GameContext.gameContext.adventure.id);
         }else {
             GameContext.gameContext.adventure = advs.get(0);
             GameContext.gameContext.cardInBattles = GameContext.gameContext.cardInBattleDAO.listByAdventureId(GameContext.gameContext.adventure.id);
@@ -215,11 +224,46 @@ public class MainActivity extends ExternalResActivity {
                 }
             }
         }
-
-
-
     }
 
+    private void insertCardForBuying(long advId) {
+        List<Card> normalCards = GameContext.gameContext.cardDAO.getAllByRare(1);
+        List<Integer> numbers = new ArrayList<>();
+        for(int i=0;i<6;i++){
+            numbers.add(i);
+        }
+        Collections.shuffle(numbers);
+        CardForBuying cfb;
+        cfb = new CardForBuying();
+        cfb.adventureId = advId;
+        cfb.cardId = normalCards.get(numbers.get(0)).id;
+        GameContext.gameContext.cardForBuyingDAO.insert(cfb);
+
+        cfb = new CardForBuying();
+        cfb.adventureId = advId;
+        cfb.cardId = normalCards.get(numbers.get(1)).id;
+        GameContext.gameContext.cardForBuyingDAO.insert(cfb);
+
+        cfb = new CardForBuying();
+        cfb.adventureId = advId;
+        cfb.cardId = normalCards.get(numbers.get(2)).id;
+        GameContext.gameContext.cardForBuyingDAO.insert(cfb);
+
+        cfb = new CardForBuying();
+        cfb.adventureId = advId;
+        cfb.cardId = normalCards.get(numbers.get(3)).id;
+        GameContext.gameContext.cardForBuyingDAO.insert(cfb);
+
+        cfb = new CardForBuying();
+        cfb.adventureId = advId;
+        cfb.cardId = normalCards.get(numbers.get(4)).id;
+        GameContext.gameContext.cardForBuyingDAO.insert(cfb);
+
+        cfb = new CardForBuying();
+        cfb.adventureId = advId;
+        cfb.cardId = normalCards.get(numbers.get(5)).id;
+        GameContext.gameContext.cardForBuyingDAO.insert(cfb);
+    }
     private void resetDB() {
         GameDBHelper.getDatabase(this).execSQL("delete from " + AdventureDAO.TABLE_NAME);
         GameDBHelper.getDatabase(this).execSQL("delete from " + CardDAO.TABLE_NAME);
@@ -231,6 +275,9 @@ public class MainActivity extends ExternalResActivity {
         GameDBHelper.getDatabase(this).execSQL("delete from " + ItemGotDAO.TABLE_NAME);
         GameDBHelper.getDatabase(this).execSQL("delete from " + MonsterDAO.TABLE_NAME);
 
-        GameContext.gameContext.cardDAO.init();
+        Card.init(this);
+        BaseSkill.init(this);
+        Dungeon.init(this);
+
     }
 }

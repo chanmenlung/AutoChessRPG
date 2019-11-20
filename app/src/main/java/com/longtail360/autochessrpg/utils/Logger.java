@@ -12,5 +12,6 @@ public class Logger {
         Toast toast = Toast.makeText(context,
                 str,
                 Toast.LENGTH_SHORT);
+        toast.show();
     }
 }

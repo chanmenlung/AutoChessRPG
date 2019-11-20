@@ -19,7 +19,7 @@ public class ItemDAO {
     public static final String CREATE_TABLE =
             "CREATE TABLE " + TABLE_NAME + " (" +
                     KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                    NAME + " INTEGER NOT NULL," +
+                    NAME + " TEXT NOT NULL," +
                     ITEM_CODE + " INTEGER"
                     + ")";
             ;

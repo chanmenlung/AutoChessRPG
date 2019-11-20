@@ -21,13 +21,18 @@
     <string name="ui_home_hp">生命值:</string>
     <string name="ui_home_log">日誌</string>
     <string name="ui_home_cardForBuying">可購買的角色:</string>
-    <string name="ui_home_refreshForBuying">刷新($20)</string>
+    <string name="ui_home_refreshForBuying">刷新\n($20)</string>
     <string name="ui_home_team">隊伍:</string>
     <string name="ui_home_tactics">戰術</string>
     <string name="ui_home_item">物品</string>
     <string name="ui_home_holdCard">持有的角色:</string>
     <string name="ui_home_startAdv">開始探索</string>
+    <string name="ui_home_numOfFloor">層數:</string>
+    <string name="ui_home_advReady">出發準備中，切勿關閉</string>
+    <string name="ui_home_pleaseWait">請稍候</string>
+    <string name="ui_home_handCardIsFull">手牌已滿, 請出售角色</string>
     <string name="ui_home_help">說明</string>
+    <string name="ui_home_help_content">1. 購買任意一名角色\n2. 若成功購買3名相同角色, 可升級該角色\n3. 把角色放置於隊伍欄中\n4. 點擊\"開始探索\"進行地下城的探索</string>
     <string name="ui_allCard_buyCrystal">購買水晶</string>
     <string name="ui_popup_cancel">取消</string>
     <string name="ui_popup_confirm">確定</string>
@@ -55,6 +60,9 @@
     <string name="card_attack">攻擊力:</string>
     <string name="card_defense">護甲:</string>
     <string name="card_skill">技能:</string>
+    <string name="cardDescItem_isLockCard">是否花費{crystal}水晶解除鎖定?</string>
+    <string name="cardDescItem_reasonForUnlockCard">解除鎖定後, 可修改此角色\n(現時持有水晶:{currentCrystal})</string>
+    <string name="cardDescItem_hadUnlock">已解除鎖定</string>
     <string name="cardDetail_random">隨機</string>
     <string name="cardDetail_importPicture">匯入圖片</string>
     <string name="cardDetail_cropPicture">裁剪頭像</string>
@@ -62,11 +70,232 @@
     <string name="cardDetail_save">儲存</string>
     <string name="cardDetail_cannotFindImportImage">找不到圖片</string>
     <string name="cardDetail_pleaseImportImage">請先點擊\"匯入圖片\"，在進行栽剪頭像</string>
-    <string name="cardDetail_cardHadLocked">角色已鎖定</string>
+    <string name="cardDetail_cardHadLocked">角色已鎖定, 不能儲存</string>
+    <string name="cardDetail_currentCrystal">現時持有水晶:{crystal}</string>
     <string name="cardDetail_cardHadUnLock">角色己解除鎖定</string>
     <string name="cardDetail_notEnoughCrystal">水晶不足</string>
     <string name="cardDetail_doesGoToBuyCrystal">是否前往購買水晶?</string>
     <string name="cardDetail_saved">己儲存</string>
-    <string name="cardDetail_isUnlockCard">是否花費{crystal}水晶解除鎖定?</string>
+    <string name="cardDetail_isUnlockCard">是否花費{crystal}水晶解除鎖定?\n(現時持有水晶:{currentCrystal})</string>
+    <string name="allCard_race">所有種族</string>
+    <string name="allCard_clazz">所有職業</string>
     <string name="buyCrystal_buy">購買</string>
+    <string name="skill_name_electricAllBigHurt">超導體</string>
+    <string name="skill_desc_electricAllBigHurt">對所有敵人造成{hurt}點傷害, 30%機率造成觸電狀態。</string>
+    <string name="skill_battleDesc_electricAllBigHurt">{card}發動了超導體, 大地變為了超導體, 強烈電流流向了所有敵人. {targets}受到了{hurt}點傷害。</string>
+    <string name="skill_statusDesc_electricAllBigHurt">電流使{statusLabel}的攻擊力下降{value}點。</string>
+    <string name="skill_name_electricAllHurt">雷電交加</string>
+    <string name="skill_desc_electricAllHurt">對所有敵人造成{hurt}點傷害, 20%機率造成觸電狀態。</string>
+    <string name="skill_battleDesc_electricAllHurt">{card}發動了雷電交加，敵方上空集結了厚厚的雷電雲, 並向所有敵人降下閃電. {targets}受到了{hurt}點傷害。</string>
+    <string name="skill_statusDesc_electricAllHurt">電流使{statusLabel}的攻擊力下降{value}點。</string>
+    <string name="skill_name_electricSingleBigHurt">落雷術</string>
+    <string name="skill_desc_electricSingleBigHurt">對目標造成{hurt}點傷害, 30%機率造成觸電狀態。</string>
+    <string name="skill_battleDesc_electricSingleBigHurt">{card}吟唱了落雷術 , 天上降下一束閃電，擊向了{target}, {target}受到了{hurt}點傷害。</string>
+    <string name="skill_statusDesc_electricSingleBigHurt">電流使{statusLabel}的攻擊力下降{value}點。</string>
+    <string name="skill_name_electricSingleHurt">放電</string>
+    <string name="skill_desc_electricSingleHurt">對所有敵人造成{hurt}點傷害, 20%機率造成觸電狀態。</string>
+    <string name="skill_battleDesc_electricSingleHurt">{card}向着{target}釋放一道閃電, {target}受到了{hurt}點傷害。</string>
+    <string name="skill_statusDesc_electricSingleHurt">電流使{statusLabel}的攻擊力下降{value}點。</string>
+    <string name="skill_name_fireAllBigHurt">隕石火雨</string>
+    <string name="skill_desc_fireAllBigHurt">引發爆炸, 對所有敵人造成{hurt}點火焰傷害。目檟有20%機會造成燃燒狀態。</string>
+    <string name="skill_battleDesc_fireAllBigHurt">{card}吟唱了隕石火雨, 無數的隕石從天而降, 沖向敵方區域, 所有敵人受到{hurt}點傷害。</string>
+    <string name="skill_statusDesc_fireAllBigHurt">火焰對{statusLabel}造成{hurt}點傷害。</string>
+    <string name="skill_name_fireAllHurt">燃爆術</string>
+    <string name="skill_desc_fireAllHurt">引發爆炸, 對所有敵人造成{hurt}點火焰傷害。目檟有20%機會造成燃燒狀態。</string>
+    <string name="skill_battleDesc_fireAllHurt">{card}吟唱了燃爆術，敵人周圍產生了熾熱的火球, 火球在一瞬間發生強烈的爆炸, 所有敵人受到了{hurt}點傷害</string>
+    <string name="skill_statusDesc_fireAllHurt">火焰對{statusLabel}造成{hurt}點傷害。</string>
+    <string name="skill_name_fireSingleBigHurt">大火球術</string>
+    <string name="skill_desc_fireSingleBigHurt">施放強大魔法火球, 造成{hurt}點火焰傷害。目檟有30%機會造成燃燒狀態。</string>
+    <string name="skill_battleDesc_fireSingleBigHurt">{card}吟唱了火球術，熾熱的火球在前面變得越來越大並向{target}飛去，{target}受到了{hurt}點傷害。</string>
+    <string name="skill_statusDesc_fireSingleBigHurt">火焰對{statusLabel}造成{hurt}點傷害。</string>
+    <string name="skill_name_fireSingleHurt">火球術</string>
+    <string name="skill_desc_fireSingleHurt">施放魔法火球, 造成{hurt}點火焰傷害。</string>
+    <string name="skill_battleDesc_fireSingleHurt">{card}吟唱了火球術，熾熱的火球在前面變得越來越大並向{target}飛去，{target}受到了{hurt}點傷害</string>
+    <string name="skill_statusDesc_fireSingleHurt">火焰對{statusLabel}造成{hurt}點傷害。</string>
+    <string name="skill_name_healAll">治癒淚珠</string>
+    <string name="skill_desc_healAll">恢復所有友方{hurt}點生命值。</string>
+    <string name="skill_battleDesc_healAll">{card}施展了治癒淚珠, 數滴治療的淚珠圍繞我方區域, {targets}回復了{heal}點生命值。</string>
+    <string name="skill_statusDesc_healAll"></string>
+    <string name="skill_name_healAllBig">祝福光環</string>
+    <string name="skill_desc_healAllBig">恢復目標{hurt}點生命值。</string>
+    <string name="skill_battleDesc_healAllBig">{card}吟唱了祝福光環, 環狀的祝福衝擊波向着我方擴散開去，{targets}回復了{heal}點生命值。</string>
+    <string name="skill_statusDesc_healAllBig"></string>
+    <string name="skill_name_healSingle">治療術</string>
+    <string name="skill_desc_healSingle">恢復目標{hurt}點生命值。</string>
+    <string name="skill_battleDesc_healSingle">{card}向着{target}傷口吟唱了治療術, {target}回復了{heal}點生命值。</string>
+    <string name="skill_statusDesc_healSingle"></string>
+    <string name="skill_name_healSingleBig">祝福術</string>
+    <string name="skill_desc_healSingleBig">恢復目標{hurt}點生命值</string>
+    <string name="skill_battleDesc_healSingleBig">{card}吟唱了祝福術, 祝福之光圍繞{target}全身, {target}回復了{heal}點生命值。</string>
+    <string name="skill_statusDesc_healSingleBig"></string>
+    <string name="skill_name_hitAllBigHurt">破城猛衝</string>
+    <string name="skill_desc_hitAllBigHurt">對所有敵人造成{hurt}點傷害。</string>
+    <string name="skill_battleDesc_hitAllBigHurt">{card}施展了破城猛衝, 以迅猛的速度在敵人之間來回撞擊. {targets}受到了{hurt}點傷害。</string>
+    <string name="skill_statusDesc_hitAllBigHurt"></string>
+    <string name="skill_name_hitAllHurt">旋風斬</string>
+    <string name="skill_desc_hitAllHurt">引發爆炸, 對所有敵人造成{hurt}點傷害。</string>
+    <string name="skill_battleDesc_hitAllHurt">{card}衝向敵人中間, 並施展了旋風斬. {targets}受到了{hurt}點傷害</string>
+    <string name="skill_statusDesc_hitAllHurt"></string>
+    <string name="skill_name_hitSingleBigHurt">雷霆一擊</string>
+    <string name="skill_desc_hitSingleBigHurt">對所有敵人造成{hurt}點傷害。</string>
+    <string name="skill_battleDesc_hitSingleBigHurt">{card}跳躍到半空中, 並用武器砸向了{targets}. {target}受到了{hurt}點傷害</string>
+    <string name="skill_statusDesc_hitSingleBigHurt"></string>
+    <string name="skill_name_hitSingleHurt">猛攻</string>
+    <string name="skill_desc_hitSingleHurt">對所有敵人造成{hurt}點傷害。</string>
+    <string name="skill_battleDesc_hitSingleHurt">{card}直線衝向前, 路線上擊中{target},  {target}受到了{hurt}點傷害。</string>
+    <string name="skill_statusDesc_hitSingleHurt"></string>
+    <string name="skill_name_iceAllBigHurt">極度凍結</string>
+    <string name="skill_desc_iceAllBigHurt">引發爆炸, 對所有敵人造成{hurt}點火焰傷害。目檟有20%機會造成燃燒狀態。</string>
+    <string name="skill_battleDesc_iceAllBigHurt">{card}發動了極度凍結，敵人周圍的温度急遽下降, 寒气侵入所有敵人的肌骨, {targets}受到了{hurt}點傷害。</string>
+    <string name="skill_statusDesc_iceAllBigHurt">寒冰封印{statusLabel}的行動。</string>
+    <string name="skill_name_iceAllHurt">暴風雪</string>
+    <string name="skill_desc_iceAllHurt">引發爆炸, 對所有敵人造成{hurt}點火焰傷害。目檟有20%機會造成燃燒狀態。</string>
+    <string name="skill_battleDesc_iceAllHurt">{card}發動了暴風雪，漫满天空的風雪吹向敵人區域, {targets}受到了{hurt}點傷害。</string>
+    <string name="skill_statusDesc_iceAllHurt">寒冰封印{statusLabel}的行動。</string>
+    <string name="skill_name_iceSingleBigHurt">冰雹攻擊</string>
+    <string name="skill_desc_iceSingleBigHurt">引發爆炸, 對所有敵人造成{hurt}點火焰傷害。目檟有20%機會造成燃燒狀態。造成的傷害值多寡與你的等級有關，並且會從智力中獲得傷害加成。</string>
+    <string name="skill_battleDesc_iceSingleBigHurt">{card}吟唱了冰雹術，{target}上空區域落下了巨大的冰雹, {target}受到了{hurt}點傷害。</string>
+    <string name="skill_statusDesc_iceSingleBigHurt">寒冰封印{statusLabel}的行動。</string>
+    <string name="skill_name_iceSingleHurt">冰箭</string>
+    <string name="skill_desc_iceSingleHurt">引發爆炸, 對所有敵人造成{hurt}點火焰傷害。目檟有20%機會造成燃燒狀態。</string>
+    <string name="skill_battleDesc_iceSingleHurt">{card}吟唱了冰箭術，寒冰在前面不斷積聚, 並向{target}高速飛去，{target}受到了{hurt}點傷害。</string>
+    <string name="skill_statusDesc_iceSingleHurt">寒冰封印{statusLabel}的行動。</string>
+    <string name="skill_name_potionAllBigHurt">毒浪術</string>
+    <string name="skill_desc_potionAllBigHurt">對所有敵人造成{hurt}點傷害, 30%機率造成中毒狀態, 造成的傷害值多寡與角色的等級有關，並且會從智力中獲得傷害加成。</string>
+    <string name="skill_battleDesc_potionAllBigHurt">{card}吟唱了毒浪術, 環狀的毒系衝擊波向着敵人擴散開去，{targets}受到了{hurt}點傷害。</string>
+    <string name="skill_statusDesc_potionAllBigHurt">{statusLabels}劇毒發作, 受到了{hurt}點傷害。</string>
+    <string name="skill_name_potionAllHurt">劇毒光環</string>
+    <string name="skill_desc_potionAllHurt">對所有敵人造成{hurt}點傷害, 20%機率造成中毒狀態。</string>
+    <string name="skill_battleDesc_potionAllHurt">{card}吟唱了劇毒光環, 一道綠色光環向着敵人擴散開去, {targets}受到了{hurt}點傷害。</string>
+    <string name="skill_statusDesc_potionAllHurt">{statusLabels}劇毒發作, 受到了{hurt}點傷害。</string>
+    <string name="skill_name_potionSingleBigHurt">腐蝕噴射</string>
+    <string name="skill_desc_potionSingleBigHurt">對目標造成{hurt}點傷害, 30%機率造成中毒狀態。</string>
+    <string name="skill_battleDesc_potionSingleBigHurt">{card}發動了腐蝕噴射, 一道劇毒射綫向着{target}射去. {target}受到了{hurt}點傷害。</string>
+    <string name="skill_statusDesc_potionSingleBigHurt">{statusLabels}劇毒發作, 受到了{hurt}點傷害。</string>
+    <string name="skill_name_potionSingleHurt">毒鏢術</string>
+    <string name="skill_desc_potionSingleHurt">對目標造成{hurt}點傷害, 20%機率造成中毒狀態。</string>
+    <string name="skill_battleDesc_potionSingleHurt">{card}向着{target}抛出一支毒鏢, 毒鏢成功刺中了對方. {target}受到了{hurt}點傷害。</string>
+    <string name="skill_statusDesc_potionSingleHurt">{statusLabels}劇毒發作, 受到了{hurt}點傷害。</string>
+    <string name="skill_name_valueUpAllAttack">激怒</string>
+    <string name="skill_desc_valueUpAllAttack">指定友方角色獲得 +5 的攻擊力。</string>
+    <string name="skill_battleDesc_valueUpAllAttack">{card}用憤怒的力量激勵{target}, {target}的腎上腺素持續上升, 傷害獲得 +{value}。</string>
+    <string name="skill_statusDesc_valueUpAllAttack"></string>
+    <string name="skill_name_valueUpAllDefense">軍事專家</string>
+    <string name="skill_desc_valueUpAllDefense">隊伍角色獲得 +1 防禦力</string>
+    <string name="skill_battleDesc_valueUpAllDefense">{card}分析了當前的戰況, 設計了一套策略, 並分享給隊伍, 隊伍獲得 +1 防禦力。</string>
+    <string name="skill_statusDesc_valueUpAllDefense"></string>
+    <string name="skill_name_valueUpAttack">集結號令</string>
+    <string name="skill_desc_valueUpAttack">指定友方角色獲得 +5 的傷害加成</string>
+    <string name="skill_battleDesc_valueUpAttack">{card}用憤怒的力量激勵{target}, {target}的腎上腺素持續上升, 傷害獲得 +{value}。</string>
+    <string name="skill_statusDesc_valueUpAttack"></string>
+    <string name="skill_name_valueUpDefense">分析</string>
+    <string name="skill_desc_valueUpDefense">友方一名角色獲得 +1 防禦力</string>
+    <string name="skill_battleDesc_valueUpDefense">{card}向{target}分析了當前的戰況, {target}從中獲得靈感, 彷彿知道下一步的行動, {target}智力獲得 +{valuue}。</string>
+    <string name="skill_statusDesc_valueUpDefense"></string>
+    <string-array
+        name="cardNames">
+        <item>阿加迪</item>
+        <item>烏爾可修</item>
+        <item>艾修濃娜</item>
+        <item>艾布拉</item>
+        <item>艾利多</item>
+        <item>卡得修</item>
+        <item>卡托那</item>
+        <item>卡爾科米修</item>
+        <item>基修</item>
+        <item>科盼</item>
+        <item>阿帕梅亞</item>
+        <item>科佩爾</item>
+        <item>科莫斯</item>
+        <item>果兒秋絲</item>
+        <item>薩卡拉</item>
+        <item>咂巴拉姆</item>
+        <item>薩爾迪斯</item>
+        <item>謝福娜</item>
+        <item>斯薩</item>
+        <item>塔尼斯</item>
+        <item>提卡爾</item>
+        <item>阿瑪盧娜</item>
+        <item>提如斯</item>
+        <item>特貝</item>
+        <item>多加</item>
+        <item>托咯一曾</item>
+        <item>尼斯</item>
+        <item>尼薩</item>
+        <item>尼內威</item>
+        <item>尼姆爾多</item>
+        <item>內肯</item>
+        <item>內梅亞</item>
+        <item>艾爾</item>
+        <item>巴斯塔</item>
+        <item>帕爾米拉</item>
+        <item>帕稜克</item>
+        <item>法伊斯托斯</item>
+        <item>米雷托斯</item>
+        <item>拉伊</item>
+        <item>拉賈秀</item>
+        <item>拉拉庫</item>
+        <item>拉爾薩</item>
+        <item>拉爾納卡</item>
+        <item>艾爾格裡斯</item>
+        <item>伊興</item>
+        <item>伊利奧斯</item>
+        <item>烏加力圖</item>
+        <item>烏爾</item>
+    </string-array>
+    <string-array
+        name="dungeonNames">
+        <item>起始之地</item>
+        <item>血蹄小徑</item>
+        <item>北郡高地</item>
+        <item>葬影前哨站</item>
+        <item>冬泉路口</item>
+        <item>淤泥郡</item>
+        <item>悲傷牢籠</item>
+        <item>熱砂王國</item>
+        <item>月神之池</item>
+        <item>腐爛山</item>
+        <item>希爾斯布萊德瀑布</item>
+        <item>元素庇護所</item>
+        <item>雷神海灣</item>
+        <item>噬骨礦洞</item>
+        <item>戰槌哨崗</item>
+        <item>詛咒之門</item>
+        <item>日怒之脊</item>
+        <item>塔哈瑪特林地</item>
+        <item>激流沼澤</item>
+        <item>藏寶濕地</item>
+        <item>恐怖要塞</item>
+        <item>古樹之痕</item>
+        <item>罪惡城</item>
+        <item>獵鷹避難所</item>
+        <item>鑄魔之脊</item>
+        <item>日蝕島</item>
+        <item>月神神殿</item>
+        <item>回音挖掘場</item>
+        <item>孢殖小徑</item>
+        <item>鷹巢嶺</item>
+        <item>巨槌哨塔</item>
+        <item>米奈希之槌</item>
+        <item>元素湖</item>
+        <item>格羅姆高神廟</item>
+        <item>費伍德墳場</item>
+        <item>惡齒林地</item>
+        <item>海加爾之柱</item>
+        <item>血槌哨塔</item>
+        <item>日怒空地</item>
+        <item>孢殖路口</item>
+        <item>佐拉姆小屋</item>
+        <item>棘齒路口</item>
+        <item>米奈希峰</item>
+        <item>低地群島</item>
+        <item>棘齒環型山</item>
+        <item>剃刀磨坊</item>
+        <item>烏鴉礦洞</item>
+        <item>火羽之池</item>
+        <item>阿拉希海岸</item>
+        <item>法迪爾聖殿</item>
+        <item>荊棘磨坊</item>
+        <item>守望拉克</item>
+    </string-array>
 </resources>

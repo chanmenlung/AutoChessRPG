@@ -37,4 +37,9 @@ public class AllCardFragment extends BaseFragment implements CardDescItem.CallBa
     public void doActionAfterClickDetail(CardDescItem focusItem, Card card) {
 
     }
+
+    @Override
+    public void doActionAfterUnlockCard(CardDescItem focusItem, Card card) {
+
+    }
 }

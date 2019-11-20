@@ -47,9 +47,9 @@
             <TextView
                 android:id="@+id/popupContent"
                 android:layout_width="300dp"
-                android:layout_height="45dp"
+                android:layout_height="75dp"
                 android:layout_margin="10dp"
-                android:gravity="center"
+                android:gravity="left"
                 android:layout_gravity="center"
                 android:textColor="@android:color/white"
                 android:textSize="15sp"
