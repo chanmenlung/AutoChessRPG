@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    >
+    <TextView
+        android:id="@+id/ddPreLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:gravity="center"
+        android:text=""
+        android:textSize="12sp"
+        />
+    <LinearLayout
+        android:layout_width="220dp"
+        android:layout_height="30dp"
+        android:layout_margin="3dp"
+        android:background="@drawable/xml_rectangle"
+        android:orientation="horizontal">
+
+        <Spinner
+            android:id="@+id/spinner"
+            android:layout_width="180dp"
+            android:layout_height="match_parent"
+            android:background="@android:color/transparent"
+            android:popupBackground="@android:color/black"
+            android:spinnerMode="dialog" />
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="30dp"
+            android:src="@drawable/ui_drop_down"
+            android:tint="@android:color/black"
+            />
+    </LinearLayout>
+    <TextView
+        android:id="@+id/ddPostLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:text=""
+        android:gravity="center"
+        android:textSize="12sp"
+        />
+</LinearLayout>

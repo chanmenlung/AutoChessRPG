@@ -19,7 +19,7 @@ public class CardForBuying {
     public static List<CardForBuying> listAll() {
         List<CardForBuying> result = GameContext.gameContext.cardForBuyingDAO.listAll();
         for(CardForBuying card : result) {
-            card.card = GameContext.gameContext.cardDAO.get(card.cardId);
+            card.card = Card.get(card.cardId);
         }
         return result;
     }

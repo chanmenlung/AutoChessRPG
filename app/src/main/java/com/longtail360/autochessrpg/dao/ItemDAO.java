@@ -19,8 +19,8 @@ public class ItemDAO {
     public static final String CREATE_TABLE =
             "CREATE TABLE " + TABLE_NAME + " (" +
                     KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                    NAME + " TEXT NOT NULL," +
-                    ITEM_CODE + " INTEGER"
+                    ITEM_CODE + " TEXT NOT NULL,"+
+                    NAME + " TEXT NOT NULL"
                     + ")";
             ;
     private SQLiteDatabase db;
@@ -55,7 +55,7 @@ public class ItemDAO {
     }
 
 
-    public List<Item> getAll() {
+    public List<Item> listAll() {
         List<Item> result = new ArrayList<>();
         Cursor cursor = db.query(
                 TABLE_NAME, null, null, null, null, null, null, null);
@@ -66,6 +66,18 @@ public class ItemDAO {
 
         cursor.close();
         return result;
+    }
+
+    public Item getByItemCode(String code){
+        Item item = null;
+        String where = ITEM_CODE + "='" + code+"'";
+        Cursor result = db.query(
+                TABLE_NAME, null, where, null, null, null, null, null);
+        if (result.moveToFirst()) {
+            item = getRecord(result);
+        }
+        result.close();
+        return item;
     }
     public Item get(long id) {
         Item item = null;

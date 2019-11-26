@@ -52,7 +52,7 @@ import java.util.Random;
 
 public class MainActivity extends ExternalResActivity {
     private String tag = "MainActivity";
-    private boolean resetPlayer = false;
+    private boolean resetPlayer = true;
     private TextView comName;
     private View comNameLayout;
     private View backgroundLayout;
@@ -189,7 +189,8 @@ public class MainActivity extends ExternalResActivity {
         if(advs == null || advs.size() == 0) {
             GameContext.gameContext.adventure = new Adventure(200, firestDungeon.id, 0, 1,0,100);
             GameContext.gameContext.advDAO.insert(GameContext.gameContext.adventure);
-            insertCardForBuying(GameContext.gameContext.adventure.id);
+            insertCardForBuyingOnNewAccount(GameContext.gameContext.adventure.id);
+            insertItemGotOnNewAccount(GameContext.gameContext.adventure.id);
         }else {
             GameContext.gameContext.adventure = advs.get(0);
             GameContext.gameContext.cardInBattles = GameContext.gameContext.cardInBattleDAO.listByAdventureId(GameContext.gameContext.adventure.id);
@@ -224,9 +225,27 @@ public class MainActivity extends ExternalResActivity {
                 }
             }
         }
+
+        Logger.log(tag, "itemCode:"+GameContext.gameContext.itemDAO.listAll().get(0).name);
     }
 
-    private void insertCardForBuying(long advId) {
+    private void insertItemGotOnNewAccount(long advId) {
+        ItemGot item;
+        item = new ItemGot();
+        item.onBody = 1;
+        item.item = GameContext.gameContext.itemDAO.getByItemCode(Item.RED_POTION_LARGE);
+        item.itemId = item.item.id;
+        item.adventureId = advId;
+        GameContext.gameContext.itemGotDAO.insert(item);
+
+        item = new ItemGot();
+        item.onBody = 1;
+        item.item = GameContext.gameContext.itemDAO.getByItemCode(Item.RED_POTION_MIDDLE);
+        item.itemId = item.item.id;
+        item.adventureId = advId;
+        GameContext.gameContext.itemGotDAO.insert(item);
+    }
+    private void insertCardForBuyingOnNewAccount(long advId) {
         List<Card> normalCards = GameContext.gameContext.cardDAO.getAllByRare(1);
         List<Integer> numbers = new ArrayList<>();
         for(int i=0;i<6;i++){
@@ -278,6 +297,7 @@ public class MainActivity extends ExternalResActivity {
         Card.init(this);
         BaseSkill.init(this);
         Dungeon.init(this);
+        Item.init(this);
 
     }
 }

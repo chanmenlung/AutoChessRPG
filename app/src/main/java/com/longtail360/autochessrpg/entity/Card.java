@@ -14,7 +14,7 @@ import com.longtail360.autochessrpg.utils.Logger;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Card {
+public class Card extends Character{
     private static String tag = "card_tag";
     public static String RACE_HUMAN = "human";
     public static String RACE_ELF = "elf";
@@ -50,11 +50,12 @@ public class Card {
     public String customSkillName;
     public String customSkillBattleDesc;
     public int numChessForUpgrd;
+    public int level = 1;
     public int hp;
     public int attack;
     public int defense;
     public int price;
-    public int rarity; //0=basic, 1=normal, 2=rare, 3=epic, 4=legendary
+    public int rarity; //1=basic, 2=normal, 3=rare, 4=epic, 5=legendary
     public BaseSkill skill;
     public Card(){}
     public Card(String code, int locked, String race, String clazz, String skillCode, String name, String customName, String head, String customHead,

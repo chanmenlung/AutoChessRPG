@@ -1,0 +1,88 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/ui_background"
+    android:clickable="true"
+    android:id="@+id/editStrategyLayout">
+
+    <FrameLayout
+        android:layout_width="200dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center_horizontal"
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="@string/tactic_editTactic"/>
+    </FrameLayout>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:translationY="40dp">
+        <Button
+            android:id="@+id/saveStrategyButton"
+            android:layout_marginLeft="10dp"
+            android:layout_width="80dp"
+            android:layout_height="30dp"
+            android:text="@string/cardDetail_save"
+            android:layout_gravity="left|center_vertical"
+            android:textColor="@android:color/white"
+            android:background="@drawable/xml_button_small_black"/>
+
+        <Button
+            android:id="@+id/newCondButton"
+            android:layout_width="80dp"
+            android:layout_height="30dp"
+            android:layout_marginRight="10dp"
+            android:layout_gravity="right|center_vertical"
+            android:text="@string/tactic_newCondition"
+            android:orientation="horizontal"
+            android:layout_centerInParent="true"
+            android:textColor="@android:color/white"
+            android:background="@drawable/xml_button_small_black"/>
+
+    </FrameLayout>
+
+    <ScrollView
+        android:layout_centerInParent="true"
+        android:layout_width="match_parent"
+        android:translationY="95dp"
+        android:layout_height="360dp">
+        <LinearLayout
+            android:id="@+id/conditionContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="160dp"
+                android:background="@drawable/xml_rectangle"
+                android:backgroundTint="@android:color/black"
+                android:layout_margin="2dp"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    />
+            </FrameLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/actionLayoutContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:translationY="465dp"
+        android:background="@drawable/xml_rectangle"
+        android:layout_margin="2dp"
+        android:orientation="vertical"
+        >
+
+    </LinearLayout>
+
+</FrameLayout>

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:background="@drawable/ui_background"
+    android:id="@+id/myItemLayout"
+    android:layout_height="match_parent">
+
+    <com.longtail360.autochessrpg.prefab.HeadBackButton
+        android:id="@+id/myItemBackBt"
+        android:translationY="10dp"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        app:btHeadBackText="@string/ui_myItem_itemList"/>
+
+    <FrameLayout
+        android:layout_gravity="left"
+        android:translationY="37dp"
+        android:translationX="-20dp"
+        android:layout_width="170dp"
+        android:layout_height="60dp"
+        android:background="@drawable/ui_dark_bar_horizontal">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:textSize="15sp"
+            android:alpha="0.8"
+            android:textColor="@android:color/white"
+            android:text="@string/ui_myItem_onBodyItemList" />
+    </FrameLayout>
+
+    <HorizontalScrollView
+        android:layout_centerInParent="true"
+        android:layout_width="match_parent"
+        android:translationY="85dp"
+        android:layout_height="240dp">
+        <GridLayout
+            android:id="@+id/onBodyItemsContainer"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:rowCount="4">
+        </GridLayout>
+
+    </HorizontalScrollView>
+
+    <View
+        android:translationY="325dp"
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="@android:color/black" />
+
+    <FrameLayout
+        android:layout_gravity="left"
+        android:translationY="322dp"
+        android:translationX="-20dp"
+        android:layout_width="170dp"
+        android:layout_height="60dp"
+        android:background="@drawable/ui_dark_bar_horizontal">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:textSize="15sp"
+            android:alpha="0.8"
+            android:textColor="@android:color/white"
+            android:text="@string/ui_myItem_inventory" />
+    </FrameLayout>
+
+
+    <HorizontalScrollView
+        android:layout_centerInParent="true"
+        android:layout_width="match_parent"
+        android:translationY="380dp"
+        android:layout_height="240dp">
+        <GridLayout
+            android:id="@+id/notOnBodyItemsContainer"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:rowCount="4">
+        </GridLayout>
+    </HorizontalScrollView>
+
+</FrameLayout>

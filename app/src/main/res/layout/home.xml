@@ -348,32 +348,44 @@
                             android:background="@drawable/xml_rectangle"
                             >
                         </FrameLayout>
-                        <TextView android:layout_width="@dimen/ui_home_battle_grid_item_size"
+                        <TextView
+                            android:id="@+id/buyCard1Price"
+                            android:layout_width="@dimen/ui_home_battle_grid_item_size"
                             android:layout_height="wrap_content"
                             android:textSize="10sp"
                             android:gravity="center"
                             android:text="$20"/>
-                        <TextView android:layout_width="@dimen/ui_home_battle_grid_item_size"
+                        <TextView
+                            android:id="@+id/buyCard2Price"
+                            android:layout_width="@dimen/ui_home_battle_grid_item_size"
                             android:layout_height="wrap_content"
                             android:textSize="10sp"
                             android:gravity="center"
                             android:text="$20"/>
-                        <TextView android:layout_width="@dimen/ui_home_battle_grid_item_size"
+                        <TextView
+                            android:id="@+id/buyCard3Price"
+                            android:layout_width="@dimen/ui_home_battle_grid_item_size"
                             android:layout_height="wrap_content"
                             android:gravity="center"
                             android:textSize="10sp"
                             android:text="$20"/>
-                        <TextView android:layout_width="@dimen/ui_home_battle_grid_item_size"
+                        <TextView
+                            android:id="@+id/buyCard4Price"
+                            android:layout_width="@dimen/ui_home_battle_grid_item_size"
                             android:layout_height="wrap_content"
                             android:gravity="center"
                             android:textSize="10sp"
                             android:text="$20"/>
-                        <TextView android:layout_width="@dimen/ui_home_battle_grid_item_size"
+                        <TextView
+                            android:id="@+id/buyCard5Price"
+                            android:layout_width="@dimen/ui_home_battle_grid_item_size"
                             android:layout_height="wrap_content"
                             android:gravity="center"
                             android:textSize="10sp"
                             android:text="$20"/>
-                        <TextView android:layout_width="@dimen/ui_home_battle_grid_item_size"
+                        <TextView
+                            android:id="@+id/buyCard6Price"
+                            android:layout_width="@dimen/ui_home_battle_grid_item_size"
                             android:layout_height="wrap_content"
                             android:gravity="center"
                             android:textSize="10sp"
@@ -390,6 +402,7 @@
                             android:layout_gravity="center"
                             android:src="@drawable/ui_icon_rotate"/>
                         <TextView
+                            android:id="@+id/refreshBuyingCard"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="5dp"
@@ -411,6 +424,7 @@
                 android:layout_weight="8">
 
                 <LinearLayout
+                    android:id="@+id/myItemBt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
@@ -421,7 +435,6 @@
                         android:layout_height="40dp"
                         android:src="@drawable/item_my_box"/>
                     <TextView
-                        android:id="@+id/upgradeBt"
                         android:layout_width="wrap_content"
                         android:layout_height="30dp"
                         android:gravity="center"
@@ -885,83 +898,6 @@
 
     </LinearLayout>
 
-
-    <!-- card info start -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:orientation="vertical"
-        android:background="@drawable/ui_window_dark">
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="100dp"
-            android:orientation="horizontal">
-            <ImageView
-                android:layout_marginLeft="10dp"
-                android:layout_gravity="center_vertical"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:src="@drawable/c1_head"/>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_marginLeft="30dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:textSize="10sp"
-                    android:textColor="@android:color/white"
-                    android:text="等級:2"/>
-
-                <TextView
-                    android:layout_marginLeft="30dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:textSize="10sp"
-                    android:textColor="@android:color/white"
-                    android:text="生命值:999  攻擊力:99  防禦力:2"/>
-                <TextView
-                    android:layout_marginLeft="30dp"
-                    android:layout_width="300dp"
-                    android:layout_height="match_parent"
-                    android:textColor="@android:color/white"
-                    android:textSize="10sp"
-                    android:text="技能: 引發爆炸, 對所有敵人造成{hurt}點火焰傷害。目檟有20%機會造成燃燒狀態"/>
-                <TextView
-                    android:layout_marginLeft="30dp"
-                    android:layout_width="300dp"
-                    android:layout_height="match_parent"
-                    android:textColor="@android:color/white"
-                    android:textSize="10sp"
-                    android:text="出售可獲得: $99"/>
-            </LinearLayout>
-        </LinearLayout>
-
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <com.longtail360.autochessrpg.prefab.ButtonBurnMiddle
-                    android:layout_width="wrap_content"
-                    android:layout_height="30dp"
-                    android:layout_marginLeft="20dp"
-                    app:btBurnMiddleText="@string/ui_popup_cancel"
-                    app:btBurnMiddleColor="green"/>
-                <com.longtail360.autochessrpg.prefab.ButtonBurnMiddle
-                    android:layout_width="wrap_content"
-                    android:layout_height="30dp"
-                    android:layout_marginRight="20dp"
-                    android:layout_gravity="right"
-                    app:btBurnMiddleText="@string/ui_popup_cancel"
-                    app:btBurnMiddleColor="orange"/>
-
-            </FrameLayout>
-    </LinearLayout>
-    <!-- card info end -->
     <!-- progress bar start -->
     <FrameLayout
         android:layout_width="match_parent"

@@ -16,12 +16,14 @@ public class ItemGotDAO {
     public static final String KEY_ID = "_id";
     public static final String ADVENTURE_ID = "adventure_id";
     public static final String ITEM_ID = "item_id";
+    public static final String ON_BODY = "on_body";
 
     public static final String CREATE_TABLE =
             "CREATE TABLE " + TABLE_NAME + " (" +
                     KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                     ADVENTURE_ID + " INTEGER NOT NULL," +
-                    ITEM_ID + " INTEGER"
+                    ITEM_ID + " INTEGER,"+
+                    ON_BODY + " INTEGER"
                     + ")";
     private SQLiteDatabase db;
     public ItemGotDAO(Context context) {
@@ -35,7 +37,7 @@ public class ItemGotDAO {
         ContentValues cv = new ContentValues();
         cv.put(ADVENTURE_ID, item.adventureId);
         cv.put(ITEM_ID, item.itemId);
-
+        cv.put(ON_BODY, item.onBody);
         long id = db.insert(TABLE_NAME, null, cv);
         item.id = id;
         return item;
@@ -44,7 +46,7 @@ public class ItemGotDAO {
         ContentValues cv = new ContentValues();
         cv.put(ADVENTURE_ID, item.adventureId);
         cv.put(ITEM_ID, item.itemId);
-
+        cv.put(ON_BODY, item.onBody);
         String where = KEY_ID + "=" + item.id;
         return db.update(TABLE_NAME, cv, where, null) > 0;
     }
@@ -100,7 +102,7 @@ public class ItemGotDAO {
         result.id = cursor.getLong(0);
         result.adventureId = cursor.getInt(1);
         result.itemId = cursor.getInt(2);
-
+        result.onBody = cursor.getInt(3);
         return result;
     }
 

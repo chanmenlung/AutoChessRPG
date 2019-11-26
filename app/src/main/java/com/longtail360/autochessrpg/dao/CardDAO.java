@@ -134,6 +134,17 @@ public class CardDAO {
         return result;
     }
 
+    public int countByRare(int rare){
+        int result = 0;
+        String where = " where "+RARITY + "=" + rare;
+        Cursor cursor = db.rawQuery("SELECT COUNT(*) FROM " + TABLE_NAME +where, null);
+
+        if (cursor.moveToNext()) {
+            result = cursor.getInt(0);
+        }
+
+        return result;
+    }
     public List<Card> getAllByRare(int rare) {
         List<Card> result = new ArrayList<>();
         String where = RARITY + "=" + rare;
