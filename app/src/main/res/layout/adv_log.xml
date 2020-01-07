@@ -1,13 +1,225 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical" android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/ui_background"
-    android:layout_height="match_parent"
-    android:id="@+id/thisLayout"
-    >
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="this is adv log"/>
+    android:id="@+id/advLogThisLayout"
+    android:layout_height="match_parent">
+
+        <com.longtail360.autochessrpg.prefab.HeadBackButton
+            android:id="@+id/backBt"
+            android:layout_marginTop="10dp"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            app:btHeadBackText="this is title"/>
+        <!-- process log start -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="80"
+                android:layout_marginTop="50dp">
+                <ScrollView
+                    android:id="@+id/processLogScroll"
+                    android:layout_centerInParent="true"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <LinearLayout
+                        android:id="@+id/processLogContainer"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                    </LinearLayout>
+                </ScrollView>
+            </RelativeLayout>
+            <!-- process log end -->
+            <LinearLayout
+                android:layout_height="0dp"
+                android:layout_width="match_parent"
+                android:layout_weight="12"
+                android:orientation="vertical">
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="3dp"
+                    android:layout_gravity="center_vertical"
+                    android:background="@drawable/ui_small_line"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+                    <com.longtail360.autochessrpg.prefab.MenuPanel
+                        android:id="@+id/takeABreakBt"
+                        android:layout_gravity="bottom|center_horizontal"
+                        android:layout_height="match_parent"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_marginBottom="5dp"
+                        app:btMenuPanelTitle="@string/adv_takeABreak"
+                        app:btMenuPanelIcon="@drawable/item_tree">
+
+                    </com.longtail360.autochessrpg.prefab.MenuPanel>
+                    <com.longtail360.autochessrpg.prefab.MenuPanel
+                        android:id="@+id/updateBt"
+                        android:layout_gravity="bottom|center_horizontal"
+                        android:layout_height="match_parent"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_marginBottom="5dp"
+                        app:btMenuPanelTitle="@string/adv_goAhead"
+                        app:btMenuPanelIcon="@drawable/item_boots">
+
+                    </com.longtail360.autochessrpg.prefab.MenuPanel>
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+    <!-- team status layout start -->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/ui_background"
+        android:id="@+id/teamStatusLayout"
+        android:visibility="invisible"
+        android:clickable="true">
+        <com.longtail360.autochessrpg.prefab.HeadBackButton
+            android:id="@+id/teamStatusBackBt"
+            android:translationY="10dp"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            app:btHeadBackText=""/>
+
+        <LinearLayout
+            android:translationY="50dp"
+            android:id="@+id/eventContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <LinearLayout
+                android:id="@+id/teamStatusEventLayout"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:orientation="horizontal"
+                android:layout_margin="10dp"
+                android:background="@drawable/ui_window_yellow">
+                <ImageView
+                    android:id="@+id/teamStatusEventIcon1"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="4dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/item_crystal"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    >
+                    <TextView
+                        android:id="@+id/teamStatusEventTitle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="12dp"
+                        android:layout_gravity="center_vertical"
+                        android:textSize="12sp"
+                        android:text=""/>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_marginRight="10dp"
+                        android:background="@drawable/ui_small_line" />
+
+                    <TextView
+                        android:id="@+id/teamStatusEventContent"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:textSize="10sp"
+                        android:text="abc"/>
+
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/teamStatusContainer"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+            </LinearLayout>
+        </LinearLayout>
+
+    </FrameLayout>
+    <!-- team status layout end -->
+
+    <!-- item element layout start -->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/ui_background"
+        android:id="@+id/itemElementListLayout"
+        android:visibility="invisible"
+        android:clickable="true">
+        <com.longtail360.autochessrpg.prefab.HeadBackButton
+            android:id="@+id/itemLogBackBt"
+            android:translationY="10dp"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            app:btHeadBackText="@string/adv_onBodyItem"/>
+
+
+        <ScrollView
+            android:id="@+id/itemListLayout"
+            android:layout_centerInParent="true"
+            android:translationY="45dp"
+            android:layout_width="match_parent"
+            android:layout_height="550dp">
+            <LinearLayout
+                android:id="@+id/itemContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+            </LinearLayout>
+        </ScrollView>
+
+
+    </FrameLayout>
+    <!-- item element layout end -->
+
+    <FrameLayout
+        android:id="@+id/battleLogLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/ui_background">
+        <com.longtail360.autochessrpg.prefab.HeadBackButton
+            android:id="@+id/battleLogBackBt"
+            android:translationY="10dp"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            app:btHeadBackText=""/>
+
+        <ScrollView
+            android:id="@+id/battleListLayout"
+            android:layout_centerInParent="true"
+            android:translationY="45dp"
+            android:layout_width="match_parent"
+            android:layout_height="590dp">
+            <LinearLayout
+                android:id="@+id/battleLogContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <ImageView
+                    android:id="@+id/battleMonsterBigImage"
+                    android:adjustViewBounds="true"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_gravity="top|center_horizontal"/>
+            </LinearLayout>
+        </ScrollView>
+    </FrameLayout>
 </FrameLayout>

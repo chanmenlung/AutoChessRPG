@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="60dp"
+    android:background="@drawable/ui_panel_list_item_desc">
+
+    <LinearLayout
+        android:layout_width="45dp"
+        android:layout_height="55dp"
+        android:translationX="5dp"
+        android:orientation="vertical">
+        <FrameLayout
+            android:layout_width="35dp"
+            android:layout_height="35dp">
+            <ImageView
+                android:id="@+id/monsterIcon"
+                android:translationX="-1dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:src="@drawable/c1_head"
+                android:layout_margin="1.5dp"
+                />
+        </FrameLayout>
+
+    </LinearLayout>
+    <!-- info start -->
+    <LinearLayout
+        android:layout_centerInParent="true"
+        android:layout_width="230dp"
+        android:orientation="vertical"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/codeValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/ui_monster_desc_item_text_size"
+                android:text="testing"/>
+            <TextView
+                android:id="@+id/nameValue"
+                android:layout_marginLeft="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/ui_monster_desc_item_text_size"
+                android:text="testing"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/ui_monster_desc_item_text_size"
+                android:text="@string/monster_hp"/>
+            <TextView
+                android:id="@+id/hpValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/ui_monster_desc_item_text_size"
+                android:text="999"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:textSize="@dimen/ui_monster_desc_item_text_size"
+                android:text="@string/monster_attack"/>
+            <TextView
+                android:id="@+id/attackValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/ui_monster_desc_item_text_size"
+                android:text="99"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:textSize="@dimen/ui_monster_desc_item_text_size"
+                android:text="@string/monster_defense"/>
+            <TextView
+                android:id="@+id/defenseValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/ui_monster_desc_item_text_size"
+                android:text="9"/>
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

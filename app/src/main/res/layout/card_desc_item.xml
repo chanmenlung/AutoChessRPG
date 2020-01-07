@@ -92,7 +92,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:textSize="@dimen/ui_card_desc_item_text_size"
-                android:text="@string/card_clazz"/>
+                android:text="@string/card_attack"/>
             <TextView
                 android:id="@+id/attackValue"
                 android:layout_width="wrap_content"

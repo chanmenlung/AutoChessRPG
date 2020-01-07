@@ -13,6 +13,7 @@ import java.util.List;
 public class AdventureDAO {
     public static final String TABLE_NAME = "ADVENTURE";
     public static final String KEY_ID = "_id";
+    public static final String CURRENT_ROOT_LOG_ID = "current_root_log_id";
     public static final String CURRENT_DUNGEON_ID = "current_dungeon_id";
     public static final String COIN = "coin";
     public static final String FINAL_MARK = "final_mark";
@@ -22,6 +23,7 @@ public class AdventureDAO {
     public static final String CREATE_TABLE =
             "CREATE TABLE " + TABLE_NAME + " (" +
                     KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                    CURRENT_ROOT_LOG_ID + " INTEGER," +
                     CURRENT_DUNGEON_ID + " INTEGER," +
                     COIN + " INTEGER, "+
                     LEVEL + " INTEGER, "+
@@ -42,6 +44,7 @@ public class AdventureDAO {
 
     public Adventure insert(Adventure item) {
         ContentValues cv = new ContentValues();
+        cv.put(CURRENT_ROOT_LOG_ID, item.currentRootLogId);
         cv.put(CURRENT_DUNGEON_ID, item.currentDungeonId);
         cv.put(COIN, item.coin);
         cv.put(LEVEL, item.level);
@@ -55,6 +58,7 @@ public class AdventureDAO {
     }
     public boolean update(Adventure item) {
         ContentValues cv = new ContentValues();
+        cv.put(CURRENT_ROOT_LOG_ID, item.currentRootLogId);
         cv.put(CURRENT_DUNGEON_ID, item.currentDungeonId);
         cv.put(COIN, item.coin);
         cv.put(LEVEL, item.level);
@@ -100,12 +104,13 @@ public class AdventureDAO {
         Adventure result = new Adventure();
 
         result.id = cursor.getLong(0);
-        result.currentDungeonId = cursor.getInt(1);
-        result.coin = cursor.getInt(2);
-        result.level = cursor.getInt(3);
-        result.exp = cursor.getInt(4);
-        result.hp= cursor.getInt(5);
-        result.finalMark = cursor.getInt(6);
+        result.currentRootLogId = cursor.getLong(1);
+        result.currentDungeonId = cursor.getInt(2);
+        result.coin = cursor.getInt(3);
+        result.level = cursor.getInt(4);
+        result.exp = cursor.getInt(5);
+        result.hp= cursor.getInt(6);
+        result.finalMark = cursor.getInt(7);
         return result;
     }
 

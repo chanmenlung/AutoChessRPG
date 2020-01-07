@@ -1,13 +1,18 @@
 package com.longtail360.autochessrpg.entity;
 
+import com.longtail360.autochessrpg.entity.log.RootLog;
+
 public class Adventure {
     public long id;
     public int coin;
+    public long currentRootLogId;
     public long currentDungeonId;
     public int finalMark;
     public int level;
     public int exp;
     public int hp;
+
+    public RootLog currentRootLog;
 
     public Adventure() {}
     public Adventure(int coin, long currentDungeonId, int finalMark, int level, int exp, int hp) {
@@ -18,5 +23,25 @@ public class Adventure {
         this.exp = exp;
         this.hp = hp;
 
+    }
+
+    public void getExp(int value) {
+        exp = exp + value;
+        int totalExp = calTotalExpByLevel(level);
+        if(exp >= totalExp){
+            level = level + 1;
+            exp = exp - totalExp;
+        }
+    }
+    public int calTotalExpByLevel(int level){
+        if(level == 1 || level == 2){
+            return 1;
+        }
+
+        int result = 2;
+        for(int i=3; i<level;i++){
+            result = result * 2;
+        }
+        return result;
     }
 }

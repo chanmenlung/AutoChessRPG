@@ -5,46 +5,99 @@ import android.content.Context;
 import com.longtail360.autochessrpg.R;
 import com.longtail360.autochessrpg.entity.skill.ElectricAllBigHurt;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Dungeon {
     public long id;
     public long index;
     public String name;
     public String monsterIds;
     public int numFloor;
-    public int numblockPerFloor;
+    public int numAreaPerFloor;
+    public int numBlockPerArea;
 
+    private String[] monsterArray;
     public Dungeon(){
 
     }
-    public Dungeon(String name, String monsterIds, int numFloor, int numblockPerFloor){
+
+    public String[] getMonsterArray() {
+        if(monsterArray == null){
+            monsterArray = monsterIds.split(",");
+        }
+        return monsterArray;
+    }
+    public Dungeon(long index, String name, String monsterIds, int numFloor, int numAreaPerFloor, int numBlockPerArea){
+        this.index = index;
         this.name = name;
         this.monsterIds = monsterIds;
         this.numFloor = numFloor;
-        this.numblockPerFloor = numblockPerFloor;
+        this.numAreaPerFloor = numAreaPerFloor;
+        this.numBlockPerArea = numBlockPerArea;
     }
     public static void init(Context context) {
+        List<String> monsterIds = new ArrayList<String>();
+        for(int i=0; i<57; i++) {
+            int start = 5*i;
+            StringBuilder str = new StringBuilder();
+            str.append("m");
+            str.append(start+1);
+            str.append(",");
+            str.append("m");
+            str.append(start+2);
+            str.append(",");
+            str.append("m");
+            str.append(start+3);
+            str.append(",");
+            str.append("m");
+            str.append(start+4);
+            str.append(",");
+            str.append("m");
+            str.append(start+5);
+            monsterIds.add(str.toString());
+        }
+        int numFloorStart = 1;
+        int numArea = 2;
+        int numBlock = 3;
         String[] names = context.getResources().getStringArray(R.array.dungeonNames);
         Dungeon dungeon;
-        dungeon = new Dungeon(names[0],"m1,m2,m3,m4,m5",5,10);
-        GameContext.gameContext.dungeonDAO.insert(dungeon);
-        dungeon = new Dungeon(names[1],"m6,m7,m8,m9,m10",6,10);
-        GameContext.gameContext.dungeonDAO.insert(dungeon);
-        dungeon = new Dungeon(names[2],"m11,m12,m13,m14,m15",7,10);
-        GameContext.gameContext.dungeonDAO.insert(dungeon);
-        dungeon = new Dungeon(names[3],"m16,m17,m18,m19,m20",8,10);
-        GameContext.gameContext.dungeonDAO.insert(dungeon);
-        dungeon = new Dungeon(names[4],"m21,m22,m23,m24,m25",9,10);
-        GameContext.gameContext.dungeonDAO.insert(dungeon);
-        dungeon = new Dungeon(names[5],"m26,m27,m28,m29,m30",10,10);
-        GameContext.gameContext.dungeonDAO.insert(dungeon);
-        dungeon = new Dungeon(names[6],"m31,m32,m33,m34,m35",11,10);
-        GameContext.gameContext.dungeonDAO.insert(dungeon);
-        dungeon = new Dungeon(names[7],"m36,m37,m38,m39,m40",12,10);
-        GameContext.gameContext.dungeonDAO.insert(dungeon);
-        dungeon = new Dungeon(names[8],"m41,m42,m43,m44,m45",13,10);
-        GameContext.gameContext.dungeonDAO.insert(dungeon);
-        dungeon = new Dungeon(names[9],"m46,m47,m48,m49,m50",14,10);
-        GameContext.gameContext.dungeonDAO.insert(dungeon);
+
+        for(int i=1; i<=10; i++) {
+            dungeon = new Dungeon(i,names[i-1],monsterIds.get(i-1),numFloorStart+i,numArea,numBlock);
+            GameContext.gameContext.dungeonDAO.insert(dungeon);
+        }
+        int j = 1;
+        for(int i=11; i<=20; i++) {
+            dungeon = new Dungeon(i,names[i-1],monsterIds.get(i-1),numFloorStart+1+j,numArea,numBlock);
+            GameContext.gameContext.dungeonDAO.insert(dungeon);
+            j++;
+        }
+
+        j = 1;
+        for(int i=21; i<=30; i++) {
+            dungeon = new Dungeon(i,names[i-1],monsterIds.get(i-1),numFloorStart+2+j,numArea,numBlock);
+            GameContext.gameContext.dungeonDAO.insert(dungeon);
+            j++;
+        }
+        j = 1;
+        for(int i=31; i<=40; i++) {
+            dungeon = new Dungeon(i,names[i-1],monsterIds.get(i-1),numFloorStart+3+j,numArea,numBlock);
+            GameContext.gameContext.dungeonDAO.insert(dungeon);
+            j++;
+        }
+        j = 1;
+        for(int i=41; i<=50; i++) {
+            dungeon = new Dungeon(i,names[i-1],monsterIds.get(i-1),numFloorStart+4+j,numArea,numBlock);
+            GameContext.gameContext.dungeonDAO.insert(dungeon);
+            j++;
+        }
+        j = 1;
+        for(int i=51; i<=57; i++) {
+            dungeon = new Dungeon(i,names[i-1],monsterIds.get(i-1),numFloorStart+5+j,numArea,numBlock);
+            GameContext.gameContext.dungeonDAO.insert(dungeon);
+            j++;
+        }
 
     }
 }

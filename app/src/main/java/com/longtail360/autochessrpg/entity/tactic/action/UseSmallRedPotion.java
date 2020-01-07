@@ -22,7 +22,7 @@ public class UseSmallRedPotion extends BaseAction{
         ActionResult result = new ActionResult();
         Item toUseItem = null;
         for(Item item : advContext.itemList){
-            if(item.itemCode.equals(Item.RED_POTION_SMALL)){
+            if(item.itemCode.equals(Item.ITEM_HP_UP)){
                 toUseItem = item;
                 break;
             }

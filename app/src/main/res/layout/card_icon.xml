@@ -15,4 +15,61 @@
         android:layout_height="match_parent"
         android:layout_gravity="center"
         android:src="@drawable/c1_head"/>
+    <TextView
+        android:id="@+id/upgradeBt"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:background="@color/colorIcon"
+        android:textColor="@android:color/white"
+        android:text="@string/cardIcon_upgrade"/>
+
+    <LinearLayout
+        android:id="@+id/star1"
+        android:layout_width="7dp"
+        android:layout_height="5dp"
+        android:orientation="horizontal"
+        android:background="@color/colorPink">
+        <ImageView
+            android:layout_width="7dp"
+            android:layout_height="5dp"
+            android:src="@drawable/item_star"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/star2"
+        android:layout_width="14dp"
+        android:layout_height="5dp"
+        android:orientation="horizontal"
+        android:background="@color/colorPink">
+        <ImageView
+            android:layout_width="7dp"
+            android:layout_height="5dp"
+            android:src="@drawable/item_star"/>
+        <ImageView
+            android:layout_width="7dp"
+            android:layout_height="5dp"
+            android:src="@drawable/item_star"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/star3"
+        android:layout_width="21dp"
+        android:layout_height="5dp"
+        android:orientation="horizontal"
+        android:background="@color/colorPink">
+        <ImageView
+            android:layout_width="7dp"
+            android:layout_height="5dp"
+            android:src="@drawable/item_star"/>
+        <ImageView
+            android:layout_width="7dp"
+            android:layout_height="5dp"
+            android:src="@drawable/item_star"/>
+        <ImageView
+            android:layout_width="7dp"
+            android:layout_height="5dp"
+            android:src="@drawable/item_star"/>
+    </LinearLayout>
 </FrameLayout>

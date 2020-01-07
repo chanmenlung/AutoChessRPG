@@ -7,6 +7,7 @@ import com.longtail360.autochessrpg.R;
 import com.longtail360.autochessrpg.adventure.AdvContext;
 import com.longtail360.autochessrpg.entity.Card;
 import com.longtail360.autochessrpg.entity.tactic.action.BaseAction;
+import com.longtail360.autochessrpg.entity.tactic.action.UseSmallRedPotion;
 import com.longtail360.autochessrpg.entity.tactic.condition.AllManHp;
 import com.longtail360.autochessrpg.entity.tactic.condition.BaseCondition;
 
@@ -28,6 +29,7 @@ public class Tactics implements Comparable<Tactics> {
     public Tactics(Context context){
         BaseCondition cond = BaseCondition.create(context, AllManHp.KEY);
         conditions.add (cond);
+        action = new UseSmallRedPotion(context);
     }
 
     public String concatStr(Context context) {
@@ -64,7 +66,7 @@ public class Tactics implements Comparable<Tactics> {
         return str.toString ();
     }
 
-    public boolean doChecking(AdvContext advContext, Card baseCard) {
+    public boolean doChecking(AdvContext advContext) {
         List<AndGroup> ands = new ArrayList<>();
         AndGroup andGroup = new AndGroup ();
 
@@ -77,7 +79,7 @@ public class Tactics implements Comparable<Tactics> {
         }
         boolean result = false;
         for (int i = 0; i < ands.size(); i++) {
-            result = result || ands.get(i).doOperation (advContext,baseCard);
+            result = result || ands.get(i).doOperation (advContext);
         }
         return result;
     }

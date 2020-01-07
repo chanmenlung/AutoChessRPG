@@ -13,6 +13,7 @@ import java.util.List;
 public class MonsterDAO {
     public static final String TABLE_NAME = "MONSTER";
     public static final String KEY_ID = "_id";
+    public static final String CODE = "code";
     public static final String NAME = "name";
     public static final String HP = "hp";
     public static final String ATTACK = "attack";
@@ -21,9 +22,10 @@ public class MonsterDAO {
     public static final String CREATE_TABLE =
             "CREATE TABLE " + TABLE_NAME + " (" +
                     KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                    CODE + " TEXT," +
                     NAME + " TEXT," +
-                    HP + " INTEGER"+
-                    ATTACK + " INTEGER"+
+                    HP + " INTEGER,"+
+                    ATTACK + " INTEGER,"+
                     DEFENSE + " INTEGER"
                     + ")";
     private SQLiteDatabase db;
@@ -36,6 +38,7 @@ public class MonsterDAO {
 
     public Monster insert(Monster item) {
         ContentValues cv = new ContentValues();
+        cv.put(CODE, item.code);
         cv.put(NAME, item.name);
         cv.put(HP, item.hp);
         cv.put(ATTACK, item.attack);
@@ -47,6 +50,7 @@ public class MonsterDAO {
     }
     public boolean update(Monster item) {
         ContentValues cv = new ContentValues();
+        cv.put(CODE, item.code);
         cv.put(NAME, item.name);
         cv.put(HP, item.hp);
         cv.put(ATTACK, item.attack);
@@ -86,14 +90,27 @@ public class MonsterDAO {
         return item;
     }
 
+    public Monster getByCode(String code) {
+        Monster item = null;
+        String where = CODE + "='" + code+"'";
+        Cursor result = db.query(
+                TABLE_NAME, null, where, null, null, null, null, null);
+        if (result.moveToFirst()) {
+            item = getRecord(result);
+        }
+        result.close();
+        return item;
+    }
+
     public Monster getRecord(Cursor cursor) {
         Monster result = new Monster();
 
         result.id = cursor.getLong(0);
-        result.attack = cursor.getInt(1);
-        result.defense = cursor.getInt(2);
+        result.code = cursor.getString(1);
+        result.name = cursor.getString(2);
         result.hp = cursor.getInt(3);
-        result.name = cursor.getString(4);
+        result.attack = cursor.getInt(4);
+        result.defense = cursor.getInt(5);
 
         return result;
     }

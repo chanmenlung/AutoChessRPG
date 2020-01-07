@@ -18,10 +18,10 @@ public class AndGroup {
     public AndGroup(){
     }
 
-    public boolean doOperation(AdvContext advContext, Card myself) {
+    public boolean doOperation(AdvContext advContext) {
         boolean result = true;
         for (int i = 0; i < conds.size(); i++) {
-            result = result && conds.get(i).checking (advContext,myself);
+            result = result && conds.get(i).checking (advContext);
         }
         return result;
     }

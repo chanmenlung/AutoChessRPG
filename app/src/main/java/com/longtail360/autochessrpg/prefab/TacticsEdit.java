@@ -12,6 +12,7 @@ import com.longtail360.autochessrpg.entity.GameContext;
 import com.longtail360.autochessrpg.entity.tactic.Tactics;
 import com.longtail360.autochessrpg.entity.tactic.condition.AllManHp;
 import com.longtail360.autochessrpg.entity.tactic.condition.BaseCondition;
+import com.longtail360.autochessrpg.utils.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +22,7 @@ import java.util.List;
  */
 
 public class TacticsEdit extends FrameLayout {
+    private String tag = "TacticsEdit";
     private View editStrategyLayout;
     private ViewGroup conditionContainer;
     private View cancelNewStrategyButton;
@@ -52,8 +54,6 @@ public class TacticsEdit extends FrameLayout {
         reload(strategy);
         setListener();
 
-        ConditionUi condUi = new ConditionUi(getContext(), conditionContainer,this, strategy,strategy.conditions.get(0));
-        actionLayoutContainer.addView(condUi);
 
     }
 
@@ -73,6 +73,7 @@ public class TacticsEdit extends FrameLayout {
                 callBack.save();
                 showView(false);
                 GameContext.gameContext.savePlayerData(getContext());
+                Logger.log(tag, "tactics-size:"+GameContext.gameContext.getPlayer(getContext()).tacticsList.size());
             }
         });
 

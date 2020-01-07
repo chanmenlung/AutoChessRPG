@@ -39,9 +39,9 @@ public class ActionUi extends FrameLayout {
         Logger.log(tag,"selectedAction.key:"+selectedAction.key);
         this.selectedAction = selectedAction;
         actions = BaseAction.listAll(getContext());
-        renderDd1();
-        renderDd2();
-        renderDd3();
+//        renderDd1();
+//        renderDd2();
+//        renderDd3();
     }
 
     public void reload(BaseAction selectedAction) {

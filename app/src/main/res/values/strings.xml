@@ -21,23 +21,36 @@
     <string name="ui_home_hp">生命值:</string>
     <string name="ui_home_log">日誌</string>
     <string name="ui_home_cardForBuying">可購買的角色:</string>
+    <string name="ui_home_buyingCardPos">基本({basic}%), 普通({common}%),精良({rare}%),史詩({epic}%), 傳說({legendary}%)</string>
     <string name="ui_home_refreshForBuying">刷新\n($20)</string>
     <string name="ui_home_team">隊伍:</string>
     <string name="ui_home_tactics">戰術</string>
     <string name="ui_home_item">物品</string>
     <string name="ui_home_holdCard">持有的角色:</string>
     <string name="ui_home_startAdv">開始探索</string>
+    <string name="ui_home_continueAdv">繼續探索</string>
     <string name="ui_home_numOfFloor">層數:</string>
     <string name="ui_home_advReady">出發準備中，切勿關閉</string>
     <string name="ui_home_pleaseWait">請稍候</string>
     <string name="ui_home_handCardIsFull">手牌已滿, 請出售角色</string>
+    <string name="ui_home_coinNotEnougth">金幣不足</string>
+    <string name="ui_home_overPopulation">超過人口上限</string>
     <string name="ui_home_cardDesc_level">等級:</string>
     <string name="ui_home_cardDesc_cardInfo">生命值:{hp}  攻擊力:{attack}  防禦力:{defense}</string>
     <string name="ui_home_cardDesc_skill">技能:</string>
     <string name="ui_home_cardDesc_sellCard">出售可獲得: </string>
     <string name="ui_home_cardDesc_sell">出售</string>
+    <string name="ui_home_upgrade_notEnoughCoin">金幣不足</string>
+    <string name="ui_home_refresh_notEnoughCoin">金幣不足</string>
+    <string name="ui_home_upgrade_gotExp">已獲得4點經驗值</string>
     <string name="ui_home_help">說明</string>
     <string name="ui_home_help_content">1. 購買任意一名角色\n2. 若成功購買3名相同角色, 可升級該角色\n3. 把角色放置於隊伍欄中\n4. 點擊\"開始探索\"進行地下城的探索</string>
+    <string name="ui_home_noTeamCard">沒有隊伍成員</string>
+    <string name="ui_home_buyCardAndPutToTeam">招募一名角色, 並把該角色放置於隊伍中</string>
+    <string name="ui_home_advProgressing">探索進行中</string>
+    <string name="ui_home_cardUpgradeSuccess">已升級</string>
+    <string name="ui_home_isStartNewAdv">是否開始新的探索?</string>
+    <string name="ui_home_hp0IsStartNewAdv">生命值已歸零, 是否重新開始?</string>
     <string name="ui_allCard_buyCrystal">購買水晶</string>
     <string name="ui_popup_cancel">取消</string>
     <string name="ui_popup_confirm">確定</string>
@@ -46,14 +59,52 @@
     <string name="ui_myItem_itemList">物品列表</string>
     <string name="ui_myItem_hadBrought">己攜帶</string>
     <string name="ui_myItem_hadSaved">己存放</string>
+    <string name="cardIcon_upgrade">升級</string>
     <string name="item_redPotionSmall">紅色藥水</string>
     <string name="item_redPotionMiddle">進階紅色藥水</string>
     <string name="item_redPotionLarge">最進階紅色藥水</string>
+    <string name="item_itemHpUp">紅色藥水</string>
+    <string name="item_itemHpUp_desc">回復小量生命值</string>
+    <string name="item_itemCdDown">藍色藥水</string>
+    <string name="item_itemCdDown_desc">回復小量生命值</string>
+    <string name="item_itemAttackUp">飯團</string>
+    <string name="item_itemAttackUp_desc">回復小量生命值</string>
+    <string name="item_itemFire">炸藥</string>
+    <string name="item_itemFire_desc">對所有敵人造成傷害, 並有30%機率造成燃燒狀態</string>
+    <string name="item_itemElectricity">電容</string>
+    <string name="item_itemElectricity_desc">對所有敵人造成傷害, 並有30%機率造成觸電狀態</string>
+    <string name="item_itemPotion">毒氣彈</string>
+    <string name="item_itemPotion_desc">對所有敵人造成傷害, 並有30%機率造成中毒狀態</string>
+    <string name="item_itemIce">千年寒冰</string>
+    <string name="item_itemIce_desc">對所有敵人造成傷害, 並有30%機率造成冰凍狀態</string>
+    <string name="item_itemSummonMonsterSmall">妖精的翅膀</string>
+    <string name="item_itemSummonMonsterSmall_desc">召喚妖精為你作戰</string>
+    <string name="item_itemSummonMonsterLarge">龍鱗片</string>
+    <string name="item_itemSummonMonsterLarge_desc">召喚蠋龍為你作戰</string>
+    <string name="item_itemPerfume">誘惑香水</string>
+    <string name="item_itemPerfume_desc">一回內所有敵人互相攻擊</string>
     <string name="action_attack">攻擊</string>
-    <string name="action_target">攻擊</string>
+    <string name="action_target">目標</string>
     <string name="action_userSmallRedPotion">使用紅色藥水</string>
-    <string name="condition_all_card_hp">所有伙伴的HP</string>
+    <string name="action_useItemCdDown">使用藍色藥水</string>
+    <string name="action_useItemAttackUp">使用飯團</string>
+    <string name="action_useItemFire">使用炸藥</string>
+    <string name="action_useItemElectricity">使用電容</string>
+    <string name="action_useItemPotion">使用毒氣彈</string>
+    <string name="action_useItemIce">使用千年寒冰</string>
+    <string name="action_useItemSummonMonsterSmall">使用妖精的翅膀</string>
+    <string name="action_useItemSummonMonsterLarge">使用龍鱗片</string>
+    <string name="action_useItemPerfume">誘惑香水</string>
+    <string name="condition_all_card_hp">全員的HP</string>
+    <string name="condition_anyone_hp">任一人的HP</string>
+    <string name="condition_number_of_floor">探索層數</string>
+    <string name="condition_number_of_monster">敵人數目</string>
+    <string name="condition_any_two_hp">任意兩名伙伴的HP</string>
     <string name="condition_low_than">低於</string>
+    <string name="condition_number_greater_than">個或以上</string>
+    <string name="condition_floor_above">指定層以上</string>
+    <string name="condition_floor_below">指定層以下</string>
+    <string name="condition_floor_is">指定層</string>
     <string name="tactic_if">如果</string>
     <string name="tactic_negation">不符合</string>
     <string name="tactic_and">且</string>
@@ -71,6 +122,11 @@
     <string name="tactic_cancel">取消</string>
     <string name="tactic_up">編輯</string>
     <string name="tactic_down">編輯</string>
+    <string name="log_hp">血量:</string>
+    <string name="log_level">等級:</string>
+    <string name="monster_hp">生命值:</string>
+    <string name="monster_attack">攻擊力:</string>
+    <string name="monster_defense">護甲:</string>
     <string name="card_race">種族:</string>
     <string name="card_clazz">職業:</string>
     <string name="card_race_human">人類</string>
@@ -78,7 +134,7 @@
     <string name="card_race_dragon">龍</string>
     <string name="card_race_undead">不死</string>
     <string name="card_race_orcs">野獸</string>
-    <string name="card_race_gnome">地精</string>
+    <string name="card_race_demon">惡魔</string>
     <string name="card_race_divinity">神</string>
     <string name="card_race_marine">海族</string>
     <string name="card_race_dwarf">矮人</string>
@@ -114,7 +170,91 @@
     <string name="cardDetail_isUnlockCard">是否花費{crystal}水晶解除鎖定?\n(現時持有水晶:{currentCrystal})</string>
     <string name="allCard_race">所有種族</string>
     <string name="allCard_clazz">所有職業</string>
+    <string name="adv_start">探索出發</string>
+    <string name="adv_startContent">目標：{maze}, {floor}層</string>
+    <string name="adv_startFloor">{floor}層的探索</string>
+    <string name="adv_startFloorArea0Title">開始了第{floor}層的探索</string>
+    <string name="adv_startFloorArea0Content">{maze} {floor}層 第1地區</string>
+    <string name="adv_nextArea">向下一個地區向前</string>
+    <string name="adv_nextAreaContent">{maze} {floor}層 第{area}地區</string>
+    <string name="adv_nextAreaMonsterNest">「怪物巢穴」隊伍發現異常，聽到附近傳來吼聲和腳步聲。</string>
+    <string name="adv_nextAreaNormal">沒有發現異常。感應不到怪物的氣息。</string>
+    <string name="adv_takeABreak">休息</string>
+    <string name="adv_takeBreakContent">處境很危險，短暫休息</string>
+    <string name="adv_restoreSomeHpMP">隊伍恢復了小量血量</string>
+    <string name="adv_metMonster">隊伍遇到了{numOfMonster}只{monsterName}</string>
+    <string name="adv_logDeadTitle">{stage}的探索失敗</string>
+    <string name="adv_logDeadContent">遙遠的意識中，彷彿聽到一種聲音「你還沒到死的時候」……剛回過神，你發現自己倒在了郊外。</string>
+    <string name="adv_findAJar">發現了罌罐</string>
+    <string name="adv_openJarGetItem">{card}仔細地觀察周圍有沒有陷阱。好像沒有陷阱。從罌罐得到了物品「{item}」</string>
+    <string name="adv_findASpring">發現了泉水</string>
+    <string name="adv_drinkFromSpring">{card}走近泉水。泉水清明透徹，好像沒有毒。隊伍喝了泉水，感覺涼透了。</string>
+    <string name="adv_trape">陷阱！！</string>
+    <string name="adv_openTrapeTeamHurt">毒霧噴出，隊伍被襲擊了。 </string>
+    <string name="adv_findAnBox">發現了寶箱</string>
+    <string name="adv_openTrapeCardHurt">{card}打開寶箱，箭矢忽然從寶箱彈出，{card}受到了{hurt}點傷害。</string>
+    <string name="adv_update">更新</string>
+    <string name="adv_goAhead">前行</string>
+    <string name="adv_onBodyItem">隊伍持有物品</string>
+    <string name="adv_escapeSuccessTitle">成功逃脫</string>
+    <string name="adv_escapeSuccessDetail">這個敵人好像無法戰勝，隊伍逃跑了。</string>
+    <string name="adv_escapeFailTitle">逃跑失敗</string>
+    <string name="adv_escapeFailDetail">想要逃跑，卻被人從背後攔住了。</string>
+    <string name="adv_finishStage">{dungeon}探索通關</string>
+    <string name="adv_backToFloor">回到了{floor}層</string>
+    <string name="adv_backToFloorDetail">為了盡早返回，隊伍加快了步伐。</string>
+    <string name="adv_successAdv">{dungeon} 探索成功</string>
+    <string name="adv_interestGain">獎勵:{price}, 利息: {value}, 經驗值: +1 Exp, 已消耗{hp}點生命值復活{deadNum}名角色</string>
+    <string name="adv_hp0">生命值已歸零</string>
+    <string name="battle_monsterGetHurt"></string>
+    <string name="battle_monsterAttackTitle">{monster}的攻擊</string>
+    <string name="battle_cardGetHurt">{card}受到了{hurt}點傷害</string>
+    <string name="battle_cardDead">{card}倒下了</string>
+    <string name="battle_normalAttack">{card}的攻擊</string>
+    <string name="battle_mageNormalAttack">{card}吟唱了魔法[炎之矢], 刺眼的火焰朝敵人襲去。{monster}受到了{value}傷害。</string>
+    <string name="battle_priestNormalAttack">{card}吟唱了魔法[冰矛術], 空中出現一把鋒利的冰刃，朝敵人奔去。{monster}受到了{value}傷害。</string>
+    <string name="battle_shamanNormalAttack">{card}吟唱了巫術[放電]。停留在右手的雷光「唰」的一下，向敵人劈去。{monster}受到了{value}傷害。</string>
+    <string name="battle_warlockNormalAttack">{card}吟唱了法術[毒氣吐息], 毒氣狀的吐息向敵人飄去。{monster}受到了{value}傷害。</string>
+    <string name="battle_hunterNormalAttack">{card}向敵人投擲飛刀。{monster}受到了{value}傷害。</string>
+    <string name="battle_warriorNormalAttack">{card}宛若握著槍尖，刺向敵人的要害。{monster}受到了{value}傷害。</string>
+    <string name="battle_knightNormalAttack">{card}給予敵人猛烈的一擊。{monster}受到了{value}傷害。</string>
+    <string name="battle_rogueNormalAttack">{card}以風馳電掣的手法，對敵人連續出擊。{monster}受到了{value}傷害。</string>
+    <string name="battle_winBattleTitle">隊伍打倒了{monster}</string>
+    <string name="battle_battleLogTitle">{numOfMonster}隻{monsterName}遭遇戰</string>
+
     <string name="buyCrystal_buy">購買</string>
+    <string name="skill_name_valueUpAllAttack">集結號令</string>
+    <string name="skill_desc_valueUpAllAttack">指定友方角色獲得 +5 的攻擊力。</string>
+    <string name="skill_battleDesc_valueUpAllAttack">{card}激勵了隊伍, 隊伍每名角色提升了 5 點攻擊力。</string>
+    <string name="skill_statusDesc_valueUpAllAttack"></string>
+    <string name="skill_name_valueUpAllDefense">重整旗鼓</string>
+    <string name="skill_desc_valueUpAllDefense">隊伍角色獲得 +1 防禦力</string>
+    <string name="skill_battleDesc_valueUpAllDefense">{card}帶領隊伍重整旗鼓, 隊伍提升了 1 點防禦力。</string>
+    <string name="skill_statusDesc_valueUpAllDefense"></string>
+    <string name="skill_name_valueUpAttack">集結號令/激怒</string>
+    <string name="skill_desc_valueUpAttack">攻擊力上升 5 點</string>
+    <string name="skill_battleDesc_valueUpAttack">{card}使用了激怒術, {card}的腎上腺素持續上升, 攻擊力提升了 5 點。</string>
+    <string name="skill_statusDesc_valueUpAttack"></string>
+    <string name="skill_name_valueUpDefense">堅硬化</string>
+    <string name="skill_desc_valueUpDefense">獲得 +1 防禦力</string>
+    <string name="skill_battleDesc_valueUpDefense">{card}使用了堅硬化, 身上皮膚漸漸變得堅硬</string>
+    <string name="skill_statusDesc_valueUpDefense"></string>
+    <string name="skill_name_connect2Monster">鎖鏈術</string>
+    <string name="skill_desc_connect2Monster"></string>
+    <string name="skill_battleDesc_connect2Monster">{card}發動了鎖鏈術, 鎖鏈貫穿了{monsterA}及{monsterB}</string>
+    <string name="skill_statusDesc_connect2Monster"></string>
+    <string name="skill_name_connectMyselfAndTeam">均衡術</string>
+    <string name="skill_desc_connectAllMonster">均分所有角色的生命值</string>
+    <string name="skill_battleDesc_connectAllMonster">{card}發動了均衡術, 所有角色生命值設置至 {value}%</string>
+    <string name="skill_statusDesc_connectAllMonster"></string>
+    <string name="skill_name_connectMyselfAndAll">纏繞術</string>
+    <string name="skill_desc_connectMyselfAndAll">自身與所有敵人連結在一起, 若自身受到傷害, 敵人受到同等傷傷害</string>
+    <string name="skill_battleDesc_connectMyselfAnd">{card}發動了纏繞術, 在{card}的指揮下，有毒的蠕蟲從地下爬出來，攀附在區域內所有敵人</string>
+    <string name="skill_statusDesc_connectMyselfAndAll">由於{card}與敵人連結在一起, {monsters}同時受到 {value} 點傷害</string>
+    <string name="skill_name_connectMyselfAndMonster">精神入侵</string>
+    <string name="skill_desc_connectMyselfAndMonster">自身與其中一名敵人連結在一起, 若自身受到傷害, 該名敵人受到同等傷傷害</string>
+    <string name="skill_battleDesc_connectMyselfAndMonster">card}吟唱了精神入侵術, 把自身的痛楚與{monster}連結在一起</string>
+    <string name="skill_statusDesc_connectMyselfAndMonster">由於{card}與{monster}連結在一起, {monster}同時受到 {value} 點傷害</string>
     <string name="skill_name_electricAllBigHurt">超導體</string>
     <string name="skill_desc_electricAllBigHurt">對所有敵人造成{hurt}點傷害, 30%機率造成觸電狀態。</string>
     <string name="skill_battleDesc_electricAllBigHurt">{card}發動了超導體, 大地變為了超導體, 強烈電流流向了所有敵人. {targets}受到了{hurt}點傷害。</string>
@@ -145,7 +285,7 @@
     <string name="skill_statusDesc_fireSingleBigHurt">火焰對{statusLabel}造成{hurt}點傷害。</string>
     <string name="skill_name_fireSingleHurt">火球術</string>
     <string name="skill_desc_fireSingleHurt">施放魔法火球, 造成{hurt}點火焰傷害。</string>
-    <string name="skill_battleDesc_fireSingleHurt">{card}吟唱了火球術，熾熱的火球在前面變得越來越大並向{target}飛去，{target}受到了{hurt}點傷害</string>
+    <string name="skill_battleDesc_fireSingleHurt">{card}吟唱了火球術，熾熱的火球在前面變得越來越大並向{target}飛去，{target}受到了{hurt}點傷害。</string>
     <string name="skill_statusDesc_fireSingleHurt">火焰對{statusLabel}造成{hurt}點傷害。</string>
     <string name="skill_name_healAll">治癒淚珠</string>
     <string name="skill_desc_healAll">恢復所有友方{hurt}點生命值。</string>
@@ -171,6 +311,30 @@
     <string name="skill_desc_hitAllHurt">引發爆炸, 對所有敵人造成{hurt}點傷害。</string>
     <string name="skill_battleDesc_hitAllHurt">{card}衝向敵人中間, 並施展了旋風斬. {targets}受到了{hurt}點傷害</string>
     <string name="skill_statusDesc_hitAllHurt"></string>
+    <string name="skill_name_hitDoubleTime">風恕</string>
+    <string name="skill_desc_hitDoubleTime">每回合攻擊兩次, 效果持續三回合</string>
+    <string name="skill_battleDesc_hitDoubleTime">{card}吟唱風怒術, 強風包圍着{card}, 使身體變得無比輕盈</string>
+    <string name="skill_statusDesc_hitDoubleTime"></string>
+    <string name="skill_name_hitIgnoreDefenseSingle">飛天射擊</string>
+    <string name="skill_desc_hitIgnoreDefenseSingle">對一名敵人造成 10 傷害</string>
+    <string name="skill_battleDesc_hitIgnoreDefenseSingle">在{monster}毫無防備下, {card}跳至半空, 向{monster}拋射飛標, 成功擊中了對方, {monster}受到 {value} 點傷害</string>
+    <string name="skill_statusDesc_hitIgnoreDefenseSingle"></string>
+    <string name="skill_name_hitIgnoreDefenseSingleBig">狙殺射擊</string>
+    <string name="skill_desc_hitIgnoreDefenseSingleBig">對一名敵人造成 30 點傷害, 無視對方防禦力</string>
+    <string name="skill_battleDesc_hitIgnoreDefenseSingleBig">{card}作出了射擊姿勢並鎖定了{monster}, 在{monster}毫無防備下, 射向了對方, {monster}受到 {value} 點傷害</string>
+    <string name="skill_statusDesc_hitIgnoreDefenseSingleBig"></string>
+    <string name="skill_name_hitPercentage">遠距拋射</string>
+    <string name="skill_desc_hitPercentage">對一名敵人造成 10% 傷害</string>
+    <string name="skill_battleDesc_hitPercentage">card}跳至半空, 向{monster}拋射飛刀, 成功擊中了對方, {monster}受到 {value} 點傷害</string>
+    <string name="skill_statusDesc_hitPercentage"></string>
+    <string name="skill_name_hitSingleAndDodgeAttack">暗影背刺</string>
+    <string name="skill_desc_hitSingleAndDodgeAttack">提升自身的迴避能力 10%, 並對敵人造成 50 點傷害</string>
+    <string name="skill_battleDesc_hitSingleAndDodgeAttack">{card}發動了暗影背刺, 飛身至敵人後方，使用背刺刺殺{monster}, {monster}受到 50 點傷害</string>
+    <string name="skill_statusDesc_hitSingleAndDodgeAttack"></string>
+    <string name="skill_name_hitAllAndDodgeAttackTeam">戰術撤退</string>
+    <string name="skill_desc_hitAllAndDodgeAttackTeam">對所有敵人造成{value}點傷害, 並增力隊伍迴避率</string>
+    <string name="skill_battleDesc_hitAllAndDodgeAttackTeam">{card}吟唱了戰術撤退, 強力氣場 懸浮</string>
+    <string name="skill_statusDesc_hitAllAndDodgeAttackTeam"></string>
     <string name="skill_name_hitSingleBigHurt">雷霆一擊</string>
     <string name="skill_desc_hitSingleBigHurt">對所有敵人造成{hurt}點傷害。</string>
     <string name="skill_battleDesc_hitSingleBigHurt">{card}跳躍到半空中, 並用武器砸向了{targets}. {target}受到了{hurt}點傷害</string>
@@ -211,24 +375,221 @@
     <string name="skill_desc_potionSingleHurt">對目標造成{hurt}點傷害, 20%機率造成中毒狀態。</string>
     <string name="skill_battleDesc_potionSingleHurt">{card}向着{target}抛出一支毒鏢, 毒鏢成功刺中了對方. {target}受到了{hurt}點傷害。</string>
     <string name="skill_statusDesc_potionSingleHurt">{statusLabels}劇毒發作, 受到了{hurt}點傷害。</string>
-    <string name="skill_name_valueUpAllAttack">激怒</string>
-    <string name="skill_desc_valueUpAllAttack">指定友方角色獲得 +5 的攻擊力。</string>
-    <string name="skill_battleDesc_valueUpAllAttack">{card}用憤怒的力量激勵{target}, {target}的腎上腺素持續上升, 傷害獲得 +{value}。</string>
-    <string name="skill_statusDesc_valueUpAllAttack"></string>
-    <string name="skill_name_valueUpAllDefense">軍事專家</string>
-    <string name="skill_desc_valueUpAllDefense">隊伍角色獲得 +1 防禦力</string>
-    <string name="skill_battleDesc_valueUpAllDefense">{card}分析了當前的戰況, 設計了一套策略, 並分享給隊伍, 隊伍獲得 +1 防禦力。</string>
-    <string name="skill_statusDesc_valueUpAllDefense"></string>
-    <string name="skill_name_valueUpAttack">集結號令</string>
-    <string name="skill_desc_valueUpAttack">指定友方角色獲得 +5 的傷害加成</string>
-    <string name="skill_battleDesc_valueUpAttack">{card}用憤怒的力量激勵{target}, {target}的腎上腺素持續上升, 傷害獲得 +{value}。</string>
-    <string name="skill_statusDesc_valueUpAttack"></string>
-    <string name="skill_name_valueUpDefense">分析</string>
-    <string name="skill_desc_valueUpDefense">友方一名角色獲得 +1 防禦力</string>
-    <string name="skill_battleDesc_valueUpDefense">{card}向{target}分析了當前的戰況, {target}從中獲得靈感, 彷彿知道下一步的行動, {target}智力獲得 +{valuue}。</string>
-    <string name="skill_statusDesc_valueUpDefense"></string>
+    <string name="skill_name_randomAttackOfMonster">混亂</string>
+    <string name="skill_desc_randomAttackOfMonster">使怪物進入了混亂狀態, 每回合隨機攻擊, 持續三回合</string>
+    <string name="skill_battleDesc_randomAttackOfMonster">{card}吟唱了混亂術,所有怪物進入了混亂狀態</string>
+    <string name="skill_statusDesc_randomAttackOfMonster"></string>
+    <string name="skill_name_reflectAttackOnMyself">反射護盾</string>
+    <string name="skill_desc_reflectAttackOnMyself">當此角色受到傷害, 敵人同時受到20%的傷害</string>
+    <string name="skill_battleDesc_reflectAttackOnMyself">{card}發動反射護盾, 護盾守護{card}</string>
+    <string name="skill_statusDesc_reflectAttackOnMyself">{monster}的部分攻擊被{card}的護盾反射彈回, {monster}受到了{hurt}點傷害。</string>
+    <string name="skill_name_reflectAttackOnTeam">荊棘護盾</string>
+    <string name="skill_desc_reflectAttackOnTeam">當隊伍受到傷害, 敵人同時受到20%的傷害</string>
+    <string name="skill_battleDesc_reflectAttackOnTeam">{card}發動荊棘護盾, 隊伍周圍長滿了荊棘</string>
+    <string name="skill_statusDesc_reflectAttackOnTeam">{card}旁邊的荊棘使{monster}受到了{hurt}點傷害。</string>
+    <string name="skill_name_summonMonsterHeal">妖精的召換</string>
+    <string name="skill_desc_summonMonsterHeal">於場上召喚一名妖精, 妖精的效果: 每回合為隊伍回復10點生命值</string>
+    <string name="skill_battleDesc_summonMonsterHeal">{card}發動了妖精的召換, 一名妖精降落於場上, 隊伍回復了10點生命值</string>
+    <string name="skill_statusDesc_summonMonsterHeal">妖精為隊伍回復了10點生命值</string>
+    <string name="skill_name_summonMonsterLarge">召喚始生龍</string>
+    <string name="skill_desc_summonMonsterLarge">召喚一隻始生龍助你戰鬥</string>
+    <string name="skill_battleDesc_summonMonsterLarge"></string>
+    <string name="skill_statusDesc_summonMonsterLarge"></string>
+    <string name="skill_name_summonMonsterMiddle">召喚魂狼</string>
+    <string name="skill_desc_summonMonsterMiddle">召喚魂狼助你戰鬥</string>
+    <string name="skill_battleDesc_summonMonsterMiddle"></string>
+    <string name="skill_statusDesc_summonMonsterMiddle"></string>
+    <string name="skill_name_summonMonsterTwoSmall">召喚圖騰</string>
+    <string name="skill_desc_summonMonsterTwoSmall">於戰場後方召喚{value}個圖騰助你戰鬥</string>
+    <string name="skill_battleDesc_summonMonsterTwoSmall">圖騰{label}發動了火球術, 熾熱的火球在前面變得越來越大並向{target}飛去，{target}受到了{hurt}點傷害。</string>
+    <string name="skill_statusDesc_summonMonsterTwoSmall"></string>
+    <string name="skill_name_tauntAndDefenseUp">嘲諷</string>
+    <string name="skill_desc_tauntAndDefenseUp">提升 5 點防禦力, 並嘲諷敵人</string>
+    <string name="skill_battleDesc_tauntAndDefenseUp">{card}發動了嘲諷術, 所有敵人向着{card}衝去, {card}提升了 5 點防禦力</string>
+    <string name="skill_statusDesc_tauntAndDefenseUp"></string>
+    <string name="skill_name_tauntAndDefenseUpAndDodgeAttack">暗影步伐</string>
+    <string name="skill_desc_tauntAndDefenseUpAndDodgeAttack">提升自身的迴避能力 10%, 並嘲諷敵人</string>
+    <string name="skill_battleDesc_tauntAndDefenseUpAndDodgeAttack">{card}發動了暗影步伐術, 身體漸漸變得輕盈, 似乎能看清敵人的行動, {card}的迴避力上升了 10 %,並嘲諷{monster}</string>
+    <string name="skill_statusDesc_tauntAndDefenseUpAndDodgeAttack"></string>
+    <string name="skill_name_tauntAndDefenseUpAndNotDead">血戰到底</string>
+    <string name="skill_desc_tauntAndDefenseUpAndNotDead">在2回合內，此角色的生命值無法降低到1點以下，嘲諷敵人</string>
+    <string name="skill_battleDesc_tauntAndDefenseUpAndNotDead">{card}發動了血戰到底, 向敵人發起了嘲諷, 敵人向着{card}衝去</string>
+    <string name="skill_statusDesc_tauntAndDefenseUpAndNotDead">{card}倒下了, 但靠着不屈的意志, {card}站了起來</string>
+    <string name="skill_name_tauntAndHeal">挑戰</string>
+    <string name="skill_desc_tauntAndHeal">回復 50 點生命值並嘲諷敵人</string>
+    <string name="skill_battleDesc_tauntAndHeal">{card}發動了技能, 回復了 50 點生命值並向敵人發起了嘲諷, 敵人向着{card}衝去</string>
+    <string name="skill_statusDesc_tauntAndHeal"></string>
+    <string name="skill_name_transferHurtToMonster">反射護盾</string>
+    <string name="skill_desc_transferHurtToMonster">反射敵人的攻擊, 使其受到 10% 傷害</string>
+    <string name="skill_battleDesc_transferHurtToMonster">{card}發動了反射護盾, 在前方豎立了巨大的反射盾</string>
+    <string name="skill_statusDesc_transferHurtToMonster">{card}的反射了{monster}的攻擊, {monster}受到 {value} 點傷害</string>
+    <string name="skill_name_valueDownAttack">弱化術</string>
+    <string name="skill_desc_valueDownAttack">使一名敵人的攻擊力下降 10 點</string>
+    <string name="skill_battleDesc_valueDownAttack">{card}發動了弱化術, {target}感到了全身乏力, 攻撃力下降了10點</string>
+    <string name="skill_statusDesc_valueDownAttack"></string>
+    <string name="skill_name_valueDownAttackAll">蛛網纏繞</string>
+    <string name="skill_desc_valueDownAttackAll">所有敵人攻擊力下降 10 點</string>
+    <string name="skill_battleDesc_valueDownAttackAll">{card}吟唱蛛網纏繞術, 口裏吐出了巨大蛛網, 纏繞着所有敵人, 敵人攻擊力下降了 10 點</string>
+    <string name="skill_statusDesc_valueDownAttackAll"></string>
+    <string name="skill_name_valueDownDefense">剝皮</string>
+    <string name="skill_desc_valueDownDefense">使一名敵人的防禦力下降 1 點</string>
+    <string name="skill_battleDesc_valueDownDefense">{card}向{monster}發動了剝皮術, {monster}的皮膚漸漸剝落, {monster}的防禦力下降了 2 點</string>
+    <string name="skill_statusDesc_valueDownDefense"></string>
+    <string name="skill_name_valueDownDefenseAll">凍結之觸</string>
+    <string name="skill_desc_valueDownDefenseAll">為隊伍提供 1 點防禦力</string>
+    <string name="skill_battleDesc_valueDownDefenseAll">{card}吟唱了凍結之觸, 隊伍前方結了厚厚的冰層, 隊伍獲得 1 點防禦力</string>
+    <string name="skill_statusDesc_valueDownDefenseAll"></string>
+    <string name="skill_name_valueUpAttackDeadNumber">吸取源力</string>
+    <string name="skill_desc_valueUpAttackDeadNumber">每名死亡敵人使此角色提升 5 點攻擊力</string>
+    <string name="skill_battleDesc_valueUpAttackDeadNumber">{card}發動了源力吸取, 塲上怪物的屍首轉化為{card}的攻擊力, {card}獲得 {value} 點攻擊力</string>
+    <string name="skill_statusDesc_valueUpAttackDeadNumber"></string>
+    <string name="skill_name_valueUpAttackLowHp">血肉獻祭</string>
+    <string name="skill_desc_valueUpAttackLowHp">生命值越低, 攻擊力越高</string>
+    <string name="skill_battleDesc_valueUpAttackLowHp">{card}發動了血肉獻祭, 身上的傷口轉化為攻擊力, {card}獲得 {value} 點攻擊力</string>
+    <string name="skill_statusDesc_valueUpAttackLowHp"></string>
+    <string name="skill_name_valueUpAttackTurnNumber">速戰速決</string>
+    <string name="skill_desc_valueUpAttackTurnNumber">攻擊力提升 10 點, 若戰鬥回合超過 5 回合, 獲得 15 點攻擊力</string>
+    <string name="skill_battleDesc_valueUpAttackTurnNumber">{card}發動了速戰速決, {card}獲得 {value} 點攻擊力</string>
+    <string name="skill_statusDesc_valueUpAttackTurnNumber"></string>
+    <string name="skill_name_valueUpDefenseDeadNumber">骨甲術</string>
+    <string name="skill_desc_valueUpDefenseDeadNumber">塲上每具怪物的屍體, 使此角色獲得相同點數的防禦力</string>
+    <string name="skill_battleDesc_valueUpDefenseDeadNumber">{card}發動了骨甲術, 塲上的屍體轉化為{card}的獲甲, {card}獲得 {value} 點防禦力</string>
+    <string name="skill_statusDesc_valueUpDefenseDeadNumber"></string>
+    <string name="skill_name_valueUpDefenseLowHp">血性皮膚</string>
+    <string name="skill_desc_valueUpDefenseLowHp">獲得 1 點防禦力, 若生命值低於 40%, 獲得 2 點防禦力</string>
+    <string name="skill_battleDesc_valueUpDefenseLowHp">{card}發動了血性皮膚術, 身上的傷口轉化為堅硬的皮膚. {card}獲得 {value} 點防禦力</string>
+    <string name="skill_statusDesc_valueUpDefenseLowHp"></string>
+    <string name="skill_name_valueUpDefenseTurnNumber">修甲術</string>
+    <string name="skill_desc_valueUpDefenseTurnNumber">獲得 1 點防禦力, 若戰鬥回合超過 5 回合, 獲得 2 點防禦力</string>
+    <string name="skill_battleDesc_valueUpDefenseTurnNumber">{card}發動了修甲術, 身上的獲甲漸漸修復. {card}獲得 {value} 點防禦力</string>
+    <string name="skill_statusDesc_valueUpDefenseTurnNumber"></string>
+    <string name="skill_name_zeroHurtOnMyself">聖盾術</string>
+    <string name="skill_desc_zeroHurtOnMyself">可以擋掉任何傷害類的攻擊一次。</string>
+    <string name="skill_battleDesc_zeroHurtOnMyself">{card}發動了聖盾術, 隊伍獲得了聖盾, 可以擋掉任何傷害類的攻擊一次。</string>
+    <string name="skill_statusDesc_zeroHurtOnMyself"></string>
+    <string name="skill_name_zeroHurtOnTeam">守護天使</string>
+    <string name="skill_desc_zeroHurtOnTeam">{card}發動了守護天使, 隊伍獲得了聖盾, 可以擋掉任何傷害類的攻擊一次。</string>
+    <string name="skill_battleDesc_zeroHurtOnTeam">{monster}被{card}的聖盾擋掉了</string>
+    <string name="skill_statusDesc_zeroHurtOnTeam"></string>
+
+    <string name="skill_desc_attackDown"></string>
+    <string name="skill_desc_attackUp"></string>
+    <string name="skill_desc_cdDown"></string>
+    <string name="skill_desc_criticalHitUp"></string>
+    <string name="skill_desc_defenseDown"></string>
+    <string name="skill_desc_defenseUp"></string>
+    <string name="skill_desc_dodgeAttackUp"></string>
+    <string name="skill_desc_getGoodBoxUp"></string>
+    <string name="skill_desc_healPerTurn"></string>
+    <string name="skill_desc_hpDown"></string>
+    <string name="skill_desc_hpUp"></string>
+    <string name="skill_desc_lifeSteal"></string>
+    <string name="skill_desc_notDeadPerBattle"></string>
+    <string name="skill_desc_populationUp"></string>
+    <string name="skill_desc_reflectAttack"></string>
+    <string name="skill_desc_stopAttackInFirstTurn"></string>
+    <string name="skill_desc_stopAttackPerAttack"></string>
+    <string name="skill_desc_summonMonster"></string>
     <string-array
         name="cardNames">
+        <item>阿加迪</item>
+        <item>烏爾可修</item>
+        <item>艾修濃娜</item>
+        <item>艾布拉</item>
+        <item>艾利多</item>
+        <item>卡得修</item>
+        <item>卡托那</item>
+        <item>卡爾科米修</item>
+        <item>基修</item>
+        <item>科盼</item>
+        <item>阿帕梅亞</item>
+        <item>科佩爾</item>
+        <item>科莫斯</item>
+        <item>果兒秋絲</item>
+        <item>薩卡拉</item>
+        <item>咂巴拉姆</item>
+        <item>薩爾迪斯</item>
+        <item>謝福娜</item>
+        <item>斯薩</item>
+        <item>塔尼斯</item>
+        <item>提卡爾</item>
+        <item>阿瑪盧娜</item>
+        <item>提如斯</item>
+        <item>特貝</item>
+        <item>多加</item>
+        <item>托咯一曾</item>
+        <item>尼斯</item>
+        <item>尼薩</item>
+        <item>尼內威</item>
+        <item>尼姆爾多</item>
+        <item>內肯</item>
+        <item>內梅亞</item>
+        <item>艾爾</item>
+        <item>巴斯塔</item>
+        <item>帕爾米拉</item>
+        <item>帕稜克</item>
+        <item>法伊斯托斯</item>
+        <item>米雷托斯</item>
+        <item>拉伊</item>
+        <item>拉賈秀</item>
+        <item>拉拉庫</item>
+        <item>拉爾薩</item>
+        <item>拉爾納卡</item>
+        <item>艾爾格裡斯</item>
+        <item>伊興</item>
+        <item>伊利奧斯</item>
+        <item>烏加力圖</item>
+        <item>烏爾</item>
+
+        <item>阿加迪</item>
+        <item>烏爾可修</item>
+        <item>艾修濃娜</item>
+        <item>艾布拉</item>
+        <item>艾利多</item>
+        <item>卡得修</item>
+        <item>卡托那</item>
+        <item>卡爾科米修</item>
+        <item>基修</item>
+        <item>科盼</item>
+        <item>阿帕梅亞</item>
+        <item>科佩爾</item>
+        <item>科莫斯</item>
+        <item>果兒秋絲</item>
+        <item>薩卡拉</item>
+        <item>咂巴拉姆</item>
+        <item>薩爾迪斯</item>
+        <item>謝福娜</item>
+        <item>斯薩</item>
+        <item>塔尼斯</item>
+        <item>提卡爾</item>
+        <item>阿瑪盧娜</item>
+        <item>提如斯</item>
+        <item>特貝</item>
+        <item>多加</item>
+        <item>托咯一曾</item>
+        <item>尼斯</item>
+        <item>尼薩</item>
+        <item>尼內威</item>
+        <item>尼姆爾多</item>
+        <item>內肯</item>
+        <item>內梅亞</item>
+        <item>艾爾</item>
+        <item>巴斯塔</item>
+        <item>帕爾米拉</item>
+        <item>帕稜克</item>
+        <item>法伊斯托斯</item>
+        <item>米雷托斯</item>
+        <item>拉伊</item>
+        <item>拉賈秀</item>
+        <item>拉拉庫</item>
+        <item>拉爾薩</item>
+        <item>拉爾納卡</item>
+        <item>艾爾格裡斯</item>
+        <item>伊興</item>
+        <item>伊利奧斯</item>
+        <item>烏加力圖</item>
+        <item>烏爾</item>
+
         <item>阿加迪</item>
         <item>烏爾可修</item>
         <item>艾修濃娜</item>
@@ -281,56 +642,349 @@
     <string-array
         name="dungeonNames">
         <item>起始之地</item>
-        <item>血蹄小徑</item>
-        <item>北郡高地</item>
-        <item>葬影前哨站</item>
-        <item>冬泉路口</item>
-        <item>淤泥郡</item>
-        <item>悲傷牢籠</item>
-        <item>熱砂王國</item>
-        <item>月神之池</item>
-        <item>腐爛山</item>
-        <item>希爾斯布萊德瀑布</item>
-        <item>元素庇護所</item>
-        <item>雷神海灣</item>
-        <item>噬骨礦洞</item>
-        <item>戰槌哨崗</item>
-        <item>詛咒之門</item>
-        <item>日怒之脊</item>
-        <item>塔哈瑪特林地</item>
-        <item>激流沼澤</item>
-        <item>藏寶濕地</item>
-        <item>恐怖要塞</item>
-        <item>古樹之痕</item>
-        <item>罪惡城</item>
-        <item>獵鷹避難所</item>
-        <item>鑄魔之脊</item>
-        <item>日蝕島</item>
-        <item>月神神殿</item>
-        <item>回音挖掘場</item>
-        <item>孢殖小徑</item>
-        <item>鷹巢嶺</item>
-        <item>巨槌哨塔</item>
-        <item>米奈希之槌</item>
-        <item>元素湖</item>
-        <item>格羅姆高神廟</item>
-        <item>費伍德墳場</item>
-        <item>惡齒林地</item>
-        <item>海加爾之柱</item>
-        <item>血槌哨塔</item>
-        <item>日怒空地</item>
-        <item>孢殖路口</item>
-        <item>佐拉姆小屋</item>
-        <item>棘齒路口</item>
-        <item>米奈希峰</item>
-        <item>低地群島</item>
-        <item>棘齒環型山</item>
-        <item>剃刀磨坊</item>
-        <item>烏鴉礦洞</item>
-        <item>火羽之池</item>
-        <item>阿拉希海岸</item>
-        <item>法迪爾聖殿</item>
-        <item>荊棘磨坊</item>
-        <item>守望拉克</item>
+        <item>佐拉姆小屋</item>
+        <item>荊棘磨坊</item>
+        <item>血蹄小徑</item>
+        <item>棘齒路口</item>
+        <item>aaaa</item>
+        <item>許願湖</item>
+        <item>棘齒環型山</item>
+        <item>激流沼澤</item>
+        <item>迷失之丘</item>
+        <item>淤泥郡</item>
+        <item>火山高地</item>
+        <item>伊甸樂園</item>
+        <item>哥布林領</item>
+        <item>哥布林聖城</item>
+        <item>北極之地</item>
+        <item>古樹之痕</item>
+        <item>腐朽的幽靈船</item>
+        <item>惡鬼森林</item>
+        <item>鷹巢嶺</item>
+        <item>元素湖</item>
+        <item>邊境瀑布</item>
+        <item>守望拉克</item>
+        <item>大教堂</item>
+        <item>冬泉路口</item>
+        <item>葬影前哨站</item>
+        <item>遺忘的廢礦</item>
+        <item>深邃洞窟</item>
+        <item>無名者墳場</item>
+        <item>回音海灣</item>
+        <item>歎息的葬祭殿</item>
+        <item>國境要塞</item>
+        <item>修驗者聖地</item>
+        <item>恐怖實驗室</item>
+        <item>萬象圖書館</item>
+        <item>罪惡牢籠</item>
+        <item>魔術師之塔</item>
+        <item>夢幻仙境</item>
+        <item>地獄之門</item>
+        <item>血色死海</item>
+        <item>噬骨礦洞</item>
+        <item>地下墓穴</item>
+        <item>亡命競技場</item>
+        <item>貴族公館</item>
+        <item>不朽聖城</item>
+        <item>夢境森林</item>
+        <item>黑暗地心</item>
+        <item>古代地宮</item>
+        <item>恐怖要塞</item>
+        <item>魔王宮殿</item>
+        <item>精靈之都</item>
+        <item>無間地獄</item>
+        <item>無限迴廊</item>
+        <item>龍族巢穴</item>
+        <item>好望角</item>
+        <item>天空之城遺跡</item>
+        <item>終淵之地</item>
+    </string-array>
+
+    <string-array name="monsterNames">
+        <item>巨型甲蟲</item>
+        <item>紅蟲</item>
+        <item>巨型螞蟻</item>
+        <item>巨型蝸牛</item>
+        <item>吸血蝙蝠</item>
+        <item>奇異種子</item>
+        <item>巨型老鼠</item>
+        <item>紅寶石</item>
+        <item>冰兔</item>
+        <item>巨型天竺鼠</item>
+        <item>史萊姆</item>
+        <item>巨型史萊姆</item>
+        <item>百變怪</item>
+        <item>水布丁</item>
+        <item>進階史萊姆</item>
+        <item>立方怪</item>
+        <item>火焰史萊姆</item>
+        <item>凝膠怪</item>
+        <item>飛頭</item>
+        <item>粘土石魔</item>
+        <item>劇毒種子</item>
+        <item>巨型蜈蚣</item>
+        <item>蛇足龜</item>
+        <item>巨蠍</item>
+        <item>巨型蜥蜴</item>
+        <item>八爪魚</item>
+        <item>海星星</item>
+        <item>巨型烏龜</item>
+        <item>大地蝸牛</item>
+        <item>食人魚</item>
+        <item>貝貝鳥</item>
+        <item>巨型金雕</item>
+        <item>旗鳥</item>
+        <item>憤怒雞</item>
+        <item>巨型海歐</item>
+        <item>巨型青蛙</item>
+        <item>黑猫</item>
+        <item>探地怪</item>
+        <item>巨型螃蟹</item>
+        <item>類別人猿</item>
+        <item>灰泥怪</item>
+        <item>招財猫</item>
+        <item>不倒翁</item>
+        <item>石像獅子</item>
+        <item>進階石像獅子</item>
+        <item>書怪</item>
+        <item>村民</item>
+        <item>女村民</item>
+        <item>耶誕精靈</item>
+        <item>㨶蛋怪</item>
+        <item>火山蜥蜴</item>
+        <item>巨型熊猫</item>
+        <item>火焰雞</item>
+        <item>野犬</item>
+        <item>蔓生怪</item>
+        <item>大蟒</item>
+        <item>狗頭人</item>
+        <item>火焰蜥蜴</item>
+        <item>猿猴</item>
+        <item>進階類別人猿</item>
+        <item>哥布林戰士</item>
+        <item>哥布林士兵</item>
+        <item>哥布林</item>
+        <item>哥布林劍士</item>
+        <item>哥布林鬥士</item>
+        <item>哥布林法師</item>
+        <item>哥布林術士</item>
+        <item>進階哥布林騎士</item>
+        <item>哥布林騎士</item>
+        <item>哥布林薩滿</item>
+        <item>白熊</item>
+        <item>始生幼龍</item>
+        <item>企鵝戰士</item>
+        <item>制繩者</item>
+        <item>雪人戰士</item>
+        <item>蜥蜴鬥士</item>
+        <item>猪戰士</item>
+        <item>鹿盔守護者</item>
+        <item>香蛙戰士</item>
+        <item>鱷魚戰士</item>
+        <item>船長</item>
+        <item>女海賊</item>
+        <item>盜賊</item>
+        <item>海賊</item>
+        <item>強盜</item>
+        <item>長牙獅</item>
+        <item>海怪</item>
+        <item>飛天河馬</item>
+        <item>戰象</item>
+        <item>炎魔</item>
+        <item>小精靈</item>
+        <item>小龍</item>
+        <item>精靈</item>
+        <item>火鳥</item>
+        <item>小天使</item>
+        <item>食腐蟲</item>
+        <item>被造物</item>
+        <item>蠟燭怪</item>
+        <item>小飛龍</item>
+        <item>泥人</item>
+        <item>巨鯊</item>
+        <item>高山原人</item>
+        <item>河童</item>
+        <item>藏匿怪</item>
+        <item>觸手怪</item>
+        <item>石像鬼</item>
+        <item>無名劍</item>
+        <item>盔甲戰士</item>
+        <item>無面</item>
+        <item>圖騰</item>
+        <item>修女</item>
+        <item>薩滿</item>
+        <item>祭司</item>
+        <item>耶誕老人</item>
+        <item>牧師</item>
+        <item>守衛者</item>
+        <item>劍士</item>
+        <item>御家人</item>
+        <item>盜賊</item>
+        <item>刺客</item>
+        <item>水手</item>
+        <item>士兵</item>
+        <item>兵長</item>
+        <item>盾兵</item>
+        <item>漁夫</item>
+        <item>歐品尼克</item>
+        <item>狼人</item>
+        <item>黑熊</item>
+        <item>金剛</item>
+        <item>野牛</item>
+        <item>木乃伊</item>
+        <item>木傀儡</item>
+        <item>報喪女妖</item>
+        <item>地精</item>
+        <item>女妖</item>
+        <item>骷髏</item>
+        <item>骷髏戰士</item>
+        <item>骷髏鬥士</item>
+        <item>喪屍</item>
+        <item>殭屍</item>
+        <item>人魚探索者</item>
+        <item>進階人魚戰士</item>
+        <item>人魚</item>
+        <item>人魚</item>
+        <item>人魚戰士</item>
+        <item>天使</item>
+        <item>祝福者</item>
+        <item>巫妖</item>
+        <item>看守者</item>
+        <item>白衣守护者</item>
+        <item>皇家守衛</item>
+        <item>進階守衛</item>
+        <item>弓手</item>
+        <item>女戰士</item>
+        <item>獵人</item>
+        <item>法師</item>
+        <item>火鬥士</item>
+        <item>水鬥士</item>
+        <item>雪女</item>
+        <item>小魔女</item>
+        <item>冥鬥士</item>
+        <item>修驗者</item>
+        <item>浪人</item>
+        <item>亞人弓手</item>
+        <item>忍者</item>
+        <item>寄生獸</item>
+        <item>虛空巨蟲</item>
+        <item>惡魔</item>
+        <item>食蛇龜</item>
+        <item>炸脖龍</item>
+        <item>鑄鼎</item>
+        <item>無臉男</item>
+        <item>鐵魔像</item>
+        <item>遠古碑文</item>
+        <item>海盜船</item>
+        <item>古神祈求者</item>
+        <item>幽靈</item>
+        <item>火馬</item>
+        <item>水馬</item>
+        <item>擬物怪</item>
+        <item>火法師</item>
+        <item>冰法師</item>
+        <item>火魔女</item>
+        <item>巫師</item>
+        <item>魔女</item>
+        <item>幻影戰士</item>
+        <item>牛魔戰士</item>
+        <item>牛魔法師</item>
+        <item>伯爵劍士</item>
+        <item>妖精</item>
+        <item>白虎</item>
+        <item>巨鰻</item>
+        <item>三頭犬</item>
+        <item>阿努比斯</item>
+        <item>地獄獵犬</item>
+        <item>巨獸</item>
+        <item>深海怪</item>
+        <item>深海巨獸</item>
+        <item>食人魚</item>
+        <item>羽蛇</item>
+        <item>洞穴人</item>
+        <item>獨眼巨人</item>
+        <item>食人魔</item>
+        <item>進階牛魔戰士</item>
+        <item>巨型八爪魚</item>
+        <item>木乃伊戰士</item>
+        <item>伏擊者</item>
+        <item>墓穴守护者</item>
+        <item>不死者</item>
+        <item>燃燒的骷髏</item>
+        <item>狂戰士</item>
+        <item>人馬弓手</item>
+        <item>娜迦海妖</item>
+        <item>亞人刺客</item>
+        <item>深海戰士</item>
+        <item>骷髏戰士</item>
+        <item>皇家守衛者</item>
+        <item>亞人戰士</item>
+        <item>舞之刃</item>
+        <item>皇家戰士</item>
+        <item>君主</item>
+        <item>神御者</item>
+        <item>大主教</item>
+        <item>術士</item>
+        <item>黑暗騎士</item>
+        <item>死靈法師</item>
+        <item>山岭巨人</item>
+        <item>風暴巨人</item>
+        <item>森之巨人</item>
+        <item>石魔像</item>
+        <item>黑龍</item>
+        <item>雙足飛龍</item>
+        <item>海龍</item>
+        <item>大惡魔</item>
+        <item>遠古劍龍</item>
+        <item>龍人</item>
+        <item>黃金守衛者</item>
+        <item>人馬戰士</item>
+        <item>地獄使者</item>
+        <item>蟲界戰士</item>
+        <item>魅魔</item>
+        <item>小丑</item>
+        <item>皇家騎士</item>
+        <item>火巨人</item>
+        <item>公會會長</item>
+        <item>摩洛神</item>
+        <item>奇美拉</item>
+        <item>戰爭古樹</item>
+        <item>千年樹妖</item>
+        <item>鳳凰</item>
+        <item>水精靈</item>
+        <item>土精靈</item>
+        <item>火精靈</item>
+        <item>風精靈</item>
+        <item>燈神</item>
+        <item>吸血鬼</item>
+        <item>奪屍者</item>
+        <item>死神</item>
+        <item>終結者</item>
+        <item>古神亡靈</item>
+        <item>八歧大蛇</item>
+        <item>牛魔王</item>
+        <item>獨眼巨獸</item>
+        <item>蛇神海</item>
+        <item>封印女孩</item>
+        <item>翡翠龍</item>
+        <item>蛟龍</item>
+        <item>白龍</item>
+        <item>千年龍</item>
+        <item>藍龍</item>
+        <item>遠古龍</item>
+        <item>鯤</item>
+        <item>暮光龍</item>
+        <item>金龍</item>
+        <item>始生紅龍</item>
+        <item>aaaaa</item>
+        <item>aaaaaaaaa</item>
+        <item>綠龍</item>
+        <item>紅龍</item>
+        <item>巨型雙足飛龍</item>
+        <item>天使</item>
+        <item>權天使</item>
+        <item>大天使</item>
+        <item>主天使</item>
+        <item>熾天使</item>
     </string-array>
 </resources>

@@ -4,5 +4,6 @@
     <dimen name="ui_allCard_gridItemSize">60dp</dimen>
     <dimen name="ui_allCard_gridItemMargin">5dp</dimen>
     <dimen name="ui_card_desc_item_text_size">11sp</dimen>
+    <dimen name="ui_monster_desc_item_text_size">11sp</dimen>
     <dimen name="ui_card_icon_size">42dp</dimen>
 </resources>

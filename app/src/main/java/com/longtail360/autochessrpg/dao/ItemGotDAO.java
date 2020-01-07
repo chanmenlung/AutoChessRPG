@@ -5,7 +5,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.longtail360.autochessrpg.entity.CardForBuying;
 import com.longtail360.autochessrpg.entity.ItemGot;
 
 import java.util.ArrayList;

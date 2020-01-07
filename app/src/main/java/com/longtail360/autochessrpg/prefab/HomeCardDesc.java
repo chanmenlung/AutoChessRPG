@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -12,6 +13,8 @@ import com.longtail360.autochessrpg.R;
 import com.longtail360.autochessrpg.activity.BaseActivity;
 import com.longtail360.autochessrpg.entity.Card;
 import com.longtail360.autochessrpg.entity.GameContext;
+import com.longtail360.autochessrpg.entity.MyCard;
+import com.longtail360.autochessrpg.entity.log.RootLog;
 
 public class HomeCardDesc extends FrameLayout  {
     private View cardDescLayout;
@@ -21,8 +24,8 @@ public class HomeCardDesc extends FrameLayout  {
     private TextView cardDescPrice;
     private View cardDescCancelBt;
     private View cardDescSellBt;
-    private Card card;
-    private ViewGroup parentLayout;
+    private ImageView cardDescHead;
+    private CardIcon icon;
     public HomeCardDesc(Context context) {
         super(context);
 
@@ -40,7 +43,7 @@ public class HomeCardDesc extends FrameLayout  {
         cardDescPrice = findViewById(R.id.cardInfoDescPrice);
         cardDescCancelBt = findViewById(R.id.cardDescCancelBt);
         cardDescSellBt = findViewById(R.id.cardDescSellBt);
-
+        cardDescHead = findViewById(R.id.cardDescHead);
         cardDescCancelBt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -50,30 +53,27 @@ public class HomeCardDesc extends FrameLayout  {
         cardDescSellBt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                parentLayout.removeAllViews();
-                GameContext.gameContext.adventure.coin = GameContext.gameContext.adventure.coin + card.price;
-                GameContext.gameContext.advDAO.update(GameContext.gameContext.adventure);
                 HomeCardDesc.this.setVisibility(View.GONE);
-                callBack.doActionAfterSellCard(parentLayout,card);
+                callBack.doActionAfterSellCard(icon);
             }
         });
     }
 
-    public void reloadCard(Context context, ViewGroup parentLayout, Card card) {
-        this.card = card;
-        this.parentLayout = parentLayout;
-        cardDescLevel.setText(context.getString(R.string.ui_home_cardDesc_level)+card.level);
+    public void reloadCard(Context context, CardIcon cardIcon) {
+        this.icon = cardIcon;
+        cardDescLevel.setText(context.getString(R.string.ui_home_cardDesc_level)+1);
         cardDescValue.setText(context.getString(R.string.ui_home_cardDesc_cardInfo)
-                .replace("{hp}", card.hp+"")
-                .replace("{attack}", card.attack+"")
-                .replace("{defense}", card.defense+"")
+                .replace("{hp}", cardIcon.myCard.battleHp+"/"+cardIcon.myCard.getTotalHp())
+                .replace("{attack}", cardIcon.myCard.getAttack()+"")
+                .replace("{defense}", cardIcon.myCard.card.defense+"")
         );
-        cardDescSkill.setText(context.getString(R.string.ui_home_cardDesc_skill)+card.skill.desc);
-        cardDescPrice.setText(context.getString(R.string.ui_home_cardDesc_sellCard)+card.price);
+        cardDescSkill.setText(context.getString(R.string.ui_home_cardDesc_skill)+cardIcon.myCard.card.skill.desc);
+        cardDescPrice.setText(context.getString(R.string.ui_home_cardDesc_sellCard)+cardIcon.myCard.getSellingPrice());
+        cardIcon.myCard.card.setHeadToImageView(context, cardDescHead);
     }
 
 
     public interface CallBack {
-        void doActionAfterSellCard(ViewGroup parentLayout, Card card);
+        void doActionAfterSellCard(CardIcon cardIcon);
     }
 }

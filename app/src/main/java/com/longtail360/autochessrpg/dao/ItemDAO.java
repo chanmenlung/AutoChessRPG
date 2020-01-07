@@ -14,13 +14,17 @@ public class ItemDAO {
     public static final String TABLE_NAME = "ITEM";
     public static final String KEY_ID = "_id";
     public static final String ITEM_CODE = "item_code";
+    public static final String IMAGE_NAME = "image_name";
     public static final String NAME = "name";
+    public static final String DESC = "desc";
 
     public static final String CREATE_TABLE =
             "CREATE TABLE " + TABLE_NAME + " (" +
                     KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                     ITEM_CODE + " TEXT NOT NULL,"+
-                    NAME + " TEXT NOT NULL"
+                    IMAGE_NAME + " TEXT NOT NULL,"+
+                    NAME + " TEXT NOT NULL," +
+                    DESC + " TEXT NOT NULL"
                     + ")";
             ;
     private SQLiteDatabase db;
@@ -34,8 +38,9 @@ public class ItemDAO {
     public Item insert(Item item) {
         ContentValues cv = new ContentValues();
         cv.put(ITEM_CODE, item.itemCode);
+        cv.put(IMAGE_NAME, item.imageName);
         cv.put(NAME, item.name);
-
+        cv.put(DESC, item.desc);
         long id = db.insert(TABLE_NAME, null, cv);
         item.id = id;
         return item;
@@ -43,8 +48,9 @@ public class ItemDAO {
     public boolean update(Item item) {
         ContentValues cv = new ContentValues();
         cv.put(ITEM_CODE, item.itemCode);
+        cv.put(IMAGE_NAME, item.imageName);
         cv.put(NAME, item.name);
-
+        cv.put(DESC, item.desc);
         String where = KEY_ID + "=" + item.id;
         return db.update(TABLE_NAME, cv, where, null) > 0;
     }
@@ -96,8 +102,9 @@ public class ItemDAO {
 
         result.id = cursor.getLong(0);
         result.itemCode = cursor.getString(1);
-        result.name = cursor.getString(2);
-
+        result.imageName = cursor.getString(2);
+        result.name = cursor.getString(3);
+        result.desc = cursor.getString(4);
         return result;
     }
 

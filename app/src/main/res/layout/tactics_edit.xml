@@ -6,21 +6,9 @@
     android:id="@+id/editStrategyLayout">
 
     <FrameLayout
-        android:layout_width="200dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="10dp"
-        android:layout_gravity="center_horizontal"
-        >
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:text="@string/tactic_editTactic"/>
-    </FrameLayout>
-    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:translationY="40dp">
+        android:translationY="10dp">
         <Button
             android:id="@+id/saveStrategyButton"
             android:layout_marginLeft="10dp"
@@ -48,8 +36,8 @@
     <ScrollView
         android:layout_centerInParent="true"
         android:layout_width="match_parent"
-        android:translationY="95dp"
-        android:layout_height="360dp">
+        android:translationY="65dp"
+        android:layout_height="460dp">
         <LinearLayout
             android:id="@+id/conditionContainer"
             android:layout_width="match_parent"
@@ -73,13 +61,21 @@
 
     </ScrollView>
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:layout_weight="0.7"
+        android:layout_marginBottom="100dp"
+        android:layout_gravity="bottom"
+        android:background="@drawable/ui_small_line" />
     <LinearLayout
         android:id="@+id/actionLayoutContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:translationY="465dp"
-        android:background="@drawable/xml_rectangle"
-        android:layout_margin="2dp"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="30dp"
+        android:layout_marginLeft="2dp"
+        android:layout_marginRight="2dp"
         android:orientation="vertical"
         >
 

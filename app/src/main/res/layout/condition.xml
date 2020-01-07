@@ -28,8 +28,9 @@
         android:id="@+id/cond_rectangle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingBottom="10dp"
         android:layout_margin="2dp"
-        android:background="@drawable/xml_rectangle">
+        android:background="@drawable/ui_panel_list_item_desc">
 
         <TextView
         android:layout_width="wrap_content"

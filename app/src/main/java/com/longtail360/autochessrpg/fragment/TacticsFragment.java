@@ -32,7 +32,6 @@ public class TacticsFragment  extends BaseFragment implements TacticsEdit.CallBa
     private View cancelSelectStrategyButton;
 
     private LinearLayout strategyContainer;
-    private Context mContext;
     private TacticsEdit strategyEdit;
     private Tactics focusStrategy;
     private TacticsDescItem focusStrategyItem;
@@ -55,7 +54,6 @@ public class TacticsFragment  extends BaseFragment implements TacticsEdit.CallBa
 //        editStrategyLayout = findViewById(R.id.editStrategyLayout);
         strategyItemSelectMenuLayout.setVisibility(View.INVISIBLE);
         loadStrategyList();
-        strategyList.setVisibility(View.INVISIBLE);
         setListener();
         return view;
     }
@@ -71,7 +69,8 @@ public class TacticsFragment  extends BaseFragment implements TacticsEdit.CallBa
         strategyBackButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                strategyList.setVisibility(View.INVISIBLE);
+                if (getFragmentManager().getBackStackEntryCount() > 0)
+                    getFragmentManager().popBackStack();
             }
         });
         newStrategyButton.setOnClickListener(new View.OnClickListener() {
@@ -96,8 +95,7 @@ public class TacticsFragment  extends BaseFragment implements TacticsEdit.CallBa
                 GameContext.gameContext.getPlayer(getContext()).tacticsList.remove(focusStrategy);
                 strategyContainer.removeView(focusStrategyItem);
                 strategyItemSelectMenuLayout.setVisibility(View.INVISIBLE);
-//                BaseActivity.savePlayerData(mContext);
-                GameContext.gameContext.savePlayerData(mContext);
+                GameContext.gameContext.savePlayerData(getContext());
             }
         });
 
@@ -111,7 +109,7 @@ public class TacticsFragment  extends BaseFragment implements TacticsEdit.CallBa
                 focusStrategy.order = index -1;
                 loadStrategyList();
                 strategyItemSelectMenuLayout.setVisibility(View.INVISIBLE);
-                GameContext.gameContext.savePlayerData(mContext);
+                GameContext.gameContext.savePlayerData(getContext());
             }
         });
 
@@ -125,7 +123,7 @@ public class TacticsFragment  extends BaseFragment implements TacticsEdit.CallBa
                 focusStrategy.order = index +1;
                 loadStrategyList();
                 strategyItemSelectMenuLayout.setVisibility(View.INVISIBLE);
-                GameContext.gameContext.savePlayerData(mContext);
+                GameContext.gameContext.savePlayerData(getContext());
             }
         });
 
@@ -138,6 +136,7 @@ public class TacticsFragment  extends BaseFragment implements TacticsEdit.CallBa
     }
 
     private TacticsEdit showEditStrategy(Context context, TacticsEdit stgEdit, Tactics strategy) {
+        Logger.log(tag, "showEditStrategy");
         if(stgEdit == null) {
             stgEdit = new TacticsEdit(context, this, strategy);
             strategyList.addView(stgEdit);
@@ -159,7 +158,7 @@ public class TacticsFragment  extends BaseFragment implements TacticsEdit.CallBa
         Logger.log(tag, "card.tacticsList.size():"+ GameContext.gameContext.getPlayer(getContext()).tacticsList.size());
         for(int i=0; i< GameContext.gameContext.getPlayer(getContext()).tacticsList.size();i++){
 //            final int k = i;
-            final TacticsDescItem item = new TacticsDescItem(mContext, GameContext.gameContext.getPlayer(getContext()).tacticsList.get(i), i);
+            final TacticsDescItem item = new TacticsDescItem(getContext(), GameContext.gameContext.getPlayer(getContext()).tacticsList.get(i), i);
             item.content.setText( GameContext.gameContext.getPlayer(getContext()).tacticsList.get(i).concatStr(getContext()));
             item.setOnClickListener(new View.OnClickListener() {
                 @Override

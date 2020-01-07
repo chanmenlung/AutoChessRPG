@@ -111,8 +111,8 @@ public class CardDescItem extends LinearLayout {
             raceValue.setText(context.getString(R.string.card_race_dwarf));
         }else if(card.race.equals(Card.RACE_ELF)){
             raceValue.setText(context.getString(R.string.card_race_elf));
-        }else if(card.race.equals(Card.RACE_GNOME)){
-            raceValue.setText(context.getString(R.string.card_race_gnome));
+        }else if(card.race.equals(Card.RACE_DEMON)){
+            raceValue.setText(context.getString(R.string.card_race_demon));
         }else if(card.race.equals(Card.RACE_GOO)){
             raceValue.setText(context.getString(R.string.card_race_goo));
         }else if(card.race.equals(Card.RACE_HUMAN)){

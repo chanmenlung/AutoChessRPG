@@ -4,20 +4,20 @@ import android.content.Context;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.longtail360.autochessrpg.activity.BaseActivity;
 import com.longtail360.autochessrpg.dao.AdventureDAO;
 import com.longtail360.autochessrpg.dao.CardDAO;
-import com.longtail360.autochessrpg.dao.CardForBuyingDAO;
-import com.longtail360.autochessrpg.dao.CardInBattleDAO;
-import com.longtail360.autochessrpg.dao.CardInHandDAO;
 import com.longtail360.autochessrpg.dao.DungeonDAO;
 import com.longtail360.autochessrpg.dao.ItemDAO;
 import com.longtail360.autochessrpg.dao.ItemGotDAO;
 import com.longtail360.autochessrpg.dao.MonsterDAO;
+import com.longtail360.autochessrpg.dao.MyCardDAO;
 import com.longtail360.autochessrpg.dao.SkillDAO;
+import com.longtail360.autochessrpg.dao.log.BattleItemLogDAO;
+import com.longtail360.autochessrpg.dao.log.BattleRootLogDAO;
+import com.longtail360.autochessrpg.dao.log.ProcessLogDAO;
+import com.longtail360.autochessrpg.dao.log.RootLogDAO;
+import com.longtail360.autochessrpg.dao.log.TeamStatusDAO;
 import com.longtail360.autochessrpg.utils.Logger;
-
-import org.json.JSONException;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -33,19 +33,22 @@ public class GameContext {
     public AdventureDAO advDAO;
     public CardDAO cardDAO;
     public SkillDAO skillDAO;
-    public CardInBattleDAO cardInBattleDAO;
-    public CardInHandDAO cardInHandDAO;
-    public CardForBuyingDAO cardForBuyingDAO;
     public DungeonDAO dungeonDAO;
     public ItemDAO itemDAO;
     public ItemGotDAO itemGotDAO;
     public MonsterDAO monsterDAO;
+    public MyCardDAO myCardDAO;
+    public RootLogDAO rootLogDAO;
+    public ProcessLogDAO processLogDAO;
+    public TeamStatusDAO teamStatusDAO;
+    public BattleRootLogDAO battleRootLogDAO;
+    public BattleItemLogDAO battleItemLogDAO;
 
     public Adventure adventure;
     public List<Card> card;
-    public List<CardInBattle> cardInBattles;
-    public List<CardInHand> cardInHands;
-    public List<CardForBuying> cardForBuyings;
+    public List<MyCard> cardInBattles;
+    public List<MyCard> cardInHands;
+    public List<MyCard> cardForBuyings;
     public List<Dungeon> dungeons;
     public List<Item> items;
     public List<ItemGot> itemGots;

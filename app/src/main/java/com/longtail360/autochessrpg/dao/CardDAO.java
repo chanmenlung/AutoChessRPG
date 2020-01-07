@@ -170,6 +170,19 @@ public class CardDAO {
         return item;
     }
 
+    public Card getByCode(String id) {
+        Card item = null;
+        String where = CODE + "='" + id+"'";
+        Cursor result = db.query(
+                TABLE_NAME, null, where, null, null, null, null, null);
+        if (result.moveToFirst()) {
+            item = getRecord(result);
+        }
+        result.close();
+        return item;
+    }
+
+
     public Card getRecord(Cursor cursor) {
         Card result = new Card();
 
@@ -192,7 +205,7 @@ public class CardDAO {
         result.attack= cursor.getInt(16);
         result.defense= cursor.getInt(17);
         result.price = cursor.getInt(18);
-        result.price = cursor.getInt(19);
+        result.rarity = cursor.getInt(19);
         return result;
     }
 

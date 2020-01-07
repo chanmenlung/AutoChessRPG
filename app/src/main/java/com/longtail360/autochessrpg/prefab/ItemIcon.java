@@ -21,7 +21,7 @@ public class ItemIcon extends FrameLayout {
         inflater.inflate(R.layout.item_icon, this);
         itemIcon = (ImageView)findViewById(R.id.itemIcon);
         Logger.log(tag, "item.itemCode:"+item.itemCode);
-        itemIcon.setImageResource(ImageUtils.convertImageStringToInt(context, item.itemCode));
+        itemIcon.setImageResource(ImageUtils.convertImageStringToInt(context, item.imageName));
 
 
     }

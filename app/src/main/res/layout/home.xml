@@ -111,6 +111,14 @@
             android:textSize="@dimen/ui_topInfoBar_textSize"
             android:text="99/99" />
 
+        <ImageView
+            android:id="@+id/settingBt"
+            android:layout_marginLeft="5dp"
+            android:layout_width="25dp"
+            android:layout_height="22dp"
+            android:layout_gravity="left|center_vertical"
+            android:src="@drawable/ui_icon_gear"/>
+
     </LinearLayout>
     <!-- top info bar end -->
     
@@ -227,25 +235,25 @@
                         android:layout_marginLeft="5dp"
                         android:src="@drawable/item_lithograph"/>
                 </LinearLayout>
-                <LinearLayout
-                    android:id="@+id/logBt"
-                    android:layout_width="120dp"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="right"
-                    android:orientation="horizontal">
-                    <TextView
-                        android:layout_width="60dp"
-                        android:layout_height="match_parent"
-                        android:gravity="center"
-                        android:textSize="16sp"
-                        android:layout_centerInParent="true"
-                        android:text="@string/ui_home_log" />
-                    <ImageView
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_gravity="center"
-                        android:src="@drawable/item_book"/>
-                </LinearLayout>
+                <!--<LinearLayout-->
+                    <!--android:id="@+id/logBt"-->
+                    <!--android:layout_width="120dp"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:layout_gravity="right"-->
+                    <!--android:orientation="horizontal">-->
+                    <!--<TextView-->
+                        <!--android:layout_width="60dp"-->
+                        <!--android:layout_height="match_parent"-->
+                        <!--android:gravity="center"-->
+                        <!--android:textSize="16sp"-->
+                        <!--android:layout_centerInParent="true"-->
+                        <!--android:text="@string/ui_home_log" />-->
+                    <!--<ImageView-->
+                        <!--android:layout_width="40dp"-->
+                        <!--android:layout_height="40dp"-->
+                        <!--android:layout_gravity="center"-->
+                        <!--android:src="@drawable/item_book"/>-->
+                <!--</LinearLayout>-->
             </FrameLayout>
             <!-- current place end -->
 
@@ -265,12 +273,13 @@
                         android:layout_marginTop="10dp"
                         android:text="@string/ui_home_cardForBuying"/>
                     <TextView
+                        android:id="@+id/buyCardPosDesc"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="right|center_vertical"
-                        android:layout_marginRight="60dp"
+                        android:layout_marginRight="30dp"
                         android:textSize="9sp"
-                        android:text="普通(20%),精良(50%),史詩(20%), 傳說(20%)"/>
+                        android:text="@string/ui_home_buyingCardPos"/>
 
                 </FrameLayout>
                 <LinearLayout
@@ -444,6 +453,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/tacticsBt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
@@ -461,6 +471,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/upgradeBt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="15dp"
@@ -498,6 +509,7 @@
                     android:columnCount="8"
                     >
                     <FrameLayout
+                        android:id="@+id/teamMem0"
                         android:layout_width="@dimen/ui_home_battle_grid_item_size"
                         android:layout_height="@dimen/ui_home_battle_grid_item_size"
                         android:layout_margin="1dp"
@@ -505,6 +517,7 @@
                         >
                     </FrameLayout>
                     <FrameLayout
+                        android:id="@+id/teamMem1"
                         android:layout_width="@dimen/ui_home_battle_grid_item_size"
                         android:layout_height="@dimen/ui_home_battle_grid_item_size"
                         android:layout_margin="1dp"
@@ -512,6 +525,7 @@
                         >
                     </FrameLayout>
                     <FrameLayout
+                        android:id="@+id/teamMem2"
                         android:layout_width="@dimen/ui_home_battle_grid_item_size"
                         android:layout_height="@dimen/ui_home_battle_grid_item_size"
                         android:layout_margin="1dp"
@@ -519,6 +533,7 @@
                         >
                     </FrameLayout>
                     <FrameLayout
+                        android:id="@+id/teamMem3"
                         android:layout_width="@dimen/ui_home_battle_grid_item_size"
                         android:layout_height="@dimen/ui_home_battle_grid_item_size"
                         android:layout_margin="1dp"
@@ -526,6 +541,7 @@
                         >
                     </FrameLayout>
                     <FrameLayout
+                        android:id="@+id/teamMem4"
                         android:layout_width="@dimen/ui_home_battle_grid_item_size"
                         android:layout_height="@dimen/ui_home_battle_grid_item_size"
                         android:layout_margin="1dp"
@@ -533,6 +549,7 @@
                         >
                     </FrameLayout>
                     <FrameLayout
+                        android:id="@+id/teamMem5"
                         android:layout_width="@dimen/ui_home_battle_grid_item_size"
                         android:layout_height="@dimen/ui_home_battle_grid_item_size"
                         android:layout_margin="1dp"
@@ -540,6 +557,7 @@
                         >
                     </FrameLayout>
                     <FrameLayout
+                        android:id="@+id/teamMem6"
                         android:layout_width="@dimen/ui_home_battle_grid_item_size"
                         android:layout_height="@dimen/ui_home_battle_grid_item_size"
                         android:layout_margin="1dp"
@@ -547,6 +565,7 @@
                         >
                     </FrameLayout>
                     <FrameLayout
+                        android:id="@+id/teamMem7"
                         android:layout_width="@dimen/ui_home_battle_grid_item_size"
                         android:layout_height="@dimen/ui_home_battle_grid_item_size"
                         android:layout_margin="1dp"
@@ -554,6 +573,7 @@
                         >
                     </FrameLayout>
                     <FrameLayout
+                        android:id="@+id/teamMem8"
                         android:layout_width="@dimen/ui_home_battle_grid_item_size"
                         android:layout_height="@dimen/ui_home_battle_grid_item_size"
                         android:layout_margin="1dp"
@@ -561,6 +581,7 @@
                         >
                     </FrameLayout>
                     <FrameLayout
+                        android:id="@+id/teamMem9"
                         android:layout_width="@dimen/ui_home_battle_grid_item_size"
                         android:layout_height="@dimen/ui_home_battle_grid_item_size"
                         android:layout_margin="1dp"
@@ -568,6 +589,7 @@
                         >
                     </FrameLayout>
                     <FrameLayout
+                        android:id="@+id/teamMem10"
                         android:layout_width="@dimen/ui_home_battle_grid_item_size"
                         android:layout_height="@dimen/ui_home_battle_grid_item_size"
                         android:layout_margin="1dp"
@@ -575,6 +597,7 @@
                         >
                     </FrameLayout>
                     <FrameLayout
+                        android:id="@+id/teamMem11"
                         android:layout_width="@dimen/ui_home_battle_grid_item_size"
                         android:layout_height="@dimen/ui_home_battle_grid_item_size"
                         android:layout_margin="1dp"
@@ -582,6 +605,7 @@
                         >
                     </FrameLayout>
                     <FrameLayout
+                        android:id="@+id/teamMem12"
                         android:layout_width="@dimen/ui_home_battle_grid_item_size"
                         android:layout_height="@dimen/ui_home_battle_grid_item_size"
                         android:layout_margin="1dp"
@@ -589,6 +613,7 @@
                         >
                     </FrameLayout>
                     <FrameLayout
+                        android:id="@+id/teamMem13"
                         android:layout_width="@dimen/ui_home_battle_grid_item_size"
                         android:layout_height="@dimen/ui_home_battle_grid_item_size"
                         android:layout_margin="1dp"
@@ -596,6 +621,7 @@
                         >
                     </FrameLayout>
                     <FrameLayout
+                        android:id="@+id/teamMem14"
                         android:layout_width="@dimen/ui_home_battle_grid_item_size"
                         android:layout_height="@dimen/ui_home_battle_grid_item_size"
                         android:layout_margin="1dp"
@@ -603,6 +629,7 @@
                         >
                     </FrameLayout>
                     <FrameLayout
+                        android:id="@+id/teamMem15"
                         android:layout_width="@dimen/ui_home_battle_grid_item_size"
                         android:layout_height="@dimen/ui_home_battle_grid_item_size"
                         android:layout_margin="1dp"
@@ -610,6 +637,7 @@
                         >
                     </FrameLayout>
                     <FrameLayout
+                        android:id="@+id/teamMem16"
                         android:layout_width="@dimen/ui_home_battle_grid_item_size"
                         android:layout_height="@dimen/ui_home_battle_grid_item_size"
                         android:layout_margin="1dp"
@@ -617,6 +645,7 @@
                         >
                     </FrameLayout>
                     <FrameLayout
+                        android:id="@+id/teamMem17"
                         android:layout_width="@dimen/ui_home_battle_grid_item_size"
                         android:layout_height="@dimen/ui_home_battle_grid_item_size"
                         android:layout_margin="1dp"
@@ -624,6 +653,7 @@
                         >
                     </FrameLayout>
                     <FrameLayout
+                        android:id="@+id/teamMem18"
                         android:layout_width="@dimen/ui_home_battle_grid_item_size"
                         android:layout_height="@dimen/ui_home_battle_grid_item_size"
                         android:layout_margin="1dp"
@@ -631,6 +661,7 @@
                         >
                     </FrameLayout>
                     <FrameLayout
+                        android:id="@+id/teamMem19"
                         android:layout_width="@dimen/ui_home_battle_grid_item_size"
                         android:layout_height="@dimen/ui_home_battle_grid_item_size"
                         android:layout_margin="1dp"
@@ -638,6 +669,7 @@
                         >
                     </FrameLayout>
                     <FrameLayout
+                        android:id="@+id/teamMem20"
                         android:layout_width="@dimen/ui_home_battle_grid_item_size"
                         android:layout_height="@dimen/ui_home_battle_grid_item_size"
                         android:layout_margin="1dp"
@@ -645,6 +677,7 @@
                         >
                     </FrameLayout>
                     <FrameLayout
+                        android:id="@+id/teamMem21"
                         android:layout_width="@dimen/ui_home_battle_grid_item_size"
                         android:layout_height="@dimen/ui_home_battle_grid_item_size"
                         android:layout_margin="1dp"
@@ -652,6 +685,7 @@
                         >
                     </FrameLayout>
                     <FrameLayout
+                        android:id="@+id/teamMem22"
                         android:layout_width="@dimen/ui_home_battle_grid_item_size"
                         android:layout_height="@dimen/ui_home_battle_grid_item_size"
                         android:layout_margin="1dp"
@@ -659,6 +693,7 @@
                         >
                     </FrameLayout>
                     <FrameLayout
+                        android:id="@+id/teamMem23"
                         android:layout_width="@dimen/ui_home_battle_grid_item_size"
                         android:layout_height="@dimen/ui_home_battle_grid_item_size"
                         android:layout_margin="1dp"
@@ -666,6 +701,7 @@
                         >
                     </FrameLayout>
                     <FrameLayout
+                        android:id="@+id/teamMem24"
                         android:layout_width="@dimen/ui_home_battle_grid_item_size"
                         android:layout_height="@dimen/ui_home_battle_grid_item_size"
                         android:layout_margin="1dp"
@@ -673,6 +709,7 @@
                         >
                     </FrameLayout>
                     <FrameLayout
+                        android:id="@+id/teamMem25"
                         android:layout_width="@dimen/ui_home_battle_grid_item_size"
                         android:layout_height="@dimen/ui_home_battle_grid_item_size"
                         android:layout_margin="1dp"
@@ -680,6 +717,7 @@
                         >
                     </FrameLayout>
                     <FrameLayout
+                        android:id="@+id/teamMem26"
                         android:layout_width="@dimen/ui_home_battle_grid_item_size"
                         android:layout_height="@dimen/ui_home_battle_grid_item_size"
                         android:layout_margin="1dp"
@@ -687,6 +725,7 @@
                         >
                     </FrameLayout>
                     <FrameLayout
+                        android:id="@+id/teamMem27"
                         android:layout_width="@dimen/ui_home_battle_grid_item_size"
                         android:layout_height="@dimen/ui_home_battle_grid_item_size"
                         android:layout_margin="1dp"
@@ -694,6 +733,7 @@
                         >
                     </FrameLayout>
                     <FrameLayout
+                        android:id="@+id/teamMem28"
                         android:layout_width="@dimen/ui_home_battle_grid_item_size"
                         android:layout_height="@dimen/ui_home_battle_grid_item_size"
                         android:layout_margin="1dp"
@@ -701,6 +741,7 @@
                         >
                     </FrameLayout>
                     <FrameLayout
+                        android:id="@+id/teamMem29"
                         android:layout_width="@dimen/ui_home_battle_grid_item_size"
                         android:layout_height="@dimen/ui_home_battle_grid_item_size"
                         android:layout_margin="1dp"
@@ -708,6 +749,7 @@
                         >
                     </FrameLayout>
                     <FrameLayout
+                        android:id="@+id/teamMem30"
                         android:layout_width="@dimen/ui_home_battle_grid_item_size"
                         android:layout_height="@dimen/ui_home_battle_grid_item_size"
                         android:layout_margin="1dp"
@@ -715,6 +757,7 @@
                         >
                     </FrameLayout>
                     <FrameLayout
+                        android:id="@+id/teamMem31"
                         android:layout_width="@dimen/ui_home_battle_grid_item_size"
                         android:layout_height="@dimen/ui_home_battle_grid_item_size"
                         android:layout_margin="1dp"
@@ -876,6 +919,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/startAdvBt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
@@ -887,6 +931,7 @@
                         android:layout_gravity="center"
                         android:src="@drawable/item_map"/>
                     <TextView
+                        android:id="@+id/startAdv"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_marginTop="5dp"

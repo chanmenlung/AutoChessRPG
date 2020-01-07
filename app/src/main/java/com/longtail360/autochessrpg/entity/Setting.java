@@ -6,4 +6,5 @@ public class Setting {
     public static String COM_FOLDER = "/longtail360";
     public static String GAME_FOLDER = "/longtail360/AutoChessRPG/";
     public static String PLAYER_FILE_NAME = "player.txt";
+    public static int UPGRADE_COIN = 50;
 }
