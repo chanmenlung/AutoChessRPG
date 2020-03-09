@@ -17,6 +17,7 @@ public class MyCardDAO {
     public static final String CARD_ID = "card_id";
     public static final String LEVEL = "level";
     public static final String BATTLE_HP = "battleHp";
+    public static final String RELIFE = "relife";
     public static final String TYPE = "type";
     public static final String LOCATION = "location";
     public static final String LOCATION_X = "location_x";
@@ -29,6 +30,7 @@ public class MyCardDAO {
                     CARD_ID + " INTEGER," +
                     LEVEL + " INTEGER," +
                     BATTLE_HP + " INTEGER,"+
+                    RELIFE + " INTEGER,"+
                     TYPE + " TEXT," +
                     LOCATION + " INTEGER," +
                     LOCATION_X + " INTEGER," +
@@ -48,6 +50,7 @@ public class MyCardDAO {
         cv.put(CARD_ID, item.cardId);
         cv.put(LEVEL, item.level);
         cv.put(BATTLE_HP , item.battleHp);
+        cv.put(RELIFE , item.relife);
         cv.put(TYPE, item.type);
         cv.put(LOCATION, item.location);
         cv.put(LOCATION_X, item.locationX);
@@ -62,6 +65,7 @@ public class MyCardDAO {
         cv.put(CARD_ID, item.cardId);
         cv.put(LEVEL, item.level);
         cv.put(BATTLE_HP , item.battleHp);
+        cv.put(RELIFE , item.relife);
         cv.put(TYPE, item.type);
         cv.put(LOCATION, item.location);
         cv.put(LOCATION_X, item.locationX);
@@ -128,10 +132,11 @@ public class MyCardDAO {
         result.cardId = cursor.getLong(2);
         result.level = cursor.getInt(3);
         result.battleHp = cursor.getInt(4);
-        result.type = cursor.getInt(5);
-        result.location = cursor.getInt(6);
-        result.locationX = cursor.getInt(7);
-        result.locationY = cursor.getInt(8);
+        result.relife = cursor.getInt(5);
+        result.type = cursor.getInt(6);
+        result.location = cursor.getInt(7);
+        result.locationX = cursor.getInt(8);
+        result.locationY = cursor.getInt(9);
         return result;
     }
 

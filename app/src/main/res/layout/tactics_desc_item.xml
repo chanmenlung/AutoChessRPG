@@ -12,7 +12,8 @@
             android:layout_marginLeft="10dp"
             android:id="@+id/strategyIndex"
             android:layout_gravity="left|center_vertical"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="10"
             android:layout_height="wrap_content"
             android:gravity="right"
             android:textSize="15sp"
@@ -21,7 +22,8 @@
         <TextView
             android:id="@+id/strategyFullDesc"
             android:layout_gravity="left|center_vertical"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="80"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:paddingBottom="20dp"
@@ -29,5 +31,16 @@
             android:textSize="18sp"
             android:layout_centerInParent="true"
             android:text="22 222 22 22222 22222 22222 22222 22222 22222 22222 22222 22222 222 222 222 222 222 222 222 222 222 222 222 222 222" />
+
+        <CheckBox
+            android:id="@+id/activeTactBt"
+            android:layout_width="0dp"
+            android:layout_weight="10"
+            android:layout_height="30dp"
+            android:layout_marginLeft="10dp"
+            android:layout_gravity="center"
+            android:buttonTint="#FF594f54"
+            />
+
     </LinearLayout>
 </FrameLayout>

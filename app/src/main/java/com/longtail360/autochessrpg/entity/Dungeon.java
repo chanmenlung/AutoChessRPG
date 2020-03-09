@@ -3,14 +3,13 @@ package com.longtail360.autochessrpg.entity;
 import android.content.Context;
 
 import com.longtail360.autochessrpg.R;
-import com.longtail360.autochessrpg.entity.skill.ElectricAllBigHurt;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Dungeon {
     public long id;
-    public long index;
+    public int index;
     public String name;
     public String monsterIds;
     public int numFloor;
@@ -28,7 +27,7 @@ public class Dungeon {
         }
         return monsterArray;
     }
-    public Dungeon(long index, String name, String monsterIds, int numFloor, int numAreaPerFloor, int numBlockPerArea){
+    public Dungeon(int index, String name, String monsterIds, int numFloor, int numAreaPerFloor, int numBlockPerArea){
         this.index = index;
         this.name = name;
         this.monsterIds = monsterIds;
@@ -59,42 +58,42 @@ public class Dungeon {
         }
         int numFloorStart = 1;
         int numArea = 2;
-        int numBlock = 3;
+        int numBlock = 5;
         String[] names = context.getResources().getStringArray(R.array.dungeonNames);
         Dungeon dungeon;
 
         for(int i=1; i<=10; i++) {
-            dungeon = new Dungeon(i,names[i-1],monsterIds.get(i-1),numFloorStart+i,numArea,numBlock);
+            dungeon = new Dungeon(i,names[i-1],monsterIds.get(i-1),2,numArea,numBlock);
             GameContext.gameContext.dungeonDAO.insert(dungeon);
         }
         int j = 1;
         for(int i=11; i<=20; i++) {
-            dungeon = new Dungeon(i,names[i-1],monsterIds.get(i-1),numFloorStart+1+j,numArea,numBlock);
+            dungeon = new Dungeon(i,names[i-1],monsterIds.get(i-1),3,numArea,numBlock);
             GameContext.gameContext.dungeonDAO.insert(dungeon);
             j++;
         }
 
         j = 1;
         for(int i=21; i<=30; i++) {
-            dungeon = new Dungeon(i,names[i-1],monsterIds.get(i-1),numFloorStart+2+j,numArea,numBlock);
+            dungeon = new Dungeon(i,names[i-1],monsterIds.get(i-1),4,numArea,numBlock);
             GameContext.gameContext.dungeonDAO.insert(dungeon);
             j++;
         }
         j = 1;
         for(int i=31; i<=40; i++) {
-            dungeon = new Dungeon(i,names[i-1],monsterIds.get(i-1),numFloorStart+3+j,numArea,numBlock);
+            dungeon = new Dungeon(i,names[i-1],monsterIds.get(i-1),5,numArea,numBlock);
             GameContext.gameContext.dungeonDAO.insert(dungeon);
             j++;
         }
         j = 1;
         for(int i=41; i<=50; i++) {
-            dungeon = new Dungeon(i,names[i-1],monsterIds.get(i-1),numFloorStart+4+j,numArea,numBlock);
+            dungeon = new Dungeon(i,names[i-1],monsterIds.get(i-1),6,numArea,numBlock);
             GameContext.gameContext.dungeonDAO.insert(dungeon);
             j++;
         }
         j = 1;
         for(int i=51; i<=57; i++) {
-            dungeon = new Dungeon(i,names[i-1],monsterIds.get(i-1),numFloorStart+5+j,numArea,numBlock);
+            dungeon = new Dungeon(i,names[i-1],monsterIds.get(i-1),7,numArea,numBlock);
             GameContext.gameContext.dungeonDAO.insert(dungeon);
             j++;
         }

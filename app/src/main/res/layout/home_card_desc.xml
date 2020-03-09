@@ -1,91 +1,120 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="horizontal" android:layout_width="match_parent"
-    android:layout_height="150dp"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:clickable="true"
+    android:background="#a1000000"
     android:id="@+id/cardDescLayout">
-    <!-- card info start -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:orientation="vertical"
-        android:background="@drawable/ui_window_dark">
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="100dp"
-            android:orientation="horizontal">
-            <ImageView
-                android:id="@+id/cardDescHead"
-                android:layout_marginLeft="10dp"
-                android:layout_gravity="center_vertical"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:src="@drawable/c1_head"/>
 
+
+    <!-- big image start -->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="8"
+        android:translationY="20dp"
+        >
+        <ImageView
+            android:id="@+id/bigImage"
+            android:layout_width="match_parent"
+            android:layout_height="450dp"
+            android:layout_centerInParent="true"
+            android:src="@drawable/c1"
+            />
+    </FrameLayout>
+    <!-- big image end -->
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2">
+        <!-- card info start -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="bottom"
+            android:orientation="vertical"
+            android:background="@drawable/ui_window_dark">
             <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:orientation="vertical">
+                android:layout_height="0dp"
+                android:layout_weight="65"
+                android:orientation="horizontal">
+                <ImageView
+                    android:id="@+id/cardDescHead"
+                    android:layout_marginLeft="10dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/c1_head"/>
 
-                <TextView
-                    android:id="@+id/cardDescLevel"
-                    android:layout_marginLeft="30dp"
+                <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:textSize="10sp"
-                    android:textColor="@android:color/white"
-                    android:text="等級:2"/>
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/cardDescValue"
-                    android:layout_marginLeft="30dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:textSize="10sp"
-                    android:textColor="@android:color/white"
-                    android:text="生命值:999  攻擊力:99  防禦力:2"/>
-                <TextView
-                    android:id="@+id/cardDescSkill"
-                    android:layout_marginLeft="30dp"
-                    android:layout_width="200dp"
-                    android:layout_height="match_parent"
-                    android:textColor="@android:color/white"
-                    android:textSize="10sp"
-                    android:text="技能: 引發爆炸, 對所有敵人造成{hurt}點火焰傷害。目檟有20%機會造成燃燒狀態"/>
-                <TextView
-                    android:id="@+id/cardInfoDescPrice"
-                    android:layout_marginLeft="30dp"
-                    android:layout_width="300dp"
-                    android:layout_height="match_parent"
-                    android:textColor="@android:color/white"
-                    android:textSize="10sp"
-                    android:text="出售可獲得: $99"/>
+                    <TextView
+                        android:id="@+id/cardDescLevel"
+                        android:layout_marginLeft="30dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:textSize="10sp"
+                        android:textColor="@android:color/white"
+                        android:text="等級:2"/>
+
+                    <TextView
+                        android:id="@+id/cardDescValue"
+                        android:layout_marginLeft="30dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:textSize="10sp"
+                        android:textColor="@android:color/white"
+                        android:text="生命值:999  攻擊力:99  防禦力:2"/>
+                    <TextView
+                        android:id="@+id/cardDescSkill"
+                        android:layout_marginLeft="30dp"
+                        android:layout_width="200dp"
+                        android:layout_height="match_parent"
+                        android:textColor="@android:color/white"
+                        android:textSize="10sp"
+                        android:text="技能: 引發爆炸, 對所有敵人造成{hurt}點火焰傷害。目檟有20%機會造成燃燒狀態"/>
+                    <TextView
+                        android:id="@+id/cardInfoDescPrice"
+                        android:layout_marginLeft="30dp"
+                        android:layout_width="300dp"
+                        android:layout_height="match_parent"
+                        android:textColor="@android:color/white"
+                        android:textSize="10sp"
+                        android:text="出售可獲得: $99"/>
+                </LinearLayout>
             </LinearLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="35">
+
+                <com.longtail360.autochessrpg.prefab.ButtonBurnMiddle
+                    android:id="@+id/cardDescCancelBt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="20dp"
+                    app:btBurnMiddleText="@string/ui_popup_cancel"
+                    app:btBurnMiddleColor="green"/>
+                <com.longtail360.autochessrpg.prefab.ButtonBurnMiddle
+                    android:id="@+id/cardDescSellBt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_gravity="right"
+                    app:btBurnMiddleText="@string/ui_home_cardDesc_sell"
+                    app:btBurnMiddleColor="orange"/>
+
+            </FrameLayout>
         </LinearLayout>
+        <!-- card info end -->
 
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <com.longtail360.autochessrpg.prefab.ButtonBurnMiddle
-                android:id="@+id/cardDescCancelBt"
-                android:layout_width="wrap_content"
-                android:layout_height="30dp"
-                android:layout_marginLeft="20dp"
-                app:btBurnMiddleText="@string/ui_popup_cancel"
-                app:btBurnMiddleColor="green"/>
-            <com.longtail360.autochessrpg.prefab.ButtonBurnMiddle
-                android:id="@+id/cardDescSellBt"
-                android:layout_width="wrap_content"
-                android:layout_height="30dp"
-                android:layout_marginRight="20dp"
-                android:layout_gravity="right"
-                app:btBurnMiddleText="@string/ui_home_cardDesc_sell"
-                app:btBurnMiddleColor="orange"/>
-
-        </FrameLayout>
-    </LinearLayout>
-    <!-- card info end -->
-</FrameLayout>
+    </FrameLayout>
+</LinearLayout>

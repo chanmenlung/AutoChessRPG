@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.longtail360.autochessrpg.activity.HomeActivity;
 import com.longtail360.autochessrpg.prefab.CardIcon;
 import com.longtail360.autochessrpg.utils.Logger;
 
@@ -19,10 +20,7 @@ import com.longtail360.autochessrpg.utils.Logger;
 
 public class DragDropOnDragListener implements View.OnDragListener {
     private String tag = "DragDropOnDragListener";
-    private Context context = null;
-
     public DragDropOnDragListener(Context context) {
-        this.context = context;
     }
 
     @Override
@@ -66,8 +64,9 @@ public class DragDropOnDragListener implements View.OnDragListener {
             // Get drag and drop action result.
             boolean result = dragEvent.getResult();
 
-            CardIcon cardIcon = (CardIcon)dragEvent.getLocalState();
-            cardIcon.setVisibility(View.VISIBLE);
+//            CardIcon cardIcon = (CardIcon)dragEvent.getLocalState();
+//            cardIcon.setVisibility(View.VISIBLE);
+            getCardIcon().setVisibility(View.VISIBLE);
             return true;
 
         }else if(dragAction == dragEvent.ACTION_DROP)
@@ -84,18 +83,23 @@ public class DragDropOnDragListener implements View.OnDragListener {
             // If item count bigger than 0.
             if(itemCount > 0) {
                 resetTargetViewBackground(view);
-                CardIcon cardIcon = (CardIcon)dragEvent.getLocalState();
-                ViewGroup owner = (ViewGroup) cardIcon.getParent();
+//                CardIcon cardIcon = (CardIcon)dragEvent.getLocalState();
+                if(getCardIcon() == null){
+                    Logger.log(tag, "cardIcon is null");
+                }else {
+                    Logger.log(tag, "cardIcon is not null");
+                }
+                ViewGroup owner = (ViewGroup) getCardIcon().getParent();
                 ViewGroup newContainer = (ViewGroup) view;
 
                 if(newContainer.getChildCount() > 0) {
-                    cardIcon.setVisibility(View.VISIBLE);
+                    getCardIcon().setVisibility(View.VISIBLE);
                 }else { //success drop
                     Logger.log(tag,"success-drop");
 //                    owner.removeView(cardIcon);
 //                    newContainer.addView(cardIcon);
 //                    cardIcon.setVisibility(View.VISIBLE);
-                    onSuccessDrop(owner,newContainer, cardIcon);
+                    onSuccessDrop(owner,newContainer, getCardIcon());
                 }
                 return true;
             }
@@ -106,7 +110,7 @@ public class DragDropOnDragListener implements View.OnDragListener {
             return true;
         }else
         {
-            Toast.makeText(context, "Drag and drop unknow action type.", Toast.LENGTH_LONG).show();
+            Logger.log(tag,"Drag and drop unknow action type.:");
         }
 
         return false;
@@ -140,5 +144,9 @@ public class DragDropOnDragListener implements View.OnDragListener {
 
         // Redraw the target view use new color.
         view.invalidate();
+    }
+
+    public CardIcon getCardIcon() {
+        return null;
     }
 }

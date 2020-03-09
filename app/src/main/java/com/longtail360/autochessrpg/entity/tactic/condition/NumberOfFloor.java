@@ -41,7 +41,13 @@ public class NumberOfFloor extends BaseCondition{
 //        } else {
 //            return false;
 //        }
-        return false;
+
+        boolean result = false;
+        if(negation){
+            return !result;
+        }else {
+            return result;
+        }
 
     }
 }

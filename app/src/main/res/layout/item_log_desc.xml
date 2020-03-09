@@ -36,9 +36,8 @@
             android:id="@+id/desc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
             android:textSize="10sp"
-            android:text=""/>
+            android:text="獎勵:{price} 金幣, 利息: {value}金幣, 經驗值: +1 Exp, 已消耗{hp}點生命值復活{deadNum}名角色"/>
 
     </LinearLayout>
 

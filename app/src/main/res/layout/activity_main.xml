@@ -36,14 +36,24 @@
         android:background="@drawable/ui_caption">
 
         <TextView
+            android:id="@+id/initMessage"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
             android:textSize="15sp"
             android:alpha="0.8"
             android:textColor="@android:color/white"
-            android:text="@string/ui_mainPage_tapToStartGame" />
+            android:text="@string/ui_mainPage_doingInitial" />
     </FrameLayout>
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="@android:style/Widget.ProgressBar.Horizontal"
+            android:padding="10dp"
+            android:layout_gravity="bottom"
+            android:translationY="-80dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:progress="0"/>
 
 
     <FrameLayout

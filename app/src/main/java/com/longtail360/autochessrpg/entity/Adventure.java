@@ -1,21 +1,25 @@
 package com.longtail360.autochessrpg.entity;
 
+import com.longtail360.autochessrpg.adventure.AdvContext;
 import com.longtail360.autochessrpg.entity.log.RootLog;
+import com.longtail360.autochessrpg.entity.passiveskill.BasePassiveSkill;
+
+import java.util.List;
 
 public class Adventure {
     public long id;
     public int coin;
     public long currentRootLogId;
-    public long currentDungeonId;
+    public int currentDungeonId;
     public int finalMark;
     public int level;
     public int exp;
     public int hp;
+    public int lockBuyingCard;
 
     public RootLog currentRootLog;
-
     public Adventure() {}
-    public Adventure(int coin, long currentDungeonId, int finalMark, int level, int exp, int hp) {
+    public Adventure(int coin, int currentDungeonId, int finalMark, int level, int exp, int hp) {
         this.coin = coin;
         this.currentDungeonId = currentDungeonId;
         this.finalMark = finalMark;

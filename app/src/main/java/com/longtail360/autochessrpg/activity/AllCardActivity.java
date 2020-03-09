@@ -62,7 +62,7 @@ public class AllCardActivity extends ExternalResActivity implements CardDescItem
         raceNames.add(0,"all");
         raceNamesCn.add(0, getString(R.string.allCard_race));
         clazzNamesCn.add(0, getString(R.string.allCard_clazz));
-        List<Card> cards = Card.listAll();
+        List<Card> cards = Card.listAll(this);
         Logger.log(tag,"cards-size:"+cards.size());
         for(Card card : cards){
             CardDescItem item  = new CardDescItem(this, this, card);

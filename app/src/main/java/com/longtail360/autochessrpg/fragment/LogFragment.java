@@ -1,8 +1,5 @@
 package com.longtail360.autochessrpg.fragment;
 
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,7 +14,6 @@ import com.longtail360.autochessrpg.dao.log.BattleItemLogDAO;
 import com.longtail360.autochessrpg.dao.log.BattleRootLogDAO;
 import com.longtail360.autochessrpg.dao.log.ProcessLogDAO;
 import com.longtail360.autochessrpg.dao.log.RootLogDAO;
-import com.longtail360.autochessrpg.dao.log.TeamStatusDAO;
 import com.longtail360.autochessrpg.entity.Card;
 import com.longtail360.autochessrpg.entity.Dungeon;
 import com.longtail360.autochessrpg.entity.GameContext;
@@ -26,7 +22,6 @@ import com.longtail360.autochessrpg.entity.log.BattleItemLog;
 import com.longtail360.autochessrpg.entity.log.BattleRootLog;
 import com.longtail360.autochessrpg.entity.log.ProcessLog;
 import com.longtail360.autochessrpg.entity.log.RootLog;
-import com.longtail360.autochessrpg.entity.log.TeamStatus;
 import com.longtail360.autochessrpg.prefab.BattleLogItem;
 import com.longtail360.autochessrpg.prefab.HeadBackButton;
 import com.longtail360.autochessrpg.prefab.ItemLogDesc;
@@ -42,7 +37,7 @@ public class LogFragment extends BaseFragment{
     public static String ROOT_LOG_ID = "rootLogId";
     private RootLogDAO rootLogDAO;
     private ProcessLogDAO processLogDAO;
-    private TeamStatusDAO teamStatusDAO;
+//    private TeamStatusDAO teamStatusDAO;
     private BattleRootLogDAO battleRootLogDAO;
     private BattleItemLogDAO battleItemLogDAO;
 
@@ -104,7 +99,7 @@ public class LogFragment extends BaseFragment{
         Logger.log(tag,"rootLog.progress:"+rootLog.progress);
         backBt.setText(dungeon.name);
         if(processLogs != null && processLogs.size() >0) {
-            initTeamStatusLayout(view, processLogs.get(0).teamStatus.id);
+//            initTeamStatusLayout(view, processLogs.get(0).teamStatus.id);
             for (int i=0; i<rootLog.progress; i++) {
                 final ProcessLog pLog = processLogs.get(i);
                 putProcessLogToContainer(pLog);
@@ -154,7 +149,6 @@ public class LogFragment extends BaseFragment{
 
                 BattleRootLog battleRootLog = battleRootLogDAO.getByProcessId(pLog.id);
                 if (battleRootLog == null) {
-                    TeamStatus teamStatus = teamStatusDAO.get(pLog.teamStatus.id);
                     if (pLog.detail != null && !pLog.detail.isEmpty()) {
                         Logger.log(tag, "plogtitle:"+pLog.title);
                         teamStatusEventTitle.setText(pLog.title);
@@ -169,10 +163,10 @@ public class LogFragment extends BaseFragment{
                     for (int i = 0; i < cards.size(); i++) {
                         StringBuilder content = new StringBuilder();
                         content.append(level);
-                        content.append(teamStatus.getLevelArray()[i]);
+                        content.append(pLog.getLevelArray()[i]);
                         content.append(" ");
                         content.append(hpMp);
-                        content.append(teamStatus.getHpArray()[i]);
+                        content.append(pLog.getHpArray()[i]);
                         content.append("/");
 //                        content.append(cards.get(i).getTotalHp());
                         Logger.log(tag, "content:"+content.toString());
@@ -216,7 +210,6 @@ public class LogFragment extends BaseFragment{
     private void initViewAndDAO(View view) {
         rootLogDAO = new RootLogDAO(getContext());
         processLogDAO = new ProcessLogDAO(getContext());
-        teamStatusDAO = new TeamStatusDAO(getContext());
         battleItemLogDAO = new BattleItemLogDAO(getContext());
         battleRootLogDAO = new BattleRootLogDAO(getContext());
         processLogContainer = view.findViewById(R.id.processLogContainer);
@@ -255,21 +248,21 @@ public class LogFragment extends BaseFragment{
         level = getText(R.string.log_level).toString();
         cards = new ArrayList<>();
         Logger.log(tag, "rootTeamStatusId:"+rootTeamStatusId);
-        TeamStatus rootTeamStatus = teamStatusDAO.get(rootTeamStatusId);
-        if(rootTeamStatus == null){
-            Logger.log(tag, "rootTeamStatus is null");
-        }
-        Logger.log(tag, "rootTeamStatus.cardIds:"+rootTeamStatus.cardIds);
-        String[] cardIds = rootTeamStatus.cardIds.split(",");
-        for(String id : cardIds){
-            Logger.log(tag, "id:"+id);
-            Card card = GameContext.gameContext.cardDAO.getByCode(id);
-            if(card == null){
-                Logger.log(tag, "card is null, id:"+id);
-            }else {
-                cards.add(card);
-            }
-        }
+//        TeamStatus rootTeamStatus = teamStatusDAO.get(rootTeamStatusId);
+//        if(rootTeamStatus == null){
+//            Logger.log(tag, "rootTeamStatus is null");
+//        }
+//        Logger.log(tag, "rootTeamStatus.cardIds:"+rootTeamStatus.cardIds);
+//        String[] cardIds = rootTeamStatus.cardIds.split(",");
+//        for(String id : cardIds){
+//            Logger.log(tag, "id:"+id);
+//            Card card = GameContext.gameContext.cardDAO.getByCode(id);
+//            if(card == null){
+//                Logger.log(tag, "card is null, id:"+id);
+//            }else {
+//                cards.add(card);
+//            }
+//        }
         List<Card> dbCards = GameContext.gameContext.cardDAO.getAll();
         teamStatusLayout = view.findViewById(R.id.teamStatusLayout);
         teamStatusEventLayout = view.findViewById(R.id.teamStatusEventLayout);

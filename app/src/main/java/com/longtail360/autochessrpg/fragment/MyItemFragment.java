@@ -4,19 +4,16 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 
 import com.longtail360.autochessrpg.R;
 import com.longtail360.autochessrpg.entity.GameContext;
-import com.longtail360.autochessrpg.entity.Item;
-import com.longtail360.autochessrpg.entity.ItemGot;
+import com.longtail360.autochessrpg.entity.MyItem;
+import com.longtail360.autochessrpg.entity.log.RootLog;
 import com.longtail360.autochessrpg.prefab.ItemIcon;
 import com.longtail360.autochessrpg.utils.Logger;
 
 import java.util.List;
-
-import static com.longtail360.autochessrpg.activity.BaseActivity.player;
 
 public class MyItemFragment extends BaseFragment{
     private String tag = "MyItemFragment";
@@ -29,38 +26,73 @@ public class MyItemFragment extends BaseFragment{
         Logger.log(tag,"init-MyItemFragment");
         View view = inflater.inflate(R.layout.my_item, container, false);
         myItemLayout = view.findViewById(R.id.myItemLayout);
+        initPopupBox(myItemLayout, getContext());
         onBodyItemsContainer = view.findViewById(R.id.onBodyItemsContainer);
         notOnBodyItemsContainer = view.findViewById(R.id.notOnBodyItemsContainer);
-        List<ItemGot> onBodyItems = ItemGot.listByOnBody(GameContext.gameContext.adventure.id);
-        for(final ItemGot item : onBodyItems){
+        List<MyItem> onBodyItems = MyItem.listByOnBody(GameContext.gameContext.adventure.id);
+        Logger.log(tag,"onBodyItems-size:"+GameContext.gameContext.itemGotDAO.getAll().size());
+
+        List<MyItem> myItemList = GameContext.gameContext.itemGotDAO.getAll();
+        for(MyItem item : myItemList){
+            Logger.log(tag,"item-advId:"+item.adventureId);
+        }
+        for(final MyItem item : onBodyItems){
             final ItemIcon icon = new ItemIcon(getContext(),item.item);
+            icon.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View view) {
+                    popupBox.title.setText(item.item.name);
+                    popupBox.content.setText(item.item.desc);
+                    popupBox.centerConfirmHideBox();
+                    popupBox.show();
+                    return true;
+                }
+            });
             icon.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if(icon.getParent() == notOnBodyItemsContainer){
-                        notOnBodyItemsContainer.removeView(icon);
-                        onBodyItemsContainer.addView(icon);
-                        item.onBody = 1;
-                        GameContext.gameContext.itemGotDAO.update(item);
-                        Logger.toast(getContext().getString(R.string.ui_myItem_hadBrought),getContext());
-                    }else {
-                        onBodyItemsContainer.removeView(icon);
-                        notOnBodyItemsContainer.addView(icon);
-                        item.onBody = -1;
-                        GameContext.gameContext.itemGotDAO.update(item);
-                        Logger.toast(getContext().getString(R.string.ui_myItem_hadSaved),getContext());
+                    if(GameContext.gameContext.adventure.currentRootLog.advStatus == RootLog.ADV_STATUS_PROGRESSING){
+                        Logger.toast(getContext().getString(R.string.ui_myItem_advProgressing),getContext());
+                        return;
                     }
+                        if(icon.getParent() == notOnBodyItemsContainer){
+                            notOnBodyItemsContainer.removeView(icon);
+                            onBodyItemsContainer.addView(icon);
+                            item.onBody = 1;
+                            GameContext.gameContext.itemGotDAO.update(item);
+                            Logger.toast(getContext().getString(R.string.ui_myItem_hadBrought),getContext());
+                        }else {
+                            onBodyItemsContainer.removeView(icon);
+                            notOnBodyItemsContainer.addView(icon);
+                            item.onBody = -1;
+                            GameContext.gameContext.itemGotDAO.update(item);
+                            Logger.toast(getContext().getString(R.string.ui_myItem_hadSaved),getContext());
+                        }
                 }
             });
             onBodyItemsContainer.addView(icon);
         }
 
-        List<ItemGot> notOnBodyItems = ItemGot.listByNotOnBody(GameContext.gameContext.adventure.id);
-        for(final ItemGot item : notOnBodyItems){
+        List<MyItem> notOnBodyItems = MyItem.listByNotOnBody(GameContext.gameContext.adventure.id);
+        for(final MyItem item : notOnBodyItems){
             final ItemIcon icon = new ItemIcon(getContext(),item.item);
+            icon.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View view) {
+                    popupBox.title.setText(item.item.name);
+                    popupBox.content.setText(item.item.desc);
+                    popupBox.centerConfirmHideBox();
+                    popupBox.show();
+                    return true;
+                }
+            });
             icon.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    if(GameContext.gameContext.adventure.currentRootLog.advStatus == RootLog.ADV_STATUS_PROGRESSING){
+                        Logger.toast(getContext().getString(R.string.ui_myItem_advProgressing),getContext());
+                        return;
+                    }
                     if(icon.getParent() == notOnBodyItemsContainer){
                         notOnBodyItemsContainer.removeView(icon);
                         onBodyItemsContainer.addView(icon);

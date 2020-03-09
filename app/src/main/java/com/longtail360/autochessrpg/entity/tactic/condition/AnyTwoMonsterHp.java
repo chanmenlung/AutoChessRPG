@@ -4,13 +4,15 @@ import android.content.Context;
 
 import com.longtail360.autochessrpg.R;
 import com.longtail360.autochessrpg.adventure.AdvContext;
+import com.longtail360.autochessrpg.entity.Monster;
+import com.longtail360.autochessrpg.entity.MyCard;
 import com.longtail360.autochessrpg.entity.tactic.OptionItem;
 
 public class AnyTwoMonsterHp extends BaseCondition{
     public static String KEY = "AnyTwoMonsterHp";
     public AnyTwoMonsterHp(Context context){
         this.key = KEY;
-        desc = context.getString(R.string.condition_all_card_hp);
+        desc = context.getString(R.string.condition_anytwoMonster_hp);
         optionItems2 = OptionItem.listNumber(10,90,10,context.getString(R.string.condition_low_than),"%");
         selectOption2 = optionItems2.get(0);
     }
@@ -22,14 +24,24 @@ public class AnyTwoMonsterHp extends BaseCondition{
 
     @Override
     public boolean checking (AdvContext advContext){
-        boolean result = true;
-//        for (int i = 0; i < advContext.cardActions.size(); i++) {
-//            if ((advContext.cardActions.get(i).getCard().battleHp * 100 / advContext.cardActions.get(i).getCard().buffHp) > selectOption2.convertValueToInt()) {
-//                result = false;
-//                break;
-//            }
-//        }
-        return result;
+        boolean result = false;
+        int value = selectOption2.convertValueToInt();
+        int count = 0;
+        for (Monster monster : advContext.battleContext.monsters) {
+            int percentage = monster.getHp() *100/monster.totalHp;
+            if (percentage < value) {
+                count++;
+                if(count > 1){
+                    result = true;
+                    break;
+                }
+            }
+        }
+        if(negation){
+            return !result;
+        }else {
+            return result;
+        }
 
     }
 }

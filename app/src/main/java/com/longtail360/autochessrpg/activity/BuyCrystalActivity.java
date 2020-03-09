@@ -37,12 +37,13 @@ public class BuyCrystalActivity  extends BaseActivity implements BuyCrystalDescI
     private HeadBackButton backBt;
     private ViewGroup crystalContainer;
     private BillingClient billingClient;
-    String base64Key = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAljYSOBMEBdqJR301Htk" +
-            "1vA4akRp3Au1s9B1udkmnPkqV35EvPZIVfqXd7gKUeNDceTuSwHOhTnRFgCrV6Rc5U9uyboJTC" +
-            "ut3ye7oYS4nYpqULlKVYn1O9y+hNUxteaZUnZWViDv5rwUpO3Dfwb/oE9xpIH15rDR2l6LX1Ic" +
-            "+eqHOR4g7J0ArkcQTqmao3J4PilY+d1Dj7NHvsC9FdXfPuob1uConjjsHC0+iPbXKhKxWehBX6" +
-            "1NP8iFdGpOgE5IatbtNIPm+7EmxkMWOa0oU6hwQkimt3aK28BSPKdV8ED2YMZzv5PMoWK1u4dj" +
-            "JW3L2R9TzgHo08bxnZAwwWQu9owIDAQAB";
+    String base64Key = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAl8kgg" +
+            "zwmXeuX3wWlacsPHQhC6LXbk1OKCe+tU4IifEji2evHrwOOTyP2uZ7Aw4hRQ" +
+            "MZWB5wMmaHwf3IJr/BzAW9XhhNc11rH58g9dvsgNpgBLRITf6XBadREftNVY" +
+            "vSfN9vSEJbSKuuVWk4rn1GPCHMDUOZBdcI39cS97ByrfG9Noe6xY3WmfH3sx" +
+            "niyI9XQd5xMRMfud7e9E2owG8jFykkL75JeWEQjyBVNIz6JHWBR2nv+q7qx1" +
+            "jVb6MSPWS+1nIGSdUhtiPHzcjeQDkjCYe6y4LvINYPKp1xTDi2nRFSUH7bII" +
+            "p9l04c1Y2aQQsMww7GUrWrD++gKsHpGVYORNwIDAQAB";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

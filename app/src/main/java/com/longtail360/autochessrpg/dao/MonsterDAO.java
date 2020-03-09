@@ -40,7 +40,7 @@ public class MonsterDAO {
         ContentValues cv = new ContentValues();
         cv.put(CODE, item.code);
         cv.put(NAME, item.name);
-        cv.put(HP, item.hp);
+        cv.put(HP, item.getHp());
         cv.put(ATTACK, item.attack);
         cv.put(DEFENSE, item.defense);
 
@@ -52,7 +52,7 @@ public class MonsterDAO {
         ContentValues cv = new ContentValues();
         cv.put(CODE, item.code);
         cv.put(NAME, item.name);
-        cv.put(HP, item.hp);
+        cv.put(HP, item.getHp());
         cv.put(ATTACK, item.attack);
         cv.put(DEFENSE, item.defense);
 
@@ -108,7 +108,7 @@ public class MonsterDAO {
         result.id = cursor.getLong(0);
         result.code = cursor.getString(1);
         result.name = cursor.getString(2);
-        result.hp = cursor.getInt(3);
+        result.setHp(cursor.getInt(3));
         result.attack = cursor.getInt(4);
         result.defense = cursor.getInt(5);
 

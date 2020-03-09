@@ -4,16 +4,10 @@ import android.os.AsyncTask;
 
 import com.longtail360.autochessrpg.R;
 import com.longtail360.autochessrpg.activity.HomeActivity;
-import com.longtail360.autochessrpg.dao.log.BattleItemLogDAO;
-import com.longtail360.autochessrpg.dao.log.BattleRootLogDAO;
-import com.longtail360.autochessrpg.dao.log.ProcessLogDAO;
-import com.longtail360.autochessrpg.dao.log.RootLogDAO;
-import com.longtail360.autochessrpg.dao.log.TeamStatusDAO;
 import com.longtail360.autochessrpg.entity.GameContext;
 import com.longtail360.autochessrpg.entity.MyCard;
 import com.longtail360.autochessrpg.entity.log.ProcessLog;
 import com.longtail360.autochessrpg.entity.log.RootLog;
-import com.longtail360.autochessrpg.entity.log.TeamStatus;
 import com.longtail360.autochessrpg.utils.Logger;
 
 import org.json.JSONException;
@@ -68,8 +62,8 @@ public class AdventureAsyncTask extends AsyncTask<String, Integer, Long> {
 
     private void init() {
         advContext = new AdvContext();
-        advContext.currentTeamStatus = new TeamStatus();
-        advContext.team = MyCard.listByAdvIdAndType(GameContext.gameContext.adventure.id, MyCard.TYPE_IN_TEAM);
+//        advContext.currentTeamStatus = new TeamStatus();
+        advContext.team = MyCard.listByAdvIdAndType(homeActivity,GameContext.gameContext.adventure.id, MyCard.TYPE_IN_TEAM);
         advContext.dungeon = GameContext.gameContext.dungeonDAO.getByIndex(GameContext.gameContext.adventure.currentDungeonId);
         RootLog rootLog = new RootLog();
         rootLog.dungeonId = advContext.dungeon.id;
@@ -84,7 +78,7 @@ public class AdventureAsyncTask extends AsyncTask<String, Integer, Long> {
         GameContext.gameContext.adventure.currentRootLogId = rootLog.id;
         GameContext.gameContext.advDAO.update(GameContext.gameContext.adventure);
         for(MyCard c : advContext.team){
-            advContext.cardActions.add(new CardActionEngine(homeActivity, advContext, c));
+            advContext.cards.add(c);
         }
         advContext.monsterKeys = advContext.dungeon.monsterIds.split(",");
         battleEngine = new BattleEngine(homeActivity, advContext);
@@ -166,9 +160,9 @@ public class AdventureAsyncTask extends AsyncTask<String, Integer, Long> {
             int numOfArea =advContext.dungeon.numAreaPerFloor;
             for(int j=0; j<numOfArea; j++){
                 int numOfBlock = advContext.dungeon.numBlockPerArea;
-                advContext.refreshTeamStatus();
+//                advContext.refreshTeamStatus();
                 for(int k=0; k<numOfBlock; k++){
-                    advContext.refreshTeamStatus();
+//                    advContext.refreshTeamStatus();
 
                     int randomWhichEvent = advContext.mRandom.nextInt(metMonsterRandom+metGoodEvent+metBadEvent+metEmptyEvent);
                     int metMonsterRandomMin = (int)(metMonsterRandom*0.75); //since this is back adv, met monster pos is lower, so multi by 0.75
@@ -208,7 +202,7 @@ public class AdventureAsyncTask extends AsyncTask<String, Integer, Long> {
         int ints = (int)(advContext.rootLog.startingCoin * 0.1);
         advContext.rootLog.advStatus = 1;
         GameContext.gameContext.rootLogDAO.update(advContext.rootLog);
-        advContext.refreshTeamStatus();
+//        advContext.refreshTeamStatus();
         ProcessLog log = new ProcessLog();
         log.color = ProcessLog.GREEN;
         log.title = homeActivity.getResources().getString(R.string.adv_successAdv)
@@ -305,7 +299,7 @@ public class AdventureAsyncTask extends AsyncTask<String, Integer, Long> {
     }
 
     private void finishStageAndStartBack() {
-        advContext.refreshTeamStatus();
+//        advContext.refreshTeamStatus();
         ProcessLog log = new ProcessLog();
         log.color = ProcessLog.GREEN;
         log.title = homeActivity.getResources().getString(R.string.adv_finishStage)
@@ -319,7 +313,7 @@ public class AdventureAsyncTask extends AsyncTask<String, Integer, Long> {
 
         advContext.rootLog.advStatus = 2;
         GameContext.gameContext.rootLogDAO.update(advContext.rootLog);
-        advContext.refreshTeamStatus();
+//        advContext.refreshTeamStatus();
         ProcessLog log = new ProcessLog();
         log.title = homeActivity.getResources().getString(R.string.adv_logDeadTitle).replace("{stage}",advContext.dungeon.name);
         log.content = homeActivity.getResources().getString(R.string.adv_interestGain)

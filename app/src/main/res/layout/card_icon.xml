@@ -72,4 +72,17 @@
             android:layout_height="5dp"
             android:src="@drawable/item_star"/>
     </LinearLayout>
+
+    <ImageView
+        android:id="@+id/raceIcon"
+        android:layout_width="12dp"
+        android:layout_height="12dp"
+        android:src="@drawable/race_goo"
+        android:layout_gravity="bottom|left"/>
+    <ImageView
+        android:id="@+id/classIcon"
+        android:layout_width="12dp"
+        android:layout_height="12dp"
+        android:src="@drawable/race_demon"
+        android:layout_gravity="bottom|right"/>
 </FrameLayout>

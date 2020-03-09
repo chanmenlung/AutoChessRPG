@@ -47,7 +47,7 @@
             <TextView
                 android:id="@+id/popupContent"
                 android:layout_width="300dp"
-                android:layout_height="75dp"
+                android:layout_height="95dp"
                 android:layout_margin="10dp"
                 android:gravity="left"
                 android:layout_gravity="center"

@@ -1,16 +1,9 @@
 package com.longtail360.autochessrpg.adventure;
 
-import com.longtail360.autochessrpg.dao.log.BattleItemLogDAO;
-import com.longtail360.autochessrpg.dao.log.BattleRootLogDAO;
-import com.longtail360.autochessrpg.dao.log.ProcessLogDAO;
-import com.longtail360.autochessrpg.dao.log.RootLogDAO;
-import com.longtail360.autochessrpg.dao.log.TeamStatusDAO;
 import com.longtail360.autochessrpg.entity.Dungeon;
-import com.longtail360.autochessrpg.entity.Item;
 import com.longtail360.autochessrpg.entity.MyCard;
+import com.longtail360.autochessrpg.entity.MyItem;
 import com.longtail360.autochessrpg.entity.log.RootLog;
-import com.longtail360.autochessrpg.entity.log.TeamStatus;
-import com.longtail360.autochessrpg.entity.tactic.Tactics;
 import com.longtail360.autochessrpg.utils.Logger;
 
 import java.util.ArrayList;
@@ -19,37 +12,58 @@ import java.util.Random;
 
 public class AdvContext {
     private String tag = "AdvContext";
+    public int BASE_MET_MONSTER_RANDOM = 20;
+    public int BASE_MET_GOOD_EVENT_RANDOM = 0;//18
+    public int BASE_MET_BAD_EVENT_RANDOM = 35;//17
+    public int BASE_EMPTY_EVENT_RANDOM = 45;
+
+    public int BACK_MET_MONSTER_RANDOM = 20;
+    public int BACK_MET_GOOD_EVENT_RANDOM = 10;
+    public int BACK_MET_BAD_EVENT_RANDOM = 0;
+    public int BACK_EMPTY_EVENT_RANDOM = 70;
+
+    public int metMonsterRandom = BASE_MET_MONSTER_RANDOM;
+    public int metGoodEvent = BASE_MET_GOOD_EVENT_RANDOM;
+    public int metBadEvent = BASE_MET_BAD_EVENT_RANDOM;
+    public int metEmptyEvent = BASE_EMPTY_EVENT_RANDOM;
+
     public int totalCoin;
     public Random mRandom = new Random();
-    public List<Tactics> tacticsList;
     public Dungeon dungeon;
-    public List<Item> itemList = new ArrayList<>();
+    public List<MyItem> currentItemList = new ArrayList<>();
     public RootLog rootLog;
-    public TeamStatus currentTeamStatus;
-    public List<MyCard> team;//include life and dead card
-    public List<CardActionEngine> cardActions = new ArrayList<>();
-    public List<CardActionEngine> deadCardActions= new ArrayList<>();
+//    public TeamStatus currentTeamStatus;
+    public List<MyCard> team = new ArrayList<>();//include life and dead card
+    public List<MyCard> cards = new ArrayList<>();
+    public List<MyCard> deadCards = new ArrayList<>();
     public BattleContext battleContext;
     public String[] monsterKeys;
     public long advId;
 
     public AdvContext() {
     }
-    public void refreshTeamStatus() {
-        StringBuilder cardIds = new StringBuilder();
-        StringBuilder cardHps = new StringBuilder();
-        StringBuilder cardLvs = new StringBuilder();
-        for(MyCard c : team) {
-            cardIds.append(c.card.code);
-            cardIds.append(",");
-            cardHps.append(c.battleHp);
-            cardHps.append(",");
-            cardLvs.append(c.level);
-            cardLvs.append(",");
-        }
-        currentTeamStatus.cardIds = cardIds.toString();
-        currentTeamStatus.hps = cardHps.toString();
-        currentTeamStatus.levels = cardLvs.toString();
-        Logger.log(tag, "currentTeamStatus.hps:"+currentTeamStatus.hps);
+
+    public void resetEventPossibility() {
+        metMonsterRandom = BASE_MET_MONSTER_RANDOM;
+        metGoodEvent = BASE_MET_GOOD_EVENT_RANDOM;
+        metBadEvent = BASE_MET_BAD_EVENT_RANDOM;
+        metEmptyEvent = BASE_EMPTY_EVENT_RANDOM;
     }
+//    public void refreshTeamStatus() {
+//        StringBuilder cardIds = new StringBuilder();
+//        StringBuilder cardHps = new StringBuilder();
+//        StringBuilder cardLvs = new StringBuilder();
+//        for(MyCard c : team) {
+//            cardIds.append(c.card.code);
+//            cardIds.append(",");
+//            cardHps.append(c.battleHp);
+//            cardHps.append(",");
+//            cardLvs.append(c.level);
+//            cardLvs.append(",");
+//        }
+//        currentTeamStatus.cardIds = cardIds.toString();
+//        currentTeamStatus.hps = cardHps.toString();
+//        currentTeamStatus.levels = cardLvs.toString();
+//        Logger.log(tag, "currentTeamStatus.hps:"+currentTeamStatus.hps);
+//    }
 }

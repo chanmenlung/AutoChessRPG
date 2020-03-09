@@ -109,7 +109,7 @@ public class DungeonDAO {
         Dungeon result = new Dungeon();
 
         result.id = cursor.getLong(0);
-        result.index = cursor.getLong(1);
+        result.index = cursor.getInt(1);
         result.name = cursor.getString(2);
         result.monsterIds = cursor.getString(3);
         result.numFloor = cursor.getInt(4);

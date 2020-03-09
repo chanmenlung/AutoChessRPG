@@ -75,24 +75,24 @@
             android:text="99/99" />
 
 
-        <TextView
-            android:layout_marginLeft="20dp"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:textSize="@dimen/ui_topInfoBar_textSize"
-            android:layout_centerInParent="true"
-            android:text="@string/ui_home_population" />
+        <!--<TextView-->
+            <!--android:layout_marginLeft="20dp"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:gravity="center"-->
+            <!--android:textSize="@dimen/ui_topInfoBar_textSize"-->
+            <!--android:layout_centerInParent="true"-->
+            <!--android:text="@string/ui_home_population" />-->
 
-        <TextView
-            android:id="@+id/populationValue"
-            android:layout_marginLeft="2dp"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:textSize="@dimen/ui_topInfoBar_textSize"
-            android:layout_centerInParent="true"
-            android:text="99/99" />
+        <!--<TextView-->
+            <!--android:id="@+id/populationValue"-->
+            <!--android:layout_marginLeft="2dp"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:gravity="center"-->
+            <!--android:textSize="@dimen/ui_topInfoBar_textSize"-->
+            <!--android:layout_centerInParent="true"-->
+            <!--android:text="99/99" />-->
 
         <TextView
             android:layout_marginLeft="20dp"
@@ -216,6 +216,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="15dp">
                     <TextView
+                        android:id="@+id/stageNo"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="16sp"
@@ -225,6 +226,7 @@
                         android:id="@+id/currentPlaceValue"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
                         android:textSize="16sp"
                         android:layout_gravity="center_vertical"
                         android:text="起始之村"/>
@@ -304,7 +306,7 @@
                         android:layout_gravity="center"
                         android:src="@drawable/ui_icon_lock"/>
                     <GridLayout
-                        android:id="@+id/cardForBuying"
+                        android:id="@+id/cardForBuyingLayout"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
@@ -401,6 +403,7 @@
                             android:text="$20"/>
                     </GridLayout>
                     <LinearLayout
+                        android:id="@+id/refreshBuyingCard"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_gravity="center_vertical"
@@ -411,7 +414,6 @@
                             android:layout_gravity="center"
                             android:src="@drawable/ui_icon_rotate"/>
                         <TextView
-                            android:id="@+id/refreshBuyingCard"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="5dp"
@@ -492,6 +494,7 @@
 
             <!-- team start -->
             <LinearLayout
+                android:id="@+id/teamLayout"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="45"
@@ -765,24 +768,22 @@
                         >
                     </FrameLayout>
                 </GridLayout>
-                <LinearLayout
+                <!-- passive skill icon start -->
+                <HorizontalScrollView
                     android:layout_width="match_parent"
-                    android:layout_height="25dp"
-                    android:orientation="horizontal"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginTop="5dp">
-                    <TextView
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_height="30dp"
+                    android:scrollbars="none"
+                    android:id="@+id/horizontalScrollView">
+                    <LinearLayout
+                        android:id="@+id/passiveSkillIconLayout"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:layout_marginTop="5dp"
-                        android:layout_gravity="center_vertical"
-                        android:text="戰士:2/5  法師:2/4  盜賊:2/6"/>
-                    <ImageView
-                        android:layout_width="25dp"
-                        android:layout_height="match_parent"
-                        android:layout_marginLeft="10dp"
-                        android:src="@drawable/item_magnifyingglass"/>
+                        android:orientation="horizontal">
                 </LinearLayout>
+                </HorizontalScrollView>
+                <!-- passive skill icon end -->
             </LinearLayout>
             <!-- team end -->
 
@@ -992,6 +993,8 @@
         </LinearLayout>
     </FrameLayout>
     <!-- progress bar end -->
+
+
 
     <!-- fragment container start -->
     <FrameLayout

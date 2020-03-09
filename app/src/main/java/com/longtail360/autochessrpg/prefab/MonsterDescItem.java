@@ -32,7 +32,7 @@ public class MonsterDescItem extends LinearLayout {
         monsterIcon = findViewById(R.id.monsterIcon);
         codeValue.setText(monster.code);
         nameValue.setText(monster.name);
-        hpValue.setText(monster.hp+"");
+        hpValue.setText(monster.getHp()+"");
         attackValue.setText(monster.attack+"");
         defenseValue.setText(monster.defense+"");
         Logger.log(tag, monster.code);

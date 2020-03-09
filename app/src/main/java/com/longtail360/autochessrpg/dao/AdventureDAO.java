@@ -20,6 +20,7 @@ public class AdventureDAO {
     public static final String LEVEL = "level";
     public static final String EXP = "exp";
     public static final String HP = "hp";
+    public static final String LOCK_BUYING_CARD = "lock_buying_card";
     public static final String CREATE_TABLE =
             "CREATE TABLE " + TABLE_NAME + " (" +
                     KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
@@ -29,7 +30,8 @@ public class AdventureDAO {
                     LEVEL + " INTEGER, "+
                     EXP + " INTEGER, "+
                     HP + " INTEGER, "+
-                    FINAL_MARK + " INTEGER"
+                    FINAL_MARK + " INTEGER," +
+                    LOCK_BUYING_CARD + " INTEGER"
                     + ")";
 
 
@@ -51,7 +53,7 @@ public class AdventureDAO {
         cv.put(EXP, item.exp);
         cv.put(HP, item.hp);
         cv.put(FINAL_MARK, item.finalMark);
-
+        cv.put(LOCK_BUYING_CARD, item.lockBuyingCard);
         long id = db.insert(TABLE_NAME, null, cv);
         item.id = id;
         return item;
@@ -65,7 +67,7 @@ public class AdventureDAO {
         cv.put(EXP, item.exp);
         cv.put(HP, item.hp);
         cv.put(FINAL_MARK, item.finalMark);
-
+        cv.put(LOCK_BUYING_CARD, item.lockBuyingCard);
         String where = KEY_ID + "=" + item.id;
         return db.update(TABLE_NAME, cv, where, null) > 0;
     }
@@ -111,6 +113,7 @@ public class AdventureDAO {
         result.exp = cursor.getInt(5);
         result.hp= cursor.getInt(6);
         result.finalMark = cursor.getInt(7);
+        result.lockBuyingCard = cursor.getInt(8);
         return result;
     }
 

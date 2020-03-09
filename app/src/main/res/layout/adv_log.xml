@@ -144,13 +144,26 @@
 
                 </LinearLayout>
             </LinearLayout>
-            <LinearLayout
+<!--            <LinearLayout
                 android:id="@+id/teamStatusContainer"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
-            </LinearLayout>
+            </LinearLayout>-->
+
+            <ScrollView
+                android:layout_centerInParent="true"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <LinearLayout
+                    android:id="@+id/teamStatusContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                </LinearLayout>
+            </ScrollView>
+
         </LinearLayout>
 
     </FrameLayout>
@@ -175,9 +188,9 @@
         <ScrollView
             android:id="@+id/itemListLayout"
             android:layout_centerInParent="true"
-            android:translationY="45dp"
+            android:layout_marginTop="45dp"
             android:layout_width="match_parent"
-            android:layout_height="550dp">
+            android:layout_height="match_parent">
             <LinearLayout
                 android:id="@+id/itemContainer"
                 android:layout_width="match_parent"
@@ -205,9 +218,9 @@
         <ScrollView
             android:id="@+id/battleListLayout"
             android:layout_centerInParent="true"
-            android:translationY="45dp"
+            android:layout_marginTop="45dp"
             android:layout_width="match_parent"
-            android:layout_height="590dp">
+            android:layout_height="match_parent">
             <LinearLayout
                 android:id="@+id/battleLogContainer"
                 android:layout_width="match_parent"

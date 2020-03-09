@@ -5,6 +5,7 @@ import android.content.Context;
 import com.longtail360.autochessrpg.R;
 import com.longtail360.autochessrpg.adventure.AdvContext;
 import com.longtail360.autochessrpg.entity.Card;
+import com.longtail360.autochessrpg.entity.MyCard;
 import com.longtail360.autochessrpg.entity.tactic.OptionItem;
 
 /**
@@ -29,7 +30,19 @@ public class AnyoneHp extends BaseCondition{
     @Override
     public boolean checking (AdvContext advContext){
         boolean result = false;
-        return result;
+        int value = selectOption2.convertValueToInt();
+        for (MyCard card : advContext.cards) {
+            int percentage = card.battleHp *100/card.totalHp;
+            if (percentage < value) {
+                result = true;
+                break;
+            }
+        }
+        if(negation){
+            return !result;
+        }else {
+            return result;
+        }
 
     }
 }

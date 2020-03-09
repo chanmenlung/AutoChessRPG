@@ -5,6 +5,7 @@ import android.content.Context;
 import com.longtail360.autochessrpg.R;
 import com.longtail360.autochessrpg.adventure.AdvContext;
 import com.longtail360.autochessrpg.entity.tactic.OptionItem;
+import com.longtail360.autochessrpg.utils.Logger;
 
 /**
  * Created by chanmenlung on 21/10/2018.
@@ -27,8 +28,18 @@ public class NumberOfMonster extends BaseCondition{
 
     @Override
     public boolean checking (AdvContext advContext){
+
         boolean result = false;
-        return result;
+        int value = selectOption2.convertValueToInt();
+        if(advContext.battleContext.monsters.size() >= value){
+            result = true;
+        }
+        Logger.log(KEY, "result:"+result);
+        if(negation){
+            return !result;
+        }else {
+            return result;
+        }
 
     }
 }

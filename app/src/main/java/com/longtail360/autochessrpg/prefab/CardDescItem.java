@@ -105,8 +105,8 @@ public class CardDescItem extends LinearLayout {
         loadHeadImage(context, card);
         if(card.race.equals(Card.RACE_DIVINITY)){
             raceValue.setText(context.getString(R.string.card_race_divinity));
-        }else if(card.race.equals(Card.RACE_DRAGON)){
-            raceValue.setText(context.getString(R.string.card_race_dragon));
+        }else if(card.race.equals(Card.RACE_SPIRIT)){
+            raceValue.setText(context.getString(R.string.card_race_spirit));
         }else if(card.race.equals(Card.RACE_DWARF)){
             raceValue.setText(context.getString(R.string.card_race_dwarf));
         }else if(card.race.equals(Card.RACE_ELF)){

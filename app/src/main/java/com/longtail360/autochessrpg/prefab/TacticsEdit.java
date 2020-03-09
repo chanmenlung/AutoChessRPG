@@ -93,8 +93,10 @@ public class TacticsEdit extends FrameLayout {
 
     public void showView(boolean show) {
         if(show) {
+            Logger.log(tag, "show-editStrategyLayout");
             editStrategyLayout.setVisibility(VISIBLE);
         }else {
+            Logger.log(tag, "hide-editStrategyLayout");
             editStrategyLayout.setVisibility(INVISIBLE);
         }
     }

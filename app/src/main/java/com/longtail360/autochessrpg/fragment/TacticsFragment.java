@@ -53,18 +53,13 @@ public class TacticsFragment  extends BaseFragment implements TacticsEdit.CallBa
         cancelSelectStrategyButton = view.findViewById(R.id.cancelSelectStrategyButton);
 //        editStrategyLayout = findViewById(R.id.editStrategyLayout);
         strategyItemSelectMenuLayout.setVisibility(View.INVISIBLE);
-        loadStrategyList();
+        strategyEdit = new TacticsEdit(getContext(), this, null);
+        strategyList.addView(strategyEdit);
+//        loadStrategyList();
         setListener();
         return view;
     }
 
-    public void showView(boolean show){
-        if(show){
-            strategyList.setVisibility(View.VISIBLE);
-        }else {
-            strategyList.setVisibility(View.INVISIBLE);
-        }
-    }
     private void setListener() {
         strategyBackButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -137,10 +132,11 @@ public class TacticsFragment  extends BaseFragment implements TacticsEdit.CallBa
 
     private TacticsEdit showEditStrategy(Context context, TacticsEdit stgEdit, Tactics strategy) {
         Logger.log(tag, "showEditStrategy");
-        if(stgEdit == null) {
-            stgEdit = new TacticsEdit(context, this, strategy);
-            strategyList.addView(stgEdit);
-        }
+//        if(stgEdit == null) {
+//            Logger.log(tag, "stgEdit is null");
+//            stgEdit = new TacticsEdit(context, this, strategy);
+//            strategyList.addView(stgEdit);
+//        }
         stgEdit.reload( strategy);
         stgEdit.showView(true);
         return stgEdit;
@@ -150,20 +146,23 @@ public class TacticsFragment  extends BaseFragment implements TacticsEdit.CallBa
 //        loadStrategyList();
 //    }
 
-
+    @Override
+    public void onStart() {
+        super.onStart();
+        loadStrategyList();
+    }
     public void loadStrategyList() {
         Logger.log(tag, "loadStrategyList");
         strategyContainer.removeAllViews();
         Collections.sort( GameContext.gameContext.getPlayer(getContext()).tacticsList);
         Logger.log(tag, "card.tacticsList.size():"+ GameContext.gameContext.getPlayer(getContext()).tacticsList.size());
         for(int i=0; i< GameContext.gameContext.getPlayer(getContext()).tacticsList.size();i++){
-//            final int k = i;
             final TacticsDescItem item = new TacticsDescItem(getContext(), GameContext.gameContext.getPlayer(getContext()).tacticsList.get(i), i);
-            item.content.setText( GameContext.gameContext.getPlayer(getContext()).tacticsList.get(i).concatStr(getContext()));
-            item.setOnClickListener(new View.OnClickListener() {
+            item.setText( GameContext.gameContext.getPlayer(getContext()).tacticsList.get(i).concatStr(getContext()));
+            item.content.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-//                    Logger.log("card.tacticsList.size:"+card.tacticsList.size());
+
                     focusStrategy = item.strategy;
                     focusStrategyItem = item;
                     strategyItemSelectMenuLayout.setVisibility(View.VISIBLE);

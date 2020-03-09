@@ -49,14 +49,14 @@ public class TeamActionEngine {
     }
 
     public void restoreTeamHp(double ratio) { //called by spring event, ratio value: 0-1
-        for(int i=0; i<advContext.cardActions.size(); i++){
+        for(int i=0; i<advContext.cards.size(); i++){
 //        for(BaseCard card : advContext.teamCards) {
 
-            MyCard card = advContext.cardActions.get(i).cardInBattle;
+            MyCard card = advContext.cards.get(i);
             if(card != null) {
-                card.battleHp = (int)(card.battleHp + card.getTotalHp() * ratio);
-                if(card.battleHp > card.getTotalHp()) {
-                    card.battleHp = card.getTotalHp();
+                card.battleHp = (int)(card.battleHp + card.totalHp* ratio);
+                if(card.battleHp > card.totalHp) {
+                    card.battleHp = card.totalHp;
                 }
                 if(card.battleHp < 0){
                     card.battleHp = 0;
@@ -66,26 +66,26 @@ public class TeamActionEngine {
     }
 
 
-    public ActionResult excuteTactics() throws JSONException {
-        ActionResult result = new ActionResult();
-        for(Tactics ta : advContext.tacticsList){
-            if(ta.doChecking(advContext)) {
-                result = ta.action.action(context,advContext);
-                if(result.doThisAction) {
-                    return result;
-                }
-            }
-        }
-        if(result.doThisAction) {
-            return result;
-        }
-
-//        result = excuteCommonTactics();
-        return result;
-
-    }
+//    public ActionResult excuteTactics() throws JSONException {
+//        ActionResult result = new ActionResult();
+//        for(Tactics ta : advContext.tacticsList){
+//            if(ta.doChecking(advContext)) {
+//                result = ta.action.action(context,advContext);
+//                if(result.doThisAction) {
+//                    return result;
+//                }
+//            }
+//        }
+//        if(result.doThisAction) {
+//            return result;
+//        }
+//
+////        result = excuteCommonTactics();
+//        return result;
+//
+//    }
     public boolean checkAllDead() {
-        if(advContext.cardActions.size() == 0){
+        if(advContext.cards.size() == 0){
             return true;
         }else {
             return false;
@@ -93,27 +93,27 @@ public class TeamActionEngine {
     }
 
     //======================================
-    private boolean oneOfCardHpLower(double ratio) {
-        for(CardActionEngine cardAction : advContext.cardActions) {
-            if(cardAction.cardInBattle.card != null) {
-                if(cardAction.cardInBattle.battleHp < (cardAction.cardInBattle.card.hp * ratio)) {
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
-
-    private boolean oneOfCardHpLower(int count,double ratio) {//one of them, two of them, three of them ....
-        int countIndex = 0;
-        for(CardActionEngine cardAction : advContext.cardActions) {
-            if(cardAction.cardInBattle.battleHp < (cardAction.cardInBattle.card.hp * ratio)) {
-                countIndex++;
-                if(count == countIndex){
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
+//    private boolean oneOfCardHpLower(double ratio) {
+//        for(CardActionEngine cardAction : advContext.cardActions) {
+//            if(cardAction.cardInBattle.card != null) {
+//                if(cardAction.cardInBattle.battleHp < (cardAction.cardInBattle.card.hp * ratio)) {
+//                    return true;
+//                }
+//            }
+//        }
+//        return false;
+//    }
+//
+//    private boolean oneOfCardHpLower(int count,double ratio) {//one of them, two of them, three of them ....
+//        int countIndex = 0;
+//        for(CardActionEngine cardAction : advContext.cardActions) {
+//            if(cardAction.cardInBattle.battleHp < (cardAction.cardInBattle.card.hp * ratio)) {
+//                countIndex++;
+//                if(count == countIndex){
+//                    return true;
+//                }
+//            }
+//        }
+//        return false;
+//    }
 }

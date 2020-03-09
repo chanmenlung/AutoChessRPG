@@ -20,6 +20,9 @@ public class RootLogDAO {
     public static final String IS_COMING_BACK = "is_coming_back";
     public static final String NUM_OF_DEAD = "num_of_dead";
     public static final String IS_HISTORY_LOG = "is_history_log";
+    public static final String CURRENT_FLOOR = "currentFloor";
+    public static final String CURRENT_AREA = "currentArea";
+    public static final String CURRENT_BLOCK = "currentBlock";
     public static final String PROGRESS = "progress";
     public static final String STARTING_COIN = "startingCoin";
     public static final String STARTING_TIME = "starting_time";
@@ -32,6 +35,9 @@ public class RootLogDAO {
                     IS_COMING_BACK + " INTEGER,"+
                     NUM_OF_DEAD + " INTEGER,"+
                     IS_HISTORY_LOG + " INTEGER,"+
+                    CURRENT_FLOOR + " INTEGER,"+
+                    CURRENT_AREA + " INTEGER,"+
+                    CURRENT_BLOCK + " INTEGER,"+
                     PROGRESS + " INTEGER,"+
                     STARTING_COIN + " INTEGER,"+
                     STARTING_TIME + " INTEGER"
@@ -52,6 +58,9 @@ public class RootLogDAO {
         cv.put(IS_COMING_BACK, item.isComingBack);
         cv.put(NUM_OF_DEAD, item.numOfDead);
         cv.put(IS_HISTORY_LOG, item.isHistoryLog);
+        cv.put(CURRENT_FLOOR, item.currentFloor);
+        cv.put(CURRENT_AREA, item.currentArea);
+        cv.put(CURRENT_BLOCK, item.currentBlock);
         cv.put(PROGRESS, item.progress);
         cv.put(STARTING_COIN, item.startingCoin);
         cv.put(STARTING_TIME, item.startingTime);
@@ -66,6 +75,9 @@ public class RootLogDAO {
         cv.put(IS_COMING_BACK, item.isComingBack);
         cv.put(NUM_OF_DEAD, item.numOfDead);
         cv.put(IS_HISTORY_LOG, item.isHistoryLog);
+        cv.put(CURRENT_FLOOR, item.currentFloor);
+        cv.put(CURRENT_AREA, item.currentArea);
+        cv.put(CURRENT_BLOCK, item.currentBlock);
         cv.put(PROGRESS, item.progress);
         cv.put(STARTING_COIN, item.startingCoin);
         cv.put(STARTING_TIME, item.startingTime);
@@ -113,9 +125,12 @@ public class RootLogDAO {
         result.isComingBack = cursor.getInt(3);
         result.numOfDead = cursor.getInt(4);
         result.isHistoryLog = cursor.getInt(5);
-        result.progress = cursor.getInt(6);
-        result.startingCoin = cursor.getInt(7);
-        result.startingTime = cursor.getLong(8);
+        result.currentFloor = cursor.getInt(6);
+        result.currentArea = cursor.getInt(7);
+        result.currentBlock = cursor.getInt(8);
+        result.progress = cursor.getInt(9);
+        result.startingCoin = cursor.getInt(10);
+        result.startingTime = cursor.getLong(11);
         return result;
     }
 

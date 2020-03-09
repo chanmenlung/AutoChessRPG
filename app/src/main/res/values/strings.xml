@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">AutoChessRPG</string>
-    <string name="game_name">RPG幻想日誌</string>
+    <string name="game_name">自走棋-地城探索</string>
     <string name="ui_mainPage_continueGame">繼續遊戲</string>
     <string name="ui_mainPage_startNewGame">開始新遊戲</string>
     <string name="ui_mainPage_illustration">圖鑒</string>
@@ -11,6 +11,7 @@
     <string name="ui_mainPage_isConfirmRestartGame">是否開始新遊戲?</string>
     <string name="ui_mainPage_isLeaveGame">是否離開遊戲?</string>
     <string name="ui_mainPage_tapToStartGame">點擊畫面開始遊戲</string>
+    <string name="ui_mainPage_doingInitial">正在初始化 . . . 請稍候</string>
     <string name="ui_about_content">本遊戲為獨立者開發，如有任何意見，歡迎電郵至longtail360@gmail.com。</string>
     <string name="ui_about_aboutuseResourceAsBelow">本作品使用了以下素材：</string>
     <string name="ui_home_level">等級:</string>
@@ -20,7 +21,7 @@
     <string name="ui_home_upgrade">升級($50)</string>
     <string name="ui_home_hp">生命值:</string>
     <string name="ui_home_log">日誌</string>
-    <string name="ui_home_cardForBuying">可購買的角色:</string>
+    <string name="ui_home_cardForBuying">可招募的角色:</string>
     <string name="ui_home_buyingCardPos">基本({basic}%), 普通({common}%),精良({rare}%),史詩({epic}%), 傳說({legendary}%)</string>
     <string name="ui_home_refreshForBuying">刷新\n($20)</string>
     <string name="ui_home_team">隊伍:</string>
@@ -30,23 +31,28 @@
     <string name="ui_home_startAdv">開始探索</string>
     <string name="ui_home_continueAdv">繼續探索</string>
     <string name="ui_home_numOfFloor">層數:</string>
+    <string name="ui_home_stageInfo">層數:{floor}\n怪物:{monster}\n血量:{hp}\n攻擊力:{attack}\n防禦力:{defense}</string>
     <string name="ui_home_advReady">出發準備中，切勿關閉</string>
+    <string name="ui_home_passiveSkillTitle">上陣指定數量角色可觸發羈絆效果</string>
     <string name="ui_home_pleaseWait">請稍候</string>
+    <string name="ui_home_stage">關卡{stageNo}:</string>
     <string name="ui_home_handCardIsFull">手牌已滿, 請出售角色</string>
     <string name="ui_home_coinNotEnougth">金幣不足</string>
-    <string name="ui_home_overPopulation">超過人口上限</string>
+    <string name="ui_home_overPopulation">隊伍人數超過了等級</string>
     <string name="ui_home_cardDesc_level">等級:</string>
     <string name="ui_home_cardDesc_cardInfo">生命值:{hp}  攻擊力:{attack}  防禦力:{defense}</string>
     <string name="ui_home_cardDesc_skill">技能:</string>
-    <string name="ui_home_cardDesc_sellCard">出售可獲得: </string>
+    <string name="ui_home_cardDesc_sellCard">出售可獲得: {coin}枚金幣</string>
     <string name="ui_home_cardDesc_sell">出售</string>
     <string name="ui_home_upgrade_notEnoughCoin">金幣不足</string>
     <string name="ui_home_refresh_notEnoughCoin">金幣不足</string>
     <string name="ui_home_upgrade_gotExp">已獲得4點經驗值</string>
     <string name="ui_home_help">說明</string>
-    <string name="ui_home_help_content">1. 購買任意一名角色\n2. 若成功購買3名相同角色, 可升級該角色\n3. 把角色放置於隊伍欄中\n4. 點擊\"開始探索\"進行地下城的探索</string>
+    <string name="ui_home_help_content">1. 招募任意一名角色\n2. 若成功招募3名相同角色, 可升級該角色\n3. 把角色放置於隊伍欄中\n4. 點擊\"開始探索\"進行地下城的探索</string>
     <string name="ui_home_noTeamCard">沒有隊伍成員</string>
     <string name="ui_home_buyCardAndPutToTeam">招募一名角色, 並把該角色放置於隊伍中</string>
+    <string name="ui_home_overMaxItemNum">攜帶物品的數量超過上限 24 個</string>
+    <string name="ui_home_overMaxItemNumContent">點擊 "物品" -> 把物品放於倉庫</string>
     <string name="ui_home_advProgressing">探索進行中</string>
     <string name="ui_home_cardUpgradeSuccess">已升級</string>
     <string name="ui_home_isStartNewAdv">是否開始新的探索?</string>
@@ -59,44 +65,83 @@
     <string name="ui_myItem_itemList">物品列表</string>
     <string name="ui_myItem_hadBrought">己攜帶</string>
     <string name="ui_myItem_hadSaved">己存放</string>
+    <string name="ui_myItem_advProgressing">探索進行中</string>
+    <string name="passiveSkillDescLayout_number">數量</string>
+    <string name="passiveSkillDescLayout_skillResult">效果</string>
+    <string name="passiveSkillDescLayout_passiveSkillTitle">上陣指定數量角色可觸發羈絆效果</string>
     <string name="cardIcon_upgrade">升級</string>
     <string name="item_redPotionSmall">紅色藥水</string>
     <string name="item_redPotionMiddle">進階紅色藥水</string>
     <string name="item_redPotionLarge">最進階紅色藥水</string>
+    <string name="teamUseItem">隊伍使用了{item}</string>
+
     <string name="item_itemHpUp">紅色藥水</string>
-    <string name="item_itemHpUp_desc">回復小量生命值</string>
+    <string name="item_itemHpUp_desc">回復 {value} 點生命值</string>
+    <string name="item_itemHpUp_battleDesc">隊伍回復了{value}點生命值</string>
+
     <string name="item_itemCdDown">藍色藥水</string>
-    <string name="item_itemCdDown_desc">回復小量生命值</string>
+    <string name="item_itemCdDown_desc">隊伍技能冷卻值減 1</string>
+    <string name="item_itemCdDown_battleDesc">隊伍使用了藍色藥水, 技能冷卻值減少了 1</string>
+
     <string name="item_itemAttackUp">飯團</string>
-    <string name="item_itemAttackUp_desc">回復小量生命值</string>
+    <string name="item_itemAttackUp_desc">提升{value}點攻擊力</string>
+    <string name="item_itemAttackUp_battleDesc">隊伍使用了飯團, 攻擊力提升了{value}點</string>
+
     <string name="item_itemFire">炸藥</string>
-    <string name="item_itemFire_desc">對所有敵人造成傷害, 並有30%機率造成燃燒狀態</string>
+    <string name="item_itemFire_desc">對所有敵人造成 {value} 點傷害, 並有30%機率造成燃燒狀態</string>
+    <string name="item_itemFire_battleDesc">隊伍向怪物投擲了炸藥, 強烈爆炸使敵人受到了{value}點傷害</string>
+
     <string name="item_itemElectricity">電容</string>
-    <string name="item_itemElectricity_desc">對所有敵人造成傷害, 並有30%機率造成觸電狀態</string>
+    <string name="item_itemElectricity_desc">對所有敵人造成 {value} 點傷害, 並有30%機率造成觸電狀態</string>
+    <string name="item_itemElectricity_battleDesc">隊伍向怪物投擲了電容, 電容釋放出高壓電流, 敵人受到了{value}點傷害</string>
+
     <string name="item_itemPotion">毒氣彈</string>
-    <string name="item_itemPotion_desc">對所有敵人造成傷害, 並有30%機率造成中毒狀態</string>
+    <string name="item_itemPotion_desc">對所有敵人造成 {value} 點傷害, 並有30%機率造成中毒狀態</string>
+    <string name="item_itemPotion_battleDesc">隊伍向怪物投擲了毒氣彈, 毒氣彈釋放出濃烈毒氣, 敵人受到了{value}點傷害</string>
+
     <string name="item_itemIce">千年寒冰</string>
-    <string name="item_itemIce_desc">對所有敵人造成傷害, 並有30%機率造成冰凍狀態</string>
-    <string name="item_itemSummonMonsterSmall">妖精的翅膀</string>
-    <string name="item_itemSummonMonsterSmall_desc">召喚妖精為你作戰</string>
+    <string name="item_itemIce_desc">對所有敵人造成 {value} 點傷害, 並有30%機率造成冰凍狀態</string>
+    <string name="item_itemIce_battleDesc">隊伍向怪物投擲了千年寒冰, 千年寒冰使怪物周圍的空氣急速冷凍, 敵人受到了{value}點傷害</string>
+
+    <string name="item_itemSummonMonsterHeal">妖精的翅膀</string>
+    <string name="item_itemSummonMonsterHeal_desc">召喚妖精為你作戰</string>
+    <string name="item_itemSummonMonsterHeal_battleDesc">隊伍使用了妖精的翅膀, 於場上召喚了一名妖精</string>
+
+    <string name="item_itemSummonMonsterSmall">符文石</string>
+    <string name="item_itemSummonMonsterSmall_desc">召喚圖騰為你作戰</string>
+    <string name="item_itemSummonMonsterSmall_battleDesc">隊伍使用了符文石, 一隻圖騰降落於場上</string>
+
+    <string name="item_itemSummonMonsterMiddle">號角</string>
+    <string name="item_itemSummonMonsterMiddle_desc">召喚灰熊為你作戰</string>
+    <string name="item_itemSummonMonsterMiddle_battleDesc">隊伍使用了灰熊, 一隻灰熊降落於場上</string>
+
     <string name="item_itemSummonMonsterLarge">龍鱗片</string>
-    <string name="item_itemSummonMonsterLarge_desc">召喚蠋龍為你作戰</string>
+    <string name="item_itemSummonMonsterLarge_desc">召喚始生龍為你作戰</string>
+    <string name="item_itemSummonMonsterLarge_battleDesc">隊伍使用了龍鱗片, 一隻白龍降落於場上</string>
+
     <string name="item_itemPerfume">誘惑香水</string>
     <string name="item_itemPerfume_desc">一回內所有敵人互相攻擊</string>
+    <string name="item_itemPerfume_battleDesc">一回內所有敵人互相攻擊</string>
+
     <string name="action_attack">攻擊</string>
     <string name="action_target">目標</string>
-    <string name="action_userSmallRedPotion">使用紅色藥水</string>
+    <string name="action_useItemHpUp">使用紅色藥水</string>
     <string name="action_useItemCdDown">使用藍色藥水</string>
     <string name="action_useItemAttackUp">使用飯團</string>
     <string name="action_useItemFire">使用炸藥</string>
     <string name="action_useItemElectricity">使用電容</string>
     <string name="action_useItemPotion">使用毒氣彈</string>
     <string name="action_useItemIce">使用千年寒冰</string>
-    <string name="action_useItemSummonMonsterSmall">使用妖精的翅膀</string>
+    <string name="action_useItemSummonMonsterHeal">使用妖精的翅膀</string>
+    <string name="action_useItemSummonMonsterSmall">使用符文石</string>
+    <string name="action_useItemSummonMonsterMiddle">使用號角</string>
     <string name="action_useItemSummonMonsterLarge">使用龍鱗片</string>
     <string name="action_useItemPerfume">誘惑香水</string>
     <string name="condition_all_card_hp">全員的HP</string>
-    <string name="condition_anyone_hp">任一人的HP</string>
+    <string name="condition_all_monster_hp">所有敵人的HP</string>
+    <string name="condition_anyone_hp">任意一人的HP</string>
+    <string name="condition_anyoneMonster_hp">任意一名敵人的HP</string>
+    <string name="condition_anytwoMonster_hp">任意兩名敵人的HP</string>
     <string name="condition_number_of_floor">探索層數</string>
     <string name="condition_number_of_monster">敵人數目</string>
     <string name="condition_any_two_hp">任意兩名伙伴的HP</string>
@@ -120,8 +165,11 @@
     <string name="tactic_save">儲存</string>
     <string name="tactic_edit">編輯</string>
     <string name="tactic_cancel">取消</string>
-    <string name="tactic_up">編輯</string>
-    <string name="tactic_down">編輯</string>
+    <string name="tactic_up">向上</string>
+    <string name="tactic_down">向下</string>
+    <string name="tactic_hadActive">已生效</string>
+    <string name="tactic_hadInactive">已失效</string>
+    <string name="tactic_help">於每回合戰鬥開始時, 隊伍讀取戰術列表, 並由上至下檢查符合條件的戰術。每個戰術由多個條件和一個行動組成。條件之間由「且」和「或」組合而成, 「且」優先處理。如「A且B或C且D」的話，相當於「A且B」或「C且D」</string>
     <string name="log_hp">血量:</string>
     <string name="log_level">等級:</string>
     <string name="monster_hp">生命值:</string>
@@ -131,11 +179,11 @@
     <string name="card_clazz">職業:</string>
     <string name="card_race_human">人類</string>
     <string name="card_race_elf">精靈</string>
-    <string name="card_race_dragon">龍</string>
+    <string name="card_race_spirit">元素</string>
     <string name="card_race_undead">不死</string>
     <string name="card_race_orcs">野獸</string>
     <string name="card_race_demon">惡魔</string>
-    <string name="card_race_divinity">神</string>
+    <string name="card_race_divinity">神族</string>
     <string name="card_race_marine">海族</string>
     <string name="card_race_dwarf">矮人</string>
     <string name="card_race_goo">蟲族</string>
@@ -185,14 +233,6 @@
     <string name="adv_metMonster">隊伍遇到了{numOfMonster}只{monsterName}</string>
     <string name="adv_logDeadTitle">{stage}的探索失敗</string>
     <string name="adv_logDeadContent">遙遠的意識中，彷彿聽到一種聲音「你還沒到死的時候」……剛回過神，你發現自己倒在了郊外。</string>
-    <string name="adv_findAJar">發現了罌罐</string>
-    <string name="adv_openJarGetItem">{card}仔細地觀察周圍有沒有陷阱。好像沒有陷阱。從罌罐得到了物品「{item}」</string>
-    <string name="adv_findASpring">發現了泉水</string>
-    <string name="adv_drinkFromSpring">{card}走近泉水。泉水清明透徹，好像沒有毒。隊伍喝了泉水，感覺涼透了。</string>
-    <string name="adv_trape">陷阱！！</string>
-    <string name="adv_openTrapeTeamHurt">毒霧噴出，隊伍被襲擊了。 </string>
-    <string name="adv_findAnBox">發現了寶箱</string>
-    <string name="adv_openTrapeCardHurt">{card}打開寶箱，箭矢忽然從寶箱彈出，{card}受到了{hurt}點傷害。</string>
     <string name="adv_update">更新</string>
     <string name="adv_goAhead">前行</string>
     <string name="adv_onBodyItem">隊伍持有物品</string>
@@ -203,9 +243,46 @@
     <string name="adv_finishStage">{dungeon}探索通關</string>
     <string name="adv_backToFloor">回到了{floor}層</string>
     <string name="adv_backToFloorDetail">為了盡早返回，隊伍加快了步伐。</string>
-    <string name="adv_successAdv">{dungeon} 探索成功</string>
-    <string name="adv_interestGain">獎勵:{price}, 利息: {value}, 經驗值: +1 Exp, 已消耗{hp}點生命值復活{deadNum}名角色</string>
-    <string name="adv_hp0">生命值已歸零</string>
+    <string name="adv_successAdv">{dungeon} 探索成功,隊伍已返回基地</string>
+    <string name="adv_interestGainRelife">探索獎勵:{price}枚金幣, 經驗值:+1, 已消耗{hp}點生命值復活{deadNum}名角色</string>
+    <string name="adv_interestGain">探索獎勵:{price}枚金幣, 經驗值:+1</string>
+    <string name="adv_failAdvRelife">探索獎勵:{price}枚金幣, 已消耗{hp}點生命值復活{deadNum}名角色</string>
+    <string name="adv_failAdv">探索獎勵:{price}枚金幣</string>
+    <string name="adv_hp0">生命值已歸零, 遊戲已重新開始。</string>
+    <string name="adv_findBossRoom">發現頭目房間</string>
+
+    <string name="adv_event_findARoom">發現了房間</string>
+    <string name="adv_event_findARoom_getItem">隊伍搜索了房間, 在雜亂堆找到了「{item}」</string>
+    <string name="adv_event_findARoom_cure_desc1">在房間的一角獲得了一個藥瓶。瓶身的玻璃非常薄。開啟瓶蓋，喝下裡面的液體。全身充滿了力量。</string>
+    <string name="adv_event_findARoom_cure_desc2">在房間的一角獲得了一個藥瓶。{card}小心翼翼地鑒定著藥瓶。開啟瓶蓋，服下藥物。頭腦分外清醒。</string>
+    <string name="adv_event_findARoom_cure_desc3">在牆邊有一個架子，上面雜亂的堆放著盛有液體的藥瓶。{card}小心翼翼地鑒定著藥瓶。發現瓶中的液體對身體無害。開啟瓶蓋，喝下裡面的液體。精神抖擻。</string>
+
+    <string name="adv_event_findARoom_none_desc1">在房間的一角獲得了一個藥瓶。瓶身的玻璃非常薄，但嘗不出什麼味道。好像不能夠帶走。</string>
+    <string name="adv_event_findARoom_none_desc2">在房間的一角獲得了一個藥瓶。{card}小心翼翼地鑒定著藥瓶。開啟瓶蓋，服下藥物。這藥物的味道真難吃。</string>
+    <string name="adv_event_findARoom_none_desc3">在牆邊有一個架子，上面雜亂的堆放著盛有液體的藥瓶。{card}小心翼翼地鑒定著藥瓶。發現瓶中的液體對身體無害。開啟瓶蓋，喝下裡面的液體。這液體的味道真不好喝。</string>
+
+    <string name="adv_event_findAJar">發現了罌罐</string>
+    <string name="adv_event_findAJar_openJarGetItem">{card}仔細地觀察周圍有沒有陷阱。好像沒有陷阱。從罌罐得到了物品「{item}」</string>
+    <string name="adv_event_findAJar_getBowDodge">{card}打開了罌罐。突然、從罌罐飛出箭矢。{card}躲開了。</string>
+    <string name="adv_event_findAJar_getBow">{card}打開了罌罐。突然、從罌罐飛出箭矢。{card}受到了{value}點傷害</string>
+
+    <string name="adv_event_findASpring">發現了泉水</string>
+    <string name="adv_event_findASpring_potion">{card}小心翼翼地鑒定著泉水，發現這泉水對身體有害。不飲用泉水，決定離開。</string>
+    <string name="adv_event_findASpring_none">從泉眼正湧出泉水。泉水有點溫熱、但嘗不出味道。</string>
+    <string name="adv_event_findASpring_cure">從泉眼正湧出泉水。飲用了泉水，感覺透心涼。</string>
+    <string name="adv_event_findASpring_cure2">{card}走近泉水。泉水清明透徹，好像沒有毒。隊伍喝了泉水，感覺涼透了。</string>
+
+    <string name="adv_event_trape">陷阱！！</string>
+    <string name="adv_event_openTrapeTeamHurt">毒霧噴出，隊伍被襲擊了。 </string>
+
+    <string name="adv_event_findAnBox">發現了寶箱</string>
+    <string name="adv_event_findABox_getItem">{card}打開寶箱，好像沒有陷阱。從寶箱得到了物品「{item}」</string>
+    <string name="adv_event_findABox_getPotionDodge">{card}打開了寶箱。突然、毒霧噴出，隊伍躲開了。</string>
+    <string name="adv_event_findABox_getPotion">{card}打開了寶箱。突然、毒霧噴出，隊伍被襲擊了。</string>
+    <string name="adv_event_findABox_getBowDodge">{card}打開了寶箱。突然、從寶箱飛出箭矢。{card}躲開了。</string>
+    <string name="adv_event_findABox_getBow">{card}打開了寶箱。突然、從寶箱飛出箭矢。{card}受到了{value}點傷害。</string>
+
+
     <string name="battle_monsterGetHurt"></string>
     <string name="battle_monsterAttackTitle">{monster}的攻擊</string>
     <string name="battle_cardGetHurt">{card}受到了{hurt}點傷害</string>
@@ -221,275 +298,416 @@
     <string name="battle_rogueNormalAttack">{card}以風馳電掣的手法，對敵人連續出擊。{monster}受到了{value}傷害。</string>
     <string name="battle_winBattleTitle">隊伍打倒了{monster}</string>
     <string name="battle_battleLogTitle">{numOfMonster}隻{monsterName}遭遇戰</string>
+    <string name="battle_cardActiveSkill">{mySelf}發動了{skill}</string>
+    <string name="battle_dodgeMonsterAttack">{card}迴避了{monster}的攻擊</string>
+    <string name="battle_relifeTitle">{card}獲得了重生</string>
+    <string name="battle_relifeContent">{card}站了起來</string>
 
+    <string name="forTesting_testLength">{card}以風馳電掣的手法，對敵人連續出擊。{monster}受到了{value}傷害</string>
     <string name="buyCrystal_buy">購買</string>
+
+
+    <string name="skill_getStatus_fire">{statusLabels}中了燃燒狀態</string>
+    <string name="skill_getStatus_potion">{statusLabels}中了毒化狀態</string>
+    <string name="skill_getStatus_elect">{statusLabels}中了觸電狀態, 攻擊力下降了 1 點</string>
+    <string name="skill_getStatus_ice">{statusLabels}中了冰凍狀態</string>
+    <string name="skill_unlockStatus_ice">{monster}解除了冰凍狀態</string>
+    <string name="battle_connectHurt_title">傷害共享</string>
+    <string name="battle_connectHurt_content">{subject}的傷害傳送至{objects}, {objects}受到了{value}點傷害</string>
+    <string name="battle_destroyDivineShield">{card}身上的聖盾阻擋了{monster}的攻擊</string>
+
     <string name="skill_name_valueUpAllAttack">集結號令</string>
-    <string name="skill_desc_valueUpAllAttack">指定友方角色獲得 +5 的攻擊力。</string>
-    <string name="skill_battleDesc_valueUpAllAttack">{card}激勵了隊伍, 隊伍每名角色提升了 5 點攻擊力。</string>
+    <string name="skill_desc_valueUpAllAttack">指定友方角色獲得 {value} 點攻擊力。</string>
+    <string name="skill_battleDesc_valueUpAllAttack">{mySelf}激勵了隊伍, 隊伍提升了 {value} 點攻擊力。</string>
     <string name="skill_statusDesc_valueUpAllAttack"></string>
+
     <string name="skill_name_valueUpAllDefense">重整旗鼓</string>
     <string name="skill_desc_valueUpAllDefense">隊伍角色獲得 +1 防禦力</string>
-    <string name="skill_battleDesc_valueUpAllDefense">{card}帶領隊伍重整旗鼓, 隊伍提升了 1 點防禦力。</string>
+    <string name="skill_battleDesc_valueUpAllDefense">隊伍重整了陣型, 所有成員提升了 1 點防禦力。</string>
     <string name="skill_statusDesc_valueUpAllDefense"></string>
-    <string name="skill_name_valueUpAttack">集結號令/激怒</string>
-    <string name="skill_desc_valueUpAttack">攻擊力上升 5 點</string>
-    <string name="skill_battleDesc_valueUpAttack">{card}使用了激怒術, {card}的腎上腺素持續上升, 攻擊力提升了 5 點。</string>
+
+    <string name="skill_name_valueUpAttack">激怒</string>
+    <string name="skill_desc_valueUpAttack">攻擊力上升 {value} 點</string>
+    <string name="skill_battleDesc_valueUpAttack">腎上腺素持續上升, {mySelf}提升了 {value} 點攻擊力。</string>
     <string name="skill_statusDesc_valueUpAttack"></string>
+
     <string name="skill_name_valueUpDefense">堅硬化</string>
-    <string name="skill_desc_valueUpDefense">獲得 +1 防禦力</string>
-    <string name="skill_battleDesc_valueUpDefense">{card}使用了堅硬化, 身上皮膚漸漸變得堅硬</string>
+    <string name="skill_desc_valueUpDefense">獲得 1 點防禦力</string>
+    <string name="skill_battleDesc_valueUpDefense">身上皮膚漸漸變得堅硬, {mySelf}獲得了 1 點防禦力。</string>
     <string name="skill_statusDesc_valueUpDefense"></string>
+
     <string name="skill_name_connect2Monster">鎖鏈術</string>
-    <string name="skill_desc_connect2Monster"></string>
-    <string name="skill_battleDesc_connect2Monster">{card}發動了鎖鏈術, 鎖鏈貫穿了{monsterA}及{monsterB}</string>
-    <string name="skill_statusDesc_connect2Monster"></string>
-    <string name="skill_name_connectMyselfAndTeam">均衡術</string>
-    <string name="skill_desc_connectAllMonster">均分所有角色的生命值</string>
-    <string name="skill_battleDesc_connectAllMonster">{card}發動了均衡術, 所有角色生命值設置至 {value}%</string>
-    <string name="skill_statusDesc_connectAllMonster"></string>
-    <string name="skill_name_connectMyselfAndAll">纏繞術</string>
-    <string name="skill_desc_connectMyselfAndAll">自身與所有敵人連結在一起, 若自身受到傷害, 敵人受到同等傷傷害</string>
-    <string name="skill_battleDesc_connectMyselfAnd">{card}發動了纏繞術, 在{card}的指揮下，有毒的蠕蟲從地下爬出來，攀附在區域內所有敵人</string>
-    <string name="skill_statusDesc_connectMyselfAndAll">由於{card}與敵人連結在一起, {monsters}同時受到 {value} 點傷害</string>
+    <string name="skill_desc_connect2Monster">連結兩名敵人, 當其中一方受到傷害, 另一方同時受到傷害。</string>
+    <string name="skill_battleDesc_connect2Monster">鎖鏈貫穿了{monsterA}及{monsterB}, 使它們的傷害連結在一起。</string>
+    <string name="skill_statusDesc_connect2Monster">{monster}的傷害經由鎖鏈傳送至{other}, {other}受到了{value}點傷害。</string>
+
+    <string name="skill_name_connectAllMonster">進階鎖鏈術</string>
+    <string name="skill_desc_connectAllMonster">連結所有敵人, 當其中一方受到傷害, 所有敵人同時受到傷害。</string>
+    <string name="skill_battleDesc_connectAllMonster">多條鎖鏈貫穿了所有敵人, 使它們的傷害連結在一起。</string>
+    <string name="skill_statusDesc_connectAllMonster">{monster}的傷害經由鎖鏈傳送至所有敵人, {other}同時受到了{value}點傷害。</string>
+
+    <string name="skill_name_connectMyselfAndAllMonster">纏繞術</string>
+    <string name="skill_desc_connectMyselfAndAllMonster">自身與所有敵人連結在一起, 若自身受到傷害, 敵人受到同等傷傷害。</string>
+    <string name="skill_battleDesc_connectMyselfAndAllMonster">{mySelf}與所有敵人連結了在一起, </string>
+    <string name="skill_statusDesc_connectMyselfAndAllMonster">{mySelf}與敵人的連結使{monster}受到 {value} 點傷害。</string>
+
     <string name="skill_name_connectMyselfAndMonster">精神入侵</string>
-    <string name="skill_desc_connectMyselfAndMonster">自身與其中一名敵人連結在一起, 若自身受到傷害, 該名敵人受到同等傷傷害</string>
-    <string name="skill_battleDesc_connectMyselfAndMonster">card}吟唱了精神入侵術, 把自身的痛楚與{monster}連結在一起</string>
-    <string name="skill_statusDesc_connectMyselfAndMonster">由於{card}與{monster}連結在一起, {monster}同時受到 {value} 點傷害</string>
+    <string name="skill_desc_connectMyselfAndMonster">自身與其中一名敵人連結在一起, 若自身受到傷害, 該名敵人受到同等傷傷害。</string>
+    <string name="skill_battleDesc_connectMyselfAndMonster">自身的痛楚與{monster}連結在一起。</string>
+    <string name="skill_statusDesc_connectMyselfAndMonster">由於{card}與{monster}連結在一起, {monster}同時受到 {value} 點傷害。</string>
+
     <string name="skill_name_electricAllBigHurt">超導體</string>
-    <string name="skill_desc_electricAllBigHurt">對所有敵人造成{hurt}點傷害, 30%機率造成觸電狀態。</string>
-    <string name="skill_battleDesc_electricAllBigHurt">{card}發動了超導體, 大地變為了超導體, 強烈電流流向了所有敵人. {targets}受到了{hurt}點傷害。</string>
+    <string name="skill_desc_electricAllBigHurt">對所有敵人造成{value}點傷害, {pos}%機率造成觸電狀態。</string>
+    <string name="skill_battleDesc_electricAllBigHurt">大地變為了超導體, 強烈電流流向了所有敵人. 敵人受到了{value}點傷害。</string>
     <string name="skill_statusDesc_electricAllBigHurt">電流使{statusLabel}的攻擊力下降{value}點。</string>
+
     <string name="skill_name_electricAllHurt">雷電交加</string>
-    <string name="skill_desc_electricAllHurt">對所有敵人造成{hurt}點傷害, 20%機率造成觸電狀態。</string>
-    <string name="skill_battleDesc_electricAllHurt">{card}發動了雷電交加，敵方上空集結了厚厚的雷電雲, 並向所有敵人降下閃電. {targets}受到了{hurt}點傷害。</string>
+    <string name="skill_desc_electricAllHurt">對所有敵人造成{value}點傷害, {pos}%機率造成觸電狀態。</string>
+    <string name="skill_battleDesc_electricAllHurt">敵方上空集結了的雷電雲, 並向所有敵人降下閃電. 敵人受到了{value}點傷害。</string>
     <string name="skill_statusDesc_electricAllHurt">電流使{statusLabel}的攻擊力下降{value}點。</string>
+
     <string name="skill_name_electricSingleBigHurt">落雷術</string>
-    <string name="skill_desc_electricSingleBigHurt">對目標造成{hurt}點傷害, 30%機率造成觸電狀態。</string>
-    <string name="skill_battleDesc_electricSingleBigHurt">{card}吟唱了落雷術 , 天上降下一束閃電，擊向了{target}, {target}受到了{hurt}點傷害。</string>
+    <string name="skill_desc_electricSingleBigHurt">對目標造成{value}點傷害, {pos}%機率造成觸電狀態。</string>
+    <string name="skill_battleDesc_electricSingleBigHurt">天上降下一束閃電，擊向了{monster}, {monster}受到了{value}點傷害。</string>
     <string name="skill_statusDesc_electricSingleBigHurt">電流使{statusLabel}的攻擊力下降{value}點。</string>
+
     <string name="skill_name_electricSingleHurt">放電</string>
-    <string name="skill_desc_electricSingleHurt">對所有敵人造成{hurt}點傷害, 20%機率造成觸電狀態。</string>
-    <string name="skill_battleDesc_electricSingleHurt">{card}向着{target}釋放一道閃電, {target}受到了{hurt}點傷害。</string>
+    <string name="skill_desc_electricSingleHurt">對所有敵人造成{value}點傷害, {pos}%機率造成觸電狀態。</string>
+    <string name="skill_battleDesc_electricSingleHurt">{mySelf}向{monster}釋放一道閃電, {monster}受到了{value}點傷害。</string>
     <string name="skill_statusDesc_electricSingleHurt">電流使{statusLabel}的攻擊力下降{value}點。</string>
+
     <string name="skill_name_fireAllBigHurt">隕石火雨</string>
-    <string name="skill_desc_fireAllBigHurt">引發爆炸, 對所有敵人造成{hurt}點火焰傷害。目檟有20%機會造成燃燒狀態。</string>
-    <string name="skill_battleDesc_fireAllBigHurt">{card}吟唱了隕石火雨, 無數的隕石從天而降, 沖向敵方區域, 所有敵人受到{hurt}點傷害。</string>
-    <string name="skill_statusDesc_fireAllBigHurt">火焰對{statusLabel}造成{hurt}點傷害。</string>
+    <string name="skill_desc_fireAllBigHurt">引發爆炸, 對所有敵人造成{value}點火焰傷害。目檟有 {pos}% 機會造成燃燒狀態。</string>
+    <string name="skill_battleDesc_fireAllBigHurt">{mySelf}吟唱了隕石火雨, 多枚隕石沖向敵方區域,  敵人受到{value}點傷害。</string>
+    <string name="skill_statusDesc_fireAllBigHurt">火焰對{statusLabel}造成{value}點傷害。</string>
+
     <string name="skill_name_fireAllHurt">燃爆術</string>
-    <string name="skill_desc_fireAllHurt">引發爆炸, 對所有敵人造成{hurt}點火焰傷害。目檟有20%機會造成燃燒狀態。</string>
-    <string name="skill_battleDesc_fireAllHurt">{card}吟唱了燃爆術，敵人周圍產生了熾熱的火球, 火球在一瞬間發生強烈的爆炸, 所有敵人受到了{hurt}點傷害</string>
-    <string name="skill_statusDesc_fireAllHurt">火焰對{statusLabel}造成{hurt}點傷害。</string>
+    <string name="skill_desc_fireAllHurt">引發爆炸, 對所有敵人造成{value}點火焰傷害。目檟有 {pos}% 機會造成燃燒狀態。</string>
+    <string name="skill_battleDesc_fireAllHurt">{mySelf}吟唱了燃爆術，敵人周圍產生了熾熱的火球, 強烈的爆炸使敵人受到了{value}點傷害</string>
+    <string name="skill_statusDesc_fireAllHurt">火焰對{statusLabels}造成{value}點傷害。</string>
+
     <string name="skill_name_fireSingleBigHurt">大火球術</string>
-    <string name="skill_desc_fireSingleBigHurt">施放強大魔法火球, 造成{hurt}點火焰傷害。目檟有30%機會造成燃燒狀態。</string>
-    <string name="skill_battleDesc_fireSingleBigHurt">{card}吟唱了火球術，熾熱的火球在前面變得越來越大並向{target}飛去，{target}受到了{hurt}點傷害。</string>
-    <string name="skill_statusDesc_fireSingleBigHurt">火焰對{statusLabel}造成{hurt}點傷害。</string>
+    <string name="skill_desc_fireSingleBigHurt">施放強大魔法火球, 造成{value}點火焰傷害。目檟有 {pos}% 機會造成燃燒狀態。</string>
+    <string name="skill_battleDesc_fireSingleBigHurt">熾熱的火球在前面變得越來越大並向{monster}飛去，{monster}受到了{value}點傷害。</string>
+    <string name="skill_statusDesc_fireSingleBigHurt">火焰對{statusLabel}造成{value}點傷害。</string>
+
     <string name="skill_name_fireSingleHurt">火球術</string>
-    <string name="skill_desc_fireSingleHurt">施放魔法火球, 造成{hurt}點火焰傷害。</string>
-    <string name="skill_battleDesc_fireSingleHurt">{card}吟唱了火球術，熾熱的火球在前面變得越來越大並向{target}飛去，{target}受到了{hurt}點傷害。</string>
-    <string name="skill_statusDesc_fireSingleHurt">火焰對{statusLabel}造成{hurt}點傷害。</string>
+    <string name="skill_desc_fireSingleHurt">施放魔法火球, 造成{value}點火焰傷害。</string>
+    <string name="skill_battleDesc_fireSingleHurt">{mySelf}吟唱了火球術，熾熱的火球在前面變得越來越大, 並向{monster}飛去，{monster}受到了{value}點傷害。</string>
+    <string name="skill_statusDesc_fireSingleHurt">火焰對{statusLabel}造成{value}點傷害。</string>
+
     <string name="skill_name_healAll">治癒淚珠</string>
-    <string name="skill_desc_healAll">恢復所有友方{hurt}點生命值。</string>
-    <string name="skill_battleDesc_healAll">{card}施展了治癒淚珠, 數滴治療的淚珠圍繞我方區域, {targets}回復了{heal}點生命值。</string>
+    <string name="skill_desc_healAll">恢復所有友方{value}點生命值</string>
+    <string name="skill_battleDesc_healAll">數滴治療的淚珠圍繞我方區域, 隊伍回復了{value}點生命值。</string>
     <string name="skill_statusDesc_healAll"></string>
+
     <string name="skill_name_healAllBig">祝福光環</string>
-    <string name="skill_desc_healAllBig">恢復目標{hurt}點生命值。</string>
-    <string name="skill_battleDesc_healAllBig">{card}吟唱了祝福光環, 環狀的祝福衝擊波向着我方擴散開去，{targets}回復了{heal}點生命值。</string>
+    <string name="skill_desc_healAllBig">恢復目標{value}點生命值</string>
+    <string name="skill_battleDesc_healAllBig">環狀的祝福光環向我方擴散開去，隊伍回復了{value}點生命值。</string>
     <string name="skill_statusDesc_healAllBig"></string>
+
     <string name="skill_name_healSingle">治療術</string>
-    <string name="skill_desc_healSingle">恢復目標{hurt}點生命值。</string>
-    <string name="skill_battleDesc_healSingle">{card}向着{target}傷口吟唱了治療術, {target}回復了{heal}點生命值。</string>
+    <string name="skill_desc_healSingle">恢復一名血量最低角色{value}點生命值</string>
+    <string name="skill_battleDesc_healSingle">身體的傷口慢慢的痊癒, {card}回復了{value}點生命值。</string>
     <string name="skill_statusDesc_healSingle"></string>
+
     <string name="skill_name_healSingleBig">祝福術</string>
-    <string name="skill_desc_healSingleBig">恢復目標{hurt}點生命值</string>
-    <string name="skill_battleDesc_healSingleBig">{card}吟唱了祝福術, 祝福之光圍繞{target}全身, {target}回復了{heal}點生命值。</string>
+    <string name="skill_desc_healSingleBig">恢復目標{value}點生命值</string>
+    <string name="skill_battleDesc_healSingleBig">祝福之光圍繞{card}全身, {card}回復了{value}點生命值。</string>
     <string name="skill_statusDesc_healSingleBig"></string>
+
     <string name="skill_name_hitAllBigHurt">破城猛衝</string>
-    <string name="skill_desc_hitAllBigHurt">對所有敵人造成{hurt}點傷害。</string>
-    <string name="skill_battleDesc_hitAllBigHurt">{card}施展了破城猛衝, 以迅猛的速度在敵人之間來回撞擊. {targets}受到了{hurt}點傷害。</string>
+    <string name="skill_desc_hitAllBigHurt">對所有敵人造成{value}點傷害</string>
+    <string name="skill_battleDesc_hitAllBigHurt">{mySelf}以迅猛的速度在敵人之間來回撞擊. 所有敵人受到了{value}點傷害。</string>
     <string name="skill_statusDesc_hitAllBigHurt"></string>
+
     <string name="skill_name_hitAllHurt">旋風斬</string>
-    <string name="skill_desc_hitAllHurt">引發爆炸, 對所有敵人造成{hurt}點傷害。</string>
-    <string name="skill_battleDesc_hitAllHurt">{card}衝向敵人中間, 並施展了旋風斬. {targets}受到了{hurt}點傷害</string>
+    <string name="skill_desc_hitAllHurt">引發爆炸, 對所有敵人造成{value}點傷害</string>
+    <string name="skill_battleDesc_hitAllHurt">旋風斬橫掃了所有敵人. 敵人受到了{value}點傷害。</string>
     <string name="skill_statusDesc_hitAllHurt"></string>
+
     <string name="skill_name_hitDoubleTime">風恕</string>
-    <string name="skill_desc_hitDoubleTime">每回合攻擊兩次, 效果持續三回合</string>
-    <string name="skill_battleDesc_hitDoubleTime">{card}吟唱風怒術, 強風包圍着{card}, 使身體變得無比輕盈</string>
-    <string name="skill_statusDesc_hitDoubleTime"></string>
+    <string name="skill_desc_hitDoubleTime">此角色每回合有 {value}% 攻擊兩次</string>
+    <string name="skill_battleDesc_hitDoubleTime">{mySelf}的身體慢慢變得輕盈, 彷彿看清了敵人的行動。</string>
+    <string name="skill_statusDesc_hitDoubleTime">{mySelf}在次向{monster}攻擊, {monster}受到了{hurt}點</string>
+
     <string name="skill_name_hitIgnoreDefenseSingle">飛天射擊</string>
-    <string name="skill_desc_hitIgnoreDefenseSingle">對一名敵人造成 10 傷害</string>
-    <string name="skill_battleDesc_hitIgnoreDefenseSingle">在{monster}毫無防備下, {card}跳至半空, 向{monster}拋射飛標, 成功擊中了對方, {monster}受到 {value} 點傷害</string>
+    <string name="skill_desc_hitIgnoreDefenseSingle">對一名敵人造成 {value} 傷害</string>
+    <string name="skill_battleDesc_hitIgnoreDefenseSingle">跳至半空, 向{monster}拋射飛標, 成功擊中{monster}要害, {monster}受到 {value} 點傷害。</string>
     <string name="skill_statusDesc_hitIgnoreDefenseSingle"></string>
+
     <string name="skill_name_hitIgnoreDefenseSingleBig">狙殺射擊</string>
-    <string name="skill_desc_hitIgnoreDefenseSingleBig">對一名敵人造成 30 點傷害, 無視對方防禦力</string>
-    <string name="skill_battleDesc_hitIgnoreDefenseSingleBig">{card}作出了射擊姿勢並鎖定了{monster}, 在{monster}毫無防備下, 射向了對方, {monster}受到 {value} 點傷害</string>
+    <string name="skill_desc_hitIgnoreDefenseSingleBig">對一名敵人造成 {value} 點傷害, 無視對方防禦力</string>
+    <string name="skill_battleDesc_hitIgnoreDefenseSingleBig">瞄準了{monster}的弱點, 並向對方射出弓箭, {monster}受到 {value} 點傷害。</string>
     <string name="skill_statusDesc_hitIgnoreDefenseSingleBig"></string>
+
     <string name="skill_name_hitPercentage">遠距拋射</string>
-    <string name="skill_desc_hitPercentage">對一名敵人造成 10% 傷害</string>
-    <string name="skill_battleDesc_hitPercentage">card}跳至半空, 向{monster}拋射飛刀, 成功擊中了對方, {monster}受到 {value} 點傷害</string>
+    <string name="skill_desc_hitPercentage">對一名敵人造成 {value}% 傷害</string>
+    <string name="skill_battleDesc_hitPercentage">跳至半空, 向{monster}拋射飛刀, 成功擊中了對方, {monster}受到 {value} 點傷害。</string>
     <string name="skill_statusDesc_hitPercentage"></string>
+
     <string name="skill_name_hitSingleAndDodgeAttack">暗影背刺</string>
-    <string name="skill_desc_hitSingleAndDodgeAttack">提升自身的迴避能力 10%, 並對敵人造成 50 點傷害</string>
-    <string name="skill_battleDesc_hitSingleAndDodgeAttack">{card}發動了暗影背刺, 飛身至敵人後方，使用背刺刺殺{monster}, {monster}受到 50 點傷害</string>
+    <string name="skill_desc_hitSingleAndDodgeAttack">提升自身的迴避能力 {agi}, 並對一名敵人造成 {hurt} 點傷害</string>
+    <string name="skill_battleDesc_hitSingleAndDodgeAttack">飛身至敵人後方，成功刺殺{monster}, {monster}受到 {hurt} 點傷害。迴避能力增加了{agi}點。</string>
     <string name="skill_statusDesc_hitSingleAndDodgeAttack"></string>
-    <string name="skill_name_hitAllAndDodgeAttackTeam">戰術撤退</string>
+
+    <string name="skill_name_hitAllAndDodgeAttackTeam">吹飛術</string>
     <string name="skill_desc_hitAllAndDodgeAttackTeam">對所有敵人造成{value}點傷害, 並增力隊伍迴避率</string>
-    <string name="skill_battleDesc_hitAllAndDodgeAttackTeam">{card}吟唱了戰術撤退, 強力氣場 懸浮</string>
+    <string name="skill_battleDesc_hitAllAndDodgeAttackTeam">強烈颱風吹飛了所有敵人, 敵人受到 {hurt} 點傷害, 隊伍迴避率上升了{agiValue}點</string>
     <string name="skill_statusDesc_hitAllAndDodgeAttackTeam"></string>
+
     <string name="skill_name_hitSingleBigHurt">雷霆一擊</string>
-    <string name="skill_desc_hitSingleBigHurt">對所有敵人造成{hurt}點傷害。</string>
-    <string name="skill_battleDesc_hitSingleBigHurt">{card}跳躍到半空中, 並用武器砸向了{targets}. {target}受到了{hurt}點傷害</string>
+    <string name="skill_desc_hitSingleBigHurt">對所有敵人造成{value}點傷害。</string>
+    <string name="skill_battleDesc_hitSingleBigHurt">跳躍到半空中, 武器砸向了{monster}. {monster}受到了{value}點傷害。</string>
     <string name="skill_statusDesc_hitSingleBigHurt"></string>
+
     <string name="skill_name_hitSingleHurt">猛攻</string>
-    <string name="skill_desc_hitSingleHurt">對所有敵人造成{hurt}點傷害。</string>
-    <string name="skill_battleDesc_hitSingleHurt">{card}直線衝向前, 路線上擊中{target},  {target}受到了{hurt}點傷害。</string>
+    <string name="skill_desc_hitSingleHurt">對一名敵人造成{value}點傷害。</string>
+    <string name="skill_battleDesc_hitSingleHurt">直線衝向敵人, {monster}被擊倒在地, {monster}受到了{value}點傷害。</string>
     <string name="skill_statusDesc_hitSingleHurt"></string>
+
     <string name="skill_name_iceAllBigHurt">極度凍結</string>
-    <string name="skill_desc_iceAllBigHurt">引發爆炸, 對所有敵人造成{hurt}點火焰傷害。目檟有20%機會造成燃燒狀態。</string>
-    <string name="skill_battleDesc_iceAllBigHurt">{card}發動了極度凍結，敵人周圍的温度急遽下降, 寒气侵入所有敵人的肌骨, {targets}受到了{hurt}點傷害。</string>
+    <string name="skill_desc_iceAllBigHurt">對所有敵人造成{value}點傷害。目檟有20%機會造成冰凍狀態</string>
+    <string name="skill_battleDesc_iceAllBigHurt">敵人周圍的溫度急劇下降, 寒气使所有敵人受到了{value}點傷害</string>
     <string name="skill_statusDesc_iceAllBigHurt">寒冰封印{statusLabel}的行動。</string>
+
     <string name="skill_name_iceAllHurt">暴風雪</string>
-    <string name="skill_desc_iceAllHurt">引發爆炸, 對所有敵人造成{hurt}點火焰傷害。目檟有20%機會造成燃燒狀態。</string>
-    <string name="skill_battleDesc_iceAllHurt">{card}發動了暴風雪，漫满天空的風雪吹向敵人區域, {targets}受到了{hurt}點傷害。</string>
+    <string name="skill_desc_iceAllHurt">對所有敵人造成{value}點傷害。目檟有20%機會造成冰凍狀態</string>
+    <string name="skill_battleDesc_iceAllHurt">強烈的風雪吹向敵人區域, 所有敵人受到了{value}點傷害。</string>
     <string name="skill_statusDesc_iceAllHurt">寒冰封印{statusLabel}的行動。</string>
+
     <string name="skill_name_iceSingleBigHurt">冰雹攻擊</string>
-    <string name="skill_desc_iceSingleBigHurt">引發爆炸, 對所有敵人造成{hurt}點火焰傷害。目檟有20%機會造成燃燒狀態。造成的傷害值多寡與你的等級有關，並且會從智力中獲得傷害加成。</string>
-    <string name="skill_battleDesc_iceSingleBigHurt">{card}吟唱了冰雹術，{target}上空區域落下了巨大的冰雹, {target}受到了{hurt}點傷害。</string>
+    <string name="skill_desc_iceSingleBigHurt">對一名敵人造成{value}點傷害。目檟有20%機會造成冰凍狀態</string>
+    <string name="skill_battleDesc_iceSingleBigHurt">{monster}上空區域落下了巨大的冰雹, {monster}受到了{value}點傷害。</string>
     <string name="skill_statusDesc_iceSingleBigHurt">寒冰封印{statusLabel}的行動。</string>
+
     <string name="skill_name_iceSingleHurt">冰箭</string>
-    <string name="skill_desc_iceSingleHurt">引發爆炸, 對所有敵人造成{hurt}點火焰傷害。目檟有20%機會造成燃燒狀態。</string>
-    <string name="skill_battleDesc_iceSingleHurt">{card}吟唱了冰箭術，寒冰在前面不斷積聚, 並向{target}高速飛去，{target}受到了{hurt}點傷害。</string>
+    <string name="skill_desc_iceSingleHurt">對一名敵人造成{value}點傷害。目檟有20%機會造成冰凍狀態</string>
+    <string name="skill_battleDesc_iceSingleHurt">寒冰在前面不斷積聚, 並向{monster}高速飛去，{monster}受到了{value}點傷害。</string>
     <string name="skill_statusDesc_iceSingleHurt">寒冰封印{statusLabel}的行動。</string>
+
+    <string name="skill_statusTitle_potion">劇毒發作</string>
+    <string name="skill_statusDesc_potion">{statusLabels}劇毒發作, {statusLabels}受到了{value}點傷害。</string>
+
     <string name="skill_name_potionAllBigHurt">毒浪術</string>
-    <string name="skill_desc_potionAllBigHurt">對所有敵人造成{hurt}點傷害, 30%機率造成中毒狀態, 造成的傷害值多寡與角色的等級有關，並且會從智力中獲得傷害加成。</string>
-    <string name="skill_battleDesc_potionAllBigHurt">{card}吟唱了毒浪術, 環狀的毒系衝擊波向着敵人擴散開去，{targets}受到了{hurt}點傷害。</string>
-    <string name="skill_statusDesc_potionAllBigHurt">{statusLabels}劇毒發作, 受到了{hurt}點傷害。</string>
+    <string name="skill_desc_potionAllBigHurt">對所有敵人造成{value}點傷害, 30%機率造成中毒狀態</string>
+    <string name="skill_battleDesc_potionAllBigHurt">{mySelf}吟唱了毒浪術, 劇毒波浪向敵人擴散開去，所有敵人受到了{value}點傷害。</string>
+
     <string name="skill_name_potionAllHurt">劇毒光環</string>
-    <string name="skill_desc_potionAllHurt">對所有敵人造成{hurt}點傷害, 20%機率造成中毒狀態。</string>
-    <string name="skill_battleDesc_potionAllHurt">{card}吟唱了劇毒光環, 一道綠色光環向着敵人擴散開去, {targets}受到了{hurt}點傷害。</string>
-    <string name="skill_statusDesc_potionAllHurt">{statusLabels}劇毒發作, 受到了{hurt}點傷害。</string>
+    <string name="skill_desc_potionAllHurt">對所有敵人造成{value}點傷害, 20%機率造成中毒狀態</string>
+    <string name="skill_battleDesc_potionAllHurt">{mySelf}吟唱了劇毒光環, 一道劇毒光環向敵人擴散開去, 所有敵人受到了{value}點傷害。</string>
+
     <string name="skill_name_potionSingleBigHurt">腐蝕噴射</string>
-    <string name="skill_desc_potionSingleBigHurt">對目標造成{hurt}點傷害, 30%機率造成中毒狀態。</string>
-    <string name="skill_battleDesc_potionSingleBigHurt">{card}發動了腐蝕噴射, 一道劇毒射綫向着{target}射去. {target}受到了{hurt}點傷害。</string>
-    <string name="skill_statusDesc_potionSingleBigHurt">{statusLabels}劇毒發作, 受到了{hurt}點傷害。</string>
+    <string name="skill_desc_potionSingleBigHurt">對目標造成{value}點傷害, 30%機率造成中毒狀態</string>
+    <string name="skill_battleDesc_potionSingleBigHurt">一道劇毒射向{monster}. {monster}受到了{value}點傷害。</string>
+
     <string name="skill_name_potionSingleHurt">毒鏢術</string>
-    <string name="skill_desc_potionSingleHurt">對目標造成{hurt}點傷害, 20%機率造成中毒狀態。</string>
-    <string name="skill_battleDesc_potionSingleHurt">{card}向着{target}抛出一支毒鏢, 毒鏢成功刺中了對方. {target}受到了{hurt}點傷害。</string>
-    <string name="skill_statusDesc_potionSingleHurt">{statusLabels}劇毒發作, 受到了{hurt}點傷害。</string>
+    <string name="skill_desc_potionSingleHurt">對目標造成{value}點傷害, 20%機率造成中毒狀態</string>
+    <string name="skill_battleDesc_potionSingleHurt">{mySelf}向{monster}射出一支毒鏢, 毒鏢成功刺中了對方. {monster}受到了{value}點傷害。</string>
+
     <string name="skill_name_randomAttackOfMonster">混亂</string>
-    <string name="skill_desc_randomAttackOfMonster">使怪物進入了混亂狀態, 每回合隨機攻擊, 持續三回合</string>
-    <string name="skill_battleDesc_randomAttackOfMonster">{card}吟唱了混亂術,所有怪物進入了混亂狀態</string>
-    <string name="skill_statusDesc_randomAttackOfMonster"></string>
+    <string name="skill_desc_randomAttackOfMonster">使怪物進入了混亂狀態, 每回合隨機攻擊, 效果持續一回合</string>
+    <string name="skill_battleDesc_randomAttackOfMonster">敵人進入了混亂狀態, 互相攻擊對方. {monster}受到了{value}點傷害。</string>
+    <string name="skill_statusDesc_randomAttackOfMonster">處於混亂的{monster}向{monsterA}作出攻擊, {monsterA}受到了{value}點傷害。</string>
+
     <string name="skill_name_reflectAttackOnMyself">反射護盾</string>
-    <string name="skill_desc_reflectAttackOnMyself">當此角色受到傷害, 敵人同時受到20%的傷害</string>
-    <string name="skill_battleDesc_reflectAttackOnMyself">{card}發動反射護盾, 護盾守護{card}</string>
-    <string name="skill_statusDesc_reflectAttackOnMyself">{monster}的部分攻擊被{card}的護盾反射彈回, {monster}受到了{hurt}點傷害。</string>
-    <string name="skill_name_reflectAttackOnTeam">荊棘護盾</string>
-    <string name="skill_desc_reflectAttackOnTeam">當隊伍受到傷害, 敵人同時受到20%的傷害</string>
-    <string name="skill_battleDesc_reflectAttackOnTeam">{card}發動荊棘護盾, 隊伍周圍長滿了荊棘</string>
-    <string name="skill_statusDesc_reflectAttackOnTeam">{card}旁邊的荊棘使{monster}受到了{hurt}點傷害。</string>
+    <string name="skill_desc_reflectAttackOnMyself">獲得反射護盾</string>
+    <string name="skill_battleDesc_reflectAttackOnMyself">反射護盾籠罩著{card}</string>
+    <string name="skill_statusDesc_reflectAttackOnMyself">部分攻擊被{card}的護盾反射彈回, {monster}受到了{value}點傷害。</string>
+
+    <string name="skill_name_reflectAttackOnTeam">全體守護</string>
+    <string name="skill_desc_reflectAttackOnTeam">隊伍獲得反射護盾</string>
+    <string name="skill_battleDesc_reflectAttackOnTeam">反射護盾籠罩著隊伍</string>
+
     <string name="skill_name_summonMonsterHeal">妖精的召換</string>
-    <string name="skill_desc_summonMonsterHeal">於場上召喚一名妖精, 妖精的效果: 每回合為隊伍回復10點生命值</string>
-    <string name="skill_battleDesc_summonMonsterHeal">{card}發動了妖精的召換, 一名妖精降落於場上, 隊伍回復了10點生命值</string>
-    <string name="skill_statusDesc_summonMonsterHeal">妖精為隊伍回復了10點生命值</string>
-    <string name="skill_name_summonMonsterLarge">召喚始生龍</string>
-    <string name="skill_desc_summonMonsterLarge">召喚一隻始生龍助你戰鬥</string>
-    <string name="skill_battleDesc_summonMonsterLarge"></string>
-    <string name="skill_statusDesc_summonMonsterLarge"></string>
-    <string name="skill_name_summonMonsterMiddle">召喚魂狼</string>
-    <string name="skill_desc_summonMonsterMiddle">召喚魂狼助你戰鬥</string>
-    <string name="skill_battleDesc_summonMonsterMiddle"></string>
+    <string name="skill_desc_summonMonsterHeal">於場上召喚一名妖精, 妖精的效果: 每回合為隊伍回復{value}點生命值</string>
+    <string name="skill_battleDesc_summonMonsterHeal">{mySelf}發動了妖精的召換, 一名妖精降落於場上</string>
+    <string name="skill_statusDesc_summonMonsterHeal">妖精為隊伍回復了{value}點生命值</string>
+    <string name="skill_attackTitle_summonMonsterHeal">妖精的回復</string>
+    <string name="skill_attackContent_summonMonsterHeal">妖精吟唱了回復術, 隊伍回復了{value}點血量</string>
+
+    <string name="skill_name_summonMonsterLarge">召喚白龍</string>
+    <string name="skill_desc_summonMonsterLarge">召喚一隻白龍助你戰鬥</string>
+    <string name="skill_battleDesc_summonMonsterLarge">一隻白龍降落於場上</string>
+    <string name="skill_attackTitle_summonMonsterLarge">白龍的攻擊</string>
+    <string name="skill_attackContent_summonMonsterLarge">白龍向{monster}發動了龍之氣息, {monster}受到了{value}點傷害</string>
+
+    <string name="skill_name_summonMonsterMiddle">召喚灰熊</string>
+    <string name="skill_desc_summonMonsterMiddle">召喚灰熊助你戰鬥</string>
+    <string name="skill_attackTitle_summonMonsterMiddle">灰熊的攻擊</string>
+    <string name="skill_attackContent_summonMonsterMiddle">灰熊向{monster}發動了嘶咬, {monster}受到了{value}點傷害</string>
+    <string name="skill_battleDesc_summonMonsterMiddle">一隻大灰熊出現於場上</string>
     <string name="skill_statusDesc_summonMonsterMiddle"></string>
-    <string name="skill_name_summonMonsterTwoSmall">召喚圖騰</string>
-    <string name="skill_desc_summonMonsterTwoSmall">於戰場後方召喚{value}個圖騰助你戰鬥</string>
-    <string name="skill_battleDesc_summonMonsterTwoSmall">圖騰{label}發動了火球術, 熾熱的火球在前面變得越來越大並向{target}飛去，{target}受到了{hurt}點傷害。</string>
-    <string name="skill_statusDesc_summonMonsterTwoSmall"></string>
-    <string name="skill_name_tauntAndDefenseUp">嘲諷</string>
-    <string name="skill_desc_tauntAndDefenseUp">提升 5 點防禦力, 並嘲諷敵人</string>
-    <string name="skill_battleDesc_tauntAndDefenseUp">{card}發動了嘲諷術, 所有敵人向着{card}衝去, {card}提升了 5 點防禦力</string>
+
+    <string name="skill_name_summonMonsterSmall">召喚圖騰</string>
+    <string name="skill_desc_summonMonsterSmall">於戰場後方召喚{value}個圖騰助你戰鬥</string>
+    <string name="skill_battleDesc_summonMonsterSmall">一隻圖騰降落於場上</string>
+    <string name="skill_statusDesc_summonMonsterSmall"></string>
+    <string name="skill_attackTitle_summonMonsterSmall">圖騰的攻擊</string>
+    <string name="skill_attackContent_summonMonsterSmall">圖騰向{monster}發動了圖騰墜擊, {monster}受到了{value}點傷害</string>
+
+    <string name="skill_name_tauntAndDefenseUp">嘲諷術</string>
+    <string name="skill_desc_tauntAndDefenseUp">提升 {valule} 點防禦力, 並嘲諷敵人</string>
+    <string name="skill_battleDesc_tauntAndDefenseUp">提升了 1 點防禦力並嘲諷敵人, 敵人向{card}衝去</string>
     <string name="skill_statusDesc_tauntAndDefenseUp"></string>
-    <string name="skill_name_tauntAndDefenseUpAndDodgeAttack">暗影步伐</string>
-    <string name="skill_desc_tauntAndDefenseUpAndDodgeAttack">提升自身的迴避能力 10%, 並嘲諷敵人</string>
-    <string name="skill_battleDesc_tauntAndDefenseUpAndDodgeAttack">{card}發動了暗影步伐術, 身體漸漸變得輕盈, 似乎能看清敵人的行動, {card}的迴避力上升了 10 %,並嘲諷{monster}</string>
-    <string name="skill_statusDesc_tauntAndDefenseUpAndDodgeAttack"></string>
+
+    <string name="skill_name_tauntAndDodgeAttack">暗影步伐</string>
+    <string name="skill_desc_tauntAndDodgeAttack">提升自身的迴避力 {agi} 點和嘲諷敵人</string>
+    <string name="skill_battleDesc_tauntAndDodgeAttack">身體漸漸變得輕盈, 似乎能看清敵人的行動, {mySelf}的迴避力上升了{value}點,並嘲諷了敵人, 敵人向{mySelf}衝去</string>
+    <string name="skill_statusDesc_tauntAndDodgeAttack"></string>
+
     <string name="skill_name_tauntAndDefenseUpAndNotDead">血戰到底</string>
     <string name="skill_desc_tauntAndDefenseUpAndNotDead">在2回合內，此角色的生命值無法降低到1點以下，嘲諷敵人</string>
-    <string name="skill_battleDesc_tauntAndDefenseUpAndNotDead">{card}發動了血戰到底, 向敵人發起了嘲諷, 敵人向着{card}衝去</string>
-    <string name="skill_statusDesc_tauntAndDefenseUpAndNotDead">{card}倒下了, 但靠着不屈的意志, {card}站了起來</string>
-    <string name="skill_name_tauntAndHeal">挑戰</string>
-    <string name="skill_desc_tauntAndHeal">回復 50 點生命值並嘲諷敵人</string>
-    <string name="skill_battleDesc_tauntAndHeal">{card}發動了技能, 回復了 50 點生命值並向敵人發起了嘲諷, 敵人向着{card}衝去</string>
+    <string name="skill_battleDesc_tauntAndDefenseUpAndNotDead">向敵人發起了嘲諷, 敵人向{card}衝去</string>
+    <string name="skill_statusDesc_tauntAndDefenseUpAndNotDead">{card}從致命狀態站了起來</string>
+
+    <string name="skill_name_tauntAndHeal">守護術</string>
+    <string name="skill_desc_tauntAndHeal">回復 {value} 點生命值並嘲諷敵人</string>
+    <string name="skill_battleDesc_tauntAndHeal">生命值回復了{value} 點, 並嘲諷了敵人, 敵人向{card}衝去</string>
     <string name="skill_statusDesc_tauntAndHeal"></string>
+
     <string name="skill_name_transferHurtToMonster">反射護盾</string>
-    <string name="skill_desc_transferHurtToMonster">反射敵人的攻擊, 使其受到 10% 傷害</string>
-    <string name="skill_battleDesc_transferHurtToMonster">{card}發動了反射護盾, 在前方豎立了巨大的反射盾</string>
-    <string name="skill_statusDesc_transferHurtToMonster">{card}的反射了{monster}的攻擊, {monster}受到 {value} 點傷害</string>
+    <string name="skill_desc_transferHurtToMonster">反射敵人的攻擊, 使其受到 {value}% 傷害</string>
+    <string name="skill_battleDesc_transferHurtToMonster">在前方豎立了的反射盾</string>
+    <string name="skill_statusDesc_transferHurtToMonster">{mySelf}的反射了{monster}的攻擊, {monster}受到 {value} 點傷害</string>
+
     <string name="skill_name_valueDownAttack">弱化術</string>
-    <string name="skill_desc_valueDownAttack">使一名敵人的攻擊力下降 10 點</string>
-    <string name="skill_battleDesc_valueDownAttack">{card}發動了弱化術, {target}感到了全身乏力, 攻撃力下降了10點</string>
+    <string name="skill_desc_valueDownAttack">使一名敵人的攻擊力下降 {value} 點</string>
+    <string name="skill_battleDesc_valueDownAttack">{monster}感到了全身乏力, 攻撃力下降了 {value} 點</string>
     <string name="skill_statusDesc_valueDownAttack"></string>
+
     <string name="skill_name_valueDownAttackAll">蛛網纏繞</string>
-    <string name="skill_desc_valueDownAttackAll">所有敵人攻擊力下降 10 點</string>
-    <string name="skill_battleDesc_valueDownAttackAll">{card}吟唱蛛網纏繞術, 口裏吐出了巨大蛛網, 纏繞着所有敵人, 敵人攻擊力下降了 10 點</string>
+    <string name="skill_desc_valueDownAttackAll">所有敵人攻擊力下降 {value} 點</string>
+    <string name="skill_battleDesc_valueDownAttackAll">口裏吐出了巨大蛛網, 敵人受到蛛網纏繞, 攻擊力下降了 {value} 點</string>
     <string name="skill_statusDesc_valueDownAttackAll"></string>
-    <string name="skill_name_valueDownDefense">剝皮</string>
-    <string name="skill_desc_valueDownDefense">使一名敵人的防禦力下降 1 點</string>
-    <string name="skill_battleDesc_valueDownDefense">{card}向{monster}發動了剝皮術, {monster}的皮膚漸漸剝落, {monster}的防禦力下降了 2 點</string>
+
+    <string name="skill_name_valueDownDefense">剝皮術</string>
+    <string name="skill_desc_valueDownDefense">使一名敵人的防禦力下降 {value} 點</string>
+    <string name="skill_battleDesc_valueDownDefense">{monster}的皮膚漸漸剝落, {monster}的防禦力下降了 {value} 點</string>
     <string name="skill_statusDesc_valueDownDefense"></string>
+
     <string name="skill_name_valueDownDefenseAll">凍結之觸</string>
-    <string name="skill_desc_valueDownDefenseAll">為隊伍提供 1 點防禦力</string>
-    <string name="skill_battleDesc_valueDownDefenseAll">{card}吟唱了凍結之觸, 隊伍前方結了厚厚的冰層, 隊伍獲得 1 點防禦力</string>
+    <string name="skill_desc_valueDownDefenseAll">所有敵人下降 1 點防禦力</string>
+    <string name="skill_battleDesc_valueDownDefenseAll">敵人被一層厚厚的冰層籠罩, 防禦力下降了 {value} 點</string>
     <string name="skill_statusDesc_valueDownDefenseAll"></string>
+
     <string name="skill_name_valueUpAttackDeadNumber">吸取源力</string>
-    <string name="skill_desc_valueUpAttackDeadNumber">每名死亡敵人使此角色提升 5 點攻擊力</string>
-    <string name="skill_battleDesc_valueUpAttackDeadNumber">{card}發動了源力吸取, 塲上怪物的屍首轉化為{card}的攻擊力, {card}獲得 {value} 點攻擊力</string>
+    <string name="skill_desc_valueUpAttackDeadNumber">每名死亡敵人使此角色提升 {value} 點攻擊力</string>
+    <string name="skill_battleDesc_valueUpAttackDeadNumber">{mySelf}把怪物屍首轉化為攻擊力, {mySelf}獲得了 {value} 點攻擊力</string>
     <string name="skill_statusDesc_valueUpAttackDeadNumber"></string>
+
     <string name="skill_name_valueUpAttackLowHp">血肉獻祭</string>
     <string name="skill_desc_valueUpAttackLowHp">生命值越低, 攻擊力越高</string>
-    <string name="skill_battleDesc_valueUpAttackLowHp">{card}發動了血肉獻祭, 身上的傷口轉化為攻擊力, {card}獲得 {value} 點攻擊力</string>
+    <string name="skill_battleDesc_valueUpAttackLowHp">身上的痛楚轉化為攻擊力, {mySelf}獲得 {value} 點攻擊力</string>
     <string name="skill_statusDesc_valueUpAttackLowHp"></string>
-    <string name="skill_name_valueUpAttackTurnNumber">速戰速決</string>
-    <string name="skill_desc_valueUpAttackTurnNumber">攻擊力提升 10 點, 若戰鬥回合超過 5 回合, 獲得 15 點攻擊力</string>
-    <string name="skill_battleDesc_valueUpAttackTurnNumber">{card}發動了速戰速決, {card}獲得 {value} 點攻擊力</string>
+
+    <string name="skill_name_valueUpAttackTurnNumber">力量提升</string>
+    <string name="skill_desc_valueUpAttackTurnNumber">攻擊力提升 2 點, 若戰鬥回合超過 5 回合, 獲得 3 點攻擊力</string>
+    <string name="skill_battleDesc_valueUpAttackTurnNumber">一股力量給強行調了出來, 融入到自身, {mySelf}獲得 {value} 點攻擊力</string>
     <string name="skill_statusDesc_valueUpAttackTurnNumber"></string>
+
     <string name="skill_name_valueUpDefenseDeadNumber">骨甲術</string>
-    <string name="skill_desc_valueUpDefenseDeadNumber">塲上每具怪物的屍體, 使此角色獲得相同點數的防禦力</string>
-    <string name="skill_battleDesc_valueUpDefenseDeadNumber">{card}發動了骨甲術, 塲上的屍體轉化為{card}的獲甲, {card}獲得 {value} 點防禦力</string>
+    <string name="skill_desc_valueUpDefenseDeadNumber">獲得相同等同於怪物屍體數量的防禦力</string>
+    <string name="skill_battleDesc_valueUpDefenseDeadNumber">怪物的屍體轉化為{mySelf}的獲甲, {mySelf}獲得 {value} 點防禦力</string>
     <string name="skill_statusDesc_valueUpDefenseDeadNumber"></string>
+
     <string name="skill_name_valueUpDefenseLowHp">血性皮膚</string>
     <string name="skill_desc_valueUpDefenseLowHp">獲得 1 點防禦力, 若生命值低於 40%, 獲得 2 點防禦力</string>
-    <string name="skill_battleDesc_valueUpDefenseLowHp">{card}發動了血性皮膚術, 身上的傷口轉化為堅硬的皮膚. {card}獲得 {value} 點防禦力</string>
+    <string name="skill_battleDesc_valueUpDefenseLowHp">身上的傷口轉化為堅硬的皮膚. {mySelf}獲得 {value} 點防禦力</string>
     <string name="skill_statusDesc_valueUpDefenseLowHp"></string>
+
     <string name="skill_name_valueUpDefenseTurnNumber">修甲術</string>
     <string name="skill_desc_valueUpDefenseTurnNumber">獲得 1 點防禦力, 若戰鬥回合超過 5 回合, 獲得 2 點防禦力</string>
-    <string name="skill_battleDesc_valueUpDefenseTurnNumber">{card}發動了修甲術, 身上的獲甲漸漸修復. {card}獲得 {value} 點防禦力</string>
+    <string name="skill_battleDesc_valueUpDefenseTurnNumber">身上的獲甲慢慢地修復. {mySelf}獲得 {value} 點防禦力</string>
     <string name="skill_statusDesc_valueUpDefenseTurnNumber"></string>
-    <string name="skill_name_zeroHurtOnMyself">聖盾術</string>
-    <string name="skill_desc_zeroHurtOnMyself">可以擋掉任何傷害類的攻擊一次。</string>
-    <string name="skill_battleDesc_zeroHurtOnMyself">{card}發動了聖盾術, 隊伍獲得了聖盾, 可以擋掉任何傷害類的攻擊一次。</string>
-    <string name="skill_statusDesc_zeroHurtOnMyself"></string>
-    <string name="skill_name_zeroHurtOnTeam">守護天使</string>
-    <string name="skill_desc_zeroHurtOnTeam">{card}發動了守護天使, 隊伍獲得了聖盾, 可以擋掉任何傷害類的攻擊一次。</string>
-    <string name="skill_battleDesc_zeroHurtOnTeam">{monster}被{card}的聖盾擋掉了</string>
-    <string name="skill_statusDesc_zeroHurtOnTeam"></string>
 
-    <string name="skill_desc_attackDown"></string>
-    <string name="skill_desc_attackUp"></string>
-    <string name="skill_desc_cdDown"></string>
-    <string name="skill_desc_criticalHitUp"></string>
-    <string name="skill_desc_defenseDown"></string>
-    <string name="skill_desc_defenseUp"></string>
-    <string name="skill_desc_dodgeAttackUp"></string>
-    <string name="skill_desc_getGoodBoxUp"></string>
-    <string name="skill_desc_healPerTurn"></string>
-    <string name="skill_desc_hpDown"></string>
-    <string name="skill_desc_hpUp"></string>
-    <string name="skill_desc_lifeSteal"></string>
-    <string name="skill_desc_notDeadPerBattle"></string>
-    <string name="skill_desc_populationUp"></string>
-    <string name="skill_desc_reflectAttack"></string>
-    <string name="skill_desc_stopAttackInFirstTurn"></string>
-    <string name="skill_desc_stopAttackPerAttack"></string>
-    <string name="skill_desc_summonMonster"></string>
+    <string name="skill_name_zeroHurtOnMyself">聖盾術</string>
+    <string name="skill_desc_zeroHurtOnMyself">自身下一次受到傷害為零。</string>
+    <string name="skill_battleDesc_zeroHurtOnMyself">金色的聖盾籠罩了{mySelf}</string>
+    <string name="skill_statusDesc_zeroHurtOnMyself"></string>
+
+    <string name="skill_name_zeroHurtOnTeam">守護天使</string>
+    <string name="skill_desc_zeroHurtOnTeam">隊伍獲得聖盾, 下一次受到傷害為零。</string>
+    <string name="skill_battleDesc_zeroHurtOnTeam">{mySelf}發動了守護天使, 金色的聖盾包圍了隊伍</string>
+    <string name="skill_statusDesc_zeroHurtOnTeam">{monster}被{card}的聖盾擋掉了</string>
+
+    <string name="passive_skill_desc_hpUp1">所有人類生命值上限增加3%</string>
+    <string name="passive_skill_desc_hpUp2">所有人類生命值上限增加6%</string>
+    <string name="passive_skill_desc_hpUp3">隊伍生命值上限增加9%</string>
+
+    <string name="passive_skill_desc_getGoodBoxUp1">發現有寶物的寶箱的機率增加5%</string>
+    <string name="passive_skill_desc_getGoodBoxUp2"></string>
+    <string name="passive_skill_desc_getGoodBoxUp3"></string>
+
+    <string name="passive_skill_desc_hpUpDown1">所有元素種族每回合吸取敵人10點生命值 </string>
+    <string name="passive_skill_desc_hpUpDown2">隊伍每回合吸取敵人10點生命值</string>
+    <string name="passive_skill_desc_hpUpDown3"></string>
+    <string name="passive_skill_desc_hpUpDown_battleDescTitle">生命汲取</string>
+    <string name="passive_skill_desc_hpUpDown_battleDescContent">{cards}吸取了敵人 10 點生命值</string>
+    <string name="passive_skill_desc_hpUpDown_battleDescContent2">隊伍吸取了敵人 10 點生命值</string>
+
+    <string name="passive_skill_desc_notDeadPerBattle1">所有不死族因戰鬥死亡時獲得一次重生</string>
+    <string name="passive_skill_desc_notDeadPerBattle2">隊伍成員因戰鬥死亡時獲得一次重生</string>
+    <string name="passive_skill_desc_notDeadPerBattle3"></string>
+
+    <string name="passive_skill_desc_reflectAttack1">所有獸人受到傷害時, 有 {value}% 機率反射傷害</string>
+    <string name="passive_skill_desc_reflectAttack2">隊伍任意成員受到傷害時, 有 {value}% 機率反射傷害</string>
+    <string name="passive_skill_desc_reflectAttack3"></string>
+    <string name="passive_skill_desc_reflectAttack_battleDescTitle">{card}的反擊</string>
+    <string name="passive_skill_desc_reflectAttack_battleDescContent">{card}反射了{monster}的攻擊, {monster}受到了{value} 點傷害</string>
+
+    <string name="passive_skill_desc_hpDown1">戰鬥開始時, 對敵人造成 3% 傷害</string>
+    <string name="passive_skill_desc_hpDown2">戰鬥開始時, 對敵人造成 6% 傷害</string>
+    <string name="passive_skill_desc_hpDown3"></string>
+
+    <string name="passive_skill_desc_cdDown1">隊伍技能冷卻值(CD)減 1</string>
+    <string name="passive_skill_desc_cdDown2"></string>
+    <string name="passive_skill_desc_cdDown3"></string>
+
+    <string name="passive_skill_desc_defenseUp1">所有海族防禦力增加 1</string>
+    <string name="passive_skill_desc_defenseUp2">隊伍防禦力增加 1</string>
+    <string name="passive_skill_desc_defenseUp3"></string>
+
+    <string name="passive_skill_desc_attackDown1">戰鬥開始時, 使敵人攻擊力下降 1 點</string>
+    <string name="passive_skill_desc_attackDown2">戰鬥開始時, 使敵人攻擊力下降 2 點</string>
+    <string name="passive_skill_desc_attackDown3"></string>
+
+    <string name="passive_skill_desc_stopAttackPerAttack1">所有蟲族每次攻擊時, 有 {value}% 機率發動蟲族束縛, 使敵人下回合停止攻擊</string>
+    <string name="passive_skill_desc_stopAttackPerAttack2">隊伍每次攻擊時, 有 {value}% 機率發動蟲族束縛, 使敵人下回合停止攻擊</string>
+    <string name="passive_skill_desc_stopAttackPerAttack3"></string>
+
+    <string name="passive_skill_desc_lifeSteal1">所有角色攻擊時, 回復 1 點生命值</string>
+    <string name="passive_skill_desc_lifeSteal2">所有角色攻擊時, 回復 2 點生命值</string>
+    <string name="passive_skill_desc_lifeSteal3">所有角色攻擊時, 回復 3 點生命值</string>
+
+    <string name="passive_skill_desc_attackUp1">隊伍攻擊上升 1 點</string>
+    <string name="passive_skill_desc_attackUp2">隊伍攻擊上升 2 點</string>
+    <string name="passive_skill_desc_attackUp3"> 隊伍攻擊上升 3 點</string>
+
+    <string name="passive_skill_desc_healPerTurn1">隊伍每回合回復 1%生命值</string>
+    <string name="passive_skill_desc_healPerTurn2"></string>
+    <string name="passive_skill_desc_healPerTurn3"></string>
+
+    <string name="passive_skill_desc_dodgeAttackUp1">隊伍迴避率上升 2 點</string>
+    <string name="passive_skill_desc_dodgeAttackUp2">隊伍迴避率上升 4 點</string>
+    <string name="passive_skill_desc_dodgeAttackUp3"></string>
+
+    <string name="passive_skill_desc_defenseDown1">敵人防禦力減少 1</string>
+    <string name="passive_skill_desc_defenseDown2">敵人防禦力減少 2</string>
+    <string name="passive_skill_desc_defenseDown3"></string>
+
+    <string name="passive_skill_desc_stopAttackPerTurn1">每回合敵人有 {value}% 停止攻擊</string>
+    <string name="passive_skill_desc_stopAttackPerTurn2">每回合敵人有 {value}% 停止攻擊</string>
+    <string name="passive_skill_desc_stopAttackPerTurn3">每回合敵人有 {value}% 停止攻擊</string>
+
+
+    <string name="passive_skill_desc_criticalHitUp1">隊伍暴擊率上升 2%</string>
+    <string name="passive_skill_desc_criticalHitUp2">隊伍暴擊率上升 4%</string>
+    <string name="passive_skill_desc_criticalHitUp3"> 隊伍暴擊率上升 6%</string>
+
+    <string name="passive_skill_desc_summonMonster1">召換圖騰為你作戰</string>
+    <string name="passive_skill_desc_summonMonster2">召換大灰熊為你作戰</string>
+    <string name="passive_skill_desc_summonMonster3"></string>
     <string-array
         name="cardNames">
         <item>阿加迪</item>
@@ -737,22 +955,22 @@
         <item>憤怒雞</item>
         <item>巨型海歐</item>
         <item>巨型青蛙</item>
-        <item>黑猫</item>
+        <item>黑貓</item>
         <item>探地怪</item>
         <item>巨型螃蟹</item>
         <item>類別人猿</item>
         <item>灰泥怪</item>
-        <item>招財猫</item>
+        <item>招財貓</item>
         <item>不倒翁</item>
         <item>石像獅子</item>
         <item>進階石像獅子</item>
         <item>書怪</item>
         <item>村民</item>
         <item>女村民</item>
+        <item>倒蛋怪</item>
         <item>耶誕精靈</item>
-        <item>㨶蛋怪</item>
         <item>火山蜥蜴</item>
-        <item>巨型熊猫</item>
+        <item>巨型熊貓</item>
         <item>火焰雞</item>
         <item>野犬</item>
         <item>蔓生怪</item>

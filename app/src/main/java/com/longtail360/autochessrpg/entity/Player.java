@@ -20,6 +20,9 @@ public class Player {
     public List<String> unlockCards = new ArrayList<>();
     @Expose
     public List<Tactics> tacticsList = new ArrayList<> ();
+    @Expose
+    public boolean isOldPlayer;
+
 
 
     public void concreteAction(Context context) {
@@ -71,6 +74,7 @@ public class Player {
                     anew.selectOption2 = old.selectOption2;
                     anew.selectOption3 = old.selectOption3;
                     anew.operatorType = old.operatorType;
+                    anew.negation = old.negation;
                     result.add (anew);
                 }
             }

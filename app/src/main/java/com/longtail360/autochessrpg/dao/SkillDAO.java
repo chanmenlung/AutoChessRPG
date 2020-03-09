@@ -29,7 +29,7 @@ public class SkillDAO {
                     DESC + " TEXT NOT NULL," +
                     CD + " INTEGER NOT NULL," +
                     BATTLE_DESC + " TEXT NOT NULL," +
-                    STATUS_DESC + " TEXT NOT NULL" +
+                    STATUS_DESC + " TEXT NULL" +
                     ")";
     ;
     private SQLiteDatabase db;
@@ -131,65 +131,65 @@ public class SkillDAO {
         return result;
     }
 
-    public void init(Context context) {
-        BaseSkill skill = new ElectricAllBigHurt(context);
-        insert(skill);
-        skill = new ElectricAllHurt(context);
-        insert(skill);
-        skill = new ElectricSingleBigHurt(context);
-        insert(skill);
-        skill = new ElectricSingleHurt(context);
-        insert(skill);
-        skill = new ElectricAllBigHurt(context);
-        insert(skill);
-        skill = new FireAllBigHurt(context);
-        insert(skill);
-        skill = new FireAllHurt(context);
-        insert(skill);
-        skill = new FireSingleBigHurt(context);
-        insert(skill);
-        skill = new FireSingleHurt(context);
-        insert(skill);
-        skill = new HealAll(context);
-        insert(skill);
-        skill = new HealAllBig(context);
-        insert(skill);
-        skill = new HealSingle(context);
-        insert(skill);
-        skill = new HealSingleBig(context);
-        insert(skill);
-        skill = new HitAllBigHurt(context);
-        insert(skill);
-        skill = new HitAllHurt(context);
-        insert(skill);
-        skill = new HitSingleBigHurt(context);
-        insert(skill);
-        skill = new HitSingleHurt(context);
-        insert(skill);
-        skill = new IceAllBigHurt(context);
-        insert(skill);
-        skill = new IceAllHurt(context);
-        insert(skill);
-        skill = new IceSingleBigHurt(context);
-        insert(skill);
-        skill = new IceSingleHurt(context);
-        insert(skill);
-        skill = new PotionAllBigHurt(context);
-        insert(skill);
-        skill = new PotionAllHurt(context);
-        insert(skill);
-        skill = new PotionSingleBigHurt(context);
-        insert(skill);
-        skill = new PotionSingleHurt(context);
-        insert(skill);
-        skill = new ValueUpAllAttack(context);
-        insert(skill);
-        skill = new ValueUpAllDefense(context);
-        insert(skill);
-        skill = new ValueUpAttack(context);
-        insert(skill);
-        skill = new ValueUpDefense(context);
-        insert(skill);
-
-    }
+//    public void init(Context context) {
+//        BaseSkill skill = new ElectricAllBigHurt(context);
+//        insert(skill);
+//        skill = new ElectricAllHurt(context);
+//        insert(skill);
+//        skill = new ElectricSingleBigHurt(context);
+//        insert(skill);
+//        skill = new ElectricSingleHurt(context);
+//        insert(skill);
+//        skill = new ElectricAllBigHurt(context);
+//        insert(skill);
+//        skill = new FireAllBigHurt(context);
+//        insert(skill);
+//        skill = new FireAllHurt(context);
+//        insert(skill);
+//        skill = new FireSingleBigHurt(context);
+//        insert(skill);
+//        skill = new FireSingleHurt(context);
+//        insert(skill);
+//        skill = new HealAll(context);
+//        insert(skill);
+//        skill = new HealAllBig(context);
+//        insert(skill);
+//        skill = new HealSingle(context);
+//        insert(skill);
+//        skill = new HealSingleBig(context);
+//        insert(skill);
+//        skill = new HitAllBigHurt(context);
+//        insert(skill);
+//        skill = new HitAllHurt(context);
+//        insert(skill);
+//        skill = new HitSingleBigHurt(context);
+//        insert(skill);
+//        skill = new HitSingleHurt(context);
+//        insert(skill);
+//        skill = new IceAllBigHurt(context);
+//        insert(skill);
+//        skill = new IceAllHurt(context);
+//        insert(skill);
+//        skill = new IceSingleBigHurt(context);
+//        insert(skill);
+//        skill = new IceSingleHurt(context);
+//        insert(skill);
+//        skill = new PotionAllBigHurt(context);
+//        insert(skill);
+//        skill = new PotionAllHurt(context);
+//        insert(skill);
+//        skill = new PotionSingleBigHurt(context);
+//        insert(skill);
+//        skill = new PotionSingleHurt(context);
+//        insert(skill);
+//        skill = new ValueUpAllAttack(context);
+//        insert(skill);
+//        skill = new ValueUpAllDefense(context);
+//        insert(skill);
+//        skill = new ValueUpOneAttack(context);
+//        insert(skill);
+//        skill = new ValueUpOneDefense(context);
+//        insert(skill);
+//
+//    }
 }

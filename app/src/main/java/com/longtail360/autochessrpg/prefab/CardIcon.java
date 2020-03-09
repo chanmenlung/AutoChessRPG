@@ -22,6 +22,8 @@ public class CardIcon extends FrameLayout {
     public MyCard myCard;
     private ImageView headImage;
     public View upgradeBt;
+    private ImageView raceIcon;
+    private ImageView classIcon;
     private View star1;
     private View star2;
     private View star3;
@@ -40,6 +42,8 @@ public class CardIcon extends FrameLayout {
         star1 = findViewById(R.id.star1);
         star2 = findViewById(R.id.star2);
         star3 = findViewById(R.id.star3);
+        raceIcon = findViewById(R.id.raceIcon);
+        classIcon = findViewById(R.id.classIcon);
         loadHeadImage(context, myCard.card);
 
         upgradeBt.setOnClickListener(new OnClickListener() {
@@ -50,6 +54,13 @@ public class CardIcon extends FrameLayout {
         });
         upgradeBt.setVisibility(GONE);
         updateStar();
+    }
+
+    public void reload(Context context,MyCard myCard) {
+        this.myCard = myCard;
+        loadHeadImage(context, myCard.card);
+        updateStar();
+        upgradeBt.setVisibility(GONE);
     }
 
     public void updateStar(){
@@ -74,28 +85,7 @@ public class CardIcon extends FrameLayout {
             @Override
             public boolean onLongClick(View view) {
                 callBack.doActionAfterLongClick(CardIcon.this);
-                return false;
-            }
-        });
-    }
-
-    public void setDragAndDrop() {
-        this.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View view, MotionEvent motionEvent) {
-                if(motionEvent.getAction() == MotionEvent.ACTION_MOVE) {
-                    String tag = (String)view.getTag();
-                    ClipData clipData = ClipData.newPlainText("", tag);
-
-                    // Create drag shadow builder object.
-                    View.DragShadowBuilder dragShadowBuilder = new View.DragShadowBuilder(view);
-                    view.startDrag(clipData, dragShadowBuilder, view, 0);
-
-
-                    // Hide the view object because we are dragging it.
-                    view.setVisibility(View.INVISIBLE);
-                }
-                return false;
+                return true;
             }
         });
     }
@@ -113,6 +103,44 @@ public class CardIcon extends FrameLayout {
             }
         }else {
             headImage.setImageResource(headResourceId);
+        }
+        if(card.clazz.equals(Card.CLAZZ_MAGE)){
+            classIcon.setImageResource(R.drawable.class_mage);
+        }else if(card.clazz.equals(Card.CLAZZ_WARRIOR)){
+            classIcon.setImageResource(R.drawable.class_warrior);
+        }else if(card.clazz.equals(Card.CLAZZ_PRIEST)){
+            classIcon.setImageResource(R.drawable.class_priest);
+        }else if(card.clazz.equals(Card.CLAZZ_HUNTER)){
+            classIcon.setImageResource(R.drawable.class_hunter);
+        }else if(card.clazz.equals(Card.CLAZZ_KNIGHT)){
+            classIcon.setImageResource(R.drawable.class_knight);
+        }else if(card.clazz.equals(Card.CLAZZ_SHAMAN)){
+            classIcon.setImageResource(R.drawable.class_shaman);
+        }else if(card.clazz.equals(Card.CLAZZ_ROGUE)){
+            classIcon.setImageResource(R.drawable.class_rogue);
+        }else if(card.clazz.equals(Card.CLAZZ_WARLOCK)){
+            classIcon.setImageResource(R.drawable.class_warlock);
+        }
+        if(card.race.equals(Card.RACE_HUMAN)){
+            raceIcon.setImageResource(R.drawable.race_human);
+        }else if(card.race.equals(Card.RACE_ELF)){
+            raceIcon.setImageResource(R.drawable.race_elf);
+        }else if(card.race.equals(Card.RACE_SPIRIT)){
+            raceIcon.setImageResource(R.drawable.race_spirit);
+        }else if(card.race.equals(Card.RACE_UNDEAD)){
+            raceIcon.setImageResource(R.drawable.race_undead);
+        }else if(card.race.equals(Card.RACE_ORCS)){
+            raceIcon.setImageResource(R.drawable.race_orc);
+        }else if(card.race.equals(Card.RACE_DEMON)){
+            raceIcon.setImageResource(R.drawable.race_demon);
+        }else if(card.race.equals(Card.RACE_DIVINITY)){
+            raceIcon.setImageResource(R.drawable.race_divinity);
+        }else if(card.race.equals(Card.RACE_MARINE)){
+            raceIcon.setImageResource(R.drawable.race_marine);
+        }else if(card.race.equals(Card.RACE_DWARF)){
+            raceIcon.setImageResource(R.drawable.race_dwarf);
+        }else if(card.race.equals(Card.RACE_GOO)){
+            raceIcon.setImageResource(R.drawable.race_goo);
         }
     }
 

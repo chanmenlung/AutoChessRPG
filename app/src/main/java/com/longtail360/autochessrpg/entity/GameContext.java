@@ -16,7 +16,7 @@ import com.longtail360.autochessrpg.dao.log.BattleItemLogDAO;
 import com.longtail360.autochessrpg.dao.log.BattleRootLogDAO;
 import com.longtail360.autochessrpg.dao.log.ProcessLogDAO;
 import com.longtail360.autochessrpg.dao.log.RootLogDAO;
-import com.longtail360.autochessrpg.dao.log.TeamStatusDAO;
+import com.longtail360.autochessrpg.entity.passiveskill.BasePassiveSkill;
 import com.longtail360.autochessrpg.utils.Logger;
 
 import java.io.BufferedReader;
@@ -40,23 +40,15 @@ public class GameContext {
     public MyCardDAO myCardDAO;
     public RootLogDAO rootLogDAO;
     public ProcessLogDAO processLogDAO;
-    public TeamStatusDAO teamStatusDAO;
+//    public TeamStatusDAO teamStatusDAO;
     public BattleRootLogDAO battleRootLogDAO;
     public BattleItemLogDAO battleItemLogDAO;
 
     public Adventure adventure;
-    public List<Card> card;
-    public List<MyCard> cardInBattles;
-    public List<MyCard> cardInHands;
-    public List<MyCard> cardForBuyings;
-    public List<Dungeon> dungeons;
-    public List<Item> items;
-    public List<ItemGot> itemGots;
-    public MonsterDAO monster;
     private Gson gson;
     private Player player;
     public static GameContext gameContext;
-
+    public List<BasePassiveSkill> passiveSkillList;
     public GameContext(Context context) {
         gson  = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
         readPlayerData(context);

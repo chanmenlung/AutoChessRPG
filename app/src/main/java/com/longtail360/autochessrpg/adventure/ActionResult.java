@@ -13,4 +13,8 @@ public class ActionResult {
     public String monsterName;
     public int numOfMonster;
     public int icon1Type;
+
+    public int realHurt;
+    public boolean getStatus;
+    public int finalDeltaValue;
 }

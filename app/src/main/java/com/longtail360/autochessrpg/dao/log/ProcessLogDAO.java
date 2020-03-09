@@ -6,11 +6,9 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.longtail360.autochessrpg.dao.GameDBHelper;
-import com.longtail360.autochessrpg.entity.Item;
 import com.longtail360.autochessrpg.entity.log.BattleRootLog;
 import com.longtail360.autochessrpg.entity.log.ProcessLog;
 import com.longtail360.autochessrpg.entity.log.RootLog;
-import com.longtail360.autochessrpg.entity.log.TeamStatus;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +16,6 @@ import java.util.List;
 public class ProcessLogDAO {
     public static final String TABLE_NAME = "PROCESS_LOG";
     public static final String KEY_ID = "_id";
-    public static final String TEAM_STATUS_ID = "team_status_id";
     public static final String BATTLE_ROOT_LOG_ID = "battle_root_log_id";
     public static final String ROOT_LOG_ID = "rootLogId";
     public static final String LOG_TIME = "logTime";
@@ -29,12 +26,14 @@ public class ProcessLogDAO {
     public static final String ICON2 = "icon2";
     public static final String COLOR = "color";
     public static final String COIN = "coin";
+    public static final String HPS = "hps";
+    public static final String LEVELS = "levels";
+
     public static final String ITEM_KEYS = "item_keys";
 
     public static final String CREATE_TABLE =
             "CREATE TABLE " + TABLE_NAME + " (" +
                     KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                    TEAM_STATUS_ID + " INTEGER NOT NULL,"+
                     BATTLE_ROOT_LOG_ID + " INTEGER,"+
                     ROOT_LOG_ID + " INTEGER,"+
                     LOG_TIME + " INTEGER,"+
@@ -45,6 +44,8 @@ public class ProcessLogDAO {
                     ICON2 + " TEXT,"+
                     COLOR + " TEXT,"+
                     COIN + " INTEGER,"+
+                    HPS + " TEXT,"+
+                    LEVELS + " TEXT,"+
                     ITEM_KEYS + " TEXT"
                     + ")";
     ;
@@ -58,7 +59,6 @@ public class ProcessLogDAO {
 
     public ProcessLog insert(ProcessLog item) {
         ContentValues cv = new ContentValues();
-        cv.put(TEAM_STATUS_ID, item.teamStatus.id);
         if(item.battleRootLog != null){
             cv.put(BATTLE_ROOT_LOG_ID, item.battleRootLog.id);
         }
@@ -71,6 +71,8 @@ public class ProcessLogDAO {
         cv.put(ICON2, item.icon2);
         cv.put(COLOR, item.color);
         cv.put(COIN, item.coin);
+        cv.put(HPS, item.hps);
+        cv.put(LEVELS, item.levels);
         cv.put(ITEM_KEYS, item.itemKeys);
         long id = db.insert(TABLE_NAME, null, cv);
         item.id = id;
@@ -78,7 +80,6 @@ public class ProcessLogDAO {
     }
     public boolean update(ProcessLog item) {
         ContentValues cv = new ContentValues();
-        cv.put(TEAM_STATUS_ID, item.teamStatus.id);
         cv.put(BATTLE_ROOT_LOG_ID, item.battleRootLog.id);
         cv.put(ROOT_LOG_ID, item.rootLog.id);
         cv.put(LOG_TIME, item.logTime);
@@ -89,6 +90,8 @@ public class ProcessLogDAO {
         cv.put(ICON2, item.icon2);
         cv.put(COLOR, item.color);
         cv.put(COIN, item.coin);
+        cv.put(HPS, item.hps);
+        cv.put(LEVELS, item.levels);
         cv.put(ITEM_KEYS, item.itemKeys);
         String where = KEY_ID + "=" + item.id;
         return db.update(TABLE_NAME, cv, where, null) > 0;
@@ -142,21 +145,23 @@ public class ProcessLogDAO {
     public ProcessLog getRecord(Cursor cursor) {
         ProcessLog result = new ProcessLog();
         result.rootLog = new RootLog();
-        result.teamStatus = new TeamStatus();
         result.battleRootLog = new BattleRootLog();
         result.id = cursor.getLong(0);
-        result.teamStatus.id = cursor.getLong(1);
-        result.battleRootLog.id = cursor.getLong(2);
-        result.rootLog.id = cursor.getLong(3);
-        result.logTime = cursor.getLong(4);
-        result.title = cursor.getString(5);
-        result.content = cursor.getString(6);
-        result.detail = cursor.getString(7);
-        result.icon1 = cursor.getString(8);
-        result.icon2 = cursor.getString(9);
-        result.color = cursor.getInt(10);
-        result.coin = cursor.getInt(11);
-        result.itemKeys = cursor.getString(12);
+        result.battleRootLog.id = cursor.getLong(1);
+        result.rootLog.id = cursor.getLong(2);
+        result.logTime = cursor.getLong(3);
+        result.title = cursor.getString(4);
+        result.content = cursor.getString(5);
+        result.detail = cursor.getString(6);
+        result.icon1 = cursor.getString(7);
+        result.icon2 = cursor.getString(8);
+        result.color = cursor.getInt(9);
+        result.coin = cursor.getInt(10);
+
+        result.hps = cursor.getString(11);
+        result.levels = cursor.getString(12);
+
+        result.itemKeys = cursor.getString(13);
         return result;
     }
 
