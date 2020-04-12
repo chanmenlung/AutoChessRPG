@@ -111,13 +111,6 @@
             android:textSize="@dimen/ui_topInfoBar_textSize"
             android:text="99/99" />
 
-        <ImageView
-            android:id="@+id/settingBt"
-            android:layout_marginLeft="5dp"
-            android:layout_width="25dp"
-            android:layout_height="22dp"
-            android:layout_gravity="left|center_vertical"
-            android:src="@drawable/ui_icon_gear"/>
 
     </LinearLayout>
     <!-- top info bar end -->
@@ -129,77 +122,124 @@
         android:orientation="vertical">
 
         <!-- back button start -->
-        <FrameLayout  android:layout_width="match_parent"
+        <LinearLayout  android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_gravity="center"
             android:layout_height="0dp"
             android:layout_weight="8">
-            <View
-                android:translationY="7dp"
-                android:layout_width="match_parent"
-                android:layout_height="3dp"
-                android:background="@drawable/ui_line" />
-            <View
-                android:translationY="27dp"
-                android:layout_width="match_parent"
-                android:layout_height="3dp"
-                android:background="@drawable/ui_line" />
 
-            <FrameLayout
+            <LinearLayout
                 android:id="@+id/allCardBt"
-                android:layout_width="60dp"
-                android:layout_height="30dp"
-                android:translationY="3dp"
-                android:background="@drawable/xml_button_small_yellow">
+                android:layout_marginLeft="10dp"
+                android:layout_width="0dp"
+                android:layout_weight="8"
+                android:layout_height="match_parent">
                 <ImageView
                     android:layout_width="25dp"
-                    android:layout_height="22dp"
-                    android:layout_gravity="left|center_vertical"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
                     android:src="@drawable/item_yellow_feather"/>
 
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="right|center_vertical"
+                    android:gravity="center"
+                    android:textSize="14sp"
+                    android:text="@string/ui_mainPage_illustration" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="8"
+                android:layout_height="match_parent">
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:padding="5dp"
+                android:src="@drawable/item_crystal"/>
+
+            <TextView
+                android:id="@+id/crystalValue"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="right|center_vertical"
+                android:gravity="center"
+                android:textSize="14sp"
+                android:text="@string/ui_mainPage_illustration" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="8"
+                android:layout_height="match_parent">
+                <ImageView
+                    android:layout_marginLeft="10dp"
+                    android:layout_width="25dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:padding="3dp"
+                    android:src="@drawable/item_coin"/>
+
+                <TextView
+                    android:id="@+id/coinValue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="right|center_vertical"
+                    android:gravity="center"
+                    android:textSize="14sp"
+                    android:text="@string/ui_mainPage_illustration" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:visibility="gone"
+                android:layout_width="0dp"
+                android:layout_weight="8"
+                android:layout_height="match_parent">
+                <ImageView
+                    android:layout_marginLeft="10dp"
+                    android:layout_width="25dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:padding="3dp"
+                    android:src="@drawable/item_lithograph_no_light"/>
+
+                <TextView
+                    android:visibility="gone"
+                    android:id="@+id/helpBt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_gravity="right|center_vertical"
                     android:layout_marginRight="10dp"
                     android:gravity="center"
                     android:textSize="14sp"
-                    android:text="@string/ui_mainPage_illustration" />
+                    android:text="@string/ui_home_help" />
+            </LinearLayout>
 
-            </FrameLayout>
+            <LinearLayout
+                android:id="@+id/settingBt"
+                android:layout_width="0dp"
+                android:layout_weight="8"
+                android:layout_height="match_parent">
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:padding="3dp"
+                    android:src="@drawable/ui_icon_gear"/>
 
-            <ImageView
-                android:layout_width="15dp"
-                android:layout_height="15dp"
-                android:layout_marginLeft="80dp"
-                android:translationY="10dp"
-                android:src="@drawable/item_coin"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="right|center_vertical"
+                    android:gravity="center"
+                    android:textSize="14sp"
+                    android:text="@string/ui_home_setting" />
+            </LinearLayout>
 
-            <TextView
-                android:id="@+id/coinValue"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="16sp"
-                android:layout_marginLeft="110dp"
-                android:translationY="10dp"
-                android:text="999"/>
-
-
-            <ImageView
-                android:layout_width="15dp"
-                android:layout_height="15dp"
-                android:layout_marginRight="60dp"
-                android:layout_gravity="right"
-                android:translationY="10dp"
-                android:src="@drawable/item_lithograph_no_light"/>
-            <TextView
-                android:id="@+id/helpBt"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="16sp"
-                android:layout_marginRight="20dp"
-                android:layout_gravity="right"
-                android:translationY="10dp"
-                android:text="@string/ui_home_help"/>
-        </FrameLayout>
+        </LinearLayout>
         <!-- back button end -->
 
             <!-- current palce start -->
@@ -237,25 +277,25 @@
                         android:layout_marginLeft="5dp"
                         android:src="@drawable/item_lithograph"/>
                 </LinearLayout>
-                <!--<LinearLayout-->
-                    <!--android:id="@+id/logBt"-->
-                    <!--android:layout_width="120dp"-->
-                    <!--android:layout_height="match_parent"-->
-                    <!--android:layout_gravity="right"-->
-                    <!--android:orientation="horizontal">-->
-                    <!--<TextView-->
-                        <!--android:layout_width="60dp"-->
-                        <!--android:layout_height="match_parent"-->
-                        <!--android:gravity="center"-->
-                        <!--android:textSize="16sp"-->
-                        <!--android:layout_centerInParent="true"-->
-                        <!--android:text="@string/ui_home_log" />-->
-                    <!--<ImageView-->
-                        <!--android:layout_width="40dp"-->
-                        <!--android:layout_height="40dp"-->
-                        <!--android:layout_gravity="center"-->
-                        <!--android:src="@drawable/item_book"/>-->
-                <!--</LinearLayout>-->
+                <LinearLayout
+                    android:id="@+id/logBt"
+                    android:layout_width="140dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="right"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:textSize="16sp"
+                        android:layout_centerInParent="true"
+                        android:text="@string/ui_home_log" />
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/item_book"/>
+                </LinearLayout>
             </FrameLayout>
             <!-- current place end -->
 

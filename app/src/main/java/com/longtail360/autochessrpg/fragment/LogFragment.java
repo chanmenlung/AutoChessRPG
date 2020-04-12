@@ -168,13 +168,11 @@ public class LogFragment extends BaseFragment{
                         content.append(hpMp);
                         content.append(pLog.getHpArray()[i]);
                         content.append("/");
-//                        content.append(cards.get(i).getTotalHp());
                         Logger.log(tag, "content:"+content.toString());
-//                        teamStatusDescList.get(i).refresh(cards.get(i).name, content.toString(), 0);
                         ItemLogDesc desc = new ItemLogDesc(getContext());
-                        desc.refresh(getContext(),cards.get(i).name,content.toString(),cards.get(i).head,cards.get(i).customHead);
+//                        desc.refresh(getContext(),cards.get(i).name,content.toString(),cards.get(i).head,cards.get(i).customHead);
                         teamStatusContainer.addView(desc);
-//                        teamStatusDescList.add(desc);
+
                     }
                     teamStatusLayout.setVisibility(View.VISIBLE);
                 } else {

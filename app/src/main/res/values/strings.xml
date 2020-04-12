@@ -20,7 +20,7 @@
     <string name="ui_home_coin">金幣:</string>
     <string name="ui_home_upgrade">升級($50)</string>
     <string name="ui_home_hp">生命值:</string>
-    <string name="ui_home_log">日誌</string>
+    <string name="ui_home_log">歷史日誌</string>
     <string name="ui_home_cardForBuying">可招募的角色:</string>
     <string name="ui_home_buyingCardPos">基本({basic}%), 普通({common}%),精良({rare}%),史詩({epic}%), 傳說({legendary}%)</string>
     <string name="ui_home_refreshForBuying">刷新\n($20)</string>
@@ -44,10 +44,12 @@
     <string name="ui_home_cardDesc_skill">技能:</string>
     <string name="ui_home_cardDesc_sellCard">出售可獲得: {coin}枚金幣</string>
     <string name="ui_home_cardDesc_sell">出售</string>
+    <string name="ui_home_cardDesc_back">返回</string>
     <string name="ui_home_upgrade_notEnoughCoin">金幣不足</string>
     <string name="ui_home_refresh_notEnoughCoin">金幣不足</string>
     <string name="ui_home_upgrade_gotExp">已獲得4點經驗值</string>
     <string name="ui_home_help">說明</string>
+    <string name="ui_home_setting">設定</string>
     <string name="ui_home_help_content">1. 招募任意一名角色\n2. 若成功招募3名相同角色, 可升級該角色\n3. 把角色放置於隊伍欄中\n4. 點擊\"開始探索\"進行地下城的探索</string>
     <string name="ui_home_noTeamCard">沒有隊伍成員</string>
     <string name="ui_home_buyCardAndPutToTeam">招募一名角色, 並把該角色放置於隊伍中</string>
@@ -57,7 +59,11 @@
     <string name="ui_home_cardUpgradeSuccess">已升級</string>
     <string name="ui_home_isStartNewAdv">是否開始新的探索?</string>
     <string name="ui_home_hp0IsStartNewAdv">生命值已歸零, 是否重新開始?</string>
+    <string name="ui_history_logBtText">關卡{stage}:{stageName}</string>
+    <string name="ui_main_cannotLoginGoogle">未能登入Google Play Service</string>
+    <string name="ui_main_cannotLoginGoogleContent">請檢查網絡, 在重新開啟遊戲</string>
     <string name="ui_allCard_buyCrystal">購買水晶</string>
+    <string name="ui_homeCardDesc_edit">編輯</string>
     <string name="ui_popup_cancel">取消</string>
     <string name="ui_popup_confirm">確定</string>
     <string name="ui_myItem_onBodyItemList">攜帶的物品列表</string>
@@ -66,6 +72,18 @@
     <string name="ui_myItem_hadBrought">己攜帶</string>
     <string name="ui_myItem_hadSaved">己存放</string>
     <string name="ui_myItem_advProgressing">探索進行中</string>
+    <string name="ui_setting_uploadToGoogle">上載資料至雲端</string>
+    <string name="ui_setting_downloadFromGoogle">從雲端下載資料</string>
+    <string name="ui_setting_isUploadData">是否上載資料至雲端？</string>
+    <string name="ui_setting_uploadDataRemark">1.雲端資料將會被覆蓋\n2. 授權Google Play不會使系統有權限讀取玩家的私人資料</string>
+    <string name="ui_setting_uploading">資料上載中</string>
+    <string name="ui_setting_downloading">資料下載中</string>
+    <string name="ui_setting_pleaseWait">請稍候 . . .</string>
+    <string name="ui_setting_successWrite">成功上載</string>
+    <string name="ui_setting_isDownloadData">是否從雲端下載資料？</string>
+    <string name="ui_setting_successRead">成功下載</string>
+    <string name="ui_setting_cannotFindData">找不到資料</string>
+    <string name="buyCrystal_buyCrystal">購買水晶</string>
     <string name="passiveSkillDescLayout_number">數量</string>
     <string name="passiveSkillDescLayout_skillResult">效果</string>
     <string name="passiveSkillDescLayout_passiveSkillTitle">上陣指定數量角色可觸發羈絆效果</string>
@@ -199,7 +217,7 @@
     <string name="card_attack">攻擊力:</string>
     <string name="card_defense">護甲:</string>
     <string name="card_skill">技能:</string>
-    <string name="cardDescItem_isLockCard">是否花費{crystal}水晶解除鎖定?</string>
+    <string name="cardDescItem_isLockCard">解除鎖定即可編輯此角色</string>
     <string name="cardDescItem_reasonForUnlockCard">解除鎖定後, 可修改此角色\n(現時持有水晶:{currentCrystal})</string>
     <string name="cardDescItem_hadUnlock">已解除鎖定</string>
     <string name="cardDetail_random">隨機</string>
@@ -207,9 +225,11 @@
     <string name="cardDetail_cropPicture">裁剪頭像</string>
     <string name="cardDetail_headImage">頭像</string>
     <string name="cardDetail_save">儲存</string>
+    <string name="cardDetail_back">返回</string>
+    <string name="cardDetail_frame">邊框</string>
     <string name="cardDetail_cannotFindImportImage">找不到圖片</string>
     <string name="cardDetail_pleaseImportImage">請先點擊\"匯入圖片\"，在進行栽剪頭像</string>
-    <string name="cardDetail_cardHadLocked">角色已鎖定, 不能儲存</string>
+    <string name="cardDetail_cardHadLocked">角色已鎖定, 是否花費{crystal}水晶解除鎖定?</string>
     <string name="cardDetail_currentCrystal">現時持有水晶:{crystal}</string>
     <string name="cardDetail_cardHadUnLock">角色己解除鎖定</string>
     <string name="cardDetail_notEnoughCrystal">水晶不足</string>
@@ -244,9 +264,9 @@
     <string name="adv_backToFloor">回到了{floor}層</string>
     <string name="adv_backToFloorDetail">為了盡早返回，隊伍加快了步伐。</string>
     <string name="adv_successAdv">{dungeon} 探索成功,隊伍已返回基地</string>
-    <string name="adv_interestGainRelife">探索獎勵:{price}枚金幣, 經驗值:+1, 已消耗{hp}點生命值復活{deadNum}名角色</string>
+    <string name="adv_interestGainRelife">探索獎勵:{price}枚金幣, 經驗值:+1</string>
     <string name="adv_interestGain">探索獎勵:{price}枚金幣, 經驗值:+1</string>
-    <string name="adv_failAdvRelife">探索獎勵:{price}枚金幣, 已消耗{hp}點生命值復活{deadNum}名角色</string>
+    <string name="adv_failAdvRelife">未完成進度:{progress}%,消耗了{hp}點生命值。獎勵:{price}枚金幣</string>
     <string name="adv_failAdv">探索獎勵:{price}枚金幣</string>
     <string name="adv_hp0">生命值已歸零, 遊戲已重新開始。</string>
     <string name="adv_findBossRoom">發現頭目房間</string>
@@ -260,6 +280,12 @@
     <string name="adv_event_findARoom_none_desc1">在房間的一角獲得了一個藥瓶。瓶身的玻璃非常薄，但嘗不出什麼味道。好像不能夠帶走。</string>
     <string name="adv_event_findARoom_none_desc2">在房間的一角獲得了一個藥瓶。{card}小心翼翼地鑒定著藥瓶。開啟瓶蓋，服下藥物。這藥物的味道真難吃。</string>
     <string name="adv_event_findARoom_none_desc3">在牆邊有一個架子，上面雜亂的堆放著盛有液體的藥瓶。{card}小心翼翼地鑒定著藥瓶。發現瓶中的液體對身體無害。開啟瓶蓋，喝下裡面的液體。這液體的味道真不好喝。</string>
+
+    <string name="adv_event_findAlchemy">發現了熔爐</string>
+    <string name="adv_event_findAlchemyHearthSuccess">隊伍嘗試從熔爐提煉物品, 提煉成功, 獲得了「{item}」</string>
+    <string name="adv_event_findAlchemyHearthFail">隊伍嘗試啟動熔爐, 啟動失敗, 熔爐發生了爆炸, 隊伍走避不及, 受到了{value}點傷害</string>
+    <string name="adv_event_findAlchemyHearthFailDodge">隊伍嘗試啟動熔爐, 啟動失敗, 熔爐發生了爆炸, 隊伍及時走避, 没有受到傷害</string>
+    <string name="adv_event_findAlchemyHearthNone">隊伍嘗試啟動熔爐, 但熔爐很久都没有反應, 隊伍決定離開</string>
 
     <string name="adv_event_findAJar">發現了罌罐</string>
     <string name="adv_event_findAJar_openJarGetItem">{card}仔細地觀察周圍有沒有陷阱。好像沒有陷阱。從罌罐得到了物品「{item}」</string>
@@ -540,14 +566,14 @@
     <string name="skill_statusDesc_summonMonsterMiddle"></string>
 
     <string name="skill_name_summonMonsterSmall">召喚圖騰</string>
-    <string name="skill_desc_summonMonsterSmall">於戰場後方召喚{value}個圖騰助你戰鬥</string>
+    <string name="skill_desc_summonMonsterSmall">召喚圖騰助你戰鬥</string>
     <string name="skill_battleDesc_summonMonsterSmall">一隻圖騰降落於場上</string>
     <string name="skill_statusDesc_summonMonsterSmall"></string>
     <string name="skill_attackTitle_summonMonsterSmall">圖騰的攻擊</string>
     <string name="skill_attackContent_summonMonsterSmall">圖騰向{monster}發動了圖騰墜擊, {monster}受到了{value}點傷害</string>
 
     <string name="skill_name_tauntAndDefenseUp">嘲諷術</string>
-    <string name="skill_desc_tauntAndDefenseUp">提升 {valule} 點防禦力, 並嘲諷敵人</string>
+    <string name="skill_desc_tauntAndDefenseUp">提升 {value} 點防禦力, 並嘲諷敵人</string>
     <string name="skill_battleDesc_tauntAndDefenseUp">提升了 1 點防禦力並嘲諷敵人, 敵人向{card}衝去</string>
     <string name="skill_statusDesc_tauntAndDefenseUp"></string>
 

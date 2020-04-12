@@ -13,7 +13,7 @@ public class RootLog {
     public static int ADV_STATUS_FAIL = 2;
     public static int ADV_STATUS_PROGRESSING = 3;
     public long id;
-    public long dungeonId;
+    public long dungeonId; //dungeon index
     public int advStatus;  //1:success, 2:fail, 3:progressing
     public int isComingBack; //0:progressing, 1:comingBack
     public int numOfDead;

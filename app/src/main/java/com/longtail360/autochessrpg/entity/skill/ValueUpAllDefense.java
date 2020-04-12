@@ -17,10 +17,7 @@ public class ValueUpAllDefense extends BaseSkill{
         battleDesc = context.getString(R.string.skill_battleDesc_valueUpAllDefense);
         statusDesc = context.getString(R.string.skill_statusDesc_valueUpAllDefense);
     }
-    @Override
-    public String getDesc(Context context) {
-        return null;
-    }
+
 	public ActionResult active(Context context,AdvContext advContext){	
 		return valueUpTeam(context,advContext, "defense", upValue);
 	}	

@@ -68,11 +68,10 @@ public class BuyCrystalActivity  extends BaseActivity implements BuyCrystalDescI
                 if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.OK) {
                     Logger.log(tag, "success, response code:"+billingResult.getResponseCode());
                     List<String> skuList = new ArrayList<>();
-                    skuList.add("crystal10");
-                    skuList.add("crystal20");
-                    skuList.add("crystal50");
                     skuList.add("crystal100");
                     skuList.add("crystal200");
+                    skuList.add("crystal500");
+                    skuList.add("crystal1000");
                     SkuDetailsParams.Builder params = SkuDetailsParams.newBuilder();
                     params.setSkusList(skuList).setType(BillingClient.SkuType.INAPP);
                     billingClient.querySkuDetailsAsync(params.build(),
@@ -95,16 +94,14 @@ public class BuyCrystalActivity  extends BaseActivity implements BuyCrystalDescI
                                             String sku = skuDetails.getSku();
                                             String price = skuDetails.getPrice();
                                             Logger.log(tag,"getPriceAmountMicros:"+skuDetails.getPriceAmountMicros());
-                                            if ("crystal10".equals(sku)) {
-                                                crystalContainer.addView(new BuyCrystalDescItem(BuyCrystalActivity.this, skuDetails, BuyCrystalActivity.this, 10,price));
-                                            } else if ("crystal20".equals(sku)) {
-                                                crystalContainer.addView(new BuyCrystalDescItem(BuyCrystalActivity.this, skuDetails,BuyCrystalActivity.this, 20,price));
-                                            }else if ("crystal50".equals(sku)) {
-                                                crystalContainer.addView(new BuyCrystalDescItem(BuyCrystalActivity.this, skuDetails,BuyCrystalActivity.this, 50,price));
-                                            }else if ("crystal100".equals(sku)) {
-                                                crystalContainer.addView(new BuyCrystalDescItem(BuyCrystalActivity.this, skuDetails,BuyCrystalActivity.this, 100,price));
-                                            }else if ("crystal200".equals(sku)) {
+                                            if ("crystal100".equals(sku)) {
+                                                crystalContainer.addView(new BuyCrystalDescItem(BuyCrystalActivity.this, skuDetails, BuyCrystalActivity.this, 100,price));
+                                            } else if ("crystal200".equals(sku)) {
                                                 crystalContainer.addView(new BuyCrystalDescItem(BuyCrystalActivity.this, skuDetails,BuyCrystalActivity.this, 200,price));
+                                            }else if ("crystal500".equals(sku)) {
+                                                crystalContainer.addView(new BuyCrystalDescItem(BuyCrystalActivity.this, skuDetails,BuyCrystalActivity.this, 500,price));
+                                            }else if ("crystal1000".equals(sku)) {
+                                                crystalContainer.addView(new BuyCrystalDescItem(BuyCrystalActivity.this, skuDetails,BuyCrystalActivity.this, 1000,price));
                                             }
                                         }
                                     }
@@ -155,17 +152,17 @@ public class BuyCrystalActivity  extends BaseActivity implements BuyCrystalDescI
                             if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.OK) {
                                 Logger.log(tag, pc.getSku()+" is handled");
                                 if ("crystal10".equals(pc.getSku())) {
-                                    player.crystal = player.crystal + 10;
+                                    GameContext.gameContext.player.crystal = GameContext.gameContext.player.crystal + 10;
                                 } else if ("crystal20".equals(pc.getSku())) {
-                                    player.crystal = player.crystal + 20;
+                                    GameContext.gameContext.player.crystal = GameContext.gameContext.player.crystal + 20;
                                 }else if ("crystal50".equals(pc.getSku())) {
-                                    player.crystal = player.crystal + 50;
+                                    GameContext.gameContext.player.crystal = GameContext.gameContext.player.crystal + 50;
                                 }else if ("crystal100".equals(pc.getSku())) {
-                                    player.crystal = player.crystal + 100;
+                                    GameContext.gameContext.player.crystal = GameContext.gameContext.player.crystal + 100;
                                 }else if ("crystal200".equals(pc.getSku())) {
-                                    player.crystal = player.crystal + 200;
+                                    GameContext.gameContext.player.crystal = GameContext.gameContext.player.crystal + 200;
                                 }
-                                GameContext.gameContext.savePlayerData(BuyCrystalActivity.this);
+                                GameContext.gameContext.playerDAO.update(GameContext.gameContext.player);
                             }
                         }
                     };

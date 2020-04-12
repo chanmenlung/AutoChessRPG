@@ -20,13 +20,8 @@ public class CardDAO {
     public static final String CLAZZ = "clazz";
     public static final String SKILL_CODE = "skill_code"; //skill_key
     public static final String NAME = "name";
-    public static final String CUSTOM_NAME = "custom_name";
     public static final String HEAD = "head";
-    public static final String CUSTOM_HEAD = "custom_head";
     public static final String IMAGE = "image";
-    public static final String CUSTOM_IMAGE = "custom_image";
-    public static final String CUSTOM_SKILL_NAME = "custom_skill_name";
-    public static final String CUSTOM_SKILL_BATTLE_DESC = "custom_skill_battle_desc";
     public static final String NUM_CHESS_FOR_UPGRD = "num_chess_for_upgrd";
     public static final String HP = "hp";
     public static final String ATTACK = "attack";
@@ -38,18 +33,12 @@ public class CardDAO {
             "CREATE TABLE " + TABLE_NAME + " (" +
                     KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                     CODE + " TEXT," +
-                    LOCKED + " INTEGER," +
                     RACE + " INTEGER," +
                     CLAZZ + " INTEGER," +
                     SKILL_CODE + " TEXT," +
                     NAME + " TEXT," +
-                    CUSTOM_NAME + " TEXT," +
                     HEAD + " TEXT," +
-                    CUSTOM_HEAD + " TEXT," +
                     IMAGE + " TEXT," +
-                    CUSTOM_IMAGE + " TEXT," +
-                    CUSTOM_SKILL_NAME + " TEXT," +
-                    CUSTOM_SKILL_BATTLE_DESC + " TEXT," +
                     NUM_CHESS_FOR_UPGRD + " INTEGER," +
                     HP + " INTEGER," +
                     ATTACK + " INTEGER," +
@@ -68,18 +57,12 @@ public class CardDAO {
     public Card insert(Card item) {
         ContentValues cv = new ContentValues();
         cv.put(CODE, item.code);
-        cv.put(LOCKED, item.locked);
         cv.put(RACE, item.race);
         cv.put(CLAZZ, item.clazz);
         cv.put(SKILL_CODE, item.skillCode);
         cv.put(NAME, item.name);
-        cv.put(CUSTOM_NAME, item.customName);
         cv.put(HEAD, item.head);
-        cv.put(CUSTOM_HEAD, item.customHead);
         cv.put(IMAGE, item.image);
-        cv.put(CUSTOM_IMAGE, item.customImage);
-        cv.put(CUSTOM_SKILL_NAME, item.customSkillName);
-        cv.put(CUSTOM_SKILL_BATTLE_DESC, item.customSkillBattleDesc);
         cv.put(NUM_CHESS_FOR_UPGRD, item.numChessForUpgrd);
         cv.put(HP, item.hp);
         cv.put(ATTACK, item.attack);
@@ -93,18 +76,12 @@ public class CardDAO {
     public boolean update(Card item) {
         ContentValues cv = new ContentValues();
         cv.put(CODE, item.code);
-        cv.put(LOCKED, item.locked);
         cv.put(RACE, item.race);
         cv.put(CLAZZ, item.clazz);
         cv.put(SKILL_CODE, item.skillCode);
         cv.put(NAME, item.name);
-        cv.put(CUSTOM_NAME, item.customName);
         cv.put(HEAD, item.head);
-        cv.put(CUSTOM_HEAD, item.customHead);
         cv.put(IMAGE, item.image);
-        cv.put(CUSTOM_IMAGE, item.customImage);
-        cv.put(CUSTOM_SKILL_NAME, item.customSkillName);
-        cv.put(CUSTOM_SKILL_BATTLE_DESC, item.customSkillBattleDesc);
         cv.put(NUM_CHESS_FOR_UPGRD, item.numChessForUpgrd);
         cv.put(HP, item.hp);
         cv.put(ATTACK, item.attack);
@@ -188,24 +165,18 @@ public class CardDAO {
 
         result.id = cursor.getLong(0);
         result.code = cursor.getString(1);
-        result.locked= cursor.getInt(2);
-        result.race= cursor.getString(3);
-        result.clazz= cursor.getString(4);
-        result.skillCode= cursor.getString(5);
-        result.name= cursor.getString(6);
-        result.customName= cursor.getString(7);
-        result.head= cursor.getString(8);
-        result.customHead= cursor.getString(9);
-        result.image= cursor.getString(10);
-        result.customImage= cursor.getString(11);
-        result.customSkillName= cursor.getString(12);
-        result.customSkillBattleDesc= cursor.getString(13);
-        result.numChessForUpgrd= cursor.getInt(14);
-        result.hp= cursor.getInt(15);
-        result.attack= cursor.getInt(16);
-        result.defense= cursor.getInt(17);
-        result.price = cursor.getInt(18);
-        result.rarity = cursor.getInt(19);
+        result.race= cursor.getString(2);
+        result.clazz= cursor.getString(3);
+        result.skillCode= cursor.getString(4);
+        result.name= cursor.getString(5);
+        result.head= cursor.getString(6);
+        result.image= cursor.getString(7);
+        result.numChessForUpgrd= cursor.getInt(8);
+        result.hp= cursor.getInt(9);
+        result.attack= cursor.getInt(10);
+        result.defense= cursor.getInt(11);
+        result.price = cursor.getInt(12);
+        result.rarity = cursor.getInt(13);
         return result;
     }
 

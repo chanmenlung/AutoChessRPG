@@ -1,28 +1,52 @@
 package com.longtail360.autochessrpg.activity;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.google.android.gms.auth.api.Auth;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.auth.api.signin.GoogleSignInResult;
+import com.google.android.gms.drive.Drive;
+import com.google.android.gms.games.Games;
+import com.google.android.gms.games.SnapshotsClient;
+import com.google.android.gms.games.snapshot.Snapshot;
+import com.google.android.gms.games.snapshot.SnapshotMetadata;
+import com.google.android.gms.games.snapshot.SnapshotMetadataChange;
+import com.google.android.gms.tasks.Continuation;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.longtail360.autochessrpg.R;
 import com.longtail360.autochessrpg.dao.AdventureDAO;
 import com.longtail360.autochessrpg.dao.CardDAO;
+import com.longtail360.autochessrpg.dao.CustomCardDAO;
 import com.longtail360.autochessrpg.dao.DungeonDAO;
 import com.longtail360.autochessrpg.dao.GameDBHelper;
 import com.longtail360.autochessrpg.dao.ItemDAO;
 import com.longtail360.autochessrpg.dao.ItemGotDAO;
 import com.longtail360.autochessrpg.dao.MonsterDAO;
 import com.longtail360.autochessrpg.dao.MyCardDAO;
+import com.longtail360.autochessrpg.dao.PlayerDAO;
 import com.longtail360.autochessrpg.dao.SkillDAO;
 import com.longtail360.autochessrpg.dao.log.BattleItemLogDAO;
 import com.longtail360.autochessrpg.dao.log.BattleRootLogDAO;
@@ -30,21 +54,27 @@ import com.longtail360.autochessrpg.dao.log.ProcessLogDAO;
 import com.longtail360.autochessrpg.dao.log.RootLogDAO;
 import com.longtail360.autochessrpg.entity.Adventure;
 import com.longtail360.autochessrpg.entity.Card;
+import com.longtail360.autochessrpg.entity.CustomCard;
 import com.longtail360.autochessrpg.entity.Dungeon;
 import com.longtail360.autochessrpg.entity.GameContext;
 import com.longtail360.autochessrpg.entity.Item;
 import com.longtail360.autochessrpg.entity.MyItem;
 import com.longtail360.autochessrpg.entity.Monster;
 import com.longtail360.autochessrpg.entity.MyCard;
+import com.longtail360.autochessrpg.entity.Player;
 import com.longtail360.autochessrpg.entity.Setting;
 import com.longtail360.autochessrpg.entity.passiveskill.BasePassiveSkill;
 import com.longtail360.autochessrpg.entity.skill.BaseSkill;
+import com.longtail360.autochessrpg.utils.GooglePlayHandler;
 import com.longtail360.autochessrpg.utils.Logger;
 
 import java.io.File;
+import java.io.IOException;
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 
 public class MainActivity extends ExternalResActivity {
     private String tag = "MainActivity";
@@ -71,7 +101,8 @@ public class MainActivity extends ExternalResActivity {
         Animation alphaAnimation = new AlphaAnimation(1.0f, 0.1f);
         alphaAnimation.setDuration(2000);
         comName.startAnimation(alphaAnimation);
-        doResetPlayer();
+        GameContext.gameContext = new GameContext();
+
         alphaAnimation.setAnimationListener(new Animation.AnimationListener(){
             @Override
             public void onAnimationStart(Animation arg0) {
@@ -96,66 +127,45 @@ public class MainActivity extends ExternalResActivity {
         });
     }
 
-    private void doResetPlayer() {
-        if(resetPlayer){
-            deleteFile(Setting.PLAYER_FILE_NAME);
-        }
-    }
-
 
     @Override
     public void doActionAfterGrantReadExternalRes(){
-        createGameFolder();
+//        createGameFolder();
         initPopupBox();
         init();
     }
 
-    private void createGameFolder() {
-        if(isSdcardMounted()) {
-            File comFolder = new File(Environment.getExternalStorageDirectory()+Setting.COM_FOLDER);
-            try{
-                if(!comFolder.exists()){
-                    if(comFolder.mkdir()) {
-                        Logger.log(tag, "comFolder created");
-                    } else {
-                        Logger.log(tag,"comFolder is not created");
-                    }
-                }
-            }catch(Exception e){
-                e.printStackTrace();
-            }
+    private void init(){
+        GameContext.gameContext.advDAO = new AdventureDAO(MainActivity.this);
+        GameContext.gameContext.cardDAO = new CardDAO(MainActivity.this);
+        GameContext.gameContext.skillDAO = new SkillDAO(MainActivity.this);
+        GameContext.gameContext.dungeonDAO = new DungeonDAO(MainActivity.this);
+        GameContext.gameContext.itemDAO = new ItemDAO(MainActivity.this);
+        GameContext.gameContext.itemGotDAO = new ItemGotDAO(MainActivity.this);
+        GameContext.gameContext.monsterDAO = new MonsterDAO(MainActivity.this);
+        GameContext.gameContext.myCardDAO = new MyCardDAO(MainActivity.this);
+        GameContext.gameContext.rootLogDAO = new RootLogDAO(MainActivity.this);
+        GameContext.gameContext.processLogDAO = new ProcessLogDAO(MainActivity.this);
+        GameContext.gameContext.battleRootLogDAO = new BattleRootLogDAO(MainActivity.this);
+        GameContext.gameContext.battleItemLogDAO = new BattleItemLogDAO(MainActivity.this);
+        GameContext.gameContext.playerDAO = new PlayerDAO(MainActivity.this);
+        GameContext.gameContext.customCardDAO = new CustomCardDAO(MainActivity.this);
 
-            File gameFolder = new File(Environment.getExternalStorageDirectory()+Setting.GAME_FOLDER);
-            try{
-                if(!gameFolder.exists()){
-                    if(gameFolder.mkdir()) {
-                        Logger.log(tag,"gameFolder created");
-                    } else {
-                        Logger.log(tag,"gameFolder is not created");
-                    }
-                }
-            }catch(Exception e){
-                e.printStackTrace();
-            }
+        if(GameDBHelper.isResetDB) {
+            GameDBHelper.getDatabase(MainActivity.this).execSQL("delete from " + PlayerDAO.TABLE_NAME);
+            GameDBHelper.getDatabase(MainActivity.this).execSQL("delete from " + CustomCardDAO.TABLE_NAME);
+            GameDBHelper.getDatabase(MainActivity.this).execSQL("delete from " + AdventureDAO.TABLE_NAME);
+            GameDBHelper.getDatabase(MainActivity.this).execSQL("delete from " + CardDAO.TABLE_NAME);
+            GameDBHelper.getDatabase(MainActivity.this).execSQL("delete from " + DungeonDAO.TABLE_NAME);
+            GameDBHelper.getDatabase(MainActivity.this).execSQL("delete from " + ItemDAO.TABLE_NAME);
+            GameDBHelper.getDatabase(MainActivity.this).execSQL("delete from " + ItemGotDAO.TABLE_NAME);
+            GameDBHelper.getDatabase(MainActivity.this).execSQL("delete from " + MonsterDAO.TABLE_NAME);
+
+            GameDBHelper.getDatabase(MainActivity.this).execSQL("delete from " + BattleRootLogDAO.TABLE_NAME);
+            GameDBHelper.getDatabase(MainActivity.this).execSQL("delete from " + BattleItemLogDAO.TABLE_NAME);
+            GameDBHelper.getDatabase(MainActivity.this).execSQL("delete from " + ProcessLogDAO.TABLE_NAME);
+            GameDBHelper.getDatabase(MainActivity.this).execSQL("delete from " + RootLogDAO.TABLE_NAME);
         }
-    }
-
-
-    private void init() {
-        GameContext.gameContext = new GameContext(this);
-        GameContext.gameContext.advDAO = new AdventureDAO(this);
-        GameContext.gameContext.cardDAO = new CardDAO(this);
-        GameContext.gameContext.skillDAO = new SkillDAO(this);
-        GameContext.gameContext.dungeonDAO = new DungeonDAO(this);
-        GameContext.gameContext.itemDAO = new ItemDAO(this);
-        GameContext.gameContext.itemGotDAO = new ItemGotDAO(this);
-        GameContext.gameContext.monsterDAO = new MonsterDAO(this);
-        GameContext.gameContext.myCardDAO = new MyCardDAO(this);
-        GameContext.gameContext.rootLogDAO = new RootLogDAO(this);
-        GameContext.gameContext.processLogDAO = new ProcessLogDAO(this);
-        GameContext.gameContext.battleRootLogDAO = new BattleRootLogDAO(this);
-        GameContext.gameContext.battleItemLogDAO = new BattleItemLogDAO(this);
-
         int count = GameContext.gameContext.cardDAO.getCount();
         boolean dbIsNull;
         if(count < 1){
@@ -166,45 +176,45 @@ public class MainActivity extends ExternalResActivity {
         if (dbIsNull) {
             new Thread(new Runnable() {
                 public void run() {
-                    if(GameDBHelper.isResetDB) {
                         Logger.log(tag, "set db");
-                        GameDBHelper.getDatabase(MainActivity.this).execSQL("delete from " + AdventureDAO.TABLE_NAME);
-                        GameDBHelper.getDatabase(MainActivity.this).execSQL("delete from " + CardDAO.TABLE_NAME);
-                        GameDBHelper.getDatabase(MainActivity.this).execSQL("delete from " + DungeonDAO.TABLE_NAME);
-                        GameDBHelper.getDatabase(MainActivity.this).execSQL("delete from " + ItemDAO.TABLE_NAME);
-                        GameDBHelper.getDatabase(MainActivity.this).execSQL("delete from " + ItemGotDAO.TABLE_NAME);
-                        GameDBHelper.getDatabase(MainActivity.this).execSQL("delete from " + MonsterDAO.TABLE_NAME);
 
-                        GameDBHelper.getDatabase(MainActivity.this).execSQL("delete from " + BattleRootLogDAO.TABLE_NAME);
-                        GameDBHelper.getDatabase(MainActivity.this).execSQL("delete from " + BattleItemLogDAO.TABLE_NAME);
-                        GameDBHelper.getDatabase(MainActivity.this).execSQL("delete from " + ProcessLogDAO.TABLE_NAME);
-                        GameDBHelper.getDatabase(MainActivity.this).execSQL("delete from " + RootLogDAO.TABLE_NAME);
-
+                        Player.init(MainActivity.this);
+                        mHandler.post(new Runnable() {
+                            public void run() {
+                                progressBar.setProgress(10);
+                            }
+                        });
                         Card.init(MainActivity.this);
                         mHandler.post(new Runnable() {
                             public void run() {
                                 progressBar.setProgress(20);
                             }
                         });
-                        BaseSkill.init(MainActivity.this);
+                        CustomCard.init(MainActivity.this);
                         mHandler.post(new Runnable() {
                             public void run() {
-                                progressBar.setProgress(40);
+                                progressBar.setProgress(30);
                             }
                         });
                         Dungeon.init(MainActivity.this);
                         mHandler.post(new Runnable() {
                             public void run() {
-                                progressBar.setProgress(60);
+                                progressBar.setProgress(40);
                             }
                         });
                         Item.init(MainActivity.this);
                         mHandler.post(new Runnable() {
                             public void run() {
+                                progressBar.setProgress(60);
+                            }
+                        });
+
+                        Monster.init(MainActivity.this);
+                        mHandler.post(new Runnable() {
+                            public void run() {
                                 progressBar.setProgress(80);
                             }
                         });
-                        Monster.init(MainActivity.this);
                         mHandler.post(new Runnable() {
                             public void run() {
                                 progressBar.setProgress(100);
@@ -215,25 +225,27 @@ public class MainActivity extends ExternalResActivity {
                             }
                         });
                     }
-                }
             }).start();
 
         }else {
-                progressBar.setVisibility(View.GONE);
-                initMessage.setText(R.string.ui_mainPage_tapToStartGame);
-                initListener();
-                readData();
+            progressBar.setVisibility(View.GONE);
+            initMessage.setText(R.string.ui_mainPage_tapToStartGame);
+            initListener();
+            readData();
         }
-
     }
 
-    private void readData() {
 
+    private void readData() {
+        GameContext.gameContext.player = GameContext.gameContext.playerDAO.listAll().get(0);
         GameContext.gameContext.passiveSkillList = BasePassiveSkill.listAll(MainActivity.this);
 
         Dungeon firestDungeon =  GameContext.gameContext.dungeonDAO.getAll().get(0);
         Logger.log(tag, firestDungeon.name+"");
+        Logger.log(tag, "tacticsJson:"+GameContext.gameContext.player.tacticsJson);
+        Logger.log(tag, "is_old_player:"+GameContext.gameContext.player.isOldPlayer);
         List<Adventure> advs =  GameContext.gameContext.advDAO.getAll();
+        Logger.log(tag, "advs.size():"+advs.size());
         if(advs == null || advs.size() == 0) {
             GameContext.gameContext.adventure = new Adventure(10, firestDungeon.index, 0, 1,0,100);
             GameContext.gameContext.advDAO.insert(GameContext.gameContext.adventure);
@@ -243,8 +255,8 @@ public class MainActivity extends ExternalResActivity {
             GameContext.gameContext.adventure = advs.get(0);
 
             Logger.log(tag, "do concrete tactics");
-            GameContext.gameContext.getPlayer(MainActivity.this).concreteConds(MainActivity.this);
-            GameContext.gameContext.getPlayer(MainActivity.this).concreteAction(MainActivity.this);
+            GameContext.gameContext.player.concreteConds(MainActivity.this);
+            GameContext.gameContext.player.concreteAction(MainActivity.this);
         }
 
         Logger.log(tag, "itemCode:"+GameContext.gameContext.itemDAO.listAll().get(0).name);

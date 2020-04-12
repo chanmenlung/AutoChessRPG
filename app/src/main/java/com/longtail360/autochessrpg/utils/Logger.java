@@ -6,7 +6,7 @@ import android.widget.Toast;
 
 public class Logger {
     public static void log(String tag, String str) {
-        Log.v(tag, str);
+        Log.d(tag, str);
     }
     public static void toast(String str, Context context){
         Toast toast = Toast.makeText(context,

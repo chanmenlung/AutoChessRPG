@@ -7,6 +7,7 @@ import com.longtail360.autochessrpg.adventure.ActionResult;
 import com.longtail360.autochessrpg.adventure.AdvContext;
 import com.longtail360.autochessrpg.entity.log.RootLog;
 import com.longtail360.autochessrpg.entity.passiveskill.BasePassiveSkill;
+import com.longtail360.autochessrpg.entity.skill.BaseSkill;
 import com.longtail360.autochessrpg.utils.Logger;
 
 import java.util.ArrayList;
@@ -20,7 +21,7 @@ public class MyCard extends Character{
     public static int TYPE_FOR_BUY = 3;
     public long id;
     public long adventureId;
-    public long cardId;
+    public long cardId; //Card.id
     public int level =1;
     public int battleHp;
     public int type; //1=inHand, 2=inTeam
@@ -34,14 +35,40 @@ public class MyCard extends Character{
     public int battleDefense;
     public List<Monster> connectMonsters = new ArrayList<>();
     public int cd;
-    public Card card;
+    private Card baseCard;
+    public BaseSkill skill;
+    public String cardCode; //C1, C2, C3
+    public String clazz;
+    public String race;
     public static List<MyCard> listByAdvIdAndType(Context context, long adventureId, int type) {
         List<MyCard> result = GameContext.gameContext.myCardDAO.listByAdvIdAndType(adventureId, type);
         for(MyCard myCard : result){
-            myCard.card = Card.get(context, myCard.cardId);
-            myCard.card.skill.level = myCard.level;
+            Card card = Card.get(context, myCard.cardId);
+            myCard.initByCard(card);
         }
         return result;
+    }
+
+    public int getInitCd() {
+        if(level == 1){
+            return 5;
+        }
+        if(level == 2) {
+            return 4;
+        }
+        return 3;
+    }
+    public void initByCard(Card card) {
+        this.skill = card.skill;
+        this.skill.level = this.level;
+        this.clazz = card.clazz;
+        this.race = card.race;
+        this.cardCode =card.code;
+        this.cardId = card.id;
+        this.baseCard = card;
+    }
+    public Card getCard(Context context) {
+        return Card.get(context, this.cardId);
     }
 
     public void setValueOnLoadHomeActivity() {
@@ -49,16 +76,16 @@ public class MyCard extends Character{
         buffAgi = 0;
         agi = 0;
         cri = 0;
-        buffDefense = card.defense;
-        buffAttack = card.calAttackByLevel(level);
-        totalHp = card.calHpByLevel(level);
-        battleAttack = card.calAttackByLevel(level);
-        battleDefense = card.defense;
+        buffDefense = baseCard.defense;
+        buffAttack = baseCard.calAttackByLevel(level);
+        totalHp = baseCard.calHpByLevel(level);
+        battleAttack = baseCard.calAttackByLevel(level);
+        battleDefense = baseCard.defense;
         connectMonsters.clear();
         resetStatus();
     }
     public void setValueOnAdvFinish() {
-        cd = card.skill.cd;
+        cd = baseCard.skill.cd;
         this.battleHp = this.totalHp;
         this.battleAttack = buffAttack;
         this.battleDefense = buffDefense;
@@ -71,8 +98,7 @@ public class MyCard extends Character{
         resetStatus();
     }
     public void setValueOnBattleStart() {
-        card.skill.mySelf = this;
-        cd = card.skill.cd;
+        baseCard.skill.mySelf = this;
         this.battleAttack = buffAttack;
         this.battleDefense = buffDefense;
         connectMonsters.clear();
@@ -82,10 +108,10 @@ public class MyCard extends Character{
 
     }
     public void setValueForBuyingCard() {
-        this.totalHp =  card.calHpByLevel(level);
+        this.totalHp =  baseCard.calHpByLevel(level);
         this.battleHp = totalHp;
-        this.battleAttack = card.calAttackByLevel(level);
-        this.battleDefense = card.defense;
+        this.battleAttack = baseCard.calAttackByLevel(level);
+        this.battleDefense = baseCard.defense;
         this.relife = 0;
         connectMonsters.clear();
         buffAttack = battleAttack;
@@ -99,14 +125,14 @@ public class MyCard extends Character{
     }
 
     public void setValueOnUpdatePassiveSkill() {
-        this.totalHp = card.calHpByLevel(level);
+        this.totalHp = baseCard.calHpByLevel(level);
         this.battleHp = totalHp;
-        this.battleAttack = card.calAttackByLevel(level);
-        this.battleDefense = card.defense;
+        this.battleAttack = baseCard.calAttackByLevel(level);
+        this.battleDefense = baseCard.defense;
         this.relife = 0;
         connectMonsters.clear();
         buffAttack = battleAttack;
-        buffDefense = card.defense;;
+        buffDefense = baseCard.defense;;
         buffAgi = 0;
         buffCri = 0;
         agi = buffAgi;
@@ -127,16 +153,18 @@ public class MyCard extends Character{
     }
 
     public int getSellingPrice() {
-        return card.price;
+        return baseCard.price;
     }
 
-    public String concateNameHpMpLevelExp() {
+    public String concateNameHpMpLevelExp(Context context) {
         StringBuilder result = new StringBuilder();
-        result.append(card.name)
+
+        result.append(getCard(context).name)
                 .append(" HP:").append(battleHp).append("/").append(totalHp);
         return result.toString();
     }
     public ActionResult randomNormalAttackMonster(Context context, AdvContext advContext) {
+        cd--;
         int randomAttackWhichMonster = advContext.mRandom.nextInt(advContext.battleContext.monsters.size());
         Monster monster = advContext.battleContext.monsters.get(randomAttackWhichMonster);
         return normalAttackMonsterWithWindFury(context, advContext, monster);
@@ -151,7 +179,7 @@ public class MyCard extends Character{
     }
     public ActionResult normalAttackMonster(Context context, AdvContext advContext, Monster monster) {
         ActionResult result = new ActionResult();
-        result.icon1 = this.card.id+"";
+        result.icon1 = this.cardId+"";
         result.icon1Type = RootLog.ICON1_TYPE_CARD;
         if(monster != null) {
             Logger.log(tag, "battleAttack:"+this.battleAttack);
@@ -160,77 +188,78 @@ public class MyCard extends Character{
             int randomCri = advContext.mRandom.nextInt(100);
             int hurt = 0;
             if(randomCri < cri){
-                hurt = this.battleAttack * 2 - monster.defense;
+                hurt = this.battleAttack * 2 + advContext.mRandom.nextInt(3)-1 - monster.defense;
             }else {
-                hurt = this.battleAttack - monster.defense;
+                hurt = this.battleAttack + advContext.mRandom.nextInt(3)-1 - monster.defense;
 
             }
-            if (this.card.clazz.equals(Card.CLAZZ_MAGE)) {
-                result.title = context.getString(R.string.battle_normalAttack).replace("{card}", this.card.name);
-                result.content = context.getString(R.string.battle_mageNormalAttack).replace("{card}", this.card.name)
+            Card card = getCard(context);
+            if (this.clazz.equals(Card.CLAZZ_MAGE)) {
+                result.title = context.getString(R.string.battle_normalAttack).replace("{card}", card.name);
+                result.content = context.getString(R.string.battle_mageNormalAttack).replace("{card}", card.name)
                         .replace("{monster}", monster.label).replace("{monster}", monster.label)
                         .replace("{value}", hurt+"");
                 result.doThisAction = true;
             }
-            else if(this.card.clazz.equals(Card.CLAZZ_WARRIOR)) {
-                result.title = context.getString(R.string.battle_normalAttack).replace("{card}", this.card.name);
-                result.content = context.getString(R.string.battle_warriorNormalAttack).replace("{card}", this.card.name)
+            else if(this.clazz.equals(Card.CLAZZ_WARRIOR)) {
+                result.title = context.getString(R.string.battle_normalAttack).replace("{card}", card.name);
+                result.content = context.getString(R.string.battle_warriorNormalAttack).replace("{card}", card.name)
                         .replace("{monster}", monster.label).replace("{monster}", monster.label)
                         .replace("{value}", hurt+"");
                 result.doThisAction = true;
             }
-            else if(this.card.clazz.equals(Card.CLAZZ_PRIEST)) {
-                result.title = context.getString(R.string.battle_normalAttack).replace("{card}", this.card.name);
-                result.content = context.getString(R.string.battle_priestNormalAttack).replace("{card}", this.card.name)
+            else if(this.clazz.equals(Card.CLAZZ_PRIEST)) {
+                result.title = context.getString(R.string.battle_normalAttack).replace("{card}", card.name);
+                result.content = context.getString(R.string.battle_priestNormalAttack).replace("{card}", card.name)
                         .replace("{monster}", monster.label).replace("{monster}", monster.label)
                         .replace("{value}", hurt+"");
                 result.doThisAction = true;
             }
-            else if(this.card.clazz.equals(Card.CLAZZ_HUNTER)) {
-                result.title = context.getString(R.string.battle_normalAttack).replace("{card}", this.card.name);
-                result.content = context.getString(R.string.battle_hunterNormalAttack).replace("{card}", this.card.name)
+            else if(this.clazz.equals(Card.CLAZZ_HUNTER)) {
+                result.title = context.getString(R.string.battle_normalAttack).replace("{card}", card.name);
+                result.content = context.getString(R.string.battle_hunterNormalAttack).replace("{card}", card.name)
                         .replace("{monster}", monster.label).replace("{monster}", monster.label)
                         .replace("{value}", hurt+"");
                 result.doThisAction = true;
             }
-            else if(this.card.clazz.equals(Card.CLAZZ_KNIGHT)) {
-                result.title = context.getString(R.string.battle_normalAttack).replace("{card}", this.card.name);
-                result.content = context.getString(R.string.battle_knightNormalAttack).replace("{card}", this.card.name)
+            else if(this.clazz.equals(Card.CLAZZ_KNIGHT)) {
+                result.title = context.getString(R.string.battle_normalAttack).replace("{card}", card.name);
+                result.content = context.getString(R.string.battle_knightNormalAttack).replace("{card}", card.name)
                         .replace("{monster}", monster.label).replace("{monster}", monster.label)
                         .replace("{value}", hurt+"");
                 result.doThisAction = true;
             }
-            else if(this.card.clazz.equals(Card.CLAZZ_SHAMAN)) {
-                result.title = context.getString(R.string.battle_normalAttack).replace("{card}", this.card.name);
-                result.content = context.getString(R.string.battle_shamanNormalAttack).replace("{card}", this.card.name)
+            else if(this.clazz.equals(Card.CLAZZ_SHAMAN)) {
+                result.title = context.getString(R.string.battle_normalAttack).replace("{card}", card.name);
+                result.content = context.getString(R.string.battle_shamanNormalAttack).replace("{card}", card.name)
                         .replace("{monster}", monster.label).replace("{monster}", monster.label)
                         .replace("{value}", hurt+"");
                 result.doThisAction = true;
             }
-            else if(this.card.clazz.equals(Card.CLAZZ_ROGUE)) {
-                result.title = context.getString(R.string.battle_normalAttack).replace("{card}", this.card.name);
-                result.content = context.getString(R.string.battle_rogueNormalAttack).replace("{card}", this.card.name)
+            else if(this.clazz.equals(Card.CLAZZ_ROGUE)) {
+                result.title = context.getString(R.string.battle_normalAttack).replace("{card}", card.name);
+                result.content = context.getString(R.string.battle_rogueNormalAttack).replace("{card}", card.name)
                         .replace("{monster}", monster.label).replace("{monster}", monster.label)
                         .replace("{value}", hurt+"");
                 result.doThisAction = true;
             }
-            else if(this.card.clazz.equals(Card.CLAZZ_WARLOCK)) {
-                result.title = context.getString(R.string.battle_normalAttack).replace("{card}", this.card.name);
-                result.content = context.getString(R.string.battle_warlockNormalAttack).replace("{card}", this.card.name)
+            else if(this.clazz.equals(Card.CLAZZ_WARLOCK)) {
+                result.title = context.getString(R.string.battle_normalAttack).replace("{card}", card.name);
+                result.content = context.getString(R.string.battle_warlockNormalAttack).replace("{card}",card.name)
                         .replace("{monster}", monster.label).replace("{monster}", monster.label)
                         .replace("{value}", hurt+"");
                 result.doThisAction = true;
             }
-            else if(this.card.clazz.equals(Card.CLAZZ_WARRIOR)) {
-                result.title = context.getString(R.string.battle_normalAttack).replace("{card}", this.card.name);
-                result.content = context.getString(R.string.battle_warriorNormalAttack).replace("{card}", this.card.name)
+            else if(this.clazz.equals(Card.CLAZZ_WARRIOR)) {
+                result.title = context.getString(R.string.battle_normalAttack).replace("{card}", card.name);
+                result.content = context.getString(R.string.battle_warriorNormalAttack).replace("{card}", card.name)
                         .replace("{monster}", monster.label).replace("{monster}", monster.label)
                         .replace("{value}", hurt+"");
                 result.doThisAction = true;
             }
             advContext.battleContext.addActionResultToLog(result);
             monster.changeHp(context,advContext.battleContext, hurt);
-            this.card.skill.doActionOnCardAttackEnd(context, advContext, this, monster, hurt);
+            card.skill.doActionOnCardAttackEnd(context, advContext, this, monster, hurt);
             for(BasePassiveSkill skill : GameContext.gameContext.passiveSkillList){
                 skill.doActionOnCardAttackEnd(context, advContext, this, monster, hurt);
             }
@@ -251,6 +280,7 @@ public class MyCard extends Character{
         }
         return  result;
     }
+
 
 
 //    public void resetValue() {

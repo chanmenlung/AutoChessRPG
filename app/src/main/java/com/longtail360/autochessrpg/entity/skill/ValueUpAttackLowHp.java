@@ -11,17 +11,14 @@ public class ValueUpAttackLowHp extends BaseSkill{
 
     public ValueUpAttackLowHp(Context context) {
         code = KEY;
-        cd = 3;
+        cd = 5;
         name = context.getString(R.string.skill_name_valueUpAttackLowHp);
         desc = context.getString(R.string.skill_desc_valueUpAttackLowHp);
         battleDesc = context.getString(R.string.skill_battleDesc_valueUpAttackLowHp);
         statusDesc = context.getString(R.string.skill_statusDesc_valueUpAttackLowHp);
     }
-
-    @Override
-    public String getDesc(Context context) {
-        return null;
-    }
+	
+	@Override
 	public ActionResult active(Context context,AdvContext advContext){
         int consume = mySelf.totalHp - mySelf.battleHp;
 		int temp = consume*10/mySelf.totalHp;

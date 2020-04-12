@@ -41,8 +41,9 @@ public class HpUpDown  extends BasePassiveSkill{
 		if(isActive2) {
 			ActionResult result = new ActionResult();			
 			StringBuilder str = new StringBuilder();
-			for(MyCard card : advContext.cards) {
-				str.append(card.card.name);
+			for(MyCard myCard : advContext.cards) {
+				Card card = myCard.getCard(context);
+				str.append(card.name);
 				str.append(",");
 				result.doThisAction = true;
 			}
@@ -58,9 +59,10 @@ public class HpUpDown  extends BasePassiveSkill{
 		if(isActive1) {
 			ActionResult result = new ActionResult();			
 			StringBuilder str = new StringBuilder();
-			for(MyCard card : advContext.cards) {
-				if(card.card.race.equals(Card.RACE_SPIRIT)) {
-					str.append(card.card.name);
+			for(MyCard myCard : advContext.cards) {
+				Card card = myCard.getCard(context);
+				if(card.race.equals(Card.RACE_SPIRIT)) {
+					str.append(card.name);
 					str.append(",");
 					result.doThisAction = true;
 				}

@@ -25,6 +25,7 @@ public class EventEngine {
     private int SPRING_CURE_HP = 50;
     private int BOW_HURT = 20;
     private int POTION_HURT = 20;
+    private int ALCHEMY_HEART = 20;
 
     private String tag = "EventEngine";
     private AdvContext advContext;
@@ -61,59 +62,138 @@ public class EventEngine {
     }
     public ActionResult metGoodEvent() {
         Logger.log(tag, "metGoodEvent");
-        int randomWhichEvent = advContext.mRandom.nextInt(7)+1;
-        switch (randomWhichEvent){
-            case 1:
-                return findSpringCure();
-            case 2:
-                return findSpringNone();
-            case 3:
-                return findBoxGetItem();
-            case 4:
-                return findJarGetItem();
-            case 5:
-                return findRoomCure();
-            case 6:
-                return findRoomGetItem();
-            case 7:
-                return findRoomNone();
+        int randomWhichEvent = advContext.mRandom.nextInt(100);
+        if(randomWhichEvent < 10) {
+            return findSpringCure();
+        }else if(randomWhichEvent < 20) {
+            return findSpringNone();
+        }else if(randomWhichEvent < 30) {
+            return findBoxGetItem();
+        }else if(randomWhichEvent < 40) {
+            return findJarGetItem();
+        }else if(randomWhichEvent < 50) {
+            return findRoomCure();
+        }else if(randomWhichEvent < 60) {
+            return findRoomGetItem();
+        }else if(randomWhichEvent < 70) {
+            return findRoomNone();
+        }else if(randomWhichEvent < 80) {
+            return findAlchemyHearthSuccess();
+        }else if(randomWhichEvent < 90) {
+            return findAlchemyHearthNone();
+        }else {
+            return findSpringCure();
         }
-        return null;
     }
     public ActionResult metBadEvent() {
-        int randomWhichEvent = advContext.mRandom.nextInt(7)+1;
+        int randomWhichEvent = advContext.mRandom.nextInt(100);
 
-        switch (randomWhichEvent){
-            case 1:
-                return findSpringPotion();
-            case 2:
-                return findJarBow();
-            case 3:
-                return findJarBowDodge();
-            case 4:
-                return findBoxPotion();
-            case 5:
-                return findBoxPotionDodge();
-            case 6:
-                return findBoxBow();
-            case 7:
-                return findBoxBowDodge();
+        if(randomWhichEvent < 10) {
+            return findSpringPotion();
+        }else if(randomWhichEvent < 20) {
+            return findJarBow();
+        }else if(randomWhichEvent < 30) {
+            return findJarBowDodge();
+        }else if(randomWhichEvent < 40) {
+            return findBoxPotion();
+        }else if(randomWhichEvent < 50) {
+            return findBoxPotionDodge();
+        }else if(randomWhichEvent < 60) {
+            return findBoxBow();
+        }else if(randomWhichEvent < 70) {
+            return findBoxBowDodge();
+        }else if(randomWhichEvent < 80) {
+            return findAlchemyHearthFailDodge();
+        }else if(randomWhichEvent < 90) {
+            return findAlchemyHearthFail();
+        }else {
+            return findSpringPotion();
         }
-        return null;
     }
+
+    //<string name="adv_event_findAlchemyHearth">發現了熔爐</string>
+    //<string name="adv_event_findAlchemyHearthSuccess">發現了熔爐</string>
+    //隊伍嘗試從熔爐提煉物品, 提煉成功, 獲得了{item}
+    public ActionResult findAlchemyHearthSuccess() {
+        int randomAlcm =  advContext.mRandom.nextInt(3);
+        Item item = randomGetItem();
+        ActionResult actionResult = new ActionResult();
+        if(randomAlcm == 0) {
+            actionResult.icon1 = "item_alchemy1";
+        }else if(randomAlcm == 1) {
+            actionResult.icon1 = "item_alchemy2";
+        }else {
+            actionResult.icon1 = "item_alchemy3";
+        }
+        actionResult.title = context.getResources().getString(R.string.adv_event_findAlchemy);
+        actionResult.detail =  context.getResources().getString(R.string.adv_event_findAlchemyHearthSuccess).replace("{item}", item.name);
+        return actionResult;
+    }
+
+    public ActionResult findAlchemyHearthFail() {
+        int randomAlcm =  advContext.mRandom.nextInt(3);
+
+        int hurt = ALCHEMY_HEART+advContext.mRandom.nextInt(5);
+        ActionResult actionResult = new ActionResult();
+//        actionResult.color = ProcessLog.BLUE;
+        if(randomAlcm == 0) {
+            actionResult.icon1 = "item_alchemy1";
+        }else if(randomAlcm == 1) {
+            actionResult.icon1 = "item_alchemy2";
+        }else {
+            actionResult.icon1 = "item_alchemy3";
+        }
+        actionResult.title = context.getResources().getString(R.string.adv_event_findAlchemy);
+        actionResult.detail =  context.getResources().getString(R.string.adv_event_findAlchemyHearthFail).replace("{value}", hurt+"");
+        return actionResult;
+    }
+
+    public ActionResult findAlchemyHearthFailDodge() {
+        int randomAlcm =  advContext.mRandom.nextInt(3);
+        ActionResult actionResult = new ActionResult();
+//        actionResult.color = ProcessLog.BLUE;
+        if(randomAlcm == 0) {
+            actionResult.icon1 = "item_alchemy1";
+        }else if(randomAlcm == 1) {
+            actionResult.icon1 = "item_alchemy2";
+        }else {
+            actionResult.icon1 = "item_alchemy3";
+        }
+        actionResult.title = context.getResources().getString(R.string.adv_event_findAlchemy);
+        actionResult.detail =  context.getResources().getString(R.string.adv_event_findAlchemyHearthFailDodge);
+        return actionResult;
+    }
+
+    public ActionResult findAlchemyHearthNone() {
+        int randomAlcm =  advContext.mRandom.nextInt(3);
+        ActionResult actionResult = new ActionResult();
+//        actionResult.color = ProcessLog.BLUE;
+        if(randomAlcm == 0) {
+            actionResult.icon1 = "item_alchemy1";
+        }else if(randomAlcm == 1) {
+            actionResult.icon1 = "item_alchemy2";
+        }else {
+            actionResult.icon1 = "item_alchemy3";
+        }
+        actionResult.title = context.getResources().getString(R.string.adv_event_findAlchemy);
+        actionResult.detail =  context.getResources().getString(R.string.adv_event_findAlchemyHearthNone);
+        return actionResult;
+    }
+
 
     public ActionResult findSpringCure() {
         int randomWhoOpenBox = advContext.mRandom.nextInt(advContext.cards.size());
         MyCard whoOpenBox = advContext.cards.get(randomWhoOpenBox);
+        Card card = whoOpenBox.getCard(context);
         int randomDesc = advContext.mRandom.nextInt(2);
         ActionResult actionResult = new ActionResult();
 //        actionResult.color = ProcessLog.BLUE;
         actionResult.icon1 = "item_water";
         actionResult.title = context.getResources().getString(R.string.adv_event_findASpring);
         if(randomDesc == 0) {
-            actionResult.detail = context.getResources().getString(R.string.adv_event_findASpring_cure).replace("{card}", whoOpenBox.card.name);
+            actionResult.detail = context.getResources().getString(R.string.adv_event_findASpring_cure).replace("{card}", card.name);
         }else {
-            actionResult.detail = context.getResources().getString(R.string.adv_event_findASpring_cure2).replace("{card}", whoOpenBox.card.name);
+            actionResult.detail = context.getResources().getString(R.string.adv_event_findASpring_cure2).replace("{card}", card.name);
         }
         for(MyCard myCard : advContext.cards){
             myCard.battleHp = myCard.battleHp + SPRING_CURE_HP + advContext.mRandom.nextInt(5);
@@ -136,25 +216,28 @@ public class EventEngine {
     public ActionResult findSpringPotion() {
         int randomWhoOpenBox = advContext.mRandom.nextInt(advContext.cards.size());
         MyCard whoOpenBox = advContext.cards.get(randomWhoOpenBox);
+        Card card = whoOpenBox.getCard(context);
         ActionResult actionResult = new ActionResult();
 //        actionResult.color = ProcessLog.RED;
         actionResult.icon1 = "item_water";
         actionResult.title = context.getResources().getString(R.string.adv_event_findASpring);
         actionResult.detail = context.getResources().getString(R.string.adv_event_findASpring_potion)
-                .replace("{card}", whoOpenBox.card.name);
+                .replace("{card}", card.name);
 
         return actionResult;
     }
 
     public ActionResult findJarBow() {
         int randomWhoOpenBox = advContext.mRandom.nextInt(advContext.cards.size());
+        int randomWhichJar = advContext.mRandom.nextInt(3)+1;
         int hurt = BOW_HURT+advContext.mRandom.nextInt(5);
         MyCard whoOpenBox = advContext.cards.get(randomWhoOpenBox);
+        Card card = whoOpenBox.getCard(context);
         ActionResult actionResult = new ActionResult();
 //        actionResult.color = ProcessLog.RED;
-        actionResult.icon1 = "item_jar";
+        actionResult.icon1 = "item_jar_"+randomWhichJar;
         actionResult.title = context.getResources().getString(R.string.adv_event_findAJar);
-        actionResult.detail =  context.getResources().getString(R.string.adv_event_findAJar_getBow).replace("{card}", whoOpenBox.card.name)
+        actionResult.detail =  context.getResources().getString(R.string.adv_event_findAJar_getBow).replace("{card}", card.name)
                                 .replace("{value}", hurt+"");
         whoOpenBox.changeBattleHp(-1*hurt, advContext);
         return actionResult;
@@ -162,24 +245,28 @@ public class EventEngine {
 
     public ActionResult findJarBowDodge() {
         int randomWhoOpenBox = advContext.mRandom.nextInt(advContext.cards.size());
+        int randomWhichJar = advContext.mRandom.nextInt(3)+1;
         MyCard whoOpenBox = advContext.cards.get(randomWhoOpenBox);
+        Card card = whoOpenBox.getCard(context);
         ActionResult actionResult = new ActionResult();
 //        actionResult.color = ProcessLog.BLUE;
-        actionResult.icon1 = "item_jar";
+        actionResult.icon1 = "item_jar_"+randomWhichJar;
         actionResult.title = context.getResources().getString(R.string.adv_event_findAJar);
-        actionResult.detail =  context.getResources().getString(R.string.adv_event_findAJar_getBowDodge).replace("{card}", whoOpenBox.card.name);
+        actionResult.detail =  context.getResources().getString(R.string.adv_event_findAJar_getBowDodge).replace("{card}", card.name);
         return actionResult;
     }
 
     public ActionResult findJarGetItem() {
         int randomWhoOpenBox = advContext.mRandom.nextInt(advContext.cards.size());
+        int randomWhichJar = advContext.mRandom.nextInt(3)+1;
         Item item = randomGetItem();
         MyCard whoOpenBox = advContext.cards.get(randomWhoOpenBox);
+        Card card = whoOpenBox.getCard(context);
         ActionResult actionResult = new ActionResult();
 //        actionResult.color = ProcessLog.BLUE;
-        actionResult.icon1 = "item_jar";
+        actionResult.icon1 = "item_jar_"+randomWhichJar;
         actionResult.title = context.getResources().getString(R.string.adv_event_findAJar);
-        actionResult.detail =  context.getResources().getString(R.string.adv_event_findAJar_getBowDodge).replace("{card}", whoOpenBox.card.name)
+        actionResult.detail =  context.getResources().getString(R.string.adv_event_findAJar_getBowDodge).replace("{card}", card.name)
                 .replace("{item}", item.name);
         return actionResult;
     }
@@ -188,7 +275,7 @@ public class EventEngine {
         Logger.log(tag, "metBadEvent");
         int randomWhoOpenBox = advContext.mRandom.nextInt(advContext.cards.size());
         Item item = randomGetItem();
-        Card whoOpenBox = advContext.cards.get(randomWhoOpenBox).card;
+        Card whoOpenBox = advContext.cards.get(randomWhoOpenBox).getCard(context);
         ActionResult actionResult = new ActionResult();
 //        actionResult.color = ProcessLog.BLUE;
         actionResult.icon1 = "item_treasurebox";
@@ -201,7 +288,7 @@ public class EventEngine {
     public ActionResult findBoxPotion() {
         Logger.log(tag, "metBadEvent");
         int randomWhoOpenBox = advContext.mRandom.nextInt(advContext.cards.size());
-        Card whoOpenBox = advContext.cards.get(randomWhoOpenBox).card;
+        Card whoOpenBox = advContext.cards.get(randomWhoOpenBox).getCard(context);
         ActionResult actionResult = new ActionResult();
 //        actionResult.color = ProcessLog.RED;
         actionResult.icon1 = "item_treasurebox";
@@ -221,7 +308,7 @@ public class EventEngine {
     public ActionResult findBoxPotionDodge() {
         Logger.log(tag, "metBadEvent");
         int randomWhoOpenBox = advContext.mRandom.nextInt(advContext.cards.size());
-        Card whoOpenBox = advContext.cards.get(randomWhoOpenBox).card;
+        Card whoOpenBox = advContext.cards.get(randomWhoOpenBox).getCard(context);
         ActionResult actionResult = new ActionResult();
 //        actionResult.color = ProcessLog.BLUE;
         actionResult.icon1 = "item_treasurebox";
@@ -234,11 +321,12 @@ public class EventEngine {
         int randomWhoOpenBox = advContext.mRandom.nextInt(advContext.cards.size());
         int hurt = BOW_HURT+advContext.mRandom.nextInt(5);
         MyCard whoOpenBox = advContext.cards.get(randomWhoOpenBox);
+        Card card = whoOpenBox.getCard(context);
         ActionResult actionResult = new ActionResult();
 //        actionResult.color = ProcessLog.RED;
         actionResult.icon1 = "item_treasurebox";
         actionResult.title =  context.getResources().getString(R.string.adv_event_findAnBox);
-        actionResult.detail = context.getResources().getString(R.string.adv_event_findABox_getBow).replace("{card}", whoOpenBox.card.name)
+        actionResult.detail = context.getResources().getString(R.string.adv_event_findABox_getBow).replace("{card}", card.name)
                             .replace("{value}", hurt+"");
         whoOpenBox.changeBattleHp(-1*hurt, advContext);
         return actionResult;
@@ -247,11 +335,12 @@ public class EventEngine {
     public ActionResult findBoxBowDodge() {
         int randomWhoOpenBox = advContext.mRandom.nextInt(advContext.cards.size());
         MyCard whoOpenBox = advContext.cards.get(randomWhoOpenBox);
+        Card card = whoOpenBox.getCard(context);
         ActionResult actionResult = new ActionResult();
 //        actionResult.color = ProcessLog.BLUE;
         actionResult.icon1 = "item_treasurebox";
         actionResult.title =  context.getResources().getString(R.string.adv_event_findAnBox);
-        actionResult.detail = context.getResources().getString(R.string.adv_event_findABox_getBowDodge).replace("{card}", whoOpenBox.card.name);
+        actionResult.detail = context.getResources().getString(R.string.adv_event_findABox_getBowDodge).replace("{card}", card.name);
         return actionResult;
     }
 
@@ -267,7 +356,7 @@ public class EventEngine {
 
     public ActionResult findRoomNone() {
         int randomWhoOpenBox = advContext.mRandom.nextInt(advContext.cards.size());
-        Card whoOpenBox = advContext.cards.get(randomWhoOpenBox).card;
+        Card whoOpenBox = advContext.cards.get(randomWhoOpenBox).getCard(context);
         int randomDesc = advContext.mRandom.nextInt(3);
         ActionResult actionResult = new ActionResult();
 //        actionResult.color = ProcessLog.BLUE;
@@ -285,7 +374,7 @@ public class EventEngine {
 
     public ActionResult findRoomCure() {
         int randomWhoOpenBox = advContext.mRandom.nextInt(advContext.cards.size());
-        Card whoOpenBox = advContext.cards.get(randomWhoOpenBox).card;
+        Card whoOpenBox = advContext.cards.get(randomWhoOpenBox).getCard(context);
         int randomDesc = advContext.mRandom.nextInt(3);
         ActionResult actionResult = new ActionResult();
 //        actionResult.color = ProcessLog.BLUE;

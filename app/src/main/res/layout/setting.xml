@@ -1,0 +1,52 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="match_parent"
+    android:background="@drawable/ui_background"
+    android:id="@+id/thisLayout"
+    >
+    <com.longtail360.autochessrpg.prefab.HeadBackButton
+        android:id="@+id/backBt"
+        android:translationY="10dp"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        app:btHeadBackText="@string/ui_home_setting"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:orientation="vertical">
+        <Button
+            android:id="@+id/uploadBt"
+            android:layout_width="300dp"
+            android:layout_height="70dp"
+            android:layout_gravity="center"
+            android:layout_margin="20dp"
+            android:textSize="20sp"
+            android:background="@drawable/ui_panel"
+            android:text="@string/ui_setting_uploadToGoogle"/>
+
+        <Button
+            android:id="@+id/downloadBt"
+            android:layout_width="300dp"
+            android:layout_height="70dp"
+            android:layout_gravity="center"
+            android:layout_margin="20dp"
+            android:background="@drawable/ui_panel"
+            android:textSize="20sp"
+            android:text="@string/ui_setting_downloadFromGoogle"/>
+
+        <Button
+            android:id="@+id/aboutBt"
+            android:layout_width="300dp"
+            android:layout_height="70dp"
+            android:layout_gravity="center"
+            android:layout_margin="20dp"
+            android:textSize="20sp"
+            android:background="@drawable/ui_panel"
+            android:text="@string/ui_mainPage_about"/>
+    </LinearLayout>
+
+
+
+</FrameLayout>

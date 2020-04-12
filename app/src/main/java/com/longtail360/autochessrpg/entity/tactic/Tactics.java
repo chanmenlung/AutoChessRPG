@@ -12,6 +12,7 @@ import com.longtail360.autochessrpg.entity.tactic.condition.AllManHp;
 import com.longtail360.autochessrpg.entity.tactic.condition.BaseCondition;
 import com.longtail360.autochessrpg.utils.Logger;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,8 +20,9 @@ import java.util.List;
  * Created by chanmenlung on 21/10/2018.
  */
 
-public class Tactics implements Comparable<Tactics> {
+public class Tactics implements Comparable<Tactics>{
     private String tag = "Tactics";
+    public long id;
     @Expose
     public int order;
 //    public String desc = "bbb";
@@ -31,6 +33,8 @@ public class Tactics implements Comparable<Tactics> {
     @Expose
     public int active;
 
+    public String data;
+    public Tactics() {}
     public Tactics(Context context){
         BaseCondition cond = BaseCondition.create(context, AllManHp.KEY);
         if(cond == null){

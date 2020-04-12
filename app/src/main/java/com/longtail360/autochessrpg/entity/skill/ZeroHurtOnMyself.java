@@ -16,13 +16,9 @@ public class ZeroHurtOnMyself extends BaseSkill{
         battleDesc = context.getString(R.string.skill_battleDesc_zeroHurtOnMyself);
         statusDesc = context.getString(R.string.skill_statusDesc_zeroHurtOnMyself);
     }
-    @Override
-    public String getDesc(Context context) {
-        return null;
-    }
 	public ActionResult active(Context context,AdvContext advContext){	
 		ActionResult result = getActionResultForActive(context);
-		result.content = battleDesc.replace ("{mySelf}", mySelf.card.name);
+		result.content = battleDesc.replace ("{mySelf}", mySelf.getCard(context).name);
 		result.doThisAction = true;	
 		mySelf.divineShield = true;
 		advContext.battleContext.addActionResultToLog(result);

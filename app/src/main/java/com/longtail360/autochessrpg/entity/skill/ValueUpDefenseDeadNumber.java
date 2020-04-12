@@ -10,17 +10,14 @@ public class ValueUpDefenseDeadNumber extends BaseSkill{
     public static String KEY = "ValueUpDefenseDeadNumber";
     public ValueUpDefenseDeadNumber(Context context) {
         code = KEY;
-        cd = 3;
+        cd = 5;
         name = context.getString(R.string.skill_name_valueUpDefenseDeadNumber);
         desc = context.getString(R.string.skill_desc_valueUpDefenseDeadNumber);
         battleDesc = context.getString(R.string.skill_battleDesc_valueUpDefenseDeadNumber);
         statusDesc = context.getString(R.string.skill_statusDesc_valueUpDefenseDeadNumber);
     }
 
-    @Override
-    public String getDesc(Context context) {
-        return null;
-    }
+	@Override
 	public ActionResult active(Context context,AdvContext advContext){
         int upValue = advContext.battleContext.deadMonsters.size()+1;
 		return valueUpOne(context, advContext,mySelf, "defense", upValue);

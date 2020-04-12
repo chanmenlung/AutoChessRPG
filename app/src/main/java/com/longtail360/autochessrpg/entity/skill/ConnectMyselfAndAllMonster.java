@@ -24,16 +24,12 @@ public class ConnectMyselfAndAllMonster extends BaseSkill{
         statusDesc = context.getString(R.string.skill_statusDesc_connectMyselfAndAllMonster);
     }
 
-	@Override
-	public String getDesc(Context context) {
-		return desc;
-	}
 
 	@Override
 	public ActionResult active(Context context, AdvContext advContext){
 		mySelf.connectMonsters.addAll(advContext.battleContext.monsters);
 		ActionResult actionResult = getActionResultForActive(context);
-		actionResult.content = battleDesc.replace("{mySelf}", mySelf.card.name);
+		actionResult.content = battleDesc.replace("{mySelf}", mySelf.getCard(context).name);
 		advContext.battleContext.addActionResultToLog(actionResult);
 		return actionResult;
 	}
@@ -62,7 +58,7 @@ public class ConnectMyselfAndAllMonster extends BaseSkill{
 
 			result.title = context.getString(R.string.battle_connectHurt_title);
 			result.content = context.getString(R.string.battle_connectHurt_content)
-					.replace("{subject}", card.card.name)
+					.replace("{subject}", card.getCard(context).name)
 					.replace("{objects}", labels)
 					.replace("{value}", hurt+"");
 			result.icon1 = "skill_icon_connection";

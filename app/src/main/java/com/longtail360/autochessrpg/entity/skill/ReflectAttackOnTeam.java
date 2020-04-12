@@ -18,13 +18,9 @@ public class ReflectAttackOnTeam extends BaseSkill{
         battleDesc = context.getString(R.string.skill_battleDesc_reflectAttackOnTeam);
     }
 
-	@Override
-	public String getDesc(Context context) {
-		return null;
-	}
 	public ActionResult active(Context context,AdvContext advContext){
 		ActionResult actionResult = getActionResultForActive(context);
-		actionResult.content = battleDesc.replace("{card}", mySelf.card.name);
+		actionResult.content = battleDesc.replace("{card}", mySelf.getCard(context).name);
 		for(MyCard ca : advContext.cards) {
 			ca.reflectShield = true;
 		}

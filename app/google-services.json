@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "948841346185",
+    "firebase_url": "https://api-project-36501351.firebaseio.com",
+    "project_id": "api-project-36501351",
+    "storage_bucket": "api-project-36501351.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:948841346185:android:ec2dcbf2fa272b51e18258",
+        "android_client_info": {
+          "package_name": "com.longtail360.autochessrpg"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "948841346185-27f5ml2oah6fjd3msoma7l8t6bd6uate.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.longtail360.autochessrpg",
+            "certificate_hash": "a20c5695431a69bf7d3695bda93680e403572785"
+          }
+        },
+        {
+          "client_id": "948841346185-il3nu97aj4fjljjsuc4qbd5p9ni5hc0o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC3P6NvIeG1uR4cSdee0HcYPjIrn7431xE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "948841346185-il3nu97aj4fjljjsuc4qbd5p9ni5hc0o.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

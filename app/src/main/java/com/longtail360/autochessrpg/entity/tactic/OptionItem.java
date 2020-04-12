@@ -88,14 +88,14 @@ public class OptionItem {
         return result;
     }
 
-    public static List<OptionItem> convertSkillListToOptionList(List<BaseSkill> skills){
-        List<OptionItem> result = new ArrayList<>();
-        for(BaseSkill obj : skills){
-            OptionItem item = new OptionItem (obj.code,obj.desc);
-            result.add (item);
-        }
-        return result;
-    }
+//    public static List<OptionItem> convertSkillListToOptionList(List<BaseSkill> skills){
+//        List<OptionItem> result = new ArrayList<>();
+//        for(BaseSkill obj : skills){
+//            OptionItem item = new OptionItem (obj.code,obj.getDesc());
+//            result.add (item);
+//        }
+//        return result;
+//    }
 
 }
 

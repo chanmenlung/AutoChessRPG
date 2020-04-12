@@ -57,14 +57,9 @@ public class ItemLogDesc extends LinearLayout {
         }
     }
 
-    public void refresh(Context context, String titleStr, String contentStr, String defaultHead, String headImageUri){
-        if(headImageUri != null) {
-            File file = new File(headImageUri);
-            if(file.exists()) {
-                itemIcon.setImageURI(Uri.parse(headImageUri));
-            }else {
-                itemIcon.setImageResource(ImageUtils.convertImageStringToInt(context, defaultHead));
-            }
+    public void refresh(Context context, String titleStr, String contentStr, String defaultHead, String headBase64){
+        if(headBase64 != null) {
+            itemIcon.setImageBitmap(ImageUtils.convertBase64ToImage(headBase64));
         }else {
                 itemIcon.setImageResource(ImageUtils.convertImageStringToInt(context, defaultHead));
         }

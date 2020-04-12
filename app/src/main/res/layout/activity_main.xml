@@ -8,7 +8,7 @@
         android:id="@+id/backgroundLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/main_page_background">
+        android:background="@drawable/main_page_background_2">
 
     <FrameLayout
         android:translationX="-50dp"
@@ -48,7 +48,6 @@
         <ProgressBar
             android:id="@+id/progressBar"
             style="@android:style/Widget.ProgressBar.Horizontal"
-            android:padding="10dp"
             android:layout_gravity="bottom"
             android:translationY="-80dp"
             android:layout_width="match_parent"
@@ -58,9 +57,9 @@
 
     <FrameLayout
         android:id="@+id/aboutBt"
-        android:layout_gravity="right"
-        android:translationY="50dp"
-        android:translationX="20dp"
+        android:layout_gravity="left|bottom"
+        android:translationY="-20dp"
+        android:translationX="-10dp"
         android:layout_width="150dp"
         android:layout_height="60dp"
         android:background="@drawable/ui_dark_bar_horizontal">

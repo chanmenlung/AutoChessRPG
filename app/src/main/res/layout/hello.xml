@@ -1,4 +1,4 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_height="match_parent"
@@ -6,122 +6,33 @@
     android:id="@+id/strategyList"
     >
 
-    <com.longtail360.autochessrpg.prefab.HeadBackButton
-        android:id="@+id/strategyBackButton"
-        android:translationY="10dp"
+    <Button
+        android:id="@+id/loginBt"
+        android:layout_width="120dp"
         android:layout_height="40dp"
-        android:layout_width="match_parent"
-        app:btHeadBackText=""/>
+        android:layout_gravity="center"
+        android:layout_margin="20dp"
+        android:textColor="@android:color/white"
+        android:background="@drawable/xml_button_burn_middle_orange"
+        android:text="loginBt"/>
 
-    <FrameLayout
-        android:id="@+id/newStrategyButton"
-        android:layout_width="80dp"
-        android:layout_height="30dp"
-        android:translationX="270dp"
-        android:translationY="12dp"
-        android:background="@drawable/xml_button_middle_yellow">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:textSize="14sp"
-            android:text="@string/tactic_newTactic" />
-    </FrameLayout>
+    <Button
+        android:id="@+id/writeBt"
+        android:layout_width="120dp"
+        android:layout_height="40dp"
+        android:layout_margin="20dp"
+        android:layout_gravity="center"
+        android:textColor="@android:color/white"
+        android:background="@drawable/xml_button_burn_middle_orange"
+        android:text="writeBt"/>
 
-
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:translationY="30dp">
-
-        <ScrollView
-            android:layout_centerInParent="true"
-            android:layout_width="match_parent"
-            android:layout_height="575dp">
-            <LinearLayout
-                android:id="@+id/strategyContainer"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-            </LinearLayout>
-
-        </ScrollView>
-    </RelativeLayout>
-
-    <FrameLayout
-        android:id="@+id/strategyItemSelectMenuLayout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:clickable="true">
-        <FrameLayout
-            android:layout_width="250dp"
-            android:layout_height="350dp"
-            android:layout_gravity="center"
-            android:background="@drawable/ui_window_dark">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:padding="10dp"
-                >
-
-                <Button
-                    android:id="@+id/editStrategyButton"
-                    android:layout_weight="1"
-                    android:layout_width="140dp"
-                    android:layout_height="0dp"
-                    android:layout_gravity="center"
-                    android:layout_margin="10dp"
-                    android:text="@string/tactic_edit"
-                    android:textColor="@android:color/white"
-                    android:background="@drawable/xml_button_burn_middle_orange"/>
-
-                <Button
-                    android:id="@+id/deleteStrategyButton"
-                    android:layout_weight="1"
-                    android:layout_width="140dp"
-                    android:layout_height="0dp"
-                    android:layout_gravity="center"
-                    android:layout_margin="10dp"
-                    android:text="@string/tactic_delete"
-                    android:textColor="@android:color/white"
-                    android:background="@drawable/xml_button_burn_middle_orange"/>
-                <Button
-                    android:id="@+id/strategyUpButton"
-                    android:layout_weight="1"
-                    android:layout_width="140dp"
-                    android:layout_height="0dp"
-                    android:layout_gravity="center"
-                    android:text="@string/tactic_up"
-                    android:layout_margin="10dp"
-                    android:textColor="@android:color/white"
-                    android:background="@drawable/xml_button_burn_middle_orange"/>
-
-
-                <Button
-                    android:id="@+id/strategyDownButton"
-                    android:layout_weight="1"
-                    android:layout_width="140dp"
-                    android:layout_height="0dp"
-                    android:layout_gravity="center"
-                    android:text="@string/tactic_down"
-                    android:layout_margin="10dp"
-                    android:textColor="@android:color/white"
-                    android:background="@drawable/xml_button_burn_middle_orange"/>
-                <Button
-                    android:id="@+id/cancelSelectStrategyButton"
-                    android:layout_weight="1"
-                    android:layout_width="140dp"
-                    android:layout_height="0dp"
-                    android:layout_gravity="center"
-                    android:text="@string/tactic_cancel"
-                    android:layout_margin="10dp"
-                    android:textColor="@android:color/white"
-                    android:background="@drawable/xml_button_burn_middle_orange"/>
-
-            </LinearLayout>
-
-        </FrameLayout>
-    </FrameLayout>
-</FrameLayout>
+    <Button
+        android:id="@+id/readBt"
+        android:layout_width="120dp"
+        android:layout_height="40dp"
+        android:layout_margin="20dp"
+        android:layout_gravity="center"
+        android:textColor="@android:color/white"
+        android:background="@drawable/xml_button_burn_middle_orange"
+        android:text="readBt"/>
+</LinearLayout>

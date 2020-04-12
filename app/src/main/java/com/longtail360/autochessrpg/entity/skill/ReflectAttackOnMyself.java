@@ -18,14 +18,10 @@ public class ReflectAttackOnMyself extends BaseSkill{
         battleDesc = context.getString(R.string.skill_battleDesc_reflectAttackOnMyself);
     }
 
-    @Override
-    public String getDesc(Context context) {
-        return desc;
-    }
 	@Override
 	public ActionResult active(Context context,AdvContext advContext){
 		ActionResult actionResult = getActionResultForActive(context);
-		actionResult.content = battleDesc.replace("{card}", mySelf.card.name);
+		actionResult.content = battleDesc.replace("{card}", mySelf.getCard(context).name);
 		mySelf.reflectShield = true;
 		advContext.battleContext.addActionResultToLog(actionResult);
 		return actionResult;

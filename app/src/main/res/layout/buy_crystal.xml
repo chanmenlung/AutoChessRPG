@@ -8,16 +8,16 @@
 
     <com.longtail360.autochessrpg.prefab.HeadBackButton
         android:id="@+id/backBt"
-        android:translationY="65dp"
+        android:translationY="15dp"
         android:layout_height="40dp"
         android:layout_width="match_parent"
-        app:btHeadBackText="@string/ui_mainPage_tapToStartGame"/>
+        app:btHeadBackText="@string/buyCrystal_buyCrystal"/>
 
     <ScrollView
         android:id="@+id/scroll"
         android:layout_centerInParent="true"
         android:layout_width="match_parent"
-        android:translationY="100dp"
+        android:translationY="50dp"
         android:layout_height="470dp">
         <LinearLayout
             android:id="@+id/crystalContainer"

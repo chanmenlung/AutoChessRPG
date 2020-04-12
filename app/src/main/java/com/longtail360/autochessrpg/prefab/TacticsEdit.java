@@ -65,15 +65,14 @@ public class TacticsEdit extends FrameLayout {
                 for(ConditionUi conditionUi : conditionUis) {
                     strategy.conditions.add(conditionUi.selectedCondition);
                 }
-                if(!GameContext.gameContext.getPlayer(getContext()).tacticsList.contains(strategy)){
-                    GameContext.gameContext.getPlayer(getContext()).tacticsList.add(strategy);
+                if(!GameContext.gameContext.player.tacticsList.contains(strategy)){
+                    GameContext.gameContext.player.tacticsList.add(strategy);
                 }
                 strategy.action = actionUi.selectedAction;
                 strategy.action.convertParaToObject(getContext());
                 callBack.save();
                 showView(false);
-                GameContext.gameContext.savePlayerData(getContext());
-                Logger.log(tag, "tactics-size:"+GameContext.gameContext.getPlayer(getContext()).tacticsList.size());
+                GameContext.gameContext.playerDAO.update(GameContext.gameContext.player);
             }
         });
 

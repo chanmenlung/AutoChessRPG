@@ -18,9 +18,6 @@ public class ValueUpOneDefense extends BaseSkill{
         statusDesc = context.getString(R.string.skill_statusDesc_valueUpDefense);
     }
     @Override
-    public String getDesc(Context context) {
-        return null;
-    }
 	public ActionResult active(Context context, AdvContext advContext){
 		return valueUpOne(context, advContext,mySelf,"defense", upValue);
 	}	

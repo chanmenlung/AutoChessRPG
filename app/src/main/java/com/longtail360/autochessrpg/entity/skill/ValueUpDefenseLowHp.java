@@ -19,9 +19,6 @@ public class ValueUpDefenseLowHp extends BaseSkill{
         statusDesc = context.getString(R.string.skill_statusDesc_valueUpDefenseLowHp);
     }
     @Override
-    public String getDesc(Context context) {
-        return null;
-    }
 	public ActionResult active(Context context,AdvContext advContext){
         int percent = mySelf.battleHp * 100 / mySelf.totalHp;
         int deltaValue;

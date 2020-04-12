@@ -11,16 +11,13 @@ public class ValueUpAllAttack extends BaseSkill{
 	private int upValue = 3;
     public ValueUpAllAttack(Context context) {
         code = KEY;
-        cd = 3;
+        cd = 5;
         name = context.getString(R.string.skill_name_valueUpAllAttack);
         desc = context.getString(R.string.skill_desc_valueUpAllAttack).replace("{value}", upValue+"");
         battleDesc = context.getString(R.string.skill_battleDesc_valueUpAllAttack);
         statusDesc = context.getString(R.string.skill_statusDesc_valueUpAllAttack);
     }
-    @Override
-    public String getDesc(Context context) {
-        return null;
-    }
+
 	public ActionResult active(Context context,AdvContext advContext){	
 		return valueUpTeam(context,advContext, "attack", upValue);
 	}	

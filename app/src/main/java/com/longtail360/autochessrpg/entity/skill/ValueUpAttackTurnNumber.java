@@ -11,16 +11,14 @@ public class ValueUpAttackTurnNumber extends BaseSkill{
 
     public ValueUpAttackTurnNumber(Context context) {
         code = KEY;
-        cd = 3;
+        cd = 5;
         name = context.getString(R.string.skill_name_valueUpAttackTurnNumber);
         desc = context.getString(R.string.skill_desc_valueUpAttackTurnNumber);
         battleDesc = context.getString(R.string.skill_battleDesc_valueUpAttackTurnNumber);
         statusDesc = context.getString(R.string.skill_statusDesc_valueUpAttackTurnNumber);
     }
-    @Override
-    public String getDesc(Context context) {
-        return null;
-    }
+	
+	@Override
     public ActionResult active(Context context,AdvContext advContext){
         int deltaAttack = 2;
         if(advContext.battleContext.turnNumber >= 5) {

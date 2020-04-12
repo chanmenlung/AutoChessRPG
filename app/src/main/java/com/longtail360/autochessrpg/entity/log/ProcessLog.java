@@ -67,12 +67,12 @@ public class ProcessLog {
         return hpsArray;
     }
     public static void refreshTeamStatus(AdvContext advContext,ProcessLog log) {
-        StringBuilder cardIds = new StringBuilder();
+//        StringBuilder cardIds = new StringBuilder();
         StringBuilder cardHps = new StringBuilder();
         StringBuilder cardLvs = new StringBuilder();
         for(MyCard c : advContext.team) {
-            cardIds.append(c.card.code);
-            cardIds.append(",");
+//            cardIds.append(c.card.code);
+//            cardIds.append(",");
             cardHps.append(c.battleHp);
             cardHps.append(",");
             cardLvs.append(c.level);

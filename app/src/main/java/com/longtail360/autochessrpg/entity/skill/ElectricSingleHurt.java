@@ -9,37 +9,21 @@ import com.longtail360.autochessrpg.entity.MyCard;
 
 public class ElectricSingleHurt extends BaseSkill{
     public static String KEY = "ElectricSingleHurt";
-
-	private int hurt = 20;
-	private int attackDownValue = 2;
-	private int posGetStatus = 99;
+	
+	private int minHurt = 24;
+	private int maxHurt = 28;
+	private int posGetStatus = 30;
 	
     public ElectricSingleHurt(Context context) {
         code = KEY;
         cd = 2;
         name = context.getString(R.string.skill_name_electricSingleHurt);
-        desc = context.getString(R.string.skill_desc_electricSingleHurt).replace("{value}", hurt+"").replace("{pos}", posGetStatus+"");;
+        desc = context.getString(R.string.skill_desc_electricSingleHurt).replace("{value}", minHurt+"-"+maxHurt).replace("{pos}", posGetStatus+"");;
         battleDesc = context.getString(R.string.skill_battleDesc_electricSingleHurt);
-        statusDesc = context.getString(R.string.skill_statusDesc_electricSingleHurt).replace("{value}", attackDownValue+"");
-        getStatusDesc = context.getString(R.string.skill_getStatus_elect);
     }
-
-    @Override
-    public String getDesc(Context context) {
-        int levelHurt;
-        if(level == 1) {
-            levelHurt = 25;
-        }else if(level == 2) {
-            levelHurt = 40;
-        }else {
-            levelHurt = 60;
-        }
-
-        return context.getString(R.string.skill_desc_electricAllBigHurt).replace("{value}", levelHurt+"")
-                .replace("{pos}", posGetStatus+"");
-    }
-
+	
+	@Override
 	public ActionResult active(Context context, AdvContext advContext){
-		return statusHurtSingle(context,advContext,hurt, false, posGetStatus, MyCard.ELECTRICITY_STATUS);
+		return statusHurtSingle(context,advContext, getIntByRange(minHurt, maxHurt), false, posGetStatus, MyCard.ELECTRICITY_STATUS);
 	}	
 }

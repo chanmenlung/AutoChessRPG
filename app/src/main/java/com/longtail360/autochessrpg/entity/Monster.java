@@ -105,25 +105,26 @@ public class Monster extends Character{
         result.icon1 = this.code;
         result.icon1Type = RootLog.ICON1_TYPE_NOT_CARD;
         result.doThisAction = true;
+        Card card = cardAction.getCard(context);
         int random = advContext.mRandom.nextInt(100);
         if(random < cardAction.agi) {
             result.title = context.getString(R.string.battle_monsterAttackTitle).replace("{monster}", label);
             result.content = context.getString(R.string.battle_dodgeMonsterAttack)
-                    .replace("{card}", cardAction.card.name)
+                    .replace("{card}", card.name)
                     .replace("{monster}", label);
             addActionResultToLog(result, battleRootLog);
             return;
         }
-        int hurt = this.attack - cardAction.battleDefense;
+        int hurt = this.attack + advContext.mRandom.nextInt(3)-1 - cardAction.battleDefense;
         if(hurt <= 0){
             hurt = 1;
         }
-        for(MyCard card : advContext.cards){
-            card.card.skill.doActionOnMonsterAttackStart(context,advContext,cardAction, this, hurt);
+        for(MyCard myCard : advContext.cards){
+            myCard.skill.doActionOnMonsterAttackStart(context,advContext,cardAction, this, hurt);
         }
         if(cardAction.divineShield){
             result.title = context.getString(R.string.battle_monsterAttackTitle).replace("{monster}", label);
-            result.content = context.getString(R.string.battle_destroyDivineShield).replace("{card}", cardAction.card.name)
+            result.content = context.getString(R.string.battle_destroyDivineShield).replace("{card}", card.name)
                                 .replace("{monster}", this.label);
             cardAction.divineShield = false;
             addActionResultToLog(result,battleRootLog);
@@ -135,24 +136,24 @@ public class Monster extends Character{
             String reflectHurtStr = "";
             if(cardAction.reflectShield){
                 reflectHurtStr = context.getString(R.string.skill_statusDesc_reflectAttackOnMyself)
-                        .replace("{card}", cardAction.card.name).replace("{monster}", this.label).replace("{value}", hurt/2+"");
+                        .replace("{card}",  card.name).replace("{monster}", this.label).replace("{value}", hurt/2+"");
             }
             result.title = context.getString(R.string.battle_monsterAttackTitle).replace("{monster}", label);
-            result.content = context.getString(R.string.battle_cardGetHurt).replace("{card}", cardAction.card.name)
+            result.content = context.getString(R.string.battle_cardGetHurt).replace("{card}",  card.name)
                     .replace("{hurt}", hurt+"")
                     +"。"
                     +reflectHurtStr
                     +"\n"
-                    +cardHp(cardAction);
+                    +cardHp(cardAction, card.name);
             addActionResultToLog(result, battleRootLog);
             if(cardAction.battleHp < 1){
                 cardAction.battleHp = 0;
                 advContext.cards.remove(cardAction);
                 advContext.deadCards.add(cardAction);
                 ActionResult cardDead = new ActionResult();
-                cardDead.icon1 = cardAction.card.id+"";
+                cardDead.icon1 = card.id+"";
                 cardDead.icon1Type = RootLog.ICON1_TYPE_CARD;
-                cardDead.title = context.getString(R.string.battle_cardDead).replace("{card}", cardAction.card.name);
+                cardDead.title = context.getString(R.string.battle_cardDead).replace("{card}",  card.name);
                 cardDead.content = "";
                 cardDead.color = ProcessLog.RED;
                 addActionResultToLog(cardDead,battleRootLog);
@@ -162,8 +163,8 @@ public class Monster extends Character{
                     cardAction.relife = -1;
                     advContext.cards.add(cardAction);
                     advContext.deadCards.remove(cardAction);
-                    actionResult.title = context.getString(R.string.battle_relifeTitle).replace("{card}", cardAction.card.name);
-                    actionResult.content = context.getString(R.string.battle_relifeContent).replace("{card}", cardAction.card.name);
+                    actionResult.title = context.getString(R.string.battle_relifeTitle).replace("{card}",  card.name);
+                    actionResult.content = context.getString(R.string.battle_relifeContent).replace("{card}",  card.name);
                     actionResult.icon1 = "skill_icon_relife";
                     actionResult.icon1Type = RootLog.ICON1_TYPE_NOT_CARD;
                     addActionResultToLog(actionResult,battleRootLog);
@@ -175,7 +176,7 @@ public class Monster extends Character{
         }
         cardAction.reflectShield = false;
         for(MyCard myCard : advContext.cards) {
-            myCard.card.skill.doActionOnMonsterAttackEnd(context,advContext,cardAction, this, hurt);
+            myCard.skill.doActionOnMonsterAttackEnd(context,advContext,cardAction, this, hurt);
         }
         for(BasePassiveSkill passiveSkill : GameContext.gameContext.passiveSkillList) {
             passiveSkill.doActionOnMonsterAttackEnd(context,advContext,cardAction, this, hurt);
@@ -183,9 +184,9 @@ public class Monster extends Character{
 
     }
 
-    private String cardHp(MyCard card) {
+    private String cardHp(MyCard card, String name) {
         StringBuilder result = new StringBuilder();
-        result.append(card.card.name).append(" ")
+        result.append(name).append(" ")
                 .append("HP:").append(card.battleHp).append("/").append(card.totalHp);
         return result.toString();
     }

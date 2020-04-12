@@ -13,9 +13,9 @@ import java.util.Random;
 public class AdvContext {
     private String tag = "AdvContext";
     public int BASE_MET_MONSTER_RANDOM = 20;
-    public int BASE_MET_GOOD_EVENT_RANDOM = 0;//18
-    public int BASE_MET_BAD_EVENT_RANDOM = 35;//17
-    public int BASE_EMPTY_EVENT_RANDOM = 45;
+    public int BASE_MET_GOOD_EVENT_RANDOM = 10;
+    public int BASE_MET_BAD_EVENT_RANDOM = 10;
+    public int BASE_EMPTY_EVENT_RANDOM = 60;
 
     public int BACK_MET_MONSTER_RANDOM = 20;
     public int BACK_MET_GOOD_EVENT_RANDOM = 10;

@@ -83,7 +83,7 @@ public class HelloFragment  extends BaseFragment implements TacticsEdit.CallBack
         newStrategyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                strategyEdit.reload( GameContext.gameContext.getPlayer(getContext()).tacticsList.get(1));
+                strategyEdit.reload( GameContext.gameContext.player.tacticsList.get(1));
                 strategyEdit.showView(true);
             }
         });
@@ -99,38 +99,38 @@ public class HelloFragment  extends BaseFragment implements TacticsEdit.CallBack
         deleteStrategyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                GameContext.gameContext.getPlayer(getContext()).tacticsList.remove(focusStrategy);
+                GameContext.gameContext.player.tacticsList.remove(focusStrategy);
                 strategyContainer.removeView(focusStrategyItem);
                 strategyItemSelectMenuLayout.setVisibility(View.INVISIBLE);
-                GameContext.gameContext.savePlayerData(getContext());
+//                GameContext.gameContext.savePlayerData(getContext());
             }
         });
 
         strategyUpButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int index =  GameContext.gameContext.getPlayer(getContext()).tacticsList.indexOf(focusStrategy);
+                int index =  GameContext.gameContext.player.tacticsList.indexOf(focusStrategy);
                 if(index > 0){
-                    Collections.swap( GameContext.gameContext.getPlayer(getContext()).tacticsList, index, index -1);
+                    Collections.swap( GameContext.gameContext.player.tacticsList, index, index -1);
                 }
                 focusStrategy.order = index -1;
                 loadStrategyList();
                 strategyItemSelectMenuLayout.setVisibility(View.INVISIBLE);
-                GameContext.gameContext.savePlayerData(getContext());
+//                GameContext.gameContext.savePlayerData(getContext());
             }
         });
 
         strategyDownButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int index =  GameContext.gameContext.getPlayer(getContext()).tacticsList.indexOf(focusStrategy);
-                if(index < ( GameContext.gameContext.getPlayer(getContext()).tacticsList.size()-1)){
-                    Collections.swap( GameContext.gameContext.getPlayer(getContext()).tacticsList, index, index +1);
+                int index =  GameContext.gameContext.player.tacticsList.indexOf(focusStrategy);
+                if(index < ( GameContext.gameContext.player.tacticsList.size()-1)){
+                    Collections.swap( GameContext.gameContext.player.tacticsList, index, index +1);
                 }
                 focusStrategy.order = index +1;
                 loadStrategyList();
                 strategyItemSelectMenuLayout.setVisibility(View.INVISIBLE);
-                GameContext.gameContext.savePlayerData(getContext());
+//                GameContext.gameContext.savePlayerData(getContext());
             }
         });
 
@@ -162,11 +162,11 @@ public class HelloFragment  extends BaseFragment implements TacticsEdit.CallBack
     public void loadStrategyList() {
         Logger.log(tag, "loadStrategyList");
         strategyContainer.removeAllViews();
-        Collections.sort( GameContext.gameContext.getPlayer(getContext()).tacticsList);
-        Logger.log(tag, "card.tacticsList.size():"+ GameContext.gameContext.getPlayer(getContext()).tacticsList.size());
-        for(int i=0; i< GameContext.gameContext.getPlayer(getContext()).tacticsList.size();i++){
-            final TacticsDescItem item = new TacticsDescItem(getContext(), GameContext.gameContext.getPlayer(getContext()).tacticsList.get(i), i);
-            item.setText( GameContext.gameContext.getPlayer(getContext()).tacticsList.get(i).concatStr(getContext()));
+        Collections.sort( GameContext.gameContext.player.tacticsList);
+        Logger.log(tag, "card.tacticsList.size():"+ GameContext.gameContext.player.tacticsList.size());
+        for(int i=0; i< GameContext.gameContext.player.tacticsList.size();i++){
+            final TacticsDescItem item = new TacticsDescItem(getContext(), GameContext.gameContext.player.tacticsList.get(i), i);
+            item.setText( GameContext.gameContext.player.tacticsList.get(i).concatStr(getContext()));
             item.content.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

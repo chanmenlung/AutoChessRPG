@@ -44,7 +44,7 @@ public class SkillDAO {
         ContentValues cv = new ContentValues();
         cv.put(CODE, item.code);
         cv.put(NAME, item.name);
-        cv.put(DESC, item.desc);
+        cv.put(DESC, "");
         cv.put(CD, item.cd);
         cv.put(BATTLE_DESC, item.battleDesc);
         cv.put(STATUS_DESC, item.statusDesc);
@@ -57,7 +57,7 @@ public class SkillDAO {
         ContentValues cv = new ContentValues();
         cv.put(CODE, item.code);
         cv.put(NAME, item.name);
-        cv.put(DESC, item.desc);
+        cv.put(DESC, "");
         cv.put(CD, item.cd);
         cv.put(BATTLE_DESC, item.battleDesc);
         cv.put(STATUS_DESC, item.statusDesc);
@@ -113,7 +113,7 @@ public class SkillDAO {
         result.id = cursor.getLong(0);
         result.code = cursor.getString(1);
         result.name = cursor.getString(2);
-        result.desc = cursor.getString(3);
+//        result.desc = cursor.getString(3);
         result.cd = cursor.getInt(4);
         result.battleDesc = cursor.getString(5);
         result.statusDesc = cursor.getString(6);

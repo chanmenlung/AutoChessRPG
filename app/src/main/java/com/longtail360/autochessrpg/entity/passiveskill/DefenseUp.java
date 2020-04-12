@@ -44,7 +44,7 @@ public class DefenseUp  extends BasePassiveSkill{
 		}
 		if(isActive1) {		
 			for(MyCard card : advContext.team) {
-				if(card.card.race.equals(Card.RACE_MARINE)) {
+				if(card.race.equals(Card.RACE_MARINE)) {
 					card.buffDefense = card.buffDefense +1;
 					card.battleDefense = card.buffDefense;
 				}

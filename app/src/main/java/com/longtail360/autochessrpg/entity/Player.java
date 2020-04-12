@@ -9,22 +9,33 @@ import com.longtail360.autochessrpg.entity.tactic.action.BaseAction;
 import com.longtail360.autochessrpg.entity.tactic.condition.BaseCondition;
 import com.longtail360.autochessrpg.utils.Logger;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Player {
+public class Player implements Serializable {
     private String tag = "Player";
+    public long id;
     @Expose
     public int crystal;
     @Expose
-    public List<String> unlockCards = new ArrayList<>();
-    @Expose
     public List<Tactics> tacticsList = new ArrayList<> ();
     @Expose
-    public boolean isOldPlayer;
+    public int isOldPlayer;
+    public String tacticsJson;
+//    @Expose
+//    public List<String> customCardIds = new ArrayList<>();
+    public List<CustomCard> customCards = new ArrayList<>();
 
 
-
+    public static void init(Context context) {
+        Player player = new Player();
+        player.crystal = Setting.INIT_CRYSTAL;
+        player.isOldPlayer = 0;
+        player.tacticsJson = "[]";
+        GameContext.gameContext.playerDAO.insert(player);
+        GameContext.gameContext.player = player;
+    }
     public void concreteAction(Context context) {
 
         for (int i = 0; i < tacticsList.size(); i++) {
@@ -61,6 +72,14 @@ public class Player {
         }
 
     }
+//    public CustomCard findCustomCard(String cardCode){
+//        for(CustomCard card : customCards) {
+//            if(card.code != null && card.code.equals(cardCode)){
+//                return card;
+//            }
+//        }
+//        return null;
+//    }
 
     public void concreteConds(Context context) {
         Logger.log(tag, tacticsList.size()+"");

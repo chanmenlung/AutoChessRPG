@@ -40,6 +40,7 @@ import com.longtail360.autochessrpg.fragment.MyItemFragment;
 import com.longtail360.autochessrpg.fragment.TacticsFragment;
 import com.longtail360.autochessrpg.listener.DragDropOnDragListener;
 import com.longtail360.autochessrpg.listener.DragDropOnTouchListener;
+import com.longtail360.autochessrpg.prefab.CardDetail;
 import com.longtail360.autochessrpg.prefab.CardIcon;
 import com.longtail360.autochessrpg.prefab.HomeCardDesc;
 import com.longtail360.autochessrpg.prefab.PassiveSkillDescLayout;
@@ -61,12 +62,13 @@ import java.util.Date;
 import java.util.List;
 import java.util.Random;
 
-public class HomeActivity extends BaseActivity implements HomeCardDesc.CallBack, CardIcon.CallBack, AdvFragment.AdvFragmentCallback{
+public class HomeActivity extends ExternalResActivity implements HomeCardDesc.CallBack, CardIcon.CallBack, AdvFragment.AdvFragmentCallback{
     private static String tag = "HomeActivity";
     private TextView levelValue;
     private TextView expValue;
     private TextView hpValue;
     private TextView coinValue;
+    private TextView crystalValue;
     private TextView startAdv;
     private TextView stageNo;
     private View helpBt;
@@ -77,7 +79,7 @@ public class HomeActivity extends BaseActivity implements HomeCardDesc.CallBack,
     private View cardForBuyingLayout;
     private View teamLayout;
     private ViewGroup passiveSkillIconLayout;
-//    private View logBt;
+    private View logBt;
     private View tacticsBt;
     private View refreshBuyingCard;
     private View startAdvBt;
@@ -112,14 +114,12 @@ public class HomeActivity extends BaseActivity implements HomeCardDesc.CallBack,
         setContentView(R.layout.home);
         Logger.log(tag, "start HomeActivity");
         List<MyCard> teamCards = MyCard.listByAdvIdAndType(this,GameContext.gameContext.adventure.id, MyCard.TYPE_IN_TEAM);
-        for(MyCard card : teamCards){
-            Logger.log(tag, "card-hpaaaa:"+card.battleHp);
-        }
         thisLayout = findViewById(R.id.thisLayout);
         levelValue = findViewById(R.id.levelValue);
         expValue = findViewById(R.id.expValue);
         hpValue = findViewById(R.id.hpValue);
         coinValue = findViewById(R.id.coinValue);
+        crystalValue = findViewById(R.id.crystalValue);
         stageNo = findViewById(R.id.stageNo);
         helpBt = findViewById(R.id.helpBt);
         refreshBuyingCard = findViewById(R.id.refreshBuyingCard);
@@ -132,7 +132,7 @@ public class HomeActivity extends BaseActivity implements HomeCardDesc.CallBack,
         progressBar = findViewById(R.id.progressBar);
         startingPopupBox = findViewById(R.id.startingPopupBox);
         myItemBt = findViewById(R.id.myItemBt);
-//        logBt = findViewById(R.id.logBt);
+        logBt = findViewById(R.id.logBt);
         tacticsBt = findViewById(R.id.tacticsBt);
         upgradeBt = findViewById(R.id.upgradeBt);
         startAdvBt = findViewById(R.id.startAdvBt);
@@ -201,8 +201,9 @@ public class HomeActivity extends BaseActivity implements HomeCardDesc.CallBack,
         currentDungeon = GameContext.gameContext.dungeonDAO.get(GameContext.gameContext.adventure.currentDungeonId);
 //        cardInBattles =  MyCard.listByAdvIdAndType(adventure.id, MyCard.TYPE_IN_TEAM);
         GameContext.gameContext.adventure.currentRootLog = GameContext.gameContext.rootLogDAO.get(GameContext.gameContext.adventure.currentRootLogId);
-        initPopupBox();
         updateTopBarValue();
+        initCardDetail();
+        initPopupBox();
         initHelp();
         initLock();
         initAllCard();
@@ -230,6 +231,13 @@ public class HomeActivity extends BaseActivity implements HomeCardDesc.CallBack,
 //        Logger.log(tag, "==== print hp end ========");
 //    }
 
+    private void initCardDetail() {
+        if(cardDetail == null){
+            cardDetail = new CardDetail(this, null);
+            thisLayout.addView(cardDetail);
+            cardDetail.showDetail(false, false);
+        }
+    }
     private void initPassiveSkillLayout() {
 //        printBattleHp();
         if(advFragment == null){
@@ -285,7 +293,7 @@ public class HomeActivity extends BaseActivity implements HomeCardDesc.CallBack,
 
     private boolean existInUniqueKeyTeam(MyCard myCard) {
         for(MyCard card : uniqueKeyCards){
-            if(card.card.code.equals(myCard.card.code)){
+            if(card.cardCode.equals(myCard.cardCode)){
                 return true;
             }
         }
@@ -330,10 +338,10 @@ public class HomeActivity extends BaseActivity implements HomeCardDesc.CallBack,
         }
     }
     private void initTutorial(){
-        if(!GameContext.gameContext.getPlayer(this).isOldPlayer){
+        if(GameContext.gameContext.player.isOldPlayer == 0){
             helpBt.callOnClick();
-            GameContext.gameContext.getPlayer(this).isOldPlayer = true;
-            GameContext.gameContext.savePlayerData(this);
+            GameContext.gameContext.player.isOldPlayer = 1;
+            GameContext.gameContext.playerDAO.update(GameContext.gameContext.player);
         }
     }
     private void updateAdvBtText() {
@@ -405,7 +413,7 @@ public class HomeActivity extends BaseActivity implements HomeCardDesc.CallBack,
             @Override
             public void onClick(View view) {
 //                showMonsterFragment();
-                startOtherActivity(MonsterValueActivity.class);
+                startOtherActivity(SettingActivity.class);
             }
         });
         startAdvBt.setOnClickListener(new View.OnClickListener() {
@@ -767,26 +775,27 @@ public class HomeActivity extends BaseActivity implements HomeCardDesc.CallBack,
             Logger.log(tag, "whichRare:"+whichRare);
 
             MyCard cardForBuying = new MyCard();
+            Card card = null;
             if(whichRare <= basicPos){
                 int whichCard = random.nextInt(dbNumberOfBasic);
-                cardForBuying.card = basics.get(whichCard);
+                card = basics.get(whichCard);
             }else if(whichRare < (basicPos+normalPos)) {
                 int whichCard = random.nextInt(dbNumberOfNormal);
                 Logger.log(tag, "gen normals");
-                cardForBuying.card = normals.get(whichCard);
-                Logger.log(tag, "cardForBuying.card.rare:"+cardForBuying.card.rarity);
+                card = normals.get(whichCard);
             }else if(whichRare < (basicPos+normalPos+rarePos)) {
                 int whichCard = random.nextInt(dbNumberOfRare);
-                cardForBuying.card = rares.get(whichCard);
+                card = rares.get(whichCard);
             }else if(whichRare < (basicPos+normalPos+rarePos+epicPos)) {
                 int whichCard = random.nextInt(dbNumberOfEpic);
-                cardForBuying.card = epics.get(whichCard);
+                card = epics.get(whichCard);
             }else if(whichRare < (basicPos+normalPos+rarePos+epicPos+legendaryPos)) {
                 int whichCard = random.nextInt(dbNumberOfLegndary);
-                cardForBuying.card = legendarys.get(whichCard);
+                card = legendarys.get(whichCard);
             }
+            cardForBuying.initByCard(card);
             cardForBuying.adventureId = GameContext.gameContext.adventure.id;
-            cardForBuying.cardId = cardForBuying.card.id;
+            cardForBuying.cardId = card.id;
             cardForBuying.type = MyCard.TYPE_FOR_BUY;
             cardForBuying.setValueForBuyingCard();
 
@@ -805,7 +814,8 @@ public class HomeActivity extends BaseActivity implements HomeCardDesc.CallBack,
         for(int i=0; i<cards.size(); i++){
             final CardIcon icon = new CardIcon(this, cards.get(i), this);
             final int finalI = i;
-            buyCardPriceViews.get(i).setText("$"+icon.myCard.card.price);
+            final Card card = icon.myCard.getCard(getBaseContext());
+            buyCardPriceViews.get(i).setText("$"+card.price);
             icon.setLongClick(HomeActivity.this);
             icon.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -814,11 +824,11 @@ public class HomeActivity extends BaseActivity implements HomeCardDesc.CallBack,
                         Logger.toast( getString(R.string.ui_home_handCardIsFull),HomeActivity.this);
                         return;
                     }
-                    if(GameContext.gameContext.adventure.coin < icon.myCard.card.price){
+                    if(GameContext.gameContext.adventure.coin < card.price){
                         Logger.toast( getString(R.string.ui_home_coinNotEnougth),HomeActivity.this);
                         return;
                     }
-                    GameContext.gameContext.adventure.coin = GameContext.gameContext.adventure.coin - icon.myCard.card.price;
+                    GameContext.gameContext.adventure.coin = GameContext.gameContext.adventure.coin - card.price;
                     icon.myCard.type = MyCard.TYPE_IN_HAND;
                     Logger.log(tag, "cardInHands-size:"+cardInHands.size());
                     final CardIcon cardIcon = new CardIcon(HomeActivity.this, icon.myCard, HomeActivity.this);
@@ -855,13 +865,13 @@ public class HomeActivity extends BaseActivity implements HomeCardDesc.CallBack,
         List<CardIcon> upgradeIcons = new ArrayList<>();
 
         for(CardIcon icon : cardInHands){
-            if(icon.myCard.card.code.equals(focusIcon.myCard.card.code) && icon.myCard.level == focusIcon.myCard.level){
+            if(icon.myCard.cardCode.equals(focusIcon.myCard.cardCode) && icon.myCard.level == focusIcon.myCard.level){
                 count++;
                 upgradeIcons.add(icon);
             }
         }
         for(CardIcon icon : cardInBattles){
-            if(icon.myCard.card.code.equals(focusIcon.myCard.card.code) && icon.myCard.level == focusIcon.myCard.level){
+            if(icon.myCard.cardCode.equals(focusIcon.myCard.cardCode) && icon.myCard.level == focusIcon.myCard.level){
                 count++;
                 upgradeIcons.add(icon);
             }
@@ -919,12 +929,12 @@ public class HomeActivity extends BaseActivity implements HomeCardDesc.CallBack,
                 popupBox.show();
             }
         });
-//        logBt.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                showLogFragment();
-//            }
-//        });
+        logBt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startOtherActivity(HistoryLogActivity.class);
+            }
+        });
 
     }
     private void initAllCard() {
@@ -944,6 +954,8 @@ public class HomeActivity extends BaseActivity implements HomeCardDesc.CallBack,
                         .setOnDismissListener(new HighLightGuideView.OnDismissListener() {
                             @Override
                             public void onDismiss() {
+                                GameContext.gameContext.player.isOldPlayer = 1;
+                                GameContext.gameContext.playerDAO.update(GameContext.gameContext.player);
                                 HighLightGuideView.builder(HomeActivity.this)
                                         .addHighLightGuidView(teamLayout,R.drawable.step2)
                                         .setOnDismissListener(new HighLightGuideView.OnDismissListener() {
@@ -985,6 +997,7 @@ public class HomeActivity extends BaseActivity implements HomeCardDesc.CallBack,
         expValue.setText(GameContext.gameContext.adventure.exp+"/"+totalExp);
         hpValue.setText(GameContext.gameContext.adventure.hp+"/100");
         coinValue.setText(GameContext.gameContext.adventure.coin+"");
+        crystalValue.setText(GameContext.gameContext.player.crystal+"");
     }
 
     private void showMyItemFragment() {
@@ -1083,6 +1096,14 @@ public class HomeActivity extends BaseActivity implements HomeCardDesc.CallBack,
     }
 
     @Override
+    public void doActionAfterClickCardDetail(CardIcon cardIcon) {
+        homeCardDesc.setVisibility(View.GONE);
+        cardDetail.cardDescItem = null;
+        cardDetail.loadCard(cardIcon.myCard.cardCode);
+        cardDetail.showDetail(true, false);
+    }
+
+    @Override
     public void onBackPressed() {
         Logger.log(tag, "setBackPress");
         updateAdvBtText();
@@ -1109,20 +1130,21 @@ public class HomeActivity extends BaseActivity implements HomeCardDesc.CallBack,
             List<CardIcon> upgradeIcons = new ArrayList<>();
 
             for(CardIcon icon : cardInHands){
-                if(icon.myCard.card.code.equals(cardIcon.myCard.card.code) && icon.myCard.level == cardIcon.myCard.level){
+                if(icon.myCard.cardCode.equals(cardIcon.myCard.cardCode) && icon.myCard.level == cardIcon.myCard.level){
                     upgradeIcons.add(icon);
                 }
             }
             for(CardIcon icon : cardInBattles){
-                if(icon.myCard.card.code.equals(cardIcon.myCard.card.code) && icon.myCard.level == cardIcon.myCard.level){
+                if(icon.myCard.cardCode.equals(cardIcon.myCard.cardCode) && icon.myCard.level == cardIcon.myCard.level){
                     upgradeIcons.add(icon);
                 }
             }
+            Card card = cardIcon.myCard.getCard(getBaseContext());
             cardIcon.myCard.level++;
-            cardIcon.myCard.card.skill.level = cardIcon.myCard.level;
-            cardIcon.myCard.totalHp = cardIcon.myCard.card.calHpByLevel(cardIcon.myCard.level);
+            cardIcon.myCard.skill.level = cardIcon.myCard.level;
+            cardIcon.myCard.totalHp = card.calHpByLevel(cardIcon.myCard.level);
             cardIcon.myCard.battleHp = cardIcon.myCard.totalHp;
-            cardIcon.myCard.battleAttack = cardIcon.myCard.card.calAttackByLevel(cardIcon.myCard.level);
+            cardIcon.myCard.battleAttack = card.calAttackByLevel(cardIcon.myCard.level);
             GameContext.gameContext.myCardDAO.update(cardIcon.myCard);
             for(CardIcon icon : upgradeIcons){
                 if(icon != cardIcon){

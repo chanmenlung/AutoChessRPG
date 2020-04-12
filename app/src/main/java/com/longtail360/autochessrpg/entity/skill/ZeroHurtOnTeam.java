@@ -17,13 +17,9 @@ public class ZeroHurtOnTeam extends BaseSkill{
         battleDesc = context.getString(R.string.skill_battleDesc_zeroHurtOnTeam);
         statusDesc = context.getString(R.string.skill_statusDesc_zeroHurtOnTeam);
     }
-    @Override
-    public String getDesc(Context context) {
-        return null;
-    }
 	public ActionResult active(Context context,AdvContext advContext){	
 		ActionResult result = getActionResultForActive(context);
-		result.content = battleDesc.replace ("{card}", mySelf.card.name);
+		result.content = battleDesc.replace ("{card}", mySelf.getCard(context).name);
 		result.doThisAction = true;	
 		for(MyCard ca : advContext.cards) {
 			ca.divineShield = true;

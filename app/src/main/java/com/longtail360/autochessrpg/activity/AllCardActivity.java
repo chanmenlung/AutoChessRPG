@@ -51,7 +51,7 @@ public class AllCardActivity extends ExternalResActivity implements CardDescItem
         });
         allCardBackBt.imageView.setVisibility(View.VISIBLE);
         allCardBackBt.imageView.setImageResource(R.drawable.item_crystal);
-        allCardBackBt.setText(GameContext.gameContext.getPlayer(this).crystal+"");
+        allCardBackBt.setText(GameContext.gameContext.player.crystal+"");
 
         cardListLayout = findViewById(R.id.cardListLayout);
         raceNames = Card.listRaces(this);
@@ -140,17 +140,17 @@ public class AllCardActivity extends ExternalResActivity implements CardDescItem
     @Override
     public void doActionAfterClickDetail(CardDescItem focusItem, Card card){
         if(cardDetail == null){
-            cardDetail = new CardDetail(this, card.id);
+            cardDetail = new CardDetail(this, card.code);
             thisLayout.addView(cardDetail);
         }
         cardDetail.cardDescItem = focusItem;
-        cardDetail.loadCard(card.id);
+        cardDetail.loadCard(card.code);
         cardDetail.showDetail(true, true);
     }
 
     @Override
     public void doActionAfterUnlockCard(CardDescItem focusItem, Card card) {
-        allCardBackBt.setText(GameContext.gameContext.getPlayer(this).crystal+"");
+        allCardBackBt.setText(GameContext.gameContext.player.crystal+"");
     }
 
 }

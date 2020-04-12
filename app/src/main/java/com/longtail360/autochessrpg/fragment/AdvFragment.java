@@ -20,6 +20,8 @@ import com.longtail360.autochessrpg.adventure.AdvContext;
 import com.longtail360.autochessrpg.adventure.BattleEngine;
 import com.longtail360.autochessrpg.adventure.EventEngine;
 import com.longtail360.autochessrpg.adventure.TeamActionEngine;
+import com.longtail360.autochessrpg.entity.Card;
+import com.longtail360.autochessrpg.entity.CustomCard;
 import com.longtail360.autochessrpg.entity.GameContext;
 import com.longtail360.autochessrpg.entity.Item;
 import com.longtail360.autochessrpg.entity.MyCard;
@@ -31,6 +33,7 @@ import com.longtail360.autochessrpg.entity.log.ProcessLog;
 import com.longtail360.autochessrpg.entity.log.RootLog;
 import com.longtail360.autochessrpg.entity.passiveskill.BasePassiveSkill;
 import com.longtail360.autochessrpg.prefab.BattleLogItem;
+import com.longtail360.autochessrpg.prefab.CardStatusDescItem;
 import com.longtail360.autochessrpg.prefab.HeadBackButton;
 import com.longtail360.autochessrpg.prefab.ItemLogDesc;
 import com.longtail360.autochessrpg.prefab.ProcessLogItem;
@@ -213,21 +216,31 @@ public class AdvFragment extends BaseFragment{
         takeABreakBt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(advContext.rootLog.advStatus == RootLog.ADV_STATUS_PROGRESSING){
-                    ActionResult actionResult = teamActionEngine.takeABreake();
-                    ProcessLog log = new ProcessLog();
-                    log.title = actionResult.title;
-                    log.content = actionResult.content;
-                    log.detail = actionResult.detail;
-                    log.icon1 = actionResult.icon1;
-                    log.icon2 = actionResult.icon2;
-                    log.color = actionResult.color;
-                    log.rootLog = advContext.rootLog;
-                    ProcessLog.insertProcessLog(advContext, log,new Date().getTime());
-                    putProcessLogToContainer(log);
-                    advContext.rootLog.currentBlock++;
-                    GameContext.gameContext.rootLogDAO.update(advContext.rootLog);
+//                if(advContext.rootLog.advStatus == RootLog.ADV_STATUS_PROGRESSING){
+//                    ActionResult actionResult = teamActionEngine.takeABreake();
+//                    ProcessLog log = new ProcessLog();
+//                    log.title = actionResult.title;
+//                    log.content = actionResult.content;
+//                    log.detail = actionResult.detail;
+//                    log.icon1 = actionResult.icon1;
+//                    log.icon2 = actionResult.icon2;
+//                    log.color = actionResult.color;
+//                    log.rootLog = advContext.rootLog;
+//                    ProcessLog.insertProcessLog(advContext, log,new Date().getTime());
+//                    putProcessLogToContainer(log);
+//                    advContext.rootLog.currentBlock++;
+//                    GameContext.gameContext.rootLogDAO.update(advContext.rootLog);
+//                }
+                itemElementListLayout.setVisibility(View.VISIBLE);
+                itemContainer.removeAllViews();
+                List<MyItem> onBodyItems = MyItem.listByOnBody(GameContext.gameContext.adventure.id);
+                for(MyItem myItem : onBodyItems){
+                    if(myItem.item != null) {
+                        ItemLogDesc desc = new ItemLogDesc(getContext(), myItem.item.name, myItem.item.desc, ImageUtils.convertImageStringToInt(getContext(),myItem.item.imageName));
+                        itemContainer.addView(desc);
+                    }
                 }
+                isShowSubLog = true;
             }
         });
     }
@@ -263,13 +276,14 @@ public class AdvFragment extends BaseFragment{
                     if(advContext.rootLog.currentBlock == 0) {//currentBlock = 0 indicate that all block is done, show go to next area
                         if(advContext.rootLog.currentArea != 0){
                             ProcessLog pLog = null;
-                            int monsterNest = advContext.mRandom.nextInt(99);
-                            if(monsterNest > 80){
-                                updateEventRandomValue(60,10,10,20);
-                                pLog = createGoToNextArea(advContext.rootLog.currentFloor+1, advContext.rootLog.currentArea+1, ProcessLog.RED, getContext().getString(R.string.adv_nextAreaMonsterNest));
-                            }else {
-                                pLog = createGoToNextArea(advContext.rootLog.currentFloor+1, advContext.rootLog.currentArea+1, ProcessLog.YELLOW, getContext().getString(R.string.adv_nextAreaNormal));
-                            }
+//                            int monsterNest = advContext.mRandom.nextInt(99);
+//                            if(monsterNest > 80){
+//                                updateEventRandomValue(60,advContext.metGoodEvent,advContext.metBadEvent,20);
+//                                pLog = createGoToNextArea(advContext.rootLog.currentFloor+1, advContext.rootLog.currentArea+1, ProcessLog.RED, getContext().getString(R.string.adv_nextAreaMonsterNest));
+//                            }else {
+//                                pLog = createGoToNextArea(advContext.rootLog.currentFloor+1, advContext.rootLog.currentArea+1, ProcessLog.YELLOW, getContext().getString(R.string.adv_nextAreaNormal));
+//                            }
+                            pLog = createGoToNextArea(advContext.rootLog.currentFloor+1, advContext.rootLog.currentArea+1, ProcessLog.YELLOW, getContext().getString(R.string.adv_nextAreaNormal));
                             putProcessLogToContainer(pLog);
 
                         }
@@ -425,7 +439,7 @@ public class AdvFragment extends BaseFragment{
 
     private ProcessLog finishAll() {
         int ints = (int)(advContext.rootLog.startingCoin * 0.1);
-        GameContext.gameContext.adventure.hp = GameContext.gameContext.adventure.hp - advContext.deadCards.size();
+//        GameContext.gameContext.adventure.hp = GameContext.gameContext.adventure.hp - advContext.deadCards.size();
         GameContext.gameContext.adventure.currentDungeonId++;
         int coin = getPrice()+ints;
         if(GameContext.gameContext.adventure.hp > 0) {
@@ -449,8 +463,7 @@ public class AdvFragment extends BaseFragment{
             if(deadSize > 0){
                 log.content = getContext().getResources().getString(R.string.adv_interestGainRelife)
                         .replace("{price}", coin+"")
-                        .replace("{hp}", advContext.deadCards.size()+"")
-                        .replace("{deadNum}", advContext.deadCards.size()+"");
+                        .replace("{hp}", advContext.deadCards.size()+"");
             }else {
                 log.content = getContext().getResources().getString(R.string.adv_interestGain)
                         .replace("{price}", (getPrice()+ints)+"")
@@ -499,12 +512,16 @@ public class AdvFragment extends BaseFragment{
         return log;
     }
     private ProcessLog logDead() {
-        int ints = (int)(advContext.rootLog.startingCoin * 0.1);
+        int totalBlock = advContext.dungeon.numFloor * advContext.dungeon.numAreaPerFloor * advContext.dungeon.numBlockPerArea;
+        int finishBlock = advContext.rootLog.currentFloor*advContext.dungeon.numAreaPerFloor * advContext.dungeon.numBlockPerArea
+                +advContext.rootLog.currentArea*advContext.dungeon.numAreaPerFloor + advContext.rootLog.currentBlock;
+        int notFinishProgress = 100 - finishBlock * 100/totalBlock;
+        int ints = (int)(advContext.rootLog.startingCoin * 0.1);//calculate interest
         int coin = getPrice()+ints;
         advContext.rootLog.advStatus = RootLog.ADV_STATUS_FAIL;
         GameContext.gameContext.rootLogDAO.update(advContext.rootLog);
 
-        GameContext.gameContext.adventure.hp = GameContext.gameContext.adventure.hp - advContext.deadCards.size();
+        GameContext.gameContext.adventure.hp = GameContext.gameContext.adventure.hp - (notFinishProgress/10+1);
         GameContext.gameContext.adventure.coin = GameContext.gameContext.adventure.coin+coin;
         GameContext.gameContext.advDAO.update(GameContext.gameContext.adventure);
         advContext.rootLog.advStatus = 2;
@@ -519,8 +536,8 @@ public class AdvFragment extends BaseFragment{
             if(deadSize > 0) {
                 log.content = getContext().getResources().getString(R.string.adv_failAdvRelife)
                         .replace("{price}", coin+"")
-                        .replace("{hp}", advContext.deadCards.size()+"")
-                        .replace("{deadNum}", advContext.deadCards.size()+"");
+                        .replace("{hp}", (notFinishProgress/10+1)+"")
+                        .replace("{progress}", notFinishProgress+"");
             }else {
                 log.content = getContext().getResources().getString(R.string.adv_failAdv)
                         .replace("{price}", coin+"");
@@ -589,7 +606,10 @@ public class AdvFragment extends BaseFragment{
                     } else {
                         teamStatusEventLayout.setVisibility(View.GONE);
                     }
+
                     for (int i = 0; i < advContext.team.size(); i++) {
+                        Card card = advContext.team.get(i).getCard(getContext());
+
                         StringBuilder content = new StringBuilder();
                         content.append(level);
                         content.append(pLog.getLevelArray()[i]);
@@ -598,9 +618,7 @@ public class AdvFragment extends BaseFragment{
                         content.append(pLog.getHpArray()[i]);
                         content.append("/");
                         content.append(advContext.team.get(i).totalHp);
-                        Logger.log(tag, "content:"+content.toString());
-                        ItemLogDesc desc = new ItemLogDesc(getContext());
-                        desc.refresh(getContext(),advContext.team.get(i).card.name,content.toString(),advContext.team.get(i).card.head,advContext.team.get(i).card.customHead);
+                        CardStatusDescItem desc = new CardStatusDescItem(getContext(), card, content.toString());
                         teamStatusContainer.addView(desc);
                     }
                     teamStatusLayout.setVisibility(View.VISIBLE);
@@ -669,7 +687,7 @@ public class AdvFragment extends BaseFragment{
         if(rootLog == null || rootLog.advStatus != RootLog.ADV_STATUS_PROGRESSING){ //create new adv
             Logger.log(tag, "rootLog is null:"+rootLogId);
             rootLog = new RootLog();
-            rootLog.dungeonId = advContext.dungeon.id;
+            rootLog.dungeonId = advContext.dungeon.index;
             rootLog.advStatus = RootLog.ADV_STATUS_PROGRESSING;
             rootLog.startingTime = new Date().getTime();
             rootLog.isHistoryLog = 0;
@@ -734,6 +752,10 @@ public class AdvFragment extends BaseFragment{
                 .replace("{maze}", advContext.dungeon.name+"")
                 .replace("{floor}", advContext.dungeon.numFloor+"");
         ProcessLog.insertProcessLog(advContext,log, new Date().getTime());
+        for(MyCard myCard : advContext.team){
+            myCard.cd = myCard.getInitCd();
+            updateMyCardToDB();
+        }
         return log;
     }
 

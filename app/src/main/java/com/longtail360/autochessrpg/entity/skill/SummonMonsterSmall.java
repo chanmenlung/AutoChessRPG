@@ -35,15 +35,11 @@ public class SummonMonsterSmall extends BaseSkill{
 		attackContent = context.getString(R.string.skill_attackContent_summonMonsterSmall); //魂狼向{monster}發動了嘶咬, {monster}受到了{value}點傷害
     }
 
-	@Override
-	public String getDesc(Context context) {
-		return null;
-	}
 
 	@Override
 	public ActionResult active(Context context,AdvContext advContext){
 		ActionResult actionResult = getActionResultForActive(context);
-		actionResult.content = battleDesc.replace("{mySelf}", mySelf.card.name);
+		actionResult.content = battleDesc.replace("{mySelf}", mySelf.getCard(context).name);
 		boolean hadActive = false;
 		if(advContext.battleContext.summons.size() > 0) {
 			for(BaseSummon baseSummon : advContext.battleContext.summons){

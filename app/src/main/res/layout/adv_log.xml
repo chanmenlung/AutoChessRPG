@@ -60,8 +60,8 @@
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:layout_marginBottom="5dp"
-                        app:btMenuPanelTitle="@string/adv_takeABreak"
-                        app:btMenuPanelIcon="@drawable/item_tree">
+                        app:btMenuPanelTitle="@string/ui_home_item"
+                        app:btMenuPanelIcon="@drawable/ui_icon_potion">
 
                     </com.longtail360.autochessrpg.prefab.MenuPanel>
                     <com.longtail360.autochessrpg.prefab.MenuPanel

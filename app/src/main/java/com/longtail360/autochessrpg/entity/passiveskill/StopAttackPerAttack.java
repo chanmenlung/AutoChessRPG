@@ -50,7 +50,7 @@ public class StopAttackPerAttack  extends BasePassiveSkill{
 			return null;			
 		}
 		if(isActive1) {
-			if(card.card.race.equals(Card.RACE_GOO)) {
+			if(card.race.equals(Card.RACE_GOO)) {
 				int rand = advContext.mRandom.nextInt(100);
 				if(rand < pos) {
 					monster.skipAttack = true;

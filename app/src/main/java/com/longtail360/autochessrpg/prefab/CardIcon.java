@@ -11,6 +11,8 @@ import android.widget.ImageView;
 
 import com.longtail360.autochessrpg.R;
 import com.longtail360.autochessrpg.entity.Card;
+import com.longtail360.autochessrpg.entity.CustomCard;
+import com.longtail360.autochessrpg.entity.GameContext;
 import com.longtail360.autochessrpg.entity.MyCard;
 import com.longtail360.autochessrpg.utils.ImageUtils;
 import com.longtail360.autochessrpg.utils.Logger;
@@ -44,7 +46,7 @@ public class CardIcon extends FrameLayout {
         star3 = findViewById(R.id.star3);
         raceIcon = findViewById(R.id.raceIcon);
         classIcon = findViewById(R.id.classIcon);
-        loadHeadImage(context, myCard.card);
+        loadHeadImage(context,myCard.getCard(context));
 
         upgradeBt.setOnClickListener(new OnClickListener() {
             @Override
@@ -58,7 +60,7 @@ public class CardIcon extends FrameLayout {
 
     public void reload(Context context,MyCard myCard) {
         this.myCard = myCard;
-        loadHeadImage(context, myCard.card);
+        loadHeadImage(context, myCard.getCard(context));
         updateStar();
         upgradeBt.setVisibility(GONE);
     }
@@ -93,14 +95,11 @@ public class CardIcon extends FrameLayout {
 
     public void loadHeadImage(Context context,Card card){
         Logger.log(tag, "cardCode:"+card.code);
+        CustomCard customCard = GameContext.gameContext.customCardDAO.getByCode(card.code);
         int headResourceId = ImageUtils.convertImageStringToInt(context, card.head);
-        if(card.customHead != null) {
-            File file = new File(card.customHead);
-            if(file.exists()) {
-                headImage.setImageURI(Uri.parse(card.customHead));
-            }else {
-                headImage.setImageResource(headResourceId);
-            }
+        Logger.log(tag, "customHead:"+customCard.customHead);
+        if(customCard != null && customCard.customHead != null && !customCard.customHead.equals("null")) {
+            headImage.setImageBitmap(ImageUtils.convertBase64ToImage(customCard.customHead));
         }else {
             headImage.setImageResource(headResourceId);
         }

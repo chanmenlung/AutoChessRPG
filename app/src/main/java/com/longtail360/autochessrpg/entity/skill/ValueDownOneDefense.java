@@ -8,7 +8,7 @@ import com.longtail360.autochessrpg.adventure.AdvContext;
 import com.longtail360.autochessrpg.entity.MyCard;
 public class ValueDownOneDefense extends BaseSkill{
     public static String KEY = "ValueDownOneDefense";
-	private int downValue = 1;
+	private int downValue = 5;
     public ValueDownOneDefense(Context context) {
         code = KEY;
         cd = 3;
@@ -17,11 +17,9 @@ public class ValueDownOneDefense extends BaseSkill{
         battleDesc = context.getString(R.string.skill_battleDesc_valueDownDefense);
         statusDesc = context.getString(R.string.skill_statusDesc_valueDownDefense);
     }
-    @Override
-    public String getDesc(Context context) {
-        return null;
-    }
-	public ActionResult active(Context context,AdvContext advContext){	
+
+	public ActionResult active(Context context,AdvContext advContext){
+        int downValue =  level+1;
 		return valueDownOne(context, advContext,advContext.battleContext.getRandomMonster(advContext), "defense", downValue);
 	}	
 }

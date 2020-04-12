@@ -12,7 +12,7 @@ import com.longtail360.autochessrpg.utils.Logger;
 
 public class HitDoubleTime extends BaseSkill{
     public static String KEY = "HitDoubleTime";
-	public int randomValue = 20;
+	public int randomValue = 50;
     public HitDoubleTime(Context context) {
         code = KEY;
         cd = 3;
@@ -22,14 +22,11 @@ public class HitDoubleTime extends BaseSkill{
         statusDesc = context.getString(R.string.skill_statusDesc_hitDoubleTime);
     }
 	@Override
-	public String getDesc() {
-		return null;
-	}
 	public ActionResult active(Context context,AdvContext advContext){
 		mySelf.windFury = true;
 		ActionResult result = getActionResultForActive(context);
-		result.content = battleDesc.replace("{mySelf}", mySelf.card.name);
-		result.icon1 = mySelf.card.id+"";
+		result.content = battleDesc.replace("{mySelf}", mySelf.getCard(context).name);
+		result.icon1 = mySelf.cardId+"";
 		result.icon1Type = RootLog.ICON1_TYPE_CARD;
 		advContext.battleContext.addActionResultToLog(result);
 		return result;

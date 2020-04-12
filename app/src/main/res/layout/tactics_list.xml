@@ -32,11 +32,10 @@
 
     <RelativeLayout
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:translationY="30dp">
+    android:layout_height="match_parent">
 
     <ScrollView
-    android:layout_centerInParent="true"
+        android:layout_marginTop="60dp"
     android:layout_width="match_parent"
     android:layout_height="575dp">
     <LinearLayout

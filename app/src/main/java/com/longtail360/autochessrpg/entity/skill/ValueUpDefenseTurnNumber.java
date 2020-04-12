@@ -18,9 +18,6 @@ public class ValueUpDefenseTurnNumber extends BaseSkill{
         statusDesc = context.getString(R.string.skill_statusDesc_valueUpDefenseTurnNumber);
     }
     @Override
-    public String getDesc(Context context) {
-        return null;
-    }
 	public ActionResult active(Context context,AdvContext advContext){
         int deltaDefense = 1;
         if(advContext.battleContext.turnNumber >= 5) {

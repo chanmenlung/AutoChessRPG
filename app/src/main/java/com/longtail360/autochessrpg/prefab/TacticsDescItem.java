@@ -50,7 +50,7 @@ public class TacticsDescItem extends FrameLayout {
                     Logger.toast(context.getString(R.string.tactic_hadInactive), context);
                     strategy.active = 0;
                 }
-                GameContext.gameContext.savePlayerData(getContext());
+                GameContext.gameContext.playerDAO.update(GameContext.gameContext.player);
             }
         });
 //        activeTactBt.setOnClickListener(new OnClickListener(){

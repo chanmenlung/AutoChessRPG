@@ -9,37 +9,20 @@ import com.longtail360.autochessrpg.entity.MyCard;
 
 public class ElectricAllBigHurt extends BaseSkill{
     public static String KEY = "ElectricAllBigHurt";
-	private int hurt = 25;
-	private int attackDownValue = 2;
-	private int posGetStatus = 30;
+	private int minHurt = 10;
+	private int maxHurt = 15;
+	private int posGetStatus = 15;
     public ElectricAllBigHurt(Context context) {
         code = KEY;
         cd = 3;
         name = context.getString(R.string.skill_name_electricAllBigHurt);
-        desc = context.getString(R.string.skill_desc_electricAllBigHurt).replace("{value}", hurt+"").replace("{pos}", posGetStatus+"");
-        battleDesc = context.getString(R.string.skill_battleDesc_electricAllBigHurt).replace("{value}", hurt+"");
-        statusDesc = context.getString(R.string.skill_statusDesc_electricAllBigHurt).replace("{value}", attackDownValue+"");
-        getStatusDesc = context.getString(R.string.skill_getStatus_elect);
-    }
-
-    @Override
-    public String getDesc(Context context) {
-        int levelHurt;
-        if(level == 1) {
-            levelHurt = 25;
-        }else if(level == 2) {
-            levelHurt = 40;
-        }else {
-            levelHurt = 60;
-        }
-
-        return context.getString(R.string.skill_desc_electricAllBigHurt).replace("{value}", levelHurt+"")
-                .replace("{pos}", posGetStatus+"");
+        desc = context.getString(R.string.skill_desc_electricAllBigHurt).replace("{value}", minHurt+"-"+maxHurt).replace("{pos}", posGetStatus+"");
+        battleDesc = context.getString(R.string.skill_battleDesc_electricAllBigHurt);
     }
 
     @Override
 	public ActionResult active(Context context, AdvContext advContext){
-		ActionResult result = statusHurtAll(context,advContext, hurt, false, posGetStatus, MyCard.ELECTRICITY_STATUS);
+		ActionResult result = statusHurtAll(context,advContext, getIntByRange(minHurt, maxHurt), false, posGetStatus, MyCard.ELECTRICITY_STATUS);
         advContext.battleContext.addActionResultToLog(result);
         return result;
 	}

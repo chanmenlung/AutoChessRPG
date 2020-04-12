@@ -13,6 +13,7 @@ import com.longtail360.autochessrpg.R;
 import com.longtail360.autochessrpg.activity.BaseActivity;
 import com.longtail360.autochessrpg.activity.BuyCrystalActivity;
 import com.longtail360.autochessrpg.entity.Card;
+import com.longtail360.autochessrpg.entity.CustomCard;
 import com.longtail360.autochessrpg.entity.GameContext;
 import com.longtail360.autochessrpg.entity.Setting;
 import com.longtail360.autochessrpg.utils.ImageUtils;
@@ -37,6 +38,7 @@ public class CardDescItem extends LinearLayout {
     private View detailBt;
     private View lockIcon;
     public Card card;
+    private CustomCard customCard;
 
     public CardDescItem(final BaseActivity activity, final CallBack callBack, final Card card) {
         super(activity);
@@ -53,6 +55,7 @@ public class CardDescItem extends LinearLayout {
         skillValue = findViewById(R.id.skillValue);
         lockIcon = findViewById(R.id.lockIcon);
         detailBt = findViewById(R.id.detailBt);
+        customCard = GameContext.gameContext.customCardDAO.getByCode(card.code);
         detailBt.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -66,17 +69,16 @@ public class CardDescItem extends LinearLayout {
                 activity.popupBox.title.setText(activity.getString(R.string.cardDescItem_isLockCard)
                         .replace("{crystal}", Setting.CRYSTAL_FOR_UNLOCK_CARD+""));
                 activity.popupBox.content.setText(activity.getString(R.string.cardDescItem_reasonForUnlockCard)
-                        .replace("{currentCrystal}", GameContext.gameContext.getPlayer(activity).crystal+""));
+                        .replace("{currentCrystal}", GameContext.gameContext.player.crystal+""));
                 activity.popupBox.show();
                 activity.popupBox.rightConfirm.setOnClickListener(new OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        if(GameContext.gameContext.getPlayer(activity).crystal > Setting.CRYSTAL_FOR_UNLOCK_CARD ){
-                            card.locked = 0;
-                            GameContext.gameContext.cardDAO.update(card);
-                            GameContext.gameContext.getPlayer(activity).crystal = GameContext.gameContext.getPlayer(activity).crystal - Setting.CRYSTAL_FOR_UNLOCK_CARD;
-                            GameContext.gameContext.getPlayer(activity).unlockCards.add(card.code);
-                            GameContext.gameContext.savePlayerData(activity);
+                        if(GameContext.gameContext.player.crystal > Setting.CRYSTAL_FOR_UNLOCK_CARD ){
+                            CustomCard customCard =GameContext.gameContext.customCardDAO.getByCode(card.code);
+                            GameContext.gameContext.player.crystal = GameContext.gameContext.player.crystal - Setting.CRYSTAL_FOR_UNLOCK_CARD;
+                            customCard.locked = 0;
+                            GameContext.gameContext.customCardDAO.update(customCard);
                             activity.popupBox.hide();
                             lockIcon.setVisibility(INVISIBLE);
                             callBack.doActionAfterUnlockCard(CardDescItem.this, card);
@@ -102,7 +104,8 @@ public class CardDescItem extends LinearLayout {
 
     public void loadCard(Context context, Card card) {
         this.card = card;
-        loadHeadImage(context, card);
+        this.customCard = GameContext.gameContext.customCardDAO.getByCode(card.code);
+        loadHeadImage(context, card, customCard);
         if(card.race.equals(Card.RACE_DIVINITY)){
             raceValue.setText(context.getString(R.string.card_race_divinity));
         }else if(card.race.equals(Card.RACE_SPIRIT)){
@@ -144,22 +147,22 @@ public class CardDescItem extends LinearLayout {
         }
 
         hpValue.setText(card.hp+"");
-        attackValue.setText(card.attack+"");
+        attackValue.setText((card.attack-1)+" - "+(card.attack+1));
         defenseValue.setText(card.defense+"");
         nameValue.setText(card.name+"");
-        skillValue.setText(card.skill.desc);
-        if(card.locked == 1){
+        skillValue.setText(card.skill.getDesc(context));
+        if(customCard.locked == 1){
             lockIcon.setVisibility(VISIBLE);
         }else {
             lockIcon.setVisibility(INVISIBLE);
         }
     }
-    public void loadHeadImage(Context context,Card card){
+    public void loadHeadImage(Context context,Card card, CustomCard customCard){
         int headResourceId = ImageUtils.convertImageStringToInt(context, card.head);
-        if(card.customHead != null) {
-            File file = new File(card.customHead);
+        if(customCard.customHead != null) {
+            File file = new File(customCard.customHead);
             if(file.exists()) {
-                cardIcon.setImageURI(Uri.parse(card.customHead));
+                cardIcon.setImageURI(Uri.parse(customCard.customHead));
             }else {
                 cardIcon.setImageResource(headResourceId);
             }

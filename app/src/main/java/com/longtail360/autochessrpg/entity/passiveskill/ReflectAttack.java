@@ -43,20 +43,22 @@ public class ReflectAttack  extends BasePassiveSkill{
 			int random = advContext.mRandom.nextInt(100);
 			Logger.log(KEY, "random:"+random);
 			if(random < pos) {
+				String name = card.getCard(context).name;
 				int realHurt = hurt - monster.defense;
 				monster.changeHp(context, advContext.battleContext, realHurt);
 				ActionResult result = new ActionResult();
 				result.doThisAction = true;
 				result.icon1 = "skill_icon_reflect";
 				result.icon1Type = RootLog.ICON1_TYPE_NOT_CARD;
-				result.title = context.getString(R.string.passive_skill_desc_reflectAttack_battleDescTitle).replace("{card}", card.card.name);
-				result.content = context.getString(R.string.passive_skill_desc_reflectAttack_battleDescContent).replace("{card}", card.card.name).replace("{monster}", monster.label).replace("{value}", realHurt+"");
+				result.title = context.getString(R.string.passive_skill_desc_reflectAttack_battleDescTitle).replace("{card}", name);
+				result.content = context.getString(R.string.passive_skill_desc_reflectAttack_battleDescContent).replace("{card}", name).replace("{monster}", monster.label).replace("{value}", realHurt+"");
 				advContext.battleContext.addActionResultToLog(result);
 				return result;
 			}
 		}
 		if(isActive1) {
-			if(card.card.race.equals(Card.RACE_ORCS)) {
+			String name = card.getCard(context).name;
+			if(card.race.equals(Card.RACE_ORCS)) {
 			int random = advContext.mRandom.nextInt(100);
 			Logger.log(KEY, "random:"+random);
 			if(random < pos) {
@@ -66,8 +68,8 @@ public class ReflectAttack  extends BasePassiveSkill{
 					result.doThisAction = true;
 					result.icon1 = "skill_icon_reflect";
 					result.icon1Type = RootLog.ICON1_TYPE_NOT_CARD;
-					result.title = context.getString(R.string.passive_skill_desc_reflectAttack_battleDescTitle).replace("{card}", card.card.name)+random;
-					result.content = context.getString(R.string.passive_skill_desc_reflectAttack_battleDescContent).replace("{card}", card.card.name).replace("{monster}", monster.label).replace("{value}", realHurt+"");
+					result.title = context.getString(R.string.passive_skill_desc_reflectAttack_battleDescTitle).replace("{card}", name)+random;
+					result.content = context.getString(R.string.passive_skill_desc_reflectAttack_battleDescContent).replace("{card}", name).replace("{monster}", monster.label).replace("{value}", realHurt+"");
 					result.icon1 = "skill_icon_reflect";
 					result.icon1Type = RootLog.ICON1_TYPE_NOT_CARD;
 					advContext.battleContext.addActionResultToLog(result);

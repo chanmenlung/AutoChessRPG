@@ -13,6 +13,8 @@ import com.longtail360.autochessrpg.R;
 public class BuyCrystalDescItem extends LinearLayout {
     private ImageView crystalIcon;
     private TextView content;
+    private TextView crystalNum;
+    private TextView price;
     private View buyBt;
     private int crystal;
     public BuyCrystalDescItem(Context context, final SkuDetails skuDetails, final BuyCrystalDescItem.CallBack callBack, final int crystal, final String coin) {
@@ -22,7 +24,10 @@ public class BuyCrystalDescItem extends LinearLayout {
         inflater.inflate(R.layout.buy_crystal_desc_item, this);
         crystalIcon = findViewById(R.id.crystalIcon);
         content = findViewById(R.id.content);
-        content.setText("X "+crystal +"$"+coin);
+        price = findViewById(R.id.price);
+        crystalNum = findViewById(R.id.crystalNum);
+        crystalNum.setText(crystal+"");
+        price.setText(coin+"");
         this.crystal = crystal;
         buyBt = findViewById(R.id.buyBt);
         buyBt.setOnClickListener(new OnClickListener() {
@@ -37,19 +42,4 @@ public class BuyCrystalDescItem extends LinearLayout {
         public void doActionAfterClickBt(BuyCrystalDescItem focusItem, SkuDetails skuDetails, int crystal);
     }
 
-    public static int convertCrystalToCoin(int crystal){
-        if(crystal == 10){
-            return 8;
-        }else if(crystal == 20){
-            return 16;
-        }else if(crystal == 50){
-            return 32;
-        }else if(crystal == 100){
-            return 60;
-        }else if(crystal == 200){
-            return 120;
-        }else {
-            return 0;
-        }
-    }
 }

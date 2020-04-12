@@ -20,14 +20,10 @@ public class TauntAndDefenseUpAndNotDead extends BaseSkill{ //no use
         battleDesc = context.getString(R.string.skill_battleDesc_tauntAndDefenseUpAndNotDead);
         statusDesc = context.getString(R.string.skill_statusDesc_tauntAndDefenseUpAndNotDead);
     }
-	@Override
-	public String getDesc(Context context) {
-		return null;
-	}
 	@Override	
 	public ActionResult active(Context context,AdvContext advContext){
 		ActionResult actionResult = getActionResultForActive(context);
-		actionResult.content = battleDesc.replace("{card}", mySelf.card.name);
+		actionResult.content = battleDesc.replace("{card}", mySelf.getCard(context).name);
 		count = MAX_COUNT;
 		mySelf.taunt = true;
 		mySelf.battleDefense = mySelf.battleDefense + deltaDefense;
@@ -40,7 +36,7 @@ public class TauntAndDefenseUpAndNotDead extends BaseSkill{ //no use
 			ActionResult result = new ActionResult();
 			result.doThisAction = true;
 			result.title = name;
-			result.content = statusDesc.replace("{card}", mySelf.card.name);
+			result.content = statusDesc.replace("{card}", mySelf.getCard(context).name);
 		}
 		return null;
 	}	

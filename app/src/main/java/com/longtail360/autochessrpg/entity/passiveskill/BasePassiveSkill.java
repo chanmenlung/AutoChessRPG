@@ -47,10 +47,10 @@ public class BasePassiveSkill implements Comparable<BasePassiveSkill>{
     public void doCheckingAndSetActiveNumber(List<MyCard> team) {
         activeNumber = 0;
         for(MyCard myCard : team){
-            if(myCard.card.clazz.equals(this.raceClass)){
+            if(myCard.clazz.equals(this.raceClass)){
                 activeNumber++;
             }
-            if(myCard.card.race.equals(this.raceClass)){
+            if(myCard.race.equals(this.raceClass)){
                 activeNumber++;
             }
         }

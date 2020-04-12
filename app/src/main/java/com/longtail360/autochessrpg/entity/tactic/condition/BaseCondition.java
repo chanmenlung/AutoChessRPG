@@ -15,7 +15,7 @@ import java.util.List;
  * Created by chanmenlung on 21/10/2018.
  */
 
-public class BaseCondition {
+public class BaseCondition{
     private static String tag = "BaseCondition";
     @Expose
     public String key;

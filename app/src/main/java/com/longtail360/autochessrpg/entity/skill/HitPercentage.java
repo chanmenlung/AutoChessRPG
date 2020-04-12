@@ -19,9 +19,6 @@ public class HitPercentage extends BaseSkill{
         statusDesc = context.getString(R.string.skill_statusDesc_hitPercentage);
     }
     @Override
-    public String getDesc() {
-        return null;
-    }
 	public ActionResult active(Context context,AdvContext advContext){
 		Monster monster = advContext.battleContext.getRandomMonster(advContext);
 		int hurt = monster.getHp() * percentage / 100;

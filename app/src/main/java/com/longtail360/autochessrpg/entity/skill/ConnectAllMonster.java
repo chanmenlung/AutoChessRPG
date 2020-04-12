@@ -20,11 +20,6 @@ public class ConnectAllMonster extends BaseSkill{
         statusDesc = context.getString(R.string.skill_statusDesc_connectAllMonster);
     }
 
-	@Override
-	public String getDesc(Context context) {
-		return desc;
-	}
-
 	public ActionResult active(Context context, AdvContext advContext){
 		for(Monster sub : advContext.battleContext.monsters) {
 			for(Monster obj : advContext.battleContext.monsters) {
@@ -36,7 +31,7 @@ public class ConnectAllMonster extends BaseSkill{
 			}
 		}
 		ActionResult actionResult = getActionResultForActive(context);
-		actionResult.content = battleDesc.replace("{card}", mySelf.card.name);
+		actionResult.content = battleDesc.replace("{card}", mySelf.getCard(context).name);
 		advContext.battleContext.addActionResultToLog(actionResult);
 		return actionResult;		
 	}

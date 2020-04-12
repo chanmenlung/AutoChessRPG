@@ -13,19 +13,15 @@ public class SummonMonsterHeal extends BaseSkill{
     public static String KEY = "SummonMonsterHeal";
     public SummonMonsterHeal(Context context) {
         code = KEY;
-        cd = 2;
+        cd = 5;
         name = context.getString(R.string.skill_name_summonMonsterHeal);
         desc = context.getString(R.string.skill_desc_summonMonsterHeal);
         battleDesc = context.getString(R.string.skill_battleDesc_summonMonsterHeal);
         statusDesc = context.getString(R.string.skill_statusDesc_summonMonsterHeal);
     }
-    @Override
-    public String getDesc(Context context) {
-        return desc;
-    }
 	public ActionResult active(Context context,AdvContext advContext){
 		ActionResult actionResult = getActionResultForActive(context);
-		actionResult.content = battleDesc.replace("{mySelf}", mySelf.card.name);
+		actionResult.content = battleDesc.replace("{mySelf}", mySelf.getCard(context).name);
 		boolean hadActive = false;
 		if(advContext.battleContext.summons.size() > 0) {
 		    for(BaseSummon baseSummon : advContext.battleContext.summons){

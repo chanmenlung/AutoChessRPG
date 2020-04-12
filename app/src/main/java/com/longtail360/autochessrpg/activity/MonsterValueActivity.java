@@ -129,7 +129,7 @@ public class MonsterValueActivity  extends BaseActivity{
 //                GameDBHelper.getDatabase(MonsterValueActivity.this).execSQL("delete from " + TeamStatusDAO.TABLE_NAME);
 
                 Card.init(MonsterValueActivity.this);
-                BaseSkill.init(MonsterValueActivity.this);
+//                BaseSkill.init(MonsterValueActivity.this);
                 Dungeon.init(MonsterValueActivity.this);
                 Item.init(MonsterValueActivity.this);
                 Monster.init(MonsterValueActivity.this);
@@ -145,8 +145,8 @@ public class MonsterValueActivity  extends BaseActivity{
                 }else {
                     GameContext.gameContext.adventure = advs.get(0);
 
-                    GameContext.gameContext.getPlayer(MonsterValueActivity.this).concreteConds(MonsterValueActivity.this);
-                    GameContext.gameContext.getPlayer(MonsterValueActivity.this).concreteAction(MonsterValueActivity.this);
+                    GameContext.gameContext.player.concreteConds(MonsterValueActivity.this);
+                    GameContext.gameContext.player.concreteAction(MonsterValueActivity.this);
                 }
 
                 Logger.toast("Saved", MonsterValueActivity.this);

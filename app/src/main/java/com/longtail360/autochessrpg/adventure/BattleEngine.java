@@ -71,11 +71,11 @@ public class BattleEngine {
             Logger.log(tag, "cri:"+card.cri);
         }
         //for testing only start
-        for(MyCard card : advContext.cards) {
+//        for(MyCard card : advContext.cards) {
 //            card.card.skill = BaseSkill.getByCode(context, prefs.getString(MonsterValueActivity.SKILL,null));
-            card.card.skill = BaseSkill.getByCode(context, ReflectAttackOnTeam.KEY);
-            card.cd = card.card.skill.cd;
-        }
+//            card.card.skill = BaseSkill.getByCode(context, ReflectAttackOnTeam.KEY);
+//            card.cd = card.card.skill.cd;
+//        }
         //for testing only end
         for(MyCard myCard : advContext.team) {
             myCard.setValueOnBattleStart();
@@ -95,7 +95,7 @@ public class BattleEngine {
             }
             //card attack monster turn
             ActionResult result =null;
-            for(Tactics ta : GameContext.gameContext.getPlayer(context).tacticsList){
+            for(Tactics ta : GameContext.gameContext.player.tacticsList){
                 if(ta.active == 1){
                     if(ta.doChecking(advContext)) {
                         result = ta.action.action(context,advContext);
@@ -111,15 +111,15 @@ public class BattleEngine {
             }
             for(int i=0; i<advContext.cards.size(); i++){
                 MyCard cardAction = advContext.cards.get(i);
-                cardAction.card.skill.doActionOnTurnStart(context, advContext);
+                cardAction.skill.doActionOnTurnStart(context, advContext);
                 if(cardAction.battleHp > 0) {
                     if(cardAction.cd == 0) {
-                        cardAction.card.skill.active(context, advContext);
-                        cardAction.cd = cardAction.card.skill.cd;
+                        cardAction.skill.active(context, advContext);
+                        cardAction.cd = cardAction.getInitCd();
                     }
                     cardAction.randomNormalAttackMonster(context, advContext);
                     removeDeadMonster();
-                    doLogicAfterCardDoAllAction(cardAction.card);
+//                    doLogicAfterCardDoAllAction(cardAction.card);
                     if (checkMonsterAllDead()) {
                         return;
                     }
@@ -159,9 +159,6 @@ public class BattleEngine {
             removeDeadMonster();
             if (checkMonsterAllDead()) {
                 return;
-            }
-            for(MyCard myCard : advContext.cards) {
-                myCard.cd--;
             }
             getPotionHurt();
             doLogicOnTurnEnd();
@@ -270,9 +267,9 @@ public class BattleEngine {
 //        }
     }
 
-    private void doLogicAfterCardDoAllAction(Card card) {
-
-    }
+//    private void doLogicAfterCardDoAllAction(Card card) {
+//
+//    }
 
     private void doLogicOnTurnEnd() {
 
@@ -366,7 +363,7 @@ public class BattleEngine {
         StringBuilder result = new StringBuilder();
         for(MyCard card : advContext.team){
             if(card != null){
-                result.append(card.concateNameHpMpLevelExp());
+                result.append(card.concateNameHpMpLevelExp(context));
                 result.append("\n");
             }
         }
