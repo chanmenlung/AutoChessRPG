@@ -31,7 +31,7 @@
         <activity android:name=".activity.MonsterValueActivity" android:screenOrientation="portrait"></activity>
         <activity android:name=".activity.HelloActivity" android:screenOrientation="portrait"></activity>
         <activity android:name=".activity.SettingActivity" android:screenOrientation="portrait"></activity>
-        <activity android:name=".activity.HistoryLogActivity" android:screenOrientation="portrait"></activity>
+        <activity android:name=".activity.HistoryLogMenuActivity" android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>

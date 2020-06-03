@@ -17,7 +17,7 @@ import com.longtail360.autochessrpg.utils.Logger;
 
 public class PassiveSkillDescLayout extends FrameLayout {
     private String tag = "PassiveSkillDescLayout";
-    private View raceClassValue;
+    private TextView raceClassValue;
     private ImageView iconImage;
     private View descLayout1;
     private View descLayout2;
@@ -68,40 +68,58 @@ public class PassiveSkillDescLayout extends FrameLayout {
         descContent3.setTextColor(Color.WHITE);
         if(basePassiveSkill != null) {
             if(basePassiveSkill.raceClass.equals(Card.CLAZZ_MAGE)){
+                raceClassValue.setText(getContext().getString(R.string.card_clazz_mage));
                 iconImage.setImageResource(R.drawable.class_mage);
             }else if(basePassiveSkill.raceClass.equals(Card.CLAZZ_WARRIOR)){
+                raceClassValue.setText(getContext().getString(R.string.card_clazz_warrior));
                 iconImage.setImageResource(R.drawable.class_warrior);
             }else if(basePassiveSkill.raceClass.equals(Card.CLAZZ_PRIEST)){
+                raceClassValue.setText(getContext().getString(R.string.card_clazz_priest));
                 iconImage.setImageResource(R.drawable.class_priest);
             }else if(basePassiveSkill.raceClass.equals(Card.CLAZZ_HUNTER)){
+                raceClassValue.setText(getContext().getString(R.string.card_clazz_hunter));
                 iconImage.setImageResource(R.drawable.class_hunter);
             }else if(basePassiveSkill.raceClass.equals(Card.CLAZZ_KNIGHT)){
+                raceClassValue.setText(getContext().getString(R.string.card_clazz_knight));
                 iconImage.setImageResource(R.drawable.class_knight);
             }else if(basePassiveSkill.raceClass.equals(Card.CLAZZ_SHAMAN)){
+                raceClassValue.setText(getContext().getString(R.string.card_clazz_shaman));
                 iconImage.setImageResource(R.drawable.class_shaman);
             }else if(basePassiveSkill.raceClass.equals(Card.CLAZZ_ROGUE)){
+                raceClassValue.setText(getContext().getString(R.string.card_clazz_rogue));
                 iconImage.setImageResource(R.drawable.class_rogue);
             }else if(basePassiveSkill.raceClass.equals(Card.CLAZZ_WARLOCK)){
+                raceClassValue.setText(getContext().getString(R.string.card_clazz_warlock));
                 iconImage.setImageResource(R.drawable.class_warlock);
             }else if(basePassiveSkill.raceClass.equals(Card.RACE_HUMAN)){
+                raceClassValue.setText(getContext().getString(R.string.card_race_human));
                 iconImage.setImageResource(R.drawable.race_human);
             }else if(basePassiveSkill.raceClass.equals(Card.RACE_ELF)){
+                raceClassValue.setText(getContext().getString(R.string.card_race_elf));
                 iconImage.setImageResource(R.drawable.race_elf);
             }else if(basePassiveSkill.raceClass.equals(Card.RACE_SPIRIT)){
+                raceClassValue.setText(getContext().getString(R.string.card_race_spirit));
                 iconImage.setImageResource(R.drawable.race_spirit);
             }else if(basePassiveSkill.raceClass.equals(Card.RACE_UNDEAD)){
+                raceClassValue.setText(getContext().getString(R.string.card_race_undead));
                 iconImage.setImageResource(R.drawable.race_undead);
             }else if(basePassiveSkill.raceClass.equals(Card.RACE_ORCS)){
+                raceClassValue.setText(getContext().getString(R.string.card_race_orcs));
                 iconImage.setImageResource(R.drawable.race_orc);
             }else if(basePassiveSkill.raceClass.equals(Card.RACE_DEMON)){
+                raceClassValue.setText(getContext().getString(R.string.card_race_demon));
                 iconImage.setImageResource(R.drawable.race_demon);
             }else if(basePassiveSkill.raceClass.equals(Card.RACE_DIVINITY)){
+                raceClassValue.setText(getContext().getString(R.string.card_race_divinity));
                 iconImage.setImageResource(R.drawable.race_divinity);
             }else if(basePassiveSkill.raceClass.equals(Card.RACE_MARINE)){
+                raceClassValue.setText(getContext().getString(R.string.card_race_marine));
                 iconImage.setImageResource(R.drawable.race_marine);
             }else if(basePassiveSkill.raceClass.equals(Card.RACE_DWARF)){
+                raceClassValue.setText(getContext().getString(R.string.card_race_marine));
                 iconImage.setImageResource(R.drawable.race_dwarf);
             }else if(basePassiveSkill.raceClass.equals(Card.RACE_GOO)){
+                raceClassValue.setText(getContext().getString(R.string.card_race_dwarf));
                 iconImage.setImageResource(R.drawable.race_goo);
             }
 

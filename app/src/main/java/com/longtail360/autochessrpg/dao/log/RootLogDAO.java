@@ -19,6 +19,7 @@ public class RootLogDAO {
     public static final String ADV_STATUS = "adv_status";
     public static final String IS_COMING_BACK = "is_coming_back";
     public static final String NUM_OF_DEAD = "num_of_dead";
+    public static final String CARD_IDS = "cardIds";
     public static final String IS_HISTORY_LOG = "is_history_log";
     public static final String CURRENT_FLOOR = "currentFloor";
     public static final String CURRENT_AREA = "currentArea";
@@ -34,6 +35,7 @@ public class RootLogDAO {
                     ADV_STATUS + " INTEGER,"+
                     IS_COMING_BACK + " INTEGER,"+
                     NUM_OF_DEAD + " INTEGER,"+
+                    CARD_IDS + " INTEGER,"+
                     IS_HISTORY_LOG + " INTEGER,"+
                     CURRENT_FLOOR + " INTEGER,"+
                     CURRENT_AREA + " INTEGER,"+
@@ -57,6 +59,7 @@ public class RootLogDAO {
         cv.put(ADV_STATUS, item.advStatus);
         cv.put(IS_COMING_BACK, item.isComingBack);
         cv.put(NUM_OF_DEAD, item.numOfDead);
+        cv.put(CARD_IDS, item.cardIds);
         cv.put(IS_HISTORY_LOG, item.isHistoryLog);
         cv.put(CURRENT_FLOOR, item.currentFloor);
         cv.put(CURRENT_AREA, item.currentArea);
@@ -74,6 +77,7 @@ public class RootLogDAO {
         cv.put(ADV_STATUS, item.advStatus);
         cv.put(IS_COMING_BACK, item.isComingBack);
         cv.put(NUM_OF_DEAD, item.numOfDead);
+        cv.put(CARD_IDS, item.cardIds);
         cv.put(IS_HISTORY_LOG, item.isHistoryLog);
         cv.put(CURRENT_FLOOR, item.currentFloor);
         cv.put(CURRENT_AREA, item.currentArea);
@@ -124,13 +128,14 @@ public class RootLogDAO {
         result.advStatus = cursor.getInt(2);
         result.isComingBack = cursor.getInt(3);
         result.numOfDead = cursor.getInt(4);
-        result.isHistoryLog = cursor.getInt(5);
-        result.currentFloor = cursor.getInt(6);
-        result.currentArea = cursor.getInt(7);
-        result.currentBlock = cursor.getInt(8);
-        result.progress = cursor.getInt(9);
-        result.startingCoin = cursor.getInt(10);
-        result.startingTime = cursor.getLong(11);
+        result.cardIds = cursor.getString(5);
+        result.isHistoryLog = cursor.getInt(6);
+        result.currentFloor = cursor.getInt(7);
+        result.currentArea = cursor.getInt(8);
+        result.currentBlock = cursor.getInt(9);
+        result.progress = cursor.getInt(10);
+        result.startingCoin = cursor.getInt(11);
+        result.startingTime = cursor.getLong(12);
         return result;
     }
 

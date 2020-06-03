@@ -45,6 +45,8 @@ public class BaseCondition{
         result.add (create (context,AnyOneMonsterHp.KEY));
         result.add (create (context,AnyTwoMonsterHp.KEY));
         result.add (create (context, NumberOfMonster.KEY));
+        result.add(create(context, OnBattleStart.KEY));
+        result.add(create(context, OnTurnStart.KEY));
         return result;
     }
 

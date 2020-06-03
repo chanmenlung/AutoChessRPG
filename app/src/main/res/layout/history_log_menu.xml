@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:background="@drawable/ui_background"
+    android:id="@+id/thisLayout"
+    android:layout_height="match_parent">
+    <com.longtail360.autochessrpg.prefab.HeadBackButton
+        android:id="@+id/backBt"
+        android:translationY="10dp"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        app:btHeadBackText="@string/ui_home_log"/>
+
+
+        <LinearLayout
+            android:id="@+id/historyLogLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:orientation="vertical">
+
+        </LinearLayout>
+
+
+
+    <!-- fragment container start -->
+    <FrameLayout
+        android:id="@+id/fragmentContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </FrameLayout>
+    <!-- fragment container end -->
+</FrameLayout>

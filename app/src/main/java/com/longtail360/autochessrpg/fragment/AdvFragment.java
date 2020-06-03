@@ -54,6 +54,7 @@ import java.util.List;
 
 public class AdvFragment extends BaseFragment{
     String tag = "AdvFragment";
+    public long selectRootLogId;
     private ScrollView processLogScroll;
     private LinearLayout processLogContainer;
     private View itemElementListLayout;
@@ -140,7 +141,7 @@ public class AdvFragment extends BaseFragment{
         level = getText(R.string.log_level).toString();
         processLogContainer.removeAllViews();
         backBt.setText(advContext.dungeon.name);
-        renderLogFromDb(GameContext.gameContext.adventure.currentRootLogId);
+        renderLogFromDb(selectRootLogId);
         initUpdateBt(view);
         initTakeBreakBt();
         initBackBt();
@@ -358,73 +359,72 @@ public class AdvFragment extends BaseFragment{
 
                     }
                 }else { //coming back
-                    advContext.dungeon.numBlockPerArea = 1;
-                    if(advContext.rootLog.currentFloor == 0 && advContext.rootLog.currentArea == 0 && advContext.rootLog.currentBlock ==0) {
-                        if(advContext.rootLog.advStatus == RootLog.ADV_STATUS_PROGRESSING){
-                            ProcessLog pLog = finishAll();
-                            putProcessLogToContainer(pLog);
+                    int limit =20;
+                    int count = 0;
+                    while(true) {
+                        count++;
+                        if(count == limit){
+                            Logger.log(tag, "over while loop");
+                            break;
                         }
-                        updateMyCardToDB();
-                        return;
-                    }
-
-                    //currentArea = 0, currentBlock = 0 indicate that all area is done, show start new floor
-                    if(advContext.rootLog.currentArea == 0 && advContext.rootLog.currentBlock ==0){
-                        ProcessLog pLog = backToFloor(advContext.rootLog.currentFloor);
-                        putProcessLogToContainer(pLog);
-                    }
-
-                    advContext.rootLog.currentBlock--;
-                    int random = advContext.mRandom.nextInt(100);
-                    ActionResult actionResult;
-                    if(random <= 65) {
-                        actionResult = eventEngine.metMonsterEvent();
-                        ProcessLog log = new ProcessLog();
-                        log.title = actionResult.title;
-                        log.content = actionResult.content;
-                        log.detail = actionResult.detail;
-                        log.icon1 = actionResult.icon1;
-                        log.icon2 = actionResult.icon2;
-                        log.color = actionResult.color;
-                        ProcessLog.insertProcessLog(advContext, log, new Date().getTime());
-                        battleEngine.createAnBattle(log, actionResult.monsterKey, actionResult.monsterName, actionResult.numOfMonster);
-                        putProcessLogToContainer(log);
-                    }else {
-                        actionResult =  eventEngine.metGoodEvent();
-                        ProcessLog log = new ProcessLog();
-                        log.title = actionResult.title;
-                        log.content = actionResult.content;
-                        log.detail = actionResult.detail;
-                        log.icon1 = actionResult.icon1;
-                        log.icon2 = actionResult.icon2;
-                        log.color = actionResult.color;
-                        ProcessLog.insertProcessLog(advContext, log, new Date().getTime());
-                        putProcessLogToContainer(log);
-
-                    }
-                    if(advContext.rootLog.currentArea == -1){
-                        if(advContext.rootLog.currentBlock == -1){
-                            advContext.rootLog.currentFloor--;
-                            advContext.rootLog.currentArea = advContext.dungeon.numAreaPerFloor-1;
-                            advContext.rootLog.currentBlock = advContext.dungeon.numBlockPerArea-1;
-                            GameContext.gameContext.rootLogDAO.update(advContext.rootLog);
+                        if(advContext.rootLog.currentFloor == 0 && advContext.rootLog.currentArea == 0 && advContext.rootLog.currentBlock ==0) {
+                            if(advContext.rootLog.advStatus == RootLog.ADV_STATUS_PROGRESSING){
+                                ProcessLog pLog = finishAll();
+                                putProcessLogToContainer(pLog);
+                            }
                             updateMyCardToDB();
                             return;
                         }
-                    }
-                    if(advContext.rootLog.currentBlock == -1){
-                        advContext.rootLog.currentBlock = advContext.dungeon.numBlockPerArea-1;
-                        advContext.rootLog.currentArea--;
+
+                        //currentArea = 0, currentBlock = 0 indicate that all area is done, show start new floor
+                        if(advContext.rootLog.currentArea == 0 && advContext.rootLog.currentBlock ==0){
+                            ProcessLog pLog = backToFloor(advContext.rootLog.currentFloor);
+                            putProcessLogToContainer(pLog);
+                        }
+
+                        advContext.rootLog.currentBlock--;
+                        if(advContext.rootLog.currentArea == -1){
+                            if(advContext.rootLog.currentBlock == -1){
+                                advContext.rootLog.currentFloor--;
+                                advContext.rootLog.currentArea = advContext.dungeon.numAreaPerFloor-1;
+                                advContext.rootLog.currentBlock = advContext.dungeon.numBlockPerArea-1;
+                                GameContext.gameContext.rootLogDAO.update(advContext.rootLog);
+//                                updateMyCardToDB();
+//                                return;
+                            }
+                        }
+                        if(advContext.rootLog.currentBlock == -1){
+                            advContext.rootLog.currentBlock = advContext.dungeon.numBlockPerArea-1;
+                            advContext.rootLog.currentArea--;
+                            GameContext.gameContext.rootLogDAO.update(advContext.rootLog);
+//                            updateMyCardToDB();
+//                            return;
+                        }
+                        int random = advContext.mRandom.nextInt(100);
+                        ActionResult actionResult;
+                        if(random <= 10) {
+                            actionResult = eventEngine.metMonsterEvent();
+                            ProcessLog log = new ProcessLog();
+                            log.title = actionResult.title;
+                            log.content = actionResult.content;
+                            log.detail = actionResult.detail;
+                            log.icon1 = actionResult.icon1;
+                            log.icon2 = actionResult.icon2;
+                            log.color = actionResult.color;
+                            ProcessLog.insertProcessLog(advContext, log, new Date().getTime());
+                            battleEngine.createAnBattle(log, actionResult.monsterKey, actionResult.monsterName, actionResult.numOfMonster);
+                            putProcessLogToContainer(log);
+                            updateMyCardToDB();
+                            return;
+                        }
                         GameContext.gameContext.rootLogDAO.update(advContext.rootLog);
-                        updateMyCardToDB();
-                        return;
                     }
-                    GameContext.gameContext.rootLogDAO.update(advContext.rootLog);
                 }
 
                 for(MyCard ca : advContext.team){
                     GameContext.gameContext.myCardDAO.update(ca);
                 }
+
                 Logger.log(tag,"=====================end================");
 
             }
@@ -512,10 +512,17 @@ public class AdvFragment extends BaseFragment{
         return log;
     }
     private ProcessLog logDead() {
-        int totalBlock = advContext.dungeon.numFloor * advContext.dungeon.numAreaPerFloor * advContext.dungeon.numBlockPerArea;
-        int finishBlock = advContext.rootLog.currentFloor*advContext.dungeon.numAreaPerFloor * advContext.dungeon.numBlockPerArea
-                +advContext.rootLog.currentArea*advContext.dungeon.numAreaPerFloor + advContext.rootLog.currentBlock;
-        int notFinishProgress = 100 - finishBlock * 100/totalBlock;
+        int notFinishProgress;
+        if(advContext.rootLog.isComingBack == 0) {
+            int totalBlock = advContext.dungeon.numFloor * advContext.dungeon.numAreaPerFloor * advContext.dungeon.numBlockPerArea;
+            int finishBlock = advContext.rootLog.currentFloor*advContext.dungeon.numAreaPerFloor * advContext.dungeon.numBlockPerArea
+                    +advContext.rootLog.currentArea*advContext.dungeon.numAreaPerFloor + advContext.rootLog.currentBlock;
+            notFinishProgress = 100 - finishBlock * 70/totalBlock;
+        }else {
+            notFinishProgress = 100 - (70 + advContext.rootLog.currentFloor * 30/advContext.dungeon.numFloor);
+        }
+
+
         int ints = (int)(advContext.rootLog.startingCoin * 0.1);//calculate interest
         int coin = getPrice()+ints;
         advContext.rootLog.advStatus = RootLog.ADV_STATUS_FAIL;
@@ -730,7 +737,7 @@ public class AdvFragment extends BaseFragment{
 
         advContext.currentItemList= MyItem.listByOnBody(GameContext.gameContext.adventure.id);
 
-        processLogs = GameContext.gameContext.processLogDAO.listByRootLogId(GameContext.gameContext.adventure.currentRootLogId);
+        processLogs = GameContext.gameContext.processLogDAO.listByRootLogId(rootLogId);
         if(processLogs != null && processLogs.size() >0) {
             for (int i=0; i<rootLog.progress; i++) {
                 final ProcessLog pLog = processLogs.get(i);

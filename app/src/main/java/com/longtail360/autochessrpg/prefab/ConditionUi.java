@@ -123,6 +123,7 @@ public class ConditionUi extends FrameLayout {
         List<String> opts = new ArrayList<>();
         int index = 0;
         for (int i = 0; i < conditions.size(); i++) {
+            Logger.log(tag, "i:"+i);
             Logger.log(tag, conditions.get(i).key+"");
             Logger.log(tag, selectedCondition.key+"");
             if (conditions.get(i).key.equals (selectedCondition.key)) {

@@ -1,106 +1,117 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical" android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/ui_background"
-    android:id="@+id/thisLayout"
+    android:id="@+id/advLogThisLayout"
     android:layout_height="match_parent">
-    <com.longtail360.autochessrpg.prefab.HeadBackButton
-        android:id="@+id/backBt"
-        android:translationY="10dp"
-        android:layout_height="match_parent"
+    <RelativeLayout
         android:layout_width="match_parent"
-        app:btHeadBackText="@string/ui_home_log"/>
+        android:layout_height="0dp"
+        android:layout_weight="80"
+        android:layout_marginTop="50dp">
+        <ScrollView
+            android:id="@+id/processLogScroll"
+            android:layout_centerInParent="true"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:id="@+id/processLogContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
+            </LinearLayout>
+        </ScrollView>
+    </RelativeLayout>
+
+    <!-- team status layout start -->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/ui_background"
+        android:id="@+id/teamStatusLayout"
+        android:visibility="invisible"
+        android:clickable="true">
+        <com.longtail360.autochessrpg.prefab.HeadBackButton
+            android:id="@+id/teamStatusBackBt"
+            android:translationY="10dp"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            app:btHeadBackText=""/>
 
         <LinearLayout
-            android:id="@+id/historyLogLayout"
+            android:translationY="50dp"
+            android:id="@+id/eventContainer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
             android:orientation="vertical">
-            <FrameLayout
-                android:id="@+id/log1Bt"
-                android:layout_width="match_parent"
-                android:layout_height="80dp"
-                android:layout_margin="10dp"
-                android:gravity="center_vertical"
-                android:background="@drawable/ui_panel"
-                android:orientation="horizontal">
-                <TextView
-                    android:id="@+id/log1BtText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:textSize="25sp"
-                    android:text="@string/ui_history_logBtText"/>
-            </FrameLayout>
-            <FrameLayout
-                android:id="@+id/log2Bt"
+            <LinearLayout
+                android:id="@+id/teamStatusEventLayout"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
+                android:orientation="horizontal"
                 android:layout_margin="10dp"
-                android:gravity="center_vertical"
-                android:background="@drawable/ui_panel"
-                android:orientation="horizontal">
-                <TextView
-                    android:id="@+id/log2BtText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                android:background="@drawable/ui_window_yellow">
+                <ImageView
+                    android:id="@+id/teamStatusEventIcon1"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="4dp"
                     android:layout_gravity="center"
-                    android:textSize="25sp"
-                    android:text="@string/ui_history_logBtText"/>
-            </FrameLayout>
-            <FrameLayout
-                android:id="@+id/log3Bt"
+                    android:src="@drawable/item_crystal"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    >
+                    <TextView
+                        android:id="@+id/teamStatusEventTitle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="12dp"
+                        android:layout_gravity="center_vertical"
+                        android:textSize="12sp"
+                        android:text=""/>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_marginRight="10dp"
+                        android:background="@drawable/ui_small_line" />
+
+                    <TextView
+                        android:id="@+id/teamStatusEventContent"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:textSize="10sp"
+                        android:text="abc"/>
+
+                </LinearLayout>
+            </LinearLayout>
+            <!--            <LinearLayout
+                            android:id="@+id/teamStatusContainer"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
+
+                        </LinearLayout>-->
+
+            <ScrollView
+                android:layout_centerInParent="true"
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:layout_margin="10dp"
-                android:gravity="center_vertical"
-                android:background="@drawable/ui_panel"
-                android:orientation="horizontal">
-                <TextView
-                    android:id="@+id/log3BtText"
-                    android:layout_width="wrap_content"
+                android:layout_height="match_parent">
+                <LinearLayout
+                    android:id="@+id/teamStatusContainer"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:textSize="25sp"
-                    android:text="@string/ui_history_logBtText"/>
-            </FrameLayout>
-            <FrameLayout
-                android:id="@+id/log4Bt"
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:layout_margin="10dp"
-                android:gravity="center_vertical"
-                android:background="@drawable/ui_panel"
-                android:orientation="horizontal">
-                <TextView
-                    android:id="@+id/log4BtText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:textSize="25sp"
-                    android:text="@string/ui_history_logBtText"/>
-            </FrameLayout>
-            <FrameLayout
-                android:id="@+id/log5Bt"
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:layout_margin="10dp"
-                android:gravity="center_vertical"
-                android:background="@drawable/ui_panel"
-                android:orientation="horizontal">
-                <TextView
-                    android:id="@+id/log5BtText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:textSize="25sp"
-                    android:text="@string/ui_history_logBtText"/>
-            </FrameLayout>
+                    android:orientation="vertical">
+                </LinearLayout>
+            </ScrollView>
+
         </LinearLayout>
 
-
-
+    </FrameLayout>
+    <!-- team status layout end -->
 </FrameLayout>

@@ -24,6 +24,7 @@ public class BattleContext {
     public List<Monster> deadMonsters = new ArrayList<>();
     public BattleRootLog battleRootLog;
     public int turnNumber;
+    public boolean attackLowHp;
     public String buildMonsterLabels(List<Monster> monsters) {
         if(monsters.size() < 1){
             return null;

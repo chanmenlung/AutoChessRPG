@@ -19,8 +19,8 @@ public class HpUp  extends BasePassiveSkill{
 
     public HpUp(Context context) {
         code = KEY;
-//        raceClass = Card.RACE_HUMAN; //uncomment this
-		raceClass = Card.RACE_DWARF;
+        raceClass = Card.RACE_HUMAN; //uncomment this
+//		raceClass = Card.RACE_DWARF;
         number1 = 3;
         number2 = 6;
         number3 = 9;

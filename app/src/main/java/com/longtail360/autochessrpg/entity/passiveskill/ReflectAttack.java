@@ -68,7 +68,7 @@ public class ReflectAttack  extends BasePassiveSkill{
 					result.doThisAction = true;
 					result.icon1 = "skill_icon_reflect";
 					result.icon1Type = RootLog.ICON1_TYPE_NOT_CARD;
-					result.title = context.getString(R.string.passive_skill_desc_reflectAttack_battleDescTitle).replace("{card}", name)+random;
+					result.title = context.getString(R.string.passive_skill_desc_reflectAttack_battleDescTitle).replace("{card}", name);
 					result.content = context.getString(R.string.passive_skill_desc_reflectAttack_battleDescContent).replace("{card}", name).replace("{monster}", monster.label).replace("{value}", realHurt+"");
 					result.icon1 = "skill_icon_reflect";
 					result.icon1Type = RootLog.ICON1_TYPE_NOT_CARD;

@@ -25,6 +25,7 @@ public class Character {
     public boolean fireStatus; //defense down 1
     public boolean potionStatus; //hp down per turn
     public boolean iceStatus; //skip one turn
+    public boolean useSkill = true;
 
     public void resetStatus() {
         divineShield = false;

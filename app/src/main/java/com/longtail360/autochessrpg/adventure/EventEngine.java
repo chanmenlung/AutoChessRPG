@@ -81,6 +81,10 @@ public class EventEngine {
             return findAlchemyHearthSuccess();
         }else if(randomWhichEvent < 90) {
             return findAlchemyHearthNone();
+        }else if(randomWhichEvent < 91){
+            return findCrystalNone();
+        }else if(randomWhichEvent < 92){
+            return findCrystalSuccess();
         }else {
             return findSpringCure();
         }
@@ -111,9 +115,43 @@ public class EventEngine {
         }
     }
 
-    //<string name="adv_event_findAlchemyHearth">發現了熔爐</string>
-    //<string name="adv_event_findAlchemyHearthSuccess">發現了熔爐</string>
-    //隊伍嘗試從熔爐提煉物品, 提煉成功, 獲得了{item}
+    public ActionResult findCrystalNone() {
+        int randomAlcm =  advContext.mRandom.nextInt(4);
+        ActionResult actionResult = new ActionResult();
+        if(randomAlcm == 0) {
+            actionResult.icon1 = "item_mine_crystal1";
+        }else if(randomAlcm == 1) {
+            actionResult.icon1 = "item_mine_crystal2";
+        }else if(randomAlcm == 2){
+            actionResult.icon1 = "item_mine_crystal3";
+        }else {
+            actionResult.icon1 = "item_mine_crystal4";
+        }
+
+        actionResult.title = context.getResources().getString(R.string.adv_event_findCrystal);
+        actionResult.detail =  context.getResources().getString(R.string.adv_event_findCrystalSuccess);
+        return actionResult;
+    }
+
+    public ActionResult findCrystalSuccess() {
+        int randomAlcm =  advContext.mRandom.nextInt(4);
+        ActionResult actionResult = new ActionResult();
+        if(randomAlcm == 0) {
+            actionResult.icon1 = "item_mine_crystal1";
+        }else if(randomAlcm == 1) {
+            actionResult.icon1 = "item_mine_crystal2";
+        }else if(randomAlcm == 2){
+            actionResult.icon1 = "item_mine_crystal3";
+        }else {
+            actionResult.icon1 = "item_mine_crystal4";
+        }
+        GameContext.gameContext.player.crystal++;
+        GameContext.gameContext.playerDAO.update(GameContext.gameContext.player);
+        actionResult.title = context.getResources().getString(R.string.adv_event_findCrystal);
+        actionResult.detail =  context.getResources().getString(R.string.adv_event_findCrystalNone);
+        return actionResult;
+    }
+
     public ActionResult findAlchemyHearthSuccess() {
         int randomAlcm =  advContext.mRandom.nextInt(3);
         Item item = randomGetItem();
@@ -365,9 +403,9 @@ public class EventEngine {
         if(randomDesc == 0) {
             actionResult.detail = context.getResources().getString(R.string.adv_event_findARoom_none_desc1);
         }else if(randomDesc == 1) {
-            actionResult.detail = context.getResources().getString(R.string.adv_event_findARoom_none_desc2);
+            actionResult.detail = context.getResources().getString(R.string.adv_event_findARoom_none_desc2).replace("{card}", whoOpenBox.name);;
         }else {
-            actionResult.detail = context.getResources().getString(R.string.adv_event_findARoom_none_desc3);
+            actionResult.detail = context.getResources().getString(R.string.adv_event_findARoom_none_desc3).replace("{card}", whoOpenBox.name);;
         }
         return actionResult;
     }

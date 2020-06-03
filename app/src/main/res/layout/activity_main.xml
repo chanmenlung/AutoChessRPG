@@ -8,7 +8,7 @@
         android:id="@+id/backgroundLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/main_page_background_2">
+        android:background="@drawable/main_page_background_3">
 
     <FrameLayout
         android:translationX="-50dp"

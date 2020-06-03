@@ -166,7 +166,17 @@ public class MyCard extends Character{
     public ActionResult randomNormalAttackMonster(Context context, AdvContext advContext) {
         cd--;
         int randomAttackWhichMonster = advContext.mRandom.nextInt(advContext.battleContext.monsters.size());
-        Monster monster = advContext.battleContext.monsters.get(randomAttackWhichMonster);
+        Monster monster;
+        if(advContext.battleContext.attackLowHp){
+            monster = advContext.battleContext.monsters.get(0);
+            for(Monster mon : advContext.battleContext.monsters){
+                if(mon.getHp() < monster.getHp()){
+                    monster = mon;
+                }
+            }
+        }else {
+            monster = advContext.battleContext.monsters.get(randomAttackWhichMonster);
+        }
         return normalAttackMonsterWithWindFury(context, advContext, monster);
     }
 

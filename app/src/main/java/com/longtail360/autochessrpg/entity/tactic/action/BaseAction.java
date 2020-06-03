@@ -46,6 +46,22 @@ public class BaseAction {
     public ActionResult action (Context context, AdvContext advContext) {return null;}
     public String concatDesc (Context context){return desc;}
 
+    public static List<BaseAction> listUseItems(Context context) {
+        List<BaseAction> result = new ArrayList<>();
+        result.add(create (context, UseItemHpUp.KEY));
+        result.add(create (context, UseItemAttackUp.KEY));
+        result.add(create (context, UseItemCdDown.KEY));
+        result.add(create (context, UseItemFire.KEY));
+        result.add(create (context, UseItemIce.KEY));
+        result.add(create (context, UseItemElectricity.KEY));
+        result.add(create (context, UseItemPotion.KEY));
+        result.add(create (context, UseItemSummonHeal.KEY));
+        result.add(create (context, UseItemSummonS.KEY));
+        result.add(create (context, UseItemSummonM.KEY));
+        result.add(create (context, UseItemSummonL.KEY));
+        result.add(create (context, UseItemPerfume.KEY));
+        return result;
+    }
     public static List<BaseAction> listAll(Context context) {
         List<BaseAction> result = new ArrayList<>();
         result.add(create (context, UseItemHpUp.KEY));
@@ -60,6 +76,7 @@ public class BaseAction {
         result.add(create (context, UseItemSummonM.KEY));
         result.add(create (context, UseItemSummonL.KEY));
         result.add(create (context, UseItemPerfume.KEY));
+//        result.add(create (context, UseRandomItem.KEY));
         return result;
     }
 	
@@ -111,6 +128,9 @@ public class BaseAction {
         }
         else if (UseItemSummonHeal.KEY.equals (name)) {
             cnd = new UseItemSummonHeal(context);
+        }
+        else if (UseRandomItem.KEY.equals (name)) {
+            cnd = new UseRandomItem(context);
         }
         else {
             Logger.log (tag, "Cannot new BaseAction:"+name);

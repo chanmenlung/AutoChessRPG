@@ -30,22 +30,42 @@ public class Adventure {
     }
 
     public void getExp(int value) {
+        if(level == 10){
+            return;
+        }
         exp = exp + value;
         int totalExp = calTotalExpByLevel(level);
         if(exp >= totalExp){
             level = level + 1;
+            if(level == 10){
+                exp = 40;
+            }
             exp = exp - totalExp;
         }
     }
     public int calTotalExpByLevel(int level){
-        if(level == 1 || level == 2){
-            return 1;
+        switch (level){
+            case 1:
+                return 0;
+            case 2:
+                return 1;
+            case 3:
+                return 1;
+            case 4:
+                return 2;
+            case 5:
+                return 4;
+            case 6:
+                return 8;
+            case 7:
+                return 16;
+            case 8:
+                return 24;
+            case 9:
+                return 32;
+            case 10:
+                return 40;
         }
-
-        int result = 2;
-        for(int i=3; i<level;i++){
-            result = result * 2;
-        }
-        return result;
+        return 40;
     }
 }

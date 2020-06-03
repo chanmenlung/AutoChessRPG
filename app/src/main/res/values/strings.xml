@@ -143,6 +143,12 @@
 
     <string name="action_attack">攻擊</string>
     <string name="action_target">目標</string>
+    <string name="action_attackLowHp">攻擊最低血量敵人</string>
+    <string name="action_escapeOne">把血量最低成員移離戰場</string>
+    <string name="action_escapeTeam">逃跑</string>
+    <string name="action_notOpenBox">不打開任何寶箱/罌罐/熔爐</string>
+    <string name="action_notUseSkill">不使用技能</string>
+    <string name="action_useRandomItem">使用隨機物品</string>
     <string name="action_useItemHpUp">使用紅色藥水</string>
     <string name="action_useItemCdDown">使用藍色藥水</string>
     <string name="action_useItemAttackUp">使用飯團</string>
@@ -155,6 +161,8 @@
     <string name="action_useItemSummonMonsterMiddle">使用號角</string>
     <string name="action_useItemSummonMonsterLarge">使用龍鱗片</string>
     <string name="action_useItemPerfume">誘惑香水</string>
+    <string name="condition_onBattleStart">在戰鬥開始時</string>
+    <string name="condition_onTurnStart">在每回合開始時</string>
     <string name="condition_all_card_hp">全員的HP</string>
     <string name="condition_all_monster_hp">所有敵人的HP</string>
     <string name="condition_anyone_hp">任意一人的HP</string>
@@ -281,6 +289,10 @@
     <string name="adv_event_findARoom_none_desc2">在房間的一角獲得了一個藥瓶。{card}小心翼翼地鑒定著藥瓶。開啟瓶蓋，服下藥物。這藥物的味道真難吃。</string>
     <string name="adv_event_findARoom_none_desc3">在牆邊有一個架子，上面雜亂的堆放著盛有液體的藥瓶。{card}小心翼翼地鑒定著藥瓶。發現瓶中的液體對身體無害。開啟瓶蓋，喝下裡面的液體。這液體的味道真不好喝。</string>
 
+    <string name="adv_event_findCrystal">發現了水晶礦</string>
+    <string name="adv_event_findCrystalSuccess">隊伍嘗試從礦石開採水晶, 成功開採, 獲得了水晶</string>
+    <string name="adv_event_findCrystalNone">隊伍嘗試從礦石開採水晶, 開採失敗, 決定離開</string>
+
     <string name="adv_event_findAlchemy">發現了熔爐</string>
     <string name="adv_event_findAlchemyHearthSuccess">隊伍嘗試從熔爐提煉物品, 提煉成功, 獲得了「{item}」</string>
     <string name="adv_event_findAlchemyHearthFail">隊伍嘗試啟動熔爐, 啟動失敗, 熔爐發生了爆炸, 隊伍走避不及, 受到了{value}點傷害</string>
@@ -323,7 +335,7 @@
     <string name="battle_knightNormalAttack">{card}給予敵人猛烈的一擊。{monster}受到了{value}傷害。</string>
     <string name="battle_rogueNormalAttack">{card}以風馳電掣的手法，對敵人連續出擊。{monster}受到了{value}傷害。</string>
     <string name="battle_winBattleTitle">隊伍打倒了{monster}</string>
-    <string name="battle_battleLogTitle">{numOfMonster}隻{monsterName}遭遇戰</string>
+    <string name="battle_battleLogTitle">{numOfMonster}個{monsterName}遭遇戰</string>
     <string name="battle_cardActiveSkill">{mySelf}發動了{skill}</string>
     <string name="battle_dodgeMonsterAttack">{card}迴避了{monster}的攻擊</string>
     <string name="battle_relifeTitle">{card}獲得了重生</string>
@@ -474,12 +486,12 @@
 
     <string name="skill_name_hitSingleAndDodgeAttack">暗影背刺</string>
     <string name="skill_desc_hitSingleAndDodgeAttack">提升自身的迴避能力 {agi}, 並對一名敵人造成 {hurt} 點傷害</string>
-    <string name="skill_battleDesc_hitSingleAndDodgeAttack">飛身至敵人後方，成功刺殺{monster}, {monster}受到 {hurt} 點傷害。迴避能力增加了{agi}點。</string>
+    <string name="skill_battleDesc_hitSingleAndDodgeAttack">飛身至敵人後方，成功刺殺{monster}, {monster}受到 {value} 點傷害。迴避能力增加了{agi}點。</string>
     <string name="skill_statusDesc_hitSingleAndDodgeAttack"></string>
 
     <string name="skill_name_hitAllAndDodgeAttackTeam">吹飛術</string>
     <string name="skill_desc_hitAllAndDodgeAttackTeam">對所有敵人造成{value}點傷害, 並增力隊伍迴避率</string>
-    <string name="skill_battleDesc_hitAllAndDodgeAttackTeam">強烈颱風吹飛了所有敵人, 敵人受到 {hurt} 點傷害, 隊伍迴避率上升了{agiValue}點</string>
+    <string name="skill_battleDesc_hitAllAndDodgeAttackTeam">強烈颱風吹飛了所有敵人, 敵人受到 {value} 點傷害, 隊伍迴避率上升了{agiValue}點</string>
     <string name="skill_statusDesc_hitAllAndDodgeAttackTeam"></string>
 
     <string name="skill_name_hitSingleBigHurt">雷霆一擊</string>
@@ -890,7 +902,7 @@
         <item>荊棘磨坊</item>
         <item>血蹄小徑</item>
         <item>棘齒路口</item>
-        <item>aaaa</item>
+        <item>淨化中心</item>
         <item>許願湖</item>
         <item>棘齒環型山</item>
         <item>激流沼澤</item>
@@ -1175,8 +1187,8 @@
         <item>風暴巨人</item>
         <item>森之巨人</item>
         <item>石魔像</item>
-        <item>黑龍</item>
-        <item>雙足飛龍</item>
+        <item>比蒙巨兽</item>
+        <item>地獄看守者</item>
         <item>海龍</item>
         <item>大惡魔</item>
         <item>遠古劍龍</item>
@@ -1220,8 +1232,8 @@
         <item>暮光龍</item>
         <item>金龍</item>
         <item>始生紅龍</item>
-        <item>aaaaa</item>
-        <item>aaaaaaaaa</item>
+        <item>黑龍</item>
+        <item>雙足飛龍</item>
         <item>綠龍</item>
         <item>紅龍</item>
         <item>巨型雙足飛龍</item>

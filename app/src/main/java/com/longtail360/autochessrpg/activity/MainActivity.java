@@ -259,7 +259,6 @@ public class MainActivity extends ExternalResActivity {
             GameContext.gameContext.player.concreteAction(MainActivity.this);
         }
 
-        Logger.log(tag, "itemCode:"+GameContext.gameContext.itemDAO.listAll().get(0).name);
     }
     private void initListener() {
         View leaveGame = findViewById(R.id.leaveGame);

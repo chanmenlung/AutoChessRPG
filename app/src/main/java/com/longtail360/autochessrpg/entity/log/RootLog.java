@@ -17,6 +17,7 @@ public class RootLog {
     public int advStatus;  //1:success, 2:fail, 3:progressing
     public int isComingBack; //0:progressing, 1:comingBack
     public int numOfDead;
+    public String cardIds;
     public long startingTime;
     public int isHistoryLog; //0=false, 1=true, if is not history log, get price update buying card when this log is finish
     public int progress;

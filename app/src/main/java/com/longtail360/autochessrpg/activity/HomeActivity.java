@@ -1,12 +1,8 @@
 package com.longtail360.autochessrpg.activity;
 
-import android.content.ClipData;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.Handler;
 import android.preference.PreferenceManager;
-import android.provider.DocumentsContract;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
@@ -16,11 +12,8 @@ import android.widget.TextView;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 import com.jaydenxiao.guider.HighLightGuideView;
 import com.longtail360.autochessrpg.R;
-import com.longtail360.autochessrpg.adventure.AdventureAsyncTask;
 import com.longtail360.autochessrpg.entity.Adventure;
 import com.longtail360.autochessrpg.entity.Card;
 import com.longtail360.autochessrpg.entity.Dungeon;
@@ -29,7 +22,6 @@ import com.longtail360.autochessrpg.entity.Monster;
 import com.longtail360.autochessrpg.entity.MyCard;
 import com.longtail360.autochessrpg.entity.MyItem;
 import com.longtail360.autochessrpg.entity.Setting;
-import com.longtail360.autochessrpg.entity.log.ProcessLog;
 import com.longtail360.autochessrpg.entity.log.RootLog;
 import com.longtail360.autochessrpg.entity.passiveskill.BasePassiveSkill;
 import com.longtail360.autochessrpg.fragment.AdvFragment;
@@ -48,17 +40,8 @@ import com.longtail360.autochessrpg.prefab.PassiveSkillIcon;
 import com.longtail360.autochessrpg.prefab.ViewTag;
 import com.longtail360.autochessrpg.utils.Logger;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Date;
 import java.util.List;
 import java.util.Random;
 
@@ -427,10 +410,10 @@ public class HomeActivity extends ExternalResActivity implements HomeCardDesc.Ca
                     popupBox.show();
                     return;
                 }
-//                if(GameContext.gameContext.adventure.level < cardInBattles.size()){
-//                    Logger.toast( getString(R.string.ui_home_overPopulation),HomeActivity.this);
-//                    return;
-//                }
+                if(GameContext.gameContext.adventure.level < cardInBattles.size()){
+                    Logger.toast( getString(R.string.ui_home_overPopulation),HomeActivity.this);
+                    return;
+                }
                 if(GameContext.gameContext.adventure.currentRootLog != null){
                     Logger.log(tag, "rootLog.advStatus:"+GameContext.gameContext.adventure.currentRootLog.advStatus);
                 }
@@ -458,6 +441,7 @@ public class HomeActivity extends ExternalResActivity implements HomeCardDesc.Ca
                             showAdvFragment();
                         }
                     });
+
                     popupBox.show();
                 }else {
                     showAdvFragment();
@@ -690,6 +674,7 @@ public class HomeActivity extends ExternalResActivity implements HomeCardDesc.Ca
         tacticsBt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Logger.log(tag, "click-tacticsBt:");
                 showTacticFragment();
             }
         });
@@ -932,7 +917,7 @@ public class HomeActivity extends ExternalResActivity implements HomeCardDesc.Ca
         logBt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startOtherActivity(HistoryLogActivity.class);
+                startOtherActivity(HistoryLogMenuActivity.class);
             }
         });
 
@@ -992,7 +977,8 @@ public class HomeActivity extends ExternalResActivity implements HomeCardDesc.Ca
     }
 
     private void updateTopBarValue() {
-        int totalExp = GameContext.gameContext.adventure.calTotalExpByLevel(GameContext.gameContext.adventure.level);
+        int totalExp = GameContext.gameContext.adventure.calTotalExpByLevel(GameContext.gameContext.adventure.level+1);
+
         levelValue.setText(GameContext.gameContext.adventure.level+"");
         expValue.setText(GameContext.gameContext.adventure.exp+"/"+totalExp);
         hpValue.setText(GameContext.gameContext.adventure.hp+"/100");
@@ -1035,7 +1021,7 @@ public class HomeActivity extends ExternalResActivity implements HomeCardDesc.Ca
 //        for(CardIcon icon : cardInBattles){
 //            advFragment.advContext.team.add(icon.myCard);
 //        }
-
+        advFragment.selectRootLogId = GameContext.gameContext.adventure.currentRootLogId;
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.fragmentContainer, advFragment);
         transaction.addToBackStack(null);
@@ -1107,6 +1093,7 @@ public class HomeActivity extends ExternalResActivity implements HomeCardDesc.Ca
     public void onBackPressed() {
         Logger.log(tag, "setBackPress");
         updateAdvBtText();
+        crystalValue.setText(GameContext.gameContext.player.crystal+"");
         if(advFragment != null && advFragment.isShowSubLog){
             advFragment.hideDetailForBack();
             advFragment.isShowSubLog = false;
